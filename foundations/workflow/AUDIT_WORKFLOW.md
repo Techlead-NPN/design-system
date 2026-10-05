@@ -24,8 +24,8 @@ The goal of the docs: complete enough that an AI building a new page from them a
 
 ## Doc tiers
 
-- **`components/<name>.md`** — one per component or component family: variant properties, anatomy and tokens table, usage rules with rationale, known gaps, changelog of what was fixed. Tokens are referenced by name; values live in the project's `DESIGN.md`.
-- **`patterns/<name>.md`** — composite structures built from documented components: what it is composed of (with links), layout rules and states. No token-by-token table; that belongs to the component doc that owns each token. Document any missing sub-components first.
+- **`components/<name>.md`** — one per component or component family: a **Spec** section first (measured height, padding, gap, radius and border; the exact fill, border, text color and text style for every variant and state; a reference image saved to `assets/reference/`), then variant properties, anatomy and tokens table, usage rules with rationale, known gaps, changelog of what was fixed. The Spec is what lets someone build the component without Figma; a doc without one is not finished. Tokens are referenced by name; values live in the project's `DESIGN.md`.
+- **`patterns/<name>.md`** — composite structures built from documented components: a **Spec** section first (container size and padding, the blocks in order with the gaps between them, the real content shown, and a reference image), then what it is composed of (with links), layout rules and states. No token-by-token table; that belongs to the component doc that owns each token. Document any missing sub-components first.
 - **Asset-based components** (logo, illustrations) — export the real SVG files into the project's `assets/` folder and embed them in the doc, with an explicit instruction to use the file rather than redraw it. Artwork colors are fixed art, not token-driven.
 
 ## Figma annotation rules

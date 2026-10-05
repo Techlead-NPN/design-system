@@ -114,7 +114,7 @@ Ten "accent" colors exist: `sky`, `ocean`, `emerald`, `teal`, `sun`, `fuchsia`, 
 | `bg/accent-peach` | `#ffedd5` | Decorative |
 | `bg/accent-stone` | `#f5f5f4` | Decorative — default icon container fill |
 
-### 2.5 Border (20 tokens)
+### 2.5 Border (21 tokens)
 
 | Token | Value | Usage |
 |---|---|---|
@@ -123,6 +123,7 @@ Ten "accent" colors exist: `sky`, `ocean`, `emerald`, `teal`, `sun`, `fuchsia`, 
 | `border/primary-subtle` | `#e5e5e5` | Decorative dividers — no contrast requirement |
 | `border/disabled` | `#f5f5f5` | Borders of disabled elements |
 | `border/danger` | `#ef4444` | Invalid input fields |
+| `border/urgent` | `#f97316` | Border of urgent-family badges (e.g. the "Revising" status badge) |
 | `border/warning` | `#f59e0b` | Fields needing review |
 | `border/success` | `#6ecd32` | Validated input fields |
 | `border/info` | `#60a5fa` | Informational/in-progress state |
@@ -234,6 +235,8 @@ Neither rhythm is enforced by Figma or named as a distinct scale in the Foundati
 | `bg/disabled-subtle` → `bg/disabled` | Label correction | Same pattern — no `-subtle` variant of this token actually exists |
 | Various orphaned variable rebinds | `text+icon/idle`, `bg/disabled`, `border/primary-subtle`, `text+icon/brand`→`accent-indigo`, `border/brand`→`accent-indigo` | These cards were bound to deleted variable IDs; rebound to the current live equivalents |
 | `Body/Large-meduum` → `Body/Large-medium` | Typo fix | Fixed at the source (the live text style name itself) |
+| Added `border/urgent` (`#f97316`, `orange/500`) | New token | The "Revising" status badge had a raw `#bd4b00` border because the urgent family had text and background tokens but no border; added so the badge is fully token-driven, using the same orange as `text + icon/urgent` |
+| `Priority status` Medium fill | `bg/urgent-subtle` → `bg/warning-subtle` | Medium mixed an urgent background with warning text, breaking the same-family rule (§5); it is now warning throughout |
 | Added `Body/Tiny-regular` (10px, Inter Regular) | New style | Avatar-initial text at 16px avatar size used a custom 10px/Regular text with no bound style; formalized it as a named type-scale entry instead of leaving it ad-hoc |
 | Avatar component: removed 12px/14px size variants | Deleted, instances migrated to 16px | Confirmed via developer + real-component cross-check that 16px is the actual size in use; 55 existing instances across Table, Request list, and Activity log were swapped to 16px before the old variants were deleted. Scoped to the round `Avatar` variant only — the square-shaped `Square` variant's 12px/14px sizes were left untouched (separately confirmed in active use) |
 

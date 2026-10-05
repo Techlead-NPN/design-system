@@ -1,2 +1,5 @@
 .claude/
 .DS_Store
+
+# Local trial builds (not part of the design system)
+trial/

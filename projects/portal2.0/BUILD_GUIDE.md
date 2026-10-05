@@ -37,6 +37,8 @@ For a screen that has no pattern doc, build it inside the app shell from the gen
 
 **App components** are the ones prefixed `nav-`, `home-`, `request-`, `create-form-`, `notification-`, `profile-` and `settings-`. They belong to a specific Portal 2.0 feature; reuse one only for that same purpose.
 
+**Docs with a measured Spec section and reference image so far:** [`sidebar-navigation`](patterns/sidebar-navigation.md), [`request-table`](patterns/request-table.md), [`nav-item-l1`](components/nav-item-l1.md), [`nav-section-label`](components/nav-section-label.md), [`request-list-table-row`](components/request-list-table-row.md), [`request-list-status-badge`](components/request-list-status-badge.md), [`request-list-company-chip`](components/request-list-company-chip.md), [`create-form-priority`](components/create-form-priority.md), plus the layout numbers in [`app-shell`](patterns/app-shell.md). The other docs list tokens and rules but not sizes; expect to ask for missing measurements when building from them.
+
 ## 4. Assets
 
 - **Logo:** use the SVG files in [`assets/logo/`](assets/logo/), as described in [`components/logo.md`](components/logo.md). Never redraw the logo.

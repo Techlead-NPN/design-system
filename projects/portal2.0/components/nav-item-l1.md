@@ -4,6 +4,28 @@ A top-level sidebar row — icon, label, and optional trailing count badge or "S
 
 Figma: [`📱 Navigation`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page, `Navigation/Navigation item L1` component set (part of the Sidebar Menu Item catalog frame).
 
+## Spec
+
+Measured from the Figma component on 2026-10-05. Where this section and the tables below disagree, this section is right.
+
+| Property | Value |
+|---|---|
+| Row height | 28px |
+| Padding | `spacing/1` (4px) all sides |
+| Radius | `border-radii/rounded-4` |
+| Icon chip | 16×16px [Icon sidebar](icon-sidebar.md) with a 14px icon inside |
+| Icon chip to label gap | `spacing/2` (8px) |
+| Label | one line, truncates with an ellipsis |
+| Trailing count (as used in the real sidebar) | plain text, `Support/Caption`, `text + icon/tertiary` — **not** a pill badge |
+
+| State | Row fill | Label color | Label style | Icon chip |
+|---|---|---|---|---|
+| `Default` | none | `text + icon/secondary` | `Body/Small-medium` | its own accent color |
+| `Hover` | `bg/primary-hover` | `text + icon/secondary` | `Body/Small-medium` | its own accent color |
+| `Selected` | `bg/accent-indigo-subtlest` | `text + icon/accent-indigo` | `Body/Small-semibold` | **keeps** its own accent color; it does not turn indigo |
+
+See the row in context in the [sidebar reference image](../assets/reference/sidebar-navigation.png).
+
 ## Anatomy
 
 | Part | Token(s) |
@@ -37,6 +59,7 @@ Figma: [`📱 Navigation`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) 
 
 ## Changelog
 
+- **2026-10-05:** added the Spec section (row height, exact tokens per state) after a trial build from this doc got the label color, selected weight and count treatment wrong.
 - No foreign color tokens found on this component's own layers (only the legitimate `Loading/light` paint style) — the row structure itself was already using real semantic tokens.
 - Bound previously-unbound `itemSpacing`/`cornerRadius` on the row (4px → `spacing/1` / `border-radii/rounded-4`), the icon/label gap (8px → `spacing/2`), and the label wrapper's right padding (4px → `spacing/1`) across all 4 variants, plus the `Loading...` variant's own padding.
 - **Correction during this pass:** an initial fix mistakenly bound the label wrapper's left/top/bottom padding (all `0`) to `spacing/1` (`4px`) along with the right side — caught and corrected back to `spacing/0` for those three sides before it shipped, since only the right padding was actually `4px` in the original design.
