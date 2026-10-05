@@ -1,0 +1,309 @@
+{
+  "fileKey": "YFci6zgeYAQqX2OlHKQB0e",
+  "fileName": "Portal 2.0",
+  "generatedAt": "2026-08-25",
+  "note": "Structural baseline: every COMPONENT/COMPONENT_SET on every page, with variant names. Not property-level (no token bindings, colors, spacing) — see foundations/workflow/DRIFT_CHECK.md for how to use and regenerate this.",
+  "pages": [
+    { "id": "0:1", "name": "FOUNDATION & SEMANTIC", "components": [] },
+    { "id": "2:2", "name": "✅  Color", "components": [] },
+    { "id": "9:74", "name": "✅  Typography", "components": [] },
+    { "id": "142:2707", "name": "✅ Avatar", "components": [
+      { "id": "142:2708", "name": "Avatar", "type": "COMPONENT_SET", "variants": ["Size=40px/Picture/Image","Size=16px/Picture/Image","Size=20px/Picture/Image","Size=24px/Picture/Image","Size=40/16/20/24px × Low contrast letter × 10 colors (Green/Teal/Sky/Blue/Purple/Pink/Red/Orange/Yellow/Gray)"], "variantCount": 44 },
+      { "id": "149:3771", "name": "Square", "type": "COMPONENT_SET", "variants": ["Size=40px/Picture","Size=40px/Initials","Size=12px/Picture","Size=12px/Initials","Size=14px/Picture","Size=14px/Initials","Size=14px/Initials hover","Size=16px/Picture","Size=16px/Initials","Size=20px/Picture","Size=20px/Initials","Size=24px/Picture","Size=24px/Initials"] }
+    ]},
+    { "id": "2135:19263", "name": "✅ Bottom sheet", "components": [
+      { "id": "2285:52", "name": "Bottom sheet", "type": "COMPONENT_SET", "variants": ["Type=Content","Type=Confirmation"] }
+    ]},
+    { "id": "2419:17718", "name": "✅ Breadrcumb", "components": [
+      { "id": "2419:21027", "name": ".breadcrumb step", "type": "COMPONENT_SET", "variants": ["state=Inactive","state=Active"] },
+      { "id": "2419:17719", "name": "Breadcrumb", "type": "COMPONENT_SET", "variants": ["Level=4","Level=2","Level=3"] }
+    ]},
+    { "id": "30:2954", "name": "✅ Buttons", "components": [
+      { "id": "30:3446", "name": "Button/Button", "type": "COMPONENT_SET", "variantCount": 144, "variants": ["Size={Small,Medium} × Hierachy={Primary,Outline,Ghost} × Accent={Default,Danger,Blue} × State={Default,Hover,Disabled,Focus} × Inverted={False,True}"] },
+      { "id": "2107:981", "name": "Group Buttons", "type": "COMPONENT_SET", "variants": ["Type=Horizontal","Type=Vertical"] },
+      { "id": "2361:15312", "name": "Sticky button", "type": "COMPONENT" },
+      { "id": "30:4569", "name": "IconButton/Icon Button", "type": "COMPONENT_SET", "variantCount": 24, "variants": ["Size={32px,24px} × Style={Primary,Outline,Ghost} × State={Default,Hover,Disable,Focus}"] }
+    ]},
+    { "id": "121:45", "name": "✅ Calendar", "components": [
+      { "id": "121:2669", "name": "Date States", "type": "COMPONENT_SET", "variantCount": 9, "variants": ["Basic/Disabled/Sel=T","Basic/Regular/Sel=T","Today/Regular/Sel=T","Basic/Hover/Sel=T","Selected/Start/Sel=T","Selected/In selection/Sel=T","Selected/In selection (another month)/Sel=T","Selected/End/Sel=T","Today/Disabled/Sel=F"] },
+      { "id": "121:2651", "name": "Day of Week", "type": "COMPONENT_SET", "variants": ["Week starts on=Monday","Week starts on=Sunday"] },
+      { "id": "121:2710", "name": "Calendar Header", "type": "COMPONENT_SET", "variants": ["Default/Active","DateTime/Active","Default/Disable","DateTime/Disable"] },
+      { "id": "121:2747", "name": "CalendarBody", "type": "COMPONENT_SET", "variants": ["Edit","Read-Only"] }
+    ]},
+    { "id": "74:170", "name": "✅ Chips/Tag & Badge", "components": [
+      { "id": "78:2370", "name": "Badge", "type": "COMPONENT_SET", "variants": ["Success","Error","Info","Accent","Urgent","Warning","Idle","Disabled"] },
+      { "id": "87:3499", "name": "Chips/Tag", "type": "COMPONENT_SET", "variantCount": 16, "variants": ["State={Deselected,Hover,Selected,Disabled} × Hierarchy={Primary,Secondary} × Roundness={True,False}"] }
+    ]},
+    { "id": "78:2089", "name": "✅ Content Area", "components": [
+      { "id": "78:2118", "name": ".Slot Inner", "type": "COMPONENT" },
+      { "id": "2490:22086", "name": "Content Area", "type": "COMPONENT_SET", "variants": ["Breakpoint=Desktop","Breakpoint=Mobile"] }
+    ]},
+    { "id": "186:20913", "name": "✅ Divider", "components": [
+      { "id": "187:23576", "name": "Divider", "type": "COMPONENT_SET", "variants": ["Spacious/Default","Regular/Default","None/Default","Spacious/Vertical","Regular/Vertical","None/Vertical"] }
+    ]},
+    { "id": "62:8355", "name": "✅ Dropdown", "components": [
+      { "id": "72:1522", "name": "Dropdown", "type": "COMPONENT_SET", "variants": ["Placeholder","Disabled Filled","Disabled Placeholder","Error Filled","Error Placeholder","Filled","Focus"] },
+      { "id": "2433:11263", "name": "Multi-selection Dropdown", "type": "COMPONENT_SET", "variants": ["Placeholder","Disabled Filled","Disabled Placeholder","Error Filled","Error Placeholder","Filled","Focus"] }
+    ]},
+    { "id": "114:2064", "name": "✅ Icon sidebar", "components": [
+      { "id": "120:177", "name": "Sidebar icons", "type": "COMPONENT_SET", "variantCount": 20, "variants": ["Color={Ocean,Sky,Teal,Sun,Fuchsia,Blossom,Emerald,Blush,Peach,Stone} × Size={16px,24px}"] }
+    ]},
+    { "id": "111:2465", "name": "✅ Loading", "components": [
+      { "id": "111:2532", "name": "Loading", "type": "COMPONENT_SET", "variants": ["Phase=1/Light=True","Phase=2/Light=True","Phase=1/Light=False","Phase=2/Light=False"] }
+    ]},
+    { "id": "72:3134", "name": "✅ Menu item", "components": [
+      { "id": "72:6316", "name": "Menu Item", "type": "COMPONENT" },
+      { "id": "214:58608", "name": "Menu_Search", "type": "COMPONENT" },
+      { "id": "2090:1815", "name": "MenuComponents/Header", "type": "COMPONENT_SET", "variants": ["Navigation=None","Navigation=Back","Navigation=Close"] },
+      { "id": "214:58727", "name": "MenuComponents/Dropdown Header", "type": "COMPONENT_SET", "variants": ["State=Default","State=Hover"] },
+      { "id": "214:58561", "name": "MenuComponents/Menu Search", "type": "COMPONENT_SET", "variants": ["Placeholder/Cta=F","Placeholder/Cta=T","Filled/Cta=F","Filled/Cta=T"] },
+      { "id": "72:6352", "name": "Menu item/Informative", "type": "COMPONENT_SET", "variants": ["Default","Disabled","Hover"] },
+      { "id": "72:6353", "name": "Menu item/Shortcut", "type": "COMPONENT_SET", "variants": ["Default","Disabled","Hover"] },
+      { "id": "72:6354", "name": "Menu item/Single Selection", "type": "COMPONENT_SET", "variants": ["Default","Disabled","Hover","Selected"] },
+      { "id": "72:6355", "name": "Menu item/Multi Selection", "type": "COMPONENT_SET", "variants": ["Default","Disabled","Hover","Selected"] }
+    ]},
+    { "id": "2050:1039", "name": "✅ Overlay", "components": [
+      { "id": "2056:4880", "name": "Overlay", "type": "COMPONENT_SET", "variants": ["Breakpoint=Desktop","Breakpoint=Mobile"] }
+    ]},
+    { "id": "2042:4512", "name": "✅ Modal & Dialog", "components": [
+      { "id": "2056:4803", "name": "Confirmation Dialog", "type": "COMPONENT_SET", "variants": ["Type=Default","Type=Destructive"] },
+      { "id": "2048:11206", "name": "Content Dialog", "type": "COMPONENT_SET", "variants": ["Size=Medium","Size=Large"] }
+    ]},
+    { "id": "83:1518", "name": "✅ Radio button, Radio Card & Checkbox", "components": [
+      { "id": "107:782", "name": "Radio button", "type": "COMPONENT_SET", "variantCount": 30, "variants": ["Type={Selected,Not-Selected} × State={Disabled,Default,Error,Focus,Error Focus} × Label={None,Left,Right}"] },
+      { "id": "3263:7571", "name": "Checkbox button", "type": "COMPONENT_SET", "variantCount": 45, "variants": ["Type={Selected,Not-Selected} × State5 × Label3 (=30) + Type=Half × State5 × Label3 (=15)"] },
+      { "id": "2364:10512", "name": "Radio card", "type": "COMPONENT_SET", "variants": ["State=Default","State=Selected","State=Disable"] }
+    ]},
+    { "id": "187:24015", "name": "✅ Scroll Area", "components": [
+      { "id": "187:24035", "name": "Scrollbar", "type": "COMPONENT_SET", "variants": ["Type=Vertical","Type=Horizontal"] }
+    ]},
+    { "id": "2059:6352", "name": "✅ Steps", "components": [
+      { "id": "2059:6366", "name": "Step", "type": "COMPONENT_SET", "variants": ["Empty/Last=F","Completed/Last=F","Progressing/Last=F","Completed+Inactive/Last=F","Empty/Last=T","Active/Last=T","Completed+Inactive/Last=T"] },
+      { "id": "2140:2801", "name": "Progressing", "type": "COMPONENT_SET", "variants": ["progressing","checked","rejected","empty","disable","checked + disabled"] }
+    ]},
+    { "id": "83:1538", "name": "✅ Tab & Tab/Content", "components": [
+      { "id": "30:5016", "name": "Tab", "type": "COMPONENT_SET", "variants": ["Default/More=F","Selected/More=F","Unselected/More=F"] },
+      { "id": "30:4959", "name": "Tab/Content", "type": "COMPONENT_SET", "variants": ["Default/24px","Selected/24px","Hover/24px","Default/32px","Selected/32px","Hover/32px"] }
+    ]},
+    { "id": "122:10180", "name": "✅ Table", "components": [
+      { "id": "135:11648", "name": "Table Column header", "type": "COMPONENT_SET", "variants": ["Default","Hover","On Click"] },
+      { "id": "135:11658", "name": "Table First Column header", "type": "COMPONENT" },
+      { "id": "140:3498", "name": "Field first column", "type": "COMPONENT_SET", "variants": ["Default/Empty=F","Default/Empty=T","Hover/Empty=F","Selected/Empty=F","Hover/Empty=T","Selected/Empty=T","Loading/Empty=F","Loading/Empty=T"] },
+      { "id": "149:4005", "name": "column", "type": "COMPONENT_SET", "variants": ["Default/Empty=F","Default/Empty=T","Hover/Empty=F","Selected/Empty=F","Hover/Empty=T","Selected/Empty=T","Loading/Empty=F","Loading/Empty=T"] },
+      { "id": "142:2627", "name": "Simple text (no chip)", "type": "COMPONENT_SET", "variants": ["Default","Read-Only","Loading"] },
+      { "id": "142:2634", "name": "Simple text underlined (no chip)", "type": "COMPONENT_SET", "variants": ["Default","Read-Only","hover","Loading"] }
+    ]},
+    { "id": "58:1499", "name": "✅ Text Input", "components": [
+      { "id": "60:7071", "name": "Input/Text input", "type": "COMPONENT_SET", "variants": ["Placeholder","Filled","Focus","Error Filled","Error Placeholder","Disabled Placeholder","Disabled Filled"] },
+      { "id": "72:1786", "name": "Input/Text area", "type": "COMPONENT_SET", "variants": ["Placeholder","Disabled Filled","Disabled Placeholder","Error Filled","Error Placeholder","Filled","Focus"] }
+    ]},
+    { "id": "72:5801", "name": "✅ Toggle", "components": [
+      { "id": "72:5802", "name": "Toggle", "type": "COMPONENT_SET", "variants": ["False/Normal","False/Disabled","True/Disabled","True/Normal"] },
+      { "id": "2743:32836", "name": "Toggle Card", "type": "COMPONENT_SET", "variants": ["Default","Selected","Disable"] }
+    ]},
+    { "id": "87:4003", "name": "✅ Tooltips", "components": [
+      { "id": "87:6140", "name": "Tooltip", "type": "COMPONENT_SET", "variants": ["Right","Bottom center","Left","Top center","Top left","Top right","Bottom left","Bottom right"] }
+    ]},
+    { "id": "87:4004", "name": "✅ Toast & Alert message", "components": [
+      { "id": "108:3062", "name": "Toast notification", "type": "COMPONENT_SET", "variants": ["Success","Error","Info","Warning"] },
+      { "id": "108:3016", "name": "Alert message", "type": "COMPONENT_SET", "variants": ["Info","Success","Warning","Danger"] },
+      { "id": "106:2472", "name": "Callout", "type": "COMPONENT_SET", "variants": ["Info","Success","Warning","Error"] }
+    ]},
+    { "id": "152:16148", "name": "✅ Navigation", "components": [
+      { "id": "152:16149", "name": "Navigation/Navigation item L1", "type": "COMPONENT_SET", "variants": ["Default","Hover","Selected","Loading..."] },
+      { "id": "152:16615", "name": "Navigation/Navigation Item L2", "type": "COMPONENT_SET", "variants": ["Default"] },
+      { "id": "152:17094", "name": "Navigation/L2 Breadcrumb", "type": "COMPONENT_SET", "variantCount": 5, "variants": ["Sel=F/Last=F/Active=T","Sel=T/Last=T/Active=T","Sel=F/Last=T/Active=F","Sel=T/Last=F/Active=T","Sel=F/Last=F/Active=F"] },
+      { "id": "152:17084", "name": "Navigation/Section Label", "type": "COMPONENT_SET", "variants": ["Default","collab","Loading"] },
+      { "id": "157:2161", "name": "Badge noti", "type": "COMPONENT" },
+      { "id": "152:17064", "name": "Navigation/Unfoldable Navigation Item list", "type": "COMPONENT_SET", "variants": ["Extended","Collapsed"] },
+      { "id": "152:7091", "name": "Sidebar Navigation", "type": "COMPONENT_SET", "variants": ["Regular","Small"] },
+      { "id": "168:3004", "name": "Shortcut contaienr", "type": "COMPONENT" },
+      { "id": "152:13758", "name": "Workspace menu", "type": "COMPONENT_SET", "variants": ["Default/App","Default/Settings","Hover/App","Hover/Settings","Loading/App","Loading/Settings"] },
+      { "id": "173:11242", "name": "Header Navigation", "type": "COMPONENT_SET", "variants": ["Index/Desktop","Breadcrumb/Desktop","Full Loading/Desktop","Index/Mobile"] },
+      { "id": "2263:7430", "name": "menu", "type": "COMPONENT_SET", "variants": ["selected","deselected"] },
+      { "id": "2263:7506", "name": "navbar menu", "type": "COMPONENT_SET", "variants": ["Home","Requests","Log"] },
+      { "id": "2263:9948", "name": "Sticky_bar menu", "type": "COMPONENT" },
+      { "id": "2263:9848", "name": "navigation bar", "type": "COMPONENT_SET", "variants": ["Default","Search","Profile"] },
+      { "id": "2271:2704", "name": "Header_mobile", "type": "COMPONENT" },
+      { "id": "2434:17965", "name": "Footer_mobile", "type": "COMPONENT" }
+    ]},
+    { "id": "152:13954", "name": "✅ Logo", "components": [
+      { "id": "2037:27327", "name": "Logo", "type": "COMPONENT_SET", "variants": ["Dark","Light"] },
+      { "id": "178:41950", "name": "logo TL", "type": "COMPONENT" },
+      { "id": "3225:11012", "name": "Company Logo", "type": "COMPONENT_SET", "variants": ["Techlead","Nestify","MarDEE","Company11","PayGenix","Company10","TechleadX","Company9","Techlead Rise","Techlead Bull"] }
+    ]},
+    { "id": "2065:1394", "name": "✅ Illustration", "components": [
+      { "id": "2065:463", "name": "Request type illustration/PROJ", "type": "COMPONENT" },
+      { "id": "3244:14678", "name": "Default Doc", "type": "COMPONENT" },
+      { "id": "2065:459", "name": "Request type illustration/RMB", "type": "COMPONENT" },
+      { "id": "2065:467", "name": "Request type illustration/PR-EAP", "type": "COMPONENT" },
+      { "id": "2065:468", "name": "Request type illustration/PO", "type": "COMPONENT" },
+      { "id": "2065:464", "name": "Request type illustration/MRR", "type": "COMPONENT" },
+      { "id": "2065:460", "name": "Request type illustration/CLR", "type": "COMPONENT" },
+      { "id": "2065:461", "name": "Request type illustration/GEN", "type": "COMPONENT" },
+      { "id": "2065:465", "name": "Request type illustration/MMB", "type": "COMPONENT" },
+      { "id": "2065:469", "name": "Request type illustration/PO_BC", "type": "COMPONENT" },
+      { "id": "2065:470", "name": "Request type illustration/PAY", "type": "COMPONENT" },
+      { "id": "2065:462", "name": "Request type illustration/PET", "type": "COMPONENT" },
+      { "id": "2065:466", "name": "Request type illustration/ADV", "type": "COMPONENT" },
+      { "id": "2263:7380", "name": "36", "type": "COMPONENT" },
+      { "id": "2263:7384", "name": "41", "type": "COMPONENT" },
+      { "id": "2070:1174", "name": "Illustration/widget", "type": "COMPONENT" }
+    ]},
+    { "id": "2032:27243", "name": "✅ Home & Notification", "components": [
+      { "id": "2074:2063", "name": "claim request", "type": "COMPONENT" },
+      { "id": "2111:6700", "name": "Widget/MMB Quota card", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2115:7865", "name": "Dashboard", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2086:5525", "name": "widget list", "type": "COMPONENT_SET", "variants": ["Add=Unadd/Default","Added/Default","Add=Added/Hover","Add=Empty/Default"] },
+      { "id": "2145:1383", "name": "Widget customization", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2032:27259", "name": "Activity log", "type": "COMPONENT" },
+      { "id": "3148:15746", "name": "Component 1", "type": "COMPONENT_SET", "variants": ["Frame 1400002001","Frame 1400002002"], "flag": "unrenamed default Figma names, not real state labels" },
+      { "id": "2111:6579", "name": "Widget/ Activity Log", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2110:2520", "name": "Widget title", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2056:4983", "name": "request type card", "type": "COMPONENT_SET", "variants": ["Default/Desktop","Hover/Desktop","Default/Mobile"] },
+      { "id": "2111:6170", "name": "Widget/Procurement", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2148:1544", "name": "content_timeframe_filter", "type": "COMPONENT" },
+      { "id": "2148:1598", "name": "Filter_timeframe", "type": "COMPONENT_SET", "variants": ["Default"] },
+      { "id": "2056:1378", "name": "Status card", "type": "COMPONENT_SET", "variantCount": 12, "variants": ["Status={Draft,Rejected,Under review,Approved} × State={Default,Hover} × Breakpoint=Desktop (8) + Status4 × Default × Mobile (4)"] },
+      { "id": "2111:6268", "name": "Widget/Your Requests", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2214:6158", "name": "Urgent badge", "type": "COMPONENT_SET", "variants": ["Default","Hover"] },
+      { "id": "2111:5747", "name": "Widget/Need your approval", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2058:6644", "name": "shortcut card", "type": "COMPONENT_SET", "variants": ["Default/Desktop","Hover/Desktop","Default/Mobile"] },
+      { "id": "2115:7116", "name": "Widget/Recommend", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2094:1256", "name": "Widget/Add widget", "type": "COMPONENT" },
+      { "id": "2534:23133", "name": "Notification icons", "type": "COMPONENT_SET", "variants": ["Comment / Mentioned","Reject","Approve","Need approval"] },
+      { "id": "2506:3826", "name": "Noti_card", "type": "COMPONENT_SET", "variants": ["unread/default","unread/hover","read/default","read/hover"] },
+      { "id": "2538:16170", "name": "Noti_content type", "type": "COMPONENT_SET", "variants": ["Default","All empty","unread empty"] },
+      { "id": "2538:4962", "name": "Notification", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "4188:15006", "name": "Form Fields Container", "type": "COMPONENT_SET", "variants": ["Default","Mobile"] }
+    ]},
+    { "id": "2287:1551", "name": "✅ Create form", "components": [
+      { "id": "2311:15106", "name": "Create requests", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile","Mobile_V2","Desktop_V2"] },
+      { "id": "2477:43302", "name": "Step 1: info", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2477:48671", "name": "Step 2: approval", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2490:21851", "name": "Step 3: preview", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile Info","Mobile Approval"] },
+      { "id": "2311:11284", "name": "Create requests", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"], "flag": "second distinct component set sharing the exact name 'Create requests' (different id from 2311:15106) — unconfirmed if intentional" },
+      { "id": "3383:9492", "name": "Create requests_V2Destop", "type": "COMPONENT_SET", "variants": ["Finance","Procurement","People","Marketing","General"] },
+      { "id": "3384:12421", "name": "Create requests_V2Mobile ", "type": "COMPONENT_SET", "variants": ["Finance","Procurement","People","Marketing","General"] },
+      { "id": "3262:8356", "name": "Priority status", "type": "COMPONENT_SET", "variants": ["Low","No priority","Medium","High"] },
+      { "id": "3262:14696", "name": "InlineCell/Status badge", "type": "COMPONENT" },
+      { "id": "2416:16523", "name": "Form Title", "type": "COMPONENT" },
+      { "id": "2445:18404", "name": "Form/General", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2419:16170", "name": "Form header", "type": "COMPONENT" },
+      { "id": "2443:14321", "name": "Form progress bar", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2443:17612", "name": "Form/Details", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2433:23925", "name": "Information Preview", "type": "COMPONENT" },
+      { "id": "2433:27756", "name": "Approval Flow Preview", "type": "COMPONENT" },
+      { "id": "2416:15838", "name": "Sum Amount", "type": "COMPONENT" },
+      { "id": "2416:15582", "name": "Item table row", "type": "COMPONENT_SET", "variants": ["Header","Value"] },
+      { "id": "3473:10221", "name": "Budget seletion card", "type": "COMPONENT_SET", "variants": ["planned","unplanned"] },
+      { "id": "2416:15881", "name": "Item section", "type": "COMPONENT" },
+      { "id": "2331:11067", "name": "Budget status", "type": "COMPONENT_SET", "variants": ["reserved","void","pending","In budget","calculating","enter info","out-of budget","over budget"] },
+      { "id": "2443:18158", "name": "Budget form section", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2416:16129", "name": "Budget summary section", "type": "COMPONENT" },
+      { "id": "2445:18288", "name": "Form/Item & Budget", "type": "COMPONENT_SET", "variants": ["Mobile","Desktop"] },
+      { "id": "3412:11060", "name": "contentdialog_assignee modal", "type": "COMPONENT" },
+      { "id": "3487:10111", "name": "Budget status", "type": "COMPONENT_SET", "variants": ["out-of-budget","over budget","within budget"], "flag": "second distinct component named 'Budget status' (different id from 2331:11067) — known naming collision, previously flagged not consolidated" },
+      { "id": "2416:19501", "name": "File list", "type": "COMPONENT_SET", "variants": ["Outline","Ghost"] },
+      { "id": "2416:19568", "name": "Form/Attachments", "type": "COMPONENT" },
+      { "id": "2477:42131", "name": "Form/Attachment", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2477:42960", "name": "Form/Reference", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2367:11727", "name": "Action", "type": "COMPONENT_SET", "variants": ["Verifier","Approver"] },
+      { "id": "2367:10989", "name": "list_name_step", "type": "COMPONENT" },
+      { "id": "2367:10359", "name": "Fields/Select", "type": "COMPONENT_SET", "variants": ["Default/Desktop","Default/Mobile","Hove/Mobile","Hover/Desktop"], "flag": "'Hove' is a literal typo third state, duplicating Hover — functional cruft, previously flagged not fixed" },
+      { "id": "2477:44057", "name": "Approval Flow", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] }
+    ]},
+    { "id": "2102:5745", "name": "✅ Request list & Detail", "components": [
+      { "id": "140:1799", "name": "Table row header", "type": "COMPONENT" },
+      { "id": "151:4200", "name": "Table row content", "type": "COMPONENT_SET", "variants": ["Default","Hover","Multi Seclected","Selected","loding"] },
+      { "id": "2053:2362", "name": "Table_Requests list", "type": "COMPONENT" },
+      { "id": "2085:2528", "name": "Chips_company", "type": "COMPONENT_SET", "variants": ["Techlead Next","PayGenix","MarDee"] },
+      { "id": "2108:2075", "name": "Status_Badge", "type": "COMPONENT_SET", "variants": ["Draft","Cancel","Need approval","Under review","Rejected","Approved"] },
+      { "id": "2272:4543", "name": "Viewbar", "type": "COMPONENT_SET", "variants": ["Full width","Sidebar width"] },
+      { "id": "2272:1973", "name": "View mode switcher", "type": "COMPONENT_SET", "variants": ["Table","Card"] },
+      { "id": "2472:4936", "name": "No results", "type": "COMPONENT" },
+      { "id": "2117:3327", "name": "sticky_slide", "type": "COMPONENT_SET", "variants": ["Header","footer"] },
+      { "id": "2117:15471", "name": "InlineCell/teg", "type": "COMPONENT_SET", "variants": ["Default","Empty","Content Loading...","Metadata Loading"] },
+      { "id": "2117:4400", "name": "Tab_details", "type": "COMPONENT_SET", "variants": ["Request details","Approval Flow","Comment","Activity log"] },
+      { "id": "2140:2695", "name": "Step", "type": "COMPONENT_SET", "variants": ["Defualt","Active","Need Approval","Disable"] },
+      { "id": "2434:20848", "name": "reson", "type": "COMPONENT_SET", "variants": ["Approve","Rejection"], "flag": "known token-name collision — a variable literally named text+icon/tertiary resolves to a different hex here than the canonical token" },
+      { "id": "2418:3951", "name": "Request label status", "type": "COMPONENT_SET", "variants": ["Under Review","Need Approval","Submitted","Rejected","Cancelled","Approved"] },
+      { "id": "2117:14408", "name": "InlineCell/company", "type": "COMPONENT_SET", "variants": ["Default","Empty","Content Loading...","Metadata Loading"] },
+      { "id": "2117:14702", "name": "InlineCell/  Text Area (Figma only)", "type": "COMPONENT_SET", "variants": ["Default","Empty Hover","Content Loading...","Metadata Loading"] },
+      { "id": "2117:14269", "name": "InlineCell/Text", "type": "COMPONENT_SET", "variants": ["Default","Empty","Content Loading...","Metadata Loading"] },
+      { "id": "2117:11898", "name": "Navigation", "type": "COMPONENT_SET", "variants": ["Section Label","Variant2"] },
+      { "id": "2514:12112", "name": "Comment buttom/share content", "type": "COMPONENT" },
+      { "id": "3498:18320", "name": "budget section", "type": "COMPONENT" },
+      { "id": "2149:7821", "name": "Slide_request", "type": "COMPONENT_SET", "variants": ["Request details","Approval Flow","Comment (1)","Variant4"] },
+      { "id": "2434:20277", "name": "comment", "type": "COMPONENT_SET", "variants": ["list comment","No comment yet"] },
+      { "id": "2429:14111", "name": "Requset Card_General", "type": "COMPONENT_SET", "variants": ["Default","Variant2"] },
+      { "id": "2430:3474", "name": "Requset Card_Details", "type": "COMPONENT_SET", "variants": ["Default","Variant2"] },
+      { "id": "2430:3636", "name": "Requset Card_Item & Budget", "type": "COMPONENT_SET", "variants": ["Default","Variant2"] },
+      { "id": "2430:3822", "name": "Requset Card_References & Attachments", "type": "COMPONENT_SET", "variants": ["Default","Variant2"] },
+      { "id": "2434:17702", "name": "Approval Flow_mobile", "type": "COMPONENT" },
+      { "id": "2434:18147", "name": "Requset Card", "type": "COMPONENT_SET", "variants": ["Default","Empty"] },
+      { "id": "2987:5431", "name": "action", "type": "COMPONENT_SET", "variants": ["Verifier","Approver"] },
+      { "id": "3171:31096", "name": "dialog content_include comment in PDF", "type": "COMPONENT" },
+      { "id": "2536:29355", "name": "Approval Flow_full", "type": "COMPONENT" },
+      { "id": "2603:12940", "name": "content_approval", "type": "COMPONENT" },
+      { "id": "2603:12975", "name": "Confirmation Approval", "type": "COMPONENT_SET", "variants": ["Approval","Reject"] },
+      { "id": "2103:2611", "name": "[D] Request Card", "type": "COMPONENT_SET", "variants": ["Default","Loading","Selected","Bulk selected","Hover"] },
+      { "id": "2424:18297", "name": "[M]Requset Card", "type": "COMPONENT_SET", "variants": ["Default","Selected","Hover","Long Presse"] },
+      { "id": "2149:7797", "name": "bubbles", "type": "COMPONENT_SET", "variants": ["Default","filie show","Img insert","empty"], "flag": "'filie show' and 'Img insert' are new states (2026-08-25) supporting the comment image-upload feature; 'filie' is a typo" },
+      { "id": "2149:7835", "name": "InputSubComponent", "type": "COMPONENT_SET", "variants": ["Text-area","Typing..","Img insert"], "flag": "'Img insert' is a new variant (2026-08-25)" },
+      { "id": "2480:32482", "name": "Comment buttom", "type": "COMPONENT_SET", "variants": ["No comment yet","KB","commented"] },
+      { "id": "2441:7097", "name": "Menu_Search_Desktop", "type": "COMPONENT_SET", "variants": ["First time","typing..","loading","Returning","No results found"] },
+      { "id": "2442:20703", "name": "Menu_Search_mobile", "type": "COMPONENT_SET", "variants": ["First time","Returning"] },
+      { "id": "2263:8011", "name": "chip filter", "type": "COMPONENT_SET", "variants": ["selected","selected_mobile","Default","Default_mobile"] },
+      { "id": "2263:8004", "name": "Avatar company", "type": "COMPONENT_SET", "variants": ["PG","TL","MD"] },
+      { "id": "2263:8027", "name": "content_filter", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2263:8022", "name": "Filter", "type": "COMPONENT_SET", "variants": ["Default","Filled"] },
+      { "id": "2433:20846", "name": "Item table row", "type": "COMPONENT_SET", "variants": ["Header","Value"] },
+      { "id": "2433:21989", "name": "File info", "type": "COMPONENT" },
+      { "id": "2433:22145", "name": "General Section", "type": "COMPONENT" },
+      { "id": "2433:22144", "name": "Detail section", "type": "COMPONENT" },
+      { "id": "2433:22146", "name": "Item Section", "type": "COMPONENT" },
+      { "id": "2433:22147", "name": "References & Attachments section", "type": "COMPONENT" },
+      { "id": "2424:18711", "name": "Chips type", "type": "COMPONENT_SET", "variants": ["Default","Select"] },
+      { "id": "2424:20088", "name": "filter hader", "type": "COMPONENT_SET", "variants": ["Request page","Request details"] },
+      { "id": "2424:19076", "name": "header Requests", "type": "COMPONENT" },
+      { "id": "3148:15765", "name": "Log timeline indicator", "type": "COMPONENT_SET", "variants": ["Past","Latest"] },
+      { "id": "3148:16291", "name": "Activity log", "type": "COMPONENT_SET", "variants": ["Past","Latest"] },
+      { "id": "3148:16719", "name": "Logs list", "type": "COMPONENT" },
+      { "id": "3060:6856", "name": "Keyboard Manual_content", "type": "COMPONENT" },
+      { "id": "4157:18677", "name": "Column header/Customize", "type": "COMPONENT", "flag": "new (2026-08-25) — Customize Table column feature" },
+      { "id": "4155:33065", "name": "Column item/Customize", "type": "COMPONENT", "flag": "new (2026-08-25) — Customize Table column feature" },
+      { "id": "4157:25889", "name": "Customize", "type": "COMPONENT_SET", "variants": ["standize","customize"], "flag": "new (2026-08-25); 'standize' looks like a typo for 'standardize'" },
+      { "id": "4157:26000", "name": "Popover_customize table", "type": "COMPONENT", "flag": "new (2026-08-25) — Customize Table column feature" },
+      { "id": "4170:6987", "name": "img_comment", "type": "COMPONENT_SET", "variants": ["Default","Hover","File","file_loding"], "flag": "new (2026-08-25) — comment image-upload feature; 'file_loding' is a typo; sits loose on the page, not wrapped in the usual .Component Page Header + Content structure" },
+      { "id": "4181:8222", "name": "Preview image", "type": "COMPONENT", "flag": "new (2026-08-25); sits loose on the page, not wrapped in the usual .Component Page Header + Content structure" }
+    ]},
+    { "id": "2702:6795", "name": "✅ Setting - Profile", "components": [
+      { "id": "2752:9821", "name": "profile_mobile", "type": "COMPONENT" },
+      { "id": "2705:837", "name": "list profile", "type": "COMPONENT" },
+      { "id": "3398:20222", "name": "Account list", "type": "COMPONENT" },
+      { "id": "2752:7582", "name": "header_profile", "type": "COMPONENT_SET", "variants": ["Desktop","Mobile"] },
+      { "id": "2743:6467", "name": "Sidebar Settings", "type": "COMPONENT" },
+      { "id": "2743:40958", "name": "Pic zoom", "type": "COMPONENT_SET", "variants": ["Default","Zoom in"] },
+      { "id": "2752:20390", "name": "Additional Details Container", "type": "COMPONENT" },
+      { "id": "2751:1757", "name": "content profile", "type": "COMPONENT" },
+      { "id": "2751:2095", "name": "Notification channels", "type": "COMPONENT" },
+      { "id": "2743:40949", "name": "Zoom", "type": "COMPONENT_SET", "variants": ["Default","Zoom in"] }
+    ]},
+    { "id": "3149:16799", "name": "✅ Setting - Activity log", "components": [
+      { "id": "3149:20339", "name": "Table_Activity Log_Header", "type": "COMPONENT" },
+      { "id": "3149:19747", "name": "Table_Activity Log_Data", "type": "COMPONENT_SET", "variants": ["Default","Hover","State6","loading"], "flag": "'State6' is an unrenamed auto-generated variant name (2026-08-25), not a real state label" },
+      { "id": "3153:25562", "name": "Table_Activity log", "type": "COMPONENT", "flag": "separate component sitting next to Table_Activity Log_Data (singular vs plural/Data naming) — unconfirmed if intentional duplicate" },
+      { "id": "3156:27060", "name": "[M] Card_Activity log/Default", "type": "COMPONENT" }
+    ]},
+    { "id": "4235:7766", "name": "Page Template", "components": [], "note": "New page, added 2026-08-25. Contains no COMPONENT/COMPONENT_SET nodes itself (it's built entirely from instances of Sidebar Navigation, Header Navigation, Dashboard) so this scan finds nothing — the page's own existence and structure (background layering, spacing) is documented in projects/portal2.0/patterns/app-shell.md instead, not in this components list. This is a known blind spot of the COMPONENT/COMPONENT_SET-only scan: composition-only pages need a manual note like this one." },
+    { "id": "13:42", "name": ".tools for documentation", "components": [] },
+    { "id": "3703:2491", "name": "unused components", "components": [
+      { "id": "3394:12615", "name": "Avatars", "type": "COMPONENT_SET", "variantCount": 88, "variants": ["legacy avatar variant set, superseded by the real Avatar component (142:2708)"] },
+      { "id": "3394:12966", "name": "Group avatar", "type": "COMPONENT_SET", "variants": ["more user/xs","default/xs","more user/sm","default/sm","more user/md","default/md"] },
+      { "id": "3406:1011", "name": "Add_Assignee", "type": "COMPONENT" },
+      { "id": "140:2702", "name": "Cells", "type": "COMPONENT_SET", "variantCount": 200, "variants": ["database/table cell mockups — embeds Checkbox button instances, ~15 cell types × State (Default/Hover/Read-Only/Row Selected/Row Focus/Cell Focus)"] },
+      { "id": "2263:7387", "name": "(unnamed, digits only)", "type": "COMPONENT", "flag": "~90 standalone components literally named just a number ('1'–'60', with gaps) — looks like orphaned/legacy asset instances, worth a cleanup pass" }
+    ]}
+  ]
+}
