@@ -4,6 +4,19 @@ A small caps group header used to divide the sidebar's nav items into named sect
 
 Figma: [`📱 Navigation`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page, `Navigation/Section Label` component set (part of the Sidebar Menu Item catalog frame).
 
+## Spec
+
+Measured from the Figma component on 2026-10-05. Where this section and the tables below disagree, this section is right.
+
+| Property | Value |
+|---|---|
+| Row height | 28px |
+| Padding | `spacing/1` (4px) left, `spacing/0,5` (2px) right, none top/bottom |
+| Chevron | 14px, `text + icon/tertiary`, placed **before** the label, `spacing/1` (4px) from it. `Default` = `icon/chevron-down`, `collab` = `icon/chevron-right` |
+| Label | `Body/Mini-semibold`, `text + icon/tertiary` |
+
+In the real sidebar the chevron is shown only on the collapsible group labels inside the Requests tree. The top-level "Favorites" heading has no chevron and is overridden to `Body/Mini-bold`, `text + icon/primary` — see [Sidebar Navigation](../patterns/sidebar-navigation.md).
+
 ## Anatomy
 
 | Part | Token(s) |
@@ -29,6 +42,7 @@ Figma: [`📱 Navigation`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) 
 
 ## Changelog
 
+- **2026-10-05:** added the Spec section; a trial build from this doc placed the chevron after the label.
 - No foreign color tokens found — this component was already clean apart from the legitimate `Loading/light` paint style.
 - Bound previously-unbound padding (`spacing/1`/`spacing/0,5`/`spacing/0`), corner radius (`border-radii/rounded-4`), and the nested content-row's gap (8px → `spacing/2`) and padding across all 3 variants, plus corner radius on the `Loading` variant's skeleton shimmer rectangle.
 - Verified visually before/after — no rendering changes.

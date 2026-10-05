@@ -4,11 +4,28 @@ Two presentations of the same "which company" concept: a labeled chip (icon + co
 
 Figma: [`📱 Request list`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page, `Chips_company` component (inside `Request Table`) and `Avatar company` component (inside `Filter`).
 
+## Spec
+
+Measured from the Figma component on 2026-10-05. Where this section and the tables below disagree, this section is right. Covers `Chips_company`, which is a nested [Chips/Tag](chips-tag-badge.md) instance.
+
+| Property | Value |
+|---|---|
+| Height | 20px |
+| Horizontal padding | `spacing/1,5` (6px) each side |
+| Gap between logo and label | `spacing/1` (4px) |
+| Radius | `border-radii/rounded-6` — a rounded rectangle, **not** a pill |
+| Fill | `bg/secondary` inside a table row (`bg/secondary-hover` on the standalone component) |
+| Border | none |
+| Logo | 14×14px square, 2px corner radius (off-scale, no token), the company's image |
+| Label | `Body/Small-regular`, `text + icon/primary`, one line |
+
+It appears in context in the [request table reference image](../assets/reference/request-table.png).
+
 ## Anatomy
 
 | Part | Token(s) |
 |---|---|
-| `Chips_company` — icon + label, fill, border, radius | `bg/secondary`, `border/primary-subtle`, `border-width/xs`, `border-radii/rounded-infinite`, `text + icon/primary`, `Body/Small-medium` |
+| `Chips_company` — icon + label, fill, radius | `bg/secondary`, no border, `border-radii/rounded-6`, `text + icon/primary`, `Body/Small-regular` (see Spec) |
 | `Avatar company` — circular icon only | company brand mark, no text, `border-radii/rounded-infinite` |
 
 ## Variants
@@ -26,6 +43,7 @@ Both share the same 3-company set, but with different option labels: `Chips_comp
 
 ## Changelog
 
+- **2026-10-05:** added the Spec section. Corrected the anatomy row, which described a bordered pill with a medium-weight label; the component is a borderless `rounded-6` chip with a regular-weight label.
 - Fixed foreign color tokens and bound previously-unbound spacing/radius: part of the 511-fix `Request Table` pass (`Chips_company`) and the 1307-fix `Filter`/`Info Content`/`Header mobile` pass (`Avatar company`, 33 fixes).
 - Verified visually before/after — no rendering changes.
 - Documented anatomy, variants, and behavior rules for the first time, and clarified the two components are related-but-distinct (not accidental duplicates) — neither previously had a doc.

@@ -10,7 +10,7 @@
  * `text + icon/primary` is `text-primary`; `border/primary` is `border-primary`.
  */
 
-/* Semantic color tokens (85), each aliasing a Foundations primitive. */
+/* Semantic color tokens (86), each aliasing a Foundations primitive. */
 :root {
   --text-primary: var(--neutral-950);
   --text-secondary: var(--neutral-700);
@@ -97,6 +97,7 @@
   --border-success: var(--green-500);
   --border-warning: var(--amber-500);
   --border-danger: var(--red-500);
+  --border-urgent: var(--orange-500);
   --border-disabled: var(--neutral-100);
 
   --overlay-default: var(--base-black-A25);
@@ -195,6 +196,7 @@
   --border-color-success: var(--border-success);
   --border-color-warning: var(--border-warning);
   --border-color-danger: var(--border-danger);
+  --border-color-urgent: var(--border-urgent);
   --border-color-disabled: var(--border-disabled);
 
   /* same tokens for `divide-<name>` */
@@ -217,6 +219,7 @@
   --divide-color-success: var(--border-success);
   --divide-color-warning: var(--border-warning);
   --divide-color-danger: var(--border-danger);
+  --divide-color-urgent: var(--border-urgent);
   --divide-color-disabled: var(--border-disabled);
 
   /* same tokens for `outline-<name>` */
@@ -239,6 +242,7 @@
   --outline-color-success: var(--border-success);
   --outline-color-warning: var(--border-warning);
   --outline-color-danger: var(--border-danger);
+  --outline-color-urgent: var(--border-urgent);
   --outline-color-disabled: var(--border-disabled);
 
   /* same tokens for `ring-<name>` (focus rings) */
@@ -261,6 +265,7 @@
   --ring-color-success: var(--border-success);
   --ring-color-warning: var(--border-warning);
   --ring-color-danger: var(--border-danger);
+  --ring-color-urgent: var(--border-urgent);
   --ring-color-disabled: var(--border-disabled);
 }
 

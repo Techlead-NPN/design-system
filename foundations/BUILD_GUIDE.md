@@ -57,8 +57,11 @@ A text-style class sets size, line height, letter spacing and weight together. D
 
 When building, read these sections:
 
+- **Spec**, where a doc has one — read it first. It holds measured sizes, the exact token for every variant and state, and a reference image. If it disagrees with another section of the same doc, the Spec is right.
 - **Variants**, **Anatomy**, **Behavior rules** in component docs
 - **Composition**, **Layout rules**, **States** in pattern docs
+
+Look at every reference image a doc embeds before writing code. If a doc has no Spec section and does not state a size or a per-state token you need, say so rather than guessing (rule 5).
 
 Skip **Changelog** sections entirely: they record what was fixed in the Figma file and say nothing about how to build.
 
