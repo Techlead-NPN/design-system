@@ -8,6 +8,8 @@ foundations/              shared by every project
 ├── BUILD_GUIDE.md        rules for building UI (Tailwind CSS v4)
 ├── tokens/               primitive values, as code (foundations.css)
 └── workflow/             audit process and drift-check instructions
+components/               coded React + Tailwind components, shared by every project
+└── src/                  one folder per component (button/ so far)
 projects/
 └── portal2.0/            one folder per project
     ├── DESIGN.md         semantic tokens, text styles, accessibility, changelog

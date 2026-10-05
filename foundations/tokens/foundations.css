@@ -366,8 +366,11 @@
   --text-*: initial;
 }
 
-/* Border width (border-width/xs = 1px): use Tailwind's plain `border`
- * (and `border-t`, `border-b`, ...). No other width exists in the scale. */
+/* Border width (raw sizing › border-width/*). Tailwind's built-in utilities
+ * already match, so nothing is defined here:
+ *   border-width/xs = 1px → `border`, `border-t`, `inset-ring`, `outline-1`
+ *   border-width/sm = 2px → `border-2`, `outline-2` (focus rings)
+ * No other width exists in the scale. */
 
 /* Typography primitives (raw typo), for reference by project text styles. */
 :root {
