@@ -51,7 +51,7 @@ Bound **directly** by components — no semantic layer (see §1).
 | Scale | Count | Range / Pattern |
 |---|---|---|
 | `spacing/*` | 35 | 4px-based scale (`spacing/N` = N × 4px), `spacing/0` → `spacing/96`, including half-steps (`spacing/0,5` = 2px, `spacing/1,5` = 6px, etc.), plus `spacing/infinite` (9999px) |
-| `border-width/*` | 1 | `border-width/xs` = 1px |
+| `border-width/*` | 2 | `border-width/xs` = 1px (borders and dividers), `border-width/sm` = 2px (focus rings) |
 | `border-radii/*` | 8 | `rounded-4`, `rounded-6`, `rounded-8`, `rounded-10`, `rounded-12`, `rounded-16`, `rounded-24`, plus `rounded-infinite` (9999px, for pills/circles) |
 | `breakpoint/*` | 3 | `sm` 390px, `md` 768px, `lg` 1280px |
 
@@ -91,6 +91,7 @@ Responsive layout grids, defined in the Foundations file (not present as local s
 
 | Change | From → To | Why |
 |---|---|---|
+| Added `border-width/sm` (2px) | New primitive | The focus ring on buttons is 2px wide and the scale only had 1px, leaving a raw value in every Focus variant |
 | `opacity/opacity-100`, `border-radii/rounded-infinite` | Foundation file fixes | Corrected a 0–1 scale violation (was `100`, now `1`) and a stray character in the radius token name |
 
 ---

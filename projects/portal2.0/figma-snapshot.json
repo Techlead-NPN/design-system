@@ -19,7 +19,7 @@
       { "id": "2419:17719", "name": "Breadcrumb", "type": "COMPONENT_SET", "variants": ["Level=4","Level=2","Level=3"] }
     ]},
     { "id": "30:2954", "name": "✅ Buttons", "components": [
-      { "id": "30:3446", "name": "Button/Button", "type": "COMPONENT_SET", "variantCount": 144, "variants": ["Size={Small,Medium} × Hierachy={Primary,Outline,Ghost} × Accent={Default,Danger,Blue} × State={Default,Hover,Disabled,Focus} × Inverted={False,True}"] },
+      { "id": "30:3446", "name": "Button/Button", "type": "COMPONENT_SET", "variantCount": 144, "variants": ["Size={Small,Medium} × Hierarchy={Primary,Outline,Ghost} × Accent={Default,Danger,Blue} × State={Default,Hover,Disabled,Focus} × Inverted={False,True}"] },
       { "id": "2107:981", "name": "Group Buttons", "type": "COMPONENT_SET", "variants": ["Type=Horizontal","Type=Vertical"] },
       { "id": "2361:15312", "name": "Sticky button", "type": "COMPONENT" },
       { "id": "30:4569", "name": "IconButton/Icon Button", "type": "COMPONENT_SET", "variantCount": 24, "variants": ["Size={32px,24px} × Style={Primary,Outline,Ghost} × State={Default,Hover,Disable,Focus}"] }

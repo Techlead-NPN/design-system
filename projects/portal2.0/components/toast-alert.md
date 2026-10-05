@@ -32,7 +32,7 @@ Figma: [`✅ Toast & Alert message`](https://www.figma.com/design/YFci6zgeYAQqX2
 | Status icon | remote icon-library instance, same set as Toast |
 | Text | `text + icon/success` / `danger` / `info` / `warning` (color follows `Type`), `Body/Small-regular` |
 | Icon-frame inset | `spacing/2,5` (10px) — inert single-child gap, bound for consistency with the rest of the system |
-| CTA | embedded `Button/Button` instance, `Hierachy=Primary` |
+| CTA | embedded `Button/Button` instance, `Hierarchy=Primary` |
 
 **Variants:** `Type` = `Success` / `Danger` / `Info` / `Warning`. Plus booleans `Icon?`, `Sub text?` (default off), `Button?`, and text override `Text`. 4 built variants.
 
@@ -53,7 +53,7 @@ Figma: [`✅ Toast & Alert message`](https://www.figma.com/design/YFci6zgeYAQqX2
 | Tag row → top inset | `spacing/6` (24px) |
 | Close icon | local `IconButton/Icon Button` instance (`Style=Ghost`) — same component used elsewhere in the system, not remote |
 | Tags | embedded `Chips/Tag` instances (see [Chips/Tag & Badge](chips-tag-badge.md)), `Hierarchy=Secondary`, `Roundness=True` |
-| "Learn more" link | embedded `Button/Button` instance, `Hierachy=Ghost` |
+| "Learn more" link | embedded `Button/Button` instance, `Hierarchy=Ghost` |
 
 **Variants:** `State` = `Info` / `Success` / `Warning` / `Error`. Plus booleans `Tag contain` (default off), `Close icon`, `CTA?`, and text overrides `H1`, `H2`. 4 built variants.
 

@@ -36,6 +36,7 @@ Docs refer to tokens by their design name. Convert them like this:
 | `spacing/N` | the number N in any spacing utility | `spacing/4` → `p-4`, `gap-4`; `spacing/1,5` → `gap-1.5` |
 | `border-radii/rounded-N` | `rounded-N` | `rounded-8`, `rounded-infinite` |
 | `border-width/xs` | `border` (1px) | |
+| `border-width/sm` | `border-2`, `outline-2` (2px) | focus rings |
 | `shadow-sm/md/lg/xl` | same name | `shadow-md` |
 | `breakpoint/sm/md/lg` | `sm:` `md:` `lg:` prefixes (390 / 768 / 1280px, min-width) | `lg:p-6` |
 | Text style `Group/Name` | `text-group-name`, lower-case | `Body/Small-medium` → `text-body-small-medium` |
@@ -51,7 +52,7 @@ A text-style class sets size, line height, letter spacing and weight together. D
 3. **Spacing uses only the steps in the scale:** `0 0.5 1 1.5 2 2.5 3 3.5 4 5 6 7 8 9 10 11 12 14 16 20 24 28 32 36 40 44 48 52 56 60 64 72 80 96`. Any other number (`p-13`, `gap-15`) is not in the design system and produces no CSS.
 4. **Color always goes through a semantic token**, chosen by meaning, not by how it looks. Follow the project's color rules (status families, decorative accents).
 5. **If nothing fits, stop and say so.** Do not invent a value or pick a near match silently. Name the gap so it can be added to the design system.
-6. **Reuse before you build.** If a documented component or pattern covers the need, follow its doc exactly rather than designing a new variation.
+6. **Reuse before you build.** If a coded component exists in [`components/src/`](../components/src/), import and use it; do not rebuild it from its doc. If only a doc exists, follow the doc exactly rather than designing a new variation.
 
 ## 5. Reading the component and pattern docs
 
