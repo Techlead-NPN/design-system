@@ -22,6 +22,8 @@ interface Common {
   disabled?: boolean
   /** 16px icon at the start of the field. */
   prefix?: ReactNode
+  /** Accessible name when there is no visible `label`. */
+  'aria-label'?: string
   className?: string
 }
 export type DropdownProps =
@@ -82,6 +84,7 @@ export function Dropdown(props: DropdownProps) {
         aria-haspopup="listbox"
         aria-controls={`${id}-list`}
         aria-labelledby={label != null ? `${id}-label` : undefined}
+        aria-label={props['aria-label']}
         aria-invalid={error || undefined}
         aria-disabled={disabled || undefined}
         onClick={() => !disabled && setOpen((o) => !o)}

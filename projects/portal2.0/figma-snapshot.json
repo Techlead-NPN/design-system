@@ -25,7 +25,7 @@
       { "id": "30:4569", "name": "IconButton/Icon Button", "type": "COMPONENT_SET", "variantCount": 24, "variants": ["Size={32px,24px} × Style={Primary,Outline,Ghost} × State={Default,Hover,Disable,Focus}"] }
     ]},
     { "id": "121:45", "name": "✅ Calendar", "components": [
-      { "id": "121:2669", "name": "Date States", "type": "COMPONENT_SET", "variantCount": 9, "variants": ["Basic/Disabled/Sel=T","Basic/Regular/Sel=T","Today/Regular/Sel=T","Basic/Hover/Sel=T","Selected/Start/Sel=T","Selected/In selection/Sel=T","Selected/In selection (another month)/Sel=T","Selected/End/Sel=T","Today/Disabled/Sel=F"] },
+      { "id": "121:2669", "name": "Date States", "type": "COMPONENT_SET", "variantCount": 10, "variants": ["Basic/Disabled/Sel=T","Basic/Regular/Sel=T","Today/Regular/Sel=T","Basic/Hover/Sel=T","Selected/Start/Sel=T","Selected/In selection/Sel=T","Selected/In selection (another month)/Sel=T","Selected/End/Sel=T","Today/Regular/Sel=F","Basic/Focus/Sel=T"] },
       { "id": "121:2651", "name": "Day of Week", "type": "COMPONENT_SET", "variants": ["Week starts on=Monday","Week starts on=Sunday"] },
       { "id": "121:2710", "name": "Calendar Header", "type": "COMPONENT_SET", "variants": ["Default/Active","DateTime/Active","Default/Disable","DateTime/Disable"] },
       { "id": "121:2747", "name": "CalendarBody", "type": "COMPONENT_SET", "variants": ["Edit","Read-Only"] }
