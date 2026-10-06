@@ -81,6 +81,7 @@ Avatar initials ("AB") use `Body/Tiny-regular` (10px, Inter Regular) at the 16px
 
 ## Known gaps
 
+None open.
 
 ## Changelog
 
