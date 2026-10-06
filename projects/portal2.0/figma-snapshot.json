@@ -72,7 +72,7 @@
     { "id": "83:1518", "name": "✅ Radio button, Radio Card & Checkbox", "components": [
       { "id": "107:782", "name": "Radio button", "type": "COMPONENT_SET", "variantCount": 30, "variants": ["Type={Selected,Not-Selected} × State={Disabled,Default,Error,Focus,Error Focus} × Label={None,Left,Right}"] },
       { "id": "3263:7571", "name": "Checkbox button", "type": "COMPONENT_SET", "variantCount": 45, "variants": ["Type={Selected,Not-Selected} × State5 × Label3 (=30) + Type=Half × State5 × Label3 (=15)"] },
-      { "id": "2364:10512", "name": "Radio card", "type": "COMPONENT_SET", "variants": ["State=Default","State=Selected","State=Disable"] }
+      { "id": "2364:10512", "name": "Radio card", "type": "COMPONENT_SET", "variants": ["State=Default","State=Selected","State=Disabled","State=Focus"] }
     ]},
     { "id": "187:24015", "name": "✅ Scroll Area", "components": [
       { "id": "187:24035", "name": "Scrollbar", "type": "COMPONENT_SET", "variants": ["Type=Vertical","Type=Horizontal"] }
