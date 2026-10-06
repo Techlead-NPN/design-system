@@ -8,7 +8,7 @@ Figma: [`✅ Dropdown`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) pag
 
 Measured from Figma on 2026-10-06, then tidied with the design owner; Figma was updated to match. Where this section and the sections below disagree, this section is right.
 
-Not coded yet: the trigger is specified here, but the open list is built from [Menu item](menu-item.md), which has to be specified and coded first.
+Coded in [`components/src/menu/Dropdown.tsx`](../../../components/src/menu/Dropdown.tsx) (`Dropdown`; pass `multiple` for the multi-selection version). The open list is a [Menu](menu-item.md) panel directly below the field.
 
 ![Dropdown, all states](../assets/reference/dropdown.png)
 
@@ -41,6 +41,7 @@ A field shows `Focus` whenever it is active, whether reached by keyboard or by c
 | Prefix icon (optional) | 16px, `text + icon/primary` (`text + icon/disabled` when disabled) |
 | Chevron | 16px at the right edge, `text + icon/secondary` (`text + icon/disabled` when disabled). `icon/chevron-down` when closed, `icon/chevron-up` when open |
 | Open state | shown by the `Focus` variant: indigo border, focus ring, chevron up |
+| The list | a [Menu](menu-item.md) panel the same width as the field, below it, scrolling after 240px. Single-select rows show a check when selected and close the list; multi-select rows show a checkbox and keep it open. The 4px gap between field and list is a coding choice — Figma does not show the two together |
 
 **Multi-selection Dropdown**
 
@@ -99,7 +100,7 @@ Same field. When values are selected:
 
 ## Changelog
 
-- **2026-10-06:** added the Spec section and tidied with the design owner. In Figma: disabled text now matches Text input on both dropdowns (a disabled value is `text + icon/tertiary`, a disabled placeholder is `text + icon/disabled`; they were the other way round); the disabled multi-select chips' remove icon uses `text + icon/disabled` instead of a border token; the `Focus` variants carry the system-wide focus ring.
+- **2026-10-06:** added the Spec section and tidied with the design owner. In Figma: disabled text now matches Text input on both dropdowns (a disabled value is `text + icon/tertiary`, a disabled placeholder is `text + icon/disabled`; they were the other way round); the disabled multi-select chips' remove icon uses `text + icon/disabled` instead of a border token; the `Focus` variants carry the system-wide focus ring. First coded version added (single and multi-selection).
 - Bound the input box's border width (previously raw `1`, unbound) to `border-width/xs`, and the gap between the prefix icon and value/placeholder text (previously raw `4`, unbound) to `spacing/1` — across all 7 states, on both `Dropdown` and `Multi-selection Dropdown`.
 - **Multi-selection Dropdown:** bound the chip-row wrapper's internal gap (previously raw, unbound) — `spacing/2,5` (10px) on the 3 `Placeholder`-family states (icon-to-placeholder-text gap), `spacing/1` (4px) on the 3 `Filled`-family states (gap between chip pills). One instance (the `Focus` state's chip row) was missed on the first automated pass and caught on manual re-verification — fixed the same way.
 - Verified colors and text styles were already fully bound to this system's semantic tokens on both components — no color-binding bugs found here (unlike several prior components).

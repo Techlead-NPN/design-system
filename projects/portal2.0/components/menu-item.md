@@ -4,6 +4,47 @@ Four row variants for use inside dropdown/menu panels (`Informative`, `Shortcut`
 
 Figma: [`✅ Menu item`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-06, then tidied with the design owner; Figma was updated to match. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/menu/`](../../../components/src/menu/) (`Menu`, `MenuGroupLabel`, `MenuItem`, and `Dropdown`, which uses them).
+
+**Menu panel** — one style for every menu and dropdown list
+
+![Menu panel](../assets/reference/menu.png)
+
+| Part | Value |
+|---|---|
+| Panel | fill `bg/primary`, border `border/primary-subtle` (`border-width/xs`), `border-radii/rounded-8`, effect `shadow-lg` |
+| Padding around the rows | `spacing/1` (4px) |
+| Gap between rows | `spacing/0,5` (2px) |
+| Group label (`MenuComponents/Dropdown Header`) | 28px row, `spacing/2` (8px) side padding, `Support/Caption`, `text + icon/tertiary` |
+| Header (`MenuComponents/Header`) | 32px row, title in `Body/Small-medium`, `text + icon/primary`, bottom border `border/primary-subtle`; optional 24px back or close [Icon Button](button.md) |
+| Search row (`MenuComponents/Menu Search`) | 36px row, `spacing/2` side padding, `Body/Small-regular`; placeholder `text + icon/tertiary`, typed text `text + icon/primary`; bottom border `border/primary-subtle` |
+
+**Menu row** (all four `Menu item/*` types)
+
+![Menu row states](../assets/reference/menu-item.png)
+
+| Part | Value |
+|---|---|
+| Row | padding `spacing/1` (4px) all sides, `spacing/2` (8px) between its parts; 28px high with a title only, 46px with supporting text |
+| Leading | 16px icon; on `Multi Selection` rows a 14px [Checkbox](radio-checkbox-card.md) instead |
+| Title | `Body/Small-regular`, one line |
+| Supporting text (optional) | `Support/Caption`, `spacing/0,5` (2px) below the title |
+| Trailing | `Informative`: 16px `icon/chevron-right` · `Single Selection` when selected: 16px `icon/check` · `Shortcut`: key hints |
+
+| State | Row fill | Title and icon | Supporting text |
+|---|---|---|---|
+| `Default` | none | `text + icon/primary` | `text + icon/secondary` |
+| `Hover` | `bg/primary-hover`, `border-radii/rounded-6` | `text + icon/primary` | `text + icon/secondary` |
+| `Selected` (`Single Selection`) | none | title and check `text + icon/accent-indigo`; leading icon stays `text + icon/primary` | `text + icon/secondary` |
+| `Selected` (`Multi Selection`) | none | title `text + icon/accent-indigo`, checkbox checked | `text + icon/secondary` |
+| `Disabled` | none | `text + icon/disabled`; checkbox and key hints use their own disabled state | `text + icon/disabled` |
+
+**Keyboard:** the row reached with the arrow keys is shown with the `Hover` fill. Menu rows are the one deliberate exception to the system-wide focus ring: a ring would be clipped by the panel's edge and by scrolling.
+
 ## Menu item row variants
 
 | Part | Token(s) |
@@ -50,6 +91,7 @@ All three sit at the same 1px-bottom-divider treatment (`border/primary-subtle`,
 
 ## Changelog
 
+- **2026-10-06:** added the Spec section and tidied with the design owner. In Figma: the `Menu Item` panel was restyled to match `Menu_Search` — `border-radii/rounded-8` (was 4px), `spacing/1` padding (was 8px), `spacing/0,5` row gap (was 4px) — so there is one menu panel style; a foreign `Borders/Light` stroke inside `Menu_Search` was rebound to `border/primary-subtle`; the disabled `Multi Selection` row's checkbox and the disabled `Shortcut` row's key hints now use their disabled states. Keyboard highlight in menus is the hover fill, recorded as an exception to the focus ring rule. First coded versions added.
 - **User-directed consolidation (2026-08-18):** relinked Multi Selection's 4 embedded checkboxes from a separate "bare" checkbox component (previously on the Toggle & Checkbox page) to [Checkbox button](radio-checkbox-card.md) — the canonical checkbox for this system. Resized each instance to 14×14px to preserve the row layout. See `radio-checkbox-card.md` for the full consolidation writeup.
 - **MenuComponents/Header:** fixed the bottom-divider border color (bound to stray `Borders/Light`, the recurring foreign-library token) → `border/primary-subtle`; bound gap/padding (raw `Spacing/4px`-named foreign tokens) → `spacing/1`/`spacing/2`; bound the bottom-divider width → `border-width/xs`; **unbound** the `Navigation=Close` variant's outer height, which was bound to a foreign `Height/32px` token — per project convention, outer width/height are never token-bound, so this was removed rather than rebound (value unchanged, still raw `32`).
 - **MenuComponents/Dropdown Header:** fixed the "Descending" label's text style — was using a completely unnamed/foreign style (`Base/Small/Regular`, 12px Inter Regular but with a non-standard line-height) rather than this system's `Support/Caption` — rebound. Fixed the `Hover` state's background fill, previously a raw translucent black overlay (`Transparent/Light`, 4% black) inconsistent with how every other hover state in this system is built — rebound to the same `bg/primary-hover` solid fill used everywhere else (Menu item rows, Dropdown, etc.), for visual consistency across hover states. Bound gap/padding → `spacing/1`/`spacing/2`.
