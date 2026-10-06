@@ -4,6 +4,47 @@ Two components: **Input/Text input** (single-line) and **Input/Text area** (mult
 
 Figma: [`✅ Text Input`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-06, then tidied with the design owner; Figma was updated to match. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/field/`](../../../components/src/field/) (`TextInput`, `TextArea`).
+
+![Text input, all states](../assets/reference/text-input.png)
+
+**The field** (shared by Text input, Text area, Dropdown and Multi-selection Dropdown)
+
+| Part | Value |
+|---|---|
+| Label (above) | `Support/Label`, `text + icon/tertiary`; `spacing/1` (4px) above the box |
+| Box | 32px high (Text area: 80px minimum), `border-radii/rounded-6`, fill `bg/primary`, border `border-width/xs` |
+| Box padding | `spacing/2` (8px) left and right (Text area: 8px all sides); `spacing/1` (4px) between icon, text and trailing icon |
+| Value text | `Body/Small-regular`, `text + icon/primary` |
+| Placeholder text | `Body/Small-regular`, `text + icon/tertiary` |
+| Hint (below) | `Support/Caption`, `text + icon/tertiary`; `spacing/1` (4px) below the box |
+| Width | fills the width it is given (280px in the reference; Text area 320px) |
+
+| State | Box fill | Box border | Text | Hint |
+|---|---|---|---|---|
+| `Placeholder` / `Filled` | `bg/primary` | `border/primary-subtle` | placeholder / value as above | `text + icon/tertiary` |
+| `Focus` | `bg/primary` | `border/accent-indigo`, **plus** the system-wide focus ring (2px `border/accent-indigo`, 2px outside the box) | as above | `text + icon/tertiary` |
+| `Error Placeholder` / `Error Filled` | `bg/primary` | `border/danger` | as above | `text + icon/danger` |
+| `Disabled Placeholder` | `bg/disabled` | `border/primary-subtle` | `text + icon/disabled` | `text + icon/tertiary` |
+| `Disabled Filled` | `bg/disabled` | `border/primary-subtle` | `text + icon/tertiary` | `text + icon/tertiary` |
+
+A field shows `Focus` whenever it is active, whether reached by keyboard or by clicking into it.
+
+**Text input extras:** an optional 16px prefix icon and suffix icon, or short prefix and suffix text, inside the box either side of the value.
+
+**Text area**
+
+![Text area, all states](../assets/reference/text-area.png)
+
+| Part | Value |
+|---|---|
+| Box | 80px high at rest, grows with content up to 240px, then scrolls; text starts at the top |
+| Helper row | hint on the left, character counter on the right (`Support/Caption`, `text + icon/tertiary`, e.g. "0/500"), `spacing/4` (16px) apart |
+
 ## Anatomy
 
 | Part | Token(s) |
@@ -41,6 +82,7 @@ Figma: [`✅ Text Input`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) p
 
 ## Changelog
 
+- **2026-10-06:** added the Spec section and tidied with the design owner. In Figma: the `Focus` variant of Text input and Text area keeps its indigo border and now also carries the system-wide focus ring; the disabled Text area border changed from `border/primary` to `border/primary-subtle` to match the other fields. Field labels, hints and placeholders are darker because `text + icon/tertiary` itself changed to `neutral/500` (see `DESIGN.md` changelog). First coded versions added.
 - **Text input:** audited fully clean on first pass — colors, text styles, padding, gap, corner-radius, and border-width were all already correctly bound. No fixes needed (same as Dropdown, Icon sidebar, Overlay, and Scroll Area).
 - **Text area:** bound the value/counter row gap (previously raw `10`, unbound) to `spacing/2,5`, across all 7 variants. Colors and text styles were already fully correct.
 - **User fix (2026-08-18):** renamed Text area's variant property from `Property 1` to `State`, matching every other multi-state component in this system — done directly, all 7 variant names updated automatically.
