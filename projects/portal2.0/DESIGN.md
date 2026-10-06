@@ -114,7 +114,7 @@ Ten "accent" colors exist: `sky`, `ocean`, `emerald`, `teal`, `sun`, `fuchsia`, 
 | `bg/accent-peach` | `#ffedd5` | Decorative |
 | `bg/accent-stone` | `#f5f5f4` | Decorative — default icon container fill |
 
-### 2.5 Border (21 tokens)
+### 2.5 Border (22 tokens)
 
 | Token | Value | Usage |
 |---|---|---|
@@ -124,6 +124,7 @@ Ten "accent" colors exist: `sky`, `ocean`, `emerald`, `teal`, `sun`, `fuchsia`, 
 | `border/disabled` | `#f5f5f5` | Borders of disabled elements |
 | `border/danger` | `#ef4444` | Invalid input fields |
 | `border/urgent` | `#f97316` | Border of urgent-family badges (e.g. the "Revising" status badge) |
+| `border/idle` | `#14b8a6` | Border of idle-status badges |
 | `border/warning` | `#f59e0b` | Fields needing review |
 | `border/success` | `#6ecd32` | Validated input fields |
 | `border/info` | `#60a5fa` | Informational/in-progress state |
@@ -213,7 +214,7 @@ Neither rhythm is enforced by Figma or named as a distinct scale in the Foundati
 - **Background tiers:** `-subtle` backgrounds (badges, pills, tags) don't need to pass contrast against the page themselves, but text/icon on top of them does. Bold/default backgrounds (buttons, banners) must pass 3:1 against the surrounding surface.
 - **Status colors:** always pair background, text/icon, and border from the *same* status family — never mix. Never convey status by color alone; pair with an icon or label.
 - **Accent colors:** the 9 decorative accents must never imply state or urgency. `accent-indigo` is reserved for primary/interactive use only.
-- **Keyboard focus:** one rule for every interactive component — the element keeps its normal colors and gains a 2px (`border-width/sm`) `border/accent-indigo` ring, 2px outside its edge, shown for keyboard focus only. Never signal focus by a color change alone. (Agreed 2026-10-05; applied to Button, Icon Button, Checkbox and Radio so far.)
+- **Keyboard focus:** one rule for every interactive component — the element keeps its normal colors and gains a 2px (`border-width/sm`) `border/accent-indigo` ring, 2px outside its edge, shown for keyboard focus only. Never signal focus by a color change alone. (Agreed 2026-10-05; applied to Button, Icon Button, Checkbox, Radio, Radio card and Chips/Tag so far.)
 
 ### Known gaps (documented, not yet fixed)
 
@@ -236,6 +237,7 @@ Neither rhythm is enforced by Figma or named as a distinct scale in the Foundati
 | `bg/disabled-subtle` → `bg/disabled` | Label correction | Same pattern — no `-subtle` variant of this token actually exists |
 | Various orphaned variable rebinds | `text+icon/idle`, `bg/disabled`, `border/primary-subtle`, `text+icon/brand`→`accent-indigo`, `border/brand`→`accent-indigo` | These cards were bound to deleted variable IDs; rebound to the current live equivalents |
 | `Body/Large-meduum` → `Body/Large-medium` | Typo fix | Fixed at the source (the live text style name itself) |
+| Added `border/idle` (`#14b8a6`, `teal/500`) | New token | The Idle badge used the text token `text + icon/idle` as its border; added so every status family has text, background and border tokens. Same teal, no visual change |
 | Added `border/urgent` (`#f97316`, `orange/500`) | New token | The "Revising" status badge had a raw `#bd4b00` border because the urgent family had text and background tokens but no border; added so the badge is fully token-driven, using the same orange as `text + icon/urgent` |
 | `Priority status` Medium fill | `bg/urgent-subtle` → `bg/warning-subtle` | Medium mixed an urgent background with warning text, breaking the same-family rule (§5); it is now warning throughout |
 | Added `Body/Tiny-regular` (10px, Inter Regular) | New style | Avatar-initial text at 16px avatar size used a custom 10px/Regular text with no bound style; formalized it as a named type-scale entry instead of leaving it ad-hoc |

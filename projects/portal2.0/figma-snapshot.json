@@ -32,7 +32,7 @@
     ]},
     { "id": "74:170", "name": "✅ Chips/Tag & Badge", "components": [
       { "id": "78:2370", "name": "Badge", "type": "COMPONENT_SET", "variants": ["Success","Error","Info","Accent","Urgent","Warning","Idle","Disabled"] },
-      { "id": "87:3499", "name": "Chips/Tag", "type": "COMPONENT_SET", "variantCount": 16, "variants": ["State={Deselected,Hover,Selected,Disabled} × Hierarchy={Primary,Secondary} × Roundness={True,False}"] }
+      { "id": "87:3499", "name": "Chips/Tag", "type": "COMPONENT_SET", "variantCount": 20, "variants": ["State={Deselected,Hover,Selected,Disabled,Focus} × Hierarchy={Primary,Secondary} × Roundness={True,False}"] }
     ]},
     { "id": "78:2089", "name": "✅ Content Area", "components": [
       { "id": "78:2118", "name": ".Slot Inner", "type": "COMPONENT" },
