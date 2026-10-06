@@ -4,6 +4,29 @@ A dark contextual-help bubble with a title, body text, and a directional pointer
 
 Figma: [`✅ Tooltips`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-06; Figma was tidied to match where noted in the Changelog. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/tooltip/Tooltip.tsx`](../../../components/src/tooltip/Tooltip.tsx) — the bubble only; showing it and positioning it against its trigger is left to the app.
+
+![Tooltip, all pointer positions](../assets/reference/tooltip.png)
+
+| Part | Value |
+|---|---|
+| Bubble | 300px wide, height hugs the content, `border-radii/rounded-6`, fill `bg/secondary-inverse`, padding `spacing/3` (12px), no border or shadow |
+| Title | `Body/Mini-medium`, `text + icon/primary-inverse` |
+| Body text | `Support/Caption`, `text + icon/primary-inverse`, wraps; `spacing/3` (12px) below the title |
+| Pointer | a triangle 16px wide and 8px deep, `bg/secondary-inverse`, touching the bubble |
+
+| `Pointer position` | Where the pointer sits |
+|---|---|
+| `Top left` / `Top right` | on the top edge, 24px in from that corner |
+| `Top center` | centered on the top edge |
+| `Bottom left` / `Bottom right` | on the bottom edge, 24px in from that corner |
+| `Bottom center` | centered on the bottom edge |
+| `Left` / `Right` | centered on that side |
+
 ## Anatomy
 
 | Part | Token(s) |
@@ -31,6 +54,7 @@ None found beyond the fixed items below.
 
 ## Changelog
 
+- **2026-10-06:** added the Spec section. No Figma changes were needed. First coded version (bubble only) added.
 - Fixed both text layers (`Title`, `Text`) across all 8 variants — bound to completely foreign, unnamed styles (`Base/Small/Medium`, `Base/Small/Regular`, 12px Inter but with a non-standard 1.4 line-height) rather than this system's actual type scale. Rebound to `Body/Mini-medium` (title) and `Support/Caption` (body) — 16 text-style fixes total.
 - Bound the arrow's inset padding (previously raw `24`, unbound) → `spacing/6`, on the 4 corner variants (`Top left`/`Top right`/`Bottom left`/`Bottom right`) that need it to offset the pointer from the bubble's rounded corner.
 - Verified visually before/after — no rendering changes.

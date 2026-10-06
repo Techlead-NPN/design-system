@@ -8,8 +8,8 @@
     { "id": "2:2", "name": "✅  Color", "components": [] },
     { "id": "9:74", "name": "✅  Typography", "components": [] },
     { "id": "142:2707", "name": "✅ Avatar", "components": [
-      { "id": "142:2708", "name": "Avatar", "type": "COMPONENT_SET", "variants": ["Size=40px/Picture/Image","Size=16px/Picture/Image","Size=20px/Picture/Image","Size=24px/Picture/Image","Size=40/16/20/24px × Low contrast letter × 10 colors (Green/Teal/Sky/Blue/Purple/Pink/Red/Orange/Yellow/Gray)"], "variantCount": 44 },
-      { "id": "149:3771", "name": "Square", "type": "COMPONENT_SET", "variants": ["Size=40px/Picture","Size=40px/Initials","Size=12px/Picture","Size=12px/Initials","Size=14px/Picture","Size=14px/Initials","Size=14px/Initials hover","Size=16px/Picture","Size=16px/Initials","Size=20px/Picture","Size=20px/Initials","Size=24px/Picture","Size=24px/Initials"] }
+      { "id": "142:2708", "name": "Avatar", "type": "COMPONENT_SET", "variants": ["Size=36px/Picture/Image","Size=16px/Picture/Image","Size=20px/Picture/Image","Size=24px/Picture/Image","Size=36/16/20/24px × Low contrast letter × 10 colors (Green/Teal/Sky/Blue/Purple/Pink/Red/Orange/Yellow/Gray)"], "variantCount": 44 },
+      { "id": "149:3771", "name": "Square", "type": "COMPONENT_SET", "variants": ["Size=40px/Picture","Size=40px/Initials","Size=12px/Picture","Size=12px/Initials","Size=14px/Picture","Size=14px/Initials","Size=16px/Picture","Size=16px/Initials","Size=20px/Picture","Size=20px/Initials","Size=24px/Picture","Size=24px/Initials"] }
     ]},
     { "id": "2135:19263", "name": "✅ Bottom sheet", "components": [
       { "id": "2285:52", "name": "Bottom sheet", "type": "COMPONENT_SET", "variants": ["Type=Content","Type=Confirmation"] }
@@ -98,8 +98,8 @@
       { "id": "72:1786", "name": "Input/Text area", "type": "COMPONENT_SET", "variants": ["Placeholder","Disabled Filled","Disabled Placeholder","Error Filled","Error Placeholder","Filled","Focus"] }
     ]},
     { "id": "72:5801", "name": "✅ Toggle", "components": [
-      { "id": "72:5802", "name": "Toggle", "type": "COMPONENT_SET", "variants": ["False/Normal","False/Disabled","True/Disabled","True/Normal"] },
-      { "id": "2743:32836", "name": "Toggle Card", "type": "COMPONENT_SET", "variants": ["Default","Selected","Disable"] }
+      { "id": "72:5802", "name": "Toggle", "type": "COMPONENT_SET", "variants": ["False/Normal","False/Disabled","True/Disabled","True/Normal","False/Focus","True/Focus"] },
+      { "id": "2743:32836", "name": "Toggle Card", "type": "COMPONENT_SET", "variants": ["Default","Selected","Disabled","Focus"] }
     ]},
     { "id": "87:4003", "name": "✅ Tooltips", "components": [
       { "id": "87:6140", "name": "Tooltip", "type": "COMPONENT_SET", "variants": ["Right","Bottom center","Left","Top center","Top left","Top right","Bottom left","Bottom right"] }
