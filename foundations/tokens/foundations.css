@@ -344,6 +344,7 @@
 
   /* Radii (border-radii/rounded-N) → `rounded-8`, `rounded-infinite`. */
   --radius-*: initial;
+  --radius-2: 2px;
   --radius-4: 4px;
   --radius-6: 6px;
   --radius-8: 8px;

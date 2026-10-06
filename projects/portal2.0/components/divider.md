@@ -4,6 +4,22 @@ A thin separator line with configurable reserved spacing around it, used to visu
 
 Figma: [`✅ Divider`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-06; Figma was tidied to match where noted in the Changelog. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/divider/Divider.tsx`](../../../components/src/divider/Divider.tsx).
+
+The line is always 1px, `border/primary-subtle`. `Spacing` only changes how much room the divider occupies across the line; the line sits in the middle of that room.
+
+| `Spacing` | `Direction=Default` (horizontal): total height | `Direction=Vertical`: total width |
+|---|---|---|
+| `None` | 1px | 1px |
+| `Regular` | 9px (4px above and below the line) | 5px (2px each side) |
+| `Spacious` | 16px | 16px |
+
+A horizontal divider fills the width it is given; a vertical one fills the height. These totals are the component's own outer size and are not bound to spacing tokens.
+
 ## Anatomy
 
 | Part | Token(s) |
@@ -34,6 +50,7 @@ Figma: [`✅ Divider`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page
 
 ## Changelog
 
+- **2026-10-06:** added the Spec section. First coded version added.
 - Rebound `itemSpacing` (previously bound to a foreign variable literally named `"2"`, not `spacing/2` — same numeric value, wrong source, same "Twenty library" pattern as prior components) to this system's `spacing/2`, across all 6 variants. Inert on 5 of the 6 (each variant has only one child, so there's no second element for the gap to apply between) but fixed for consistency and in case a variant ever gains a second child.
 - Rebound horizontal padding on the 3 `Vertical` variants (previously bound to a foreign variable named `"0,5"`, not `spacing/0,5`) to this system's `spacing/0,5`.
 - Verified visually before/after — no rendering changes.

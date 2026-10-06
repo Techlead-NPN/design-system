@@ -4,6 +4,44 @@ Two components: **Toggle** (the switch atom) and **Toggle card** (a settings-row
 
 Figma: [`✅ Toggle`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page — renamed from "Toggle & Checkbox" 2026-08-18 after its checkbox component was moved out (see Changelog). Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-06; Figma was tidied to match where noted in the Changelog. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/toggle/Toggle.tsx`](../../../components/src/toggle/Toggle.tsx) (`Toggle`, `ToggleCard`).
+
+**Toggle**
+
+![Toggle, all variants](../assets/reference/toggle.png)
+
+| Part | Value |
+|---|---|
+| Track | 32×20px, `border-radii/rounded-infinite`, `spacing/0,5` (2px) padding |
+| Knob | 16×16px circle, `bg/primary`; at the left when off, at the right when on |
+
+| `Toggled` | `State=Normal` track | `State=Disabled` track |
+|---|---|---|
+| `False` | `bg/tertiary` | `bg/disabled` |
+| `True` | `bg/accent-indigo` | `bg/accent-indigo-subtlest` |
+
+`State=Focus`: the `Normal` colors plus the system-wide focus ring (2px `border/accent-indigo`, 2px outside the track). There is no hover state.
+
+**Toggle card**
+
+![Toggle card, all states](../assets/reference/toggle-card.png)
+
+Same card as [Radio card](radio-checkbox-card.md), with a Toggle in place of the radio.
+
+| Part | Value |
+|---|---|
+| Card | padding `spacing/2` (8px), `border-radii/rounded-8`, fill `bg/primary`, border `border/primary-subtle`; fills the width it is given (248px in the reference) |
+| Header row | 24px high: 20px icon, `spacing/2` (8px) gap, name, then the toggle at the right edge |
+| Name | `Body/Small-medium`, `text + icon/secondary` |
+| Description | `Body/Mini-regular`, `text + icon/tertiary`; `spacing/2` (8px) below the header, indented 28px, 8px bottom padding |
+| `State=Selected` | the toggle is on; the card itself looks the same |
+| `State=Disabled` | fill `bg/disabled`, border `border/disabled`, name and description `text + icon/disabled`. The toggle's track is `bg/tertiary` here (not `bg/disabled`), so the switch stays visible against the grey card |
+| `State=Focus` | the focus ring goes around the whole card (`border-radii/rounded-12`) |
+
 ## Toggle
 
 | Part | Token(s) |
@@ -28,7 +66,7 @@ A settings-row card — leading icon, name, description, and a trailing **Toggle
 | Description | `text + icon/tertiary`, `Body/Mini-regular` |
 | Name/icon gap | `spacing/2` |
 
-**Variants:** `State` = `Default` / `Disable` / `Selected`. Plus `Description?` (boolean).
+**Variants:** `State` = `Default` / `Disabled` / `Selected` / `Focus`. Plus `Description?` (boolean).
 
 ## Behavior rules
 
@@ -41,6 +79,7 @@ None currently — the naming/duplication issues found on this page have all bee
 
 ## Changelog
 
+- **2026-10-06:** added the Spec section and tidied with the design owner. In Figma: added `State=Focus` variants to Toggle (on and off) and Toggle card, carrying the system-wide focus ring; renamed Toggle card's `State=Disable` to `Disabled`; removed a leftover, invisible `Radio button` layer from the disabled card; and changed the disabled card's toggle track from `bg/disabled` to `bg/tertiary`, because it was the same grey as the card and only the knob showed. First coded versions added.
 - **User fix (2026-08-18):** `Toggle`'s `Toggled` variant had a spelling bug that was also a functional gap, not just cosmetic — the correctly-spelled `Toggled=True` only existed paired with `State=Disabled`; the actual enabled/on toggle only existed under a misspelled `Toggled=Tru, State=Normal`. Renamed to `Toggled=True, State=Normal`, so the properties panel now offers a real, working on+enabled combination.
 - Bound corner-radius (raw `80`/`60`, the "oversized radius forces a pill/circle" pattern seen throughout this audit) on `Toggle`'s track and knob → `border-radii/rounded-infinite`; bound padding/gap → `spacing/0,5`/`spacing/2`.
 - Bound `Toggle card`'s own corner radius/border-width (raw `8`/`1`, unbound) → `border-radii/rounded-8`/`border-width/xs`; bound the icon/name gap → `spacing/2`. Its nested Toggle instances inherited the Toggle fixes automatically.
