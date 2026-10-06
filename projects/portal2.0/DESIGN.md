@@ -213,6 +213,7 @@ Neither rhythm is enforced by Figma or named as a distinct scale in the Foundati
 - **Background tiers:** `-subtle` backgrounds (badges, pills, tags) don't need to pass contrast against the page themselves, but text/icon on top of them does. Bold/default backgrounds (buttons, banners) must pass 3:1 against the surrounding surface.
 - **Status colors:** always pair background, text/icon, and border from the *same* status family — never mix. Never convey status by color alone; pair with an icon or label.
 - **Accent colors:** the 9 decorative accents must never imply state or urgency. `accent-indigo` is reserved for primary/interactive use only.
+- **Keyboard focus:** one rule for every interactive component — the element keeps its normal colors and gains a 2px (`border-width/sm`) `border/accent-indigo` ring, 2px outside its edge, shown for keyboard focus only. Never signal focus by a color change alone. (Agreed 2026-10-05; applied to Button, Icon Button, Checkbox and Radio so far.)
 
 ### Known gaps (documented, not yet fixed)
 

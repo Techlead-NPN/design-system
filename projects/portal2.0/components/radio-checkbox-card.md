@@ -4,15 +4,74 @@ Three related selection controls documented together because they share one Figm
 
 Figma: [`✅ Radio button & Card & check box`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-05, then normalised with the design owner; Figma was updated to match. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/selection/`](../../../components/src/selection/) (`Checkbox`, `Radio`, `RadioCard`).
+
+**Shared by Radio button and Checkbox button**
+
+| Property | Value |
+|---|---|
+| Label | `Body/Small-regular`, `text + icon/primary`; `text + icon/disabled` when disabled |
+| Gap between control and label | Radio: `spacing/1` (4px) from its 24px box. Checkbox: `spacing/2` (8px) from its 16px box. Both put the label 8px from the visible control, clear of the focus ring |
+| Border | `border-width/xs` (1px), only when not selected |
+
+| State | Not selected | Selected (and Checkbox `Half`) |
+|---|---|---|
+| `Default` | no fill, border `border/primary` | fill `bg/accent-indigo`, no border |
+| `Error` | no fill, border `border/danger` | fill `bg/danger`, no border |
+| `Disabled` | no fill, border `border/disabled` | fill `bg/tertiary`, no border |
+| `Focus` | as `Default`, plus the focus ring | as `Default`, plus the focus ring |
+| `Error Focus` | as `Error`, plus the focus ring | as `Error`, plus the focus ring |
+
+**Focus — the system-wide rule:** the control keeps its colors and gains a `border-width/sm` (2px) `border/accent-indigo` ring, 2px outside its edge. Keyboard focus only. There is no hover state.
+
+**Radio button**
+
+![Radio button, all variants](../assets/reference/radio.png)
+
+| Part | Value |
+|---|---|
+| Circle | 16×16px, `border-radii/rounded-infinite`, centered in a 24×24px box (so a labelled radio row is 24px high) |
+| Selected dot | 6×6px circle, `bg/primary`, centered |
+| Focus ring | 24px circle |
+
+**Checkbox button**
+
+![Checkbox button, all variants](../assets/reference/checkbox.png)
+
+| Part | Value |
+|---|---|
+| Box | 16×16px at its default size, `border-radii/rounded-4`, no surrounding padding (a labelled row is 20px high) |
+| Check mark (`Selected`) | 8×6px, `text + icon/primary-inverse` |
+| Dash (`Half`) | 9×2px, fully rounded, `text + icon/primary-inverse` |
+| Focus ring | 24px square, `border-radii/rounded-8` |
+
+**Radio card**
+
+![Radio card, all states](../assets/reference/radio-card.png)
+
+| Part | Value |
+|---|---|
+| Card | padding `spacing/2` (8px), `border-radii/rounded-8`, fill `bg/primary`, border `border/primary-subtle`; fills the width it is given (248px in the reference) |
+| Header row | 24px high: 20px icon, `spacing/2` (8px) gap, name, then the radio at the right edge |
+| Name | `Body/Small-medium`, `text + icon/secondary` |
+| Description | `Body/Mini-regular`, `text + icon/tertiary`; `spacing/2` (8px) below the header, indented 28px so it lines up with the name, 8px bottom padding |
+| `State=Selected` | only the radio changes; the card itself looks the same |
+| `State=Focus` | the focus ring goes around the **whole card** (`border-radii/rounded-12`), not the radio dot, because the whole card is the click target |
+| `State=Disabled` | fill `bg/disabled`, border `border/disabled`, name and description `text + icon/disabled` |
+
 ## Radio button
 
 | Part | Token(s) |
 |---|---|
 | Ring — default | `border/primary` |
-| Ring — hover/keyboard focus halo | `border/accent-indigo` ring + `bg/accent-indigo-subtlest` soft background glow |
-| Ring/fill — selected | `bg/accent-indigo`, `border/accent-indigo` |
-| Ring/fill — error | `border/danger`; error + focus adds `bg/danger-subtle` glow |
-| Ring — disabled | `border/disabled`, fill `text + icon/disabled` when selected |
+| Keyboard focus | resting colors plus a 2px `border/accent-indigo` focus ring outside the control (see Spec) |
+| Fill — selected | `bg/accent-indigo`, no border |
+| Ring/fill — error | `border/danger` (not selected) or `bg/danger` fill (selected); error + focus adds the same indigo focus ring |
+| Ring — disabled | `border/disabled`, fill `bg/tertiary` when selected |
 | "Highlight" — the white gap ring between the colored ring and the filled center dot | `bg/primary` |
 | Shape | `border-radii/rounded-infinite` (forces a perfect circle), `border-width/xs` |
 | Label | `text + icon/primary`, `Body/Small-regular`, `spacing/1` gap from the dot |
@@ -37,17 +96,17 @@ A settings-row card — leading icon, name, description, and a trailing **Radio 
 
 | Part | Token(s) |
 |---|---|
-| Card — fill, border, radius | `bg/primary` (`bg/disabled` when `State=Disable`), `border/primary`, `border-width/xs`, `border-radii/rounded-8` |
-| Name | `text + icon/primary`, `Body/Small-medium` |
-| Description | `text + icon/secondary`, `Body/Mini-regular` |
+| Card — fill, border, radius | `bg/primary` (`bg/disabled` when `State=Disabled`), `border/primary-subtle` (`border/disabled` when disabled), `border-width/xs`, `border-radii/rounded-8` |
+| Name | `text + icon/secondary`, `Body/Small-medium` |
+| Description | `text + icon/tertiary`, `Body/Mini-regular` |
 | Name/icon gap | `spacing/2` |
 
-**Variants:** `State` = `Default` / `Disable` / `Selected`. Plus `Tag/status` (boolean, adds a status tag next to the name via a swappable `Tag type` instance) and `Description?` (boolean).
+**Variants:** `State` = `Default` / `Disabled` / `Selected` / `Focus`. Plus `Tag/status` (boolean, adds a status tag next to the name via a swappable `Tag type` instance) and `Description?` (boolean).
 
 ## Behavior rules
 
 - **Radio vs. Checkbox is a single-select vs. multi-select decision**, same convention as everywhere else in the system (and as [Menu item](menu-item.md)'s Single/Multi Selection rows) — don't use Checkbox where only one option can be true at a time.
-- **`Focus` and `Error Focus` both render a soft background glow** (`bg/accent-indigo-subtlest` / `bg/danger-subtle`) behind the ring, distinct from the ring-color change alone — this is the keyboard-focus-visible treatment, not a hover state (there's no separate `Hover` variant; focus-visible styling covers both keyboard and, conventionally, mouse-down feedback).
+- **`Focus` and `Error Focus` add the system-wide focus ring** (2px `border/accent-indigo`, outside the control) and change nothing else — this is the keyboard-focus-visible treatment, not a hover state (there's no `Hover` variant).
 - **Radio card's embedded radio indicator is presentational, driven by the card's own `State`** — clicking anywhere on the card (not just the dot) should toggle it; the dot isn't meant to be a separately-focusable target within the card.
 - **Checkbox button's size is adaptable per context, not locked to its 16px default** — scale the instance to whatever fits the surrounding density (12/14/16px and beyond are all fair game). This is different from components like Avatar that expose a dedicated `Size` variant; here, uniform instance scaling is the intended mechanism since the whole glyph scales together cleanly.
 
@@ -56,6 +115,8 @@ A settings-row card — leading icon, name, description, and a trailing **Radio 
 - Icon internals (checkmark vector strokes) are left unbound — same precedent as other components (no exact Foundation match).
 
 ## Changelog
+
+- **2026-10-05:** added the Spec section and normalised Radio button and Checkbox button with the design owner, in Figma and in code. (1) **Focus** now uses the same ring as Button: the pale halo is removed (on Checkbox it was hidden behind the box and never showed) and each of the 10 base Focus variants carries a `Focus ring` layer bound to `border-width/sm`. (2) **Selected fills use background tokens**: `text + icon/danger` → `bg/danger`, `text + icon/accent-indigo` → `bg/accent-indigo` (no visual change), and the disabled fill `text + icon/disabled` → `bg/tertiary` (same grey). (3) Radio card's `State=Disable` renamed to `Disabled`. (4) Corrected this doc's Radio card tokens (border, name and description colors) to match Figma. First coded versions added in `components/src/selection/`. (5) Labelled Checkbox variants: label gap widened from `spacing/1` to `spacing/2` so the focus ring no longer touches the label. (6) Radio card gained a `State=Focus` variant with the ring around the whole card.
 
 - **User-directed consolidation (2026-08-18):** added a `Type=Half` (indeterminate) variant across all `State`×`Label` combinations (15 new variants: dash indicator replacing the checkmark, same indigo fill as `Selected`). Built by cloning the `Selected` variants and, for `Label=Left`/`Right` (which internally embed a `Label=None` instance rather than duplicating the glyph), swapping that nested instance's `Type` property to `Half` rather than trying to edit its internals directly — editing a nested instance's children via `.remove()` doesn't work from outside (only property overrides do) and silently corrupted rendering on the first attempt; rebuilt cleanly once diagnosed. Then relinked all 13 real-world embedded checkbox instances in Table and Menu item from the old bare checkbox component to this one, resizing each to 14×14px to preserve the existing row layouts.
 - **User fix (2026-08-18):** the glyph's container was 24×24px with the 16×16 circle inset 4px on every side — an unintentional gap, not a deliberate design choice. Resized the container to 16×16px and moved the circle to fill it edge-to-edge, on all 15 `Label=None` variants (`Label=Left`/`Right` inherited the fix automatically via their nested-instance reference). First attempt used `.resize()` directly, which proportionally scaled the circle down too (to ~10.7×10.7) — not what was wanted; fixed by explicitly forcing the circle back to a fixed 16×16 and repositioning the checkmark/dash glyph to match, rather than relying on proportional resize.
