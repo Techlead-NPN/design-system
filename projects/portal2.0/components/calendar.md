@@ -4,6 +4,41 @@ Single-month date picker used across the platform for selecting one date or a da
 
 Figma: [`✅ Calendar`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-06, then tidied with the design owner; Figma was updated to match. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/calendar/Calendar.tsx`](../../../components/src/calendar/Calendar.tsx) (`Calendar`, with `mode="single"` or `mode="range"`).
+
+![Calendar, single month](../assets/reference/calendar.png)
+
+**Layout** (`CalendarBody`, one month)
+
+| Part | Value |
+|---|---|
+| Body | 268px wide, padding `spacing/2` (8px), `spacing/2` (8px) between header, weekday row and weeks |
+| Header | 32px high. Left: month [Dropdown](dropdown.md) (98px) and year Dropdown (76px), `spacing/1` (4px) apart, no label or hint. Right: previous and next 32px Ghost [Icon Buttons](button.md), `spacing/0,5` (2px) apart, icons `text + icon/tertiary` |
+| Weekday row | 7 cells of 36×32px, two-letter labels (Mo, Tu, …) in `Body/Small-regular`, `text + icon/tertiary`, centered |
+| Weeks | always 6 rows of 7 day cells, rows `spacing/1` (4px) apart, no gap between cells in a row |
+| Card (when floating) | fill `bg/primary`, border `border/primary-subtle`, `border-radii/rounded-8`, effect `shadow-lg` — the same panel style as [Menu](menu-item.md) |
+
+**Day cell** (`Date States`) — 36×32px, with a 32×32px pill centered inside it. The number is `Body/Small-medium`.
+
+| Cell | Pill fill | Number | Shape |
+|---|---|---|---|
+| Regular | none | `text + icon/secondary` | — |
+| Hover | `bg/accent-indigo-subtlest` | `text + icon/accent-indigo` | `border-radii/rounded-4` |
+| Disabled, or a day from the previous or next month | none | `text + icon/disabled` | — |
+| Today, not selected | none, with a 1px `border/accent-indigo` outline | `text + icon/secondary` | `border-radii/rounded-4` |
+| Selected (single date, or today when selected) | `bg/accent-indigo` | `text + icon/primary-inverse` | `border-radii/rounded-4` |
+| Range start | `bg/accent-indigo` | `text + icon/primary-inverse` | rounded on the left only; the right half of the cell behind it is `bg/accent-indigo-subtlest` |
+| Range end | `bg/accent-indigo` | `text + icon/primary-inverse` | rounded on the right only; the left half of the cell behind it is `bg/accent-indigo-subtlest` |
+| In range | the whole 36px cell is `bg/accent-indigo-subtlest`, square corners | `text + icon/secondary` | forms one continuous band with its neighbours |
+| In range, in an adjacent month | as "In range", faded by a 54% `bg/primary` overlay | `text + icon/secondary` | — |
+| Focus | as Regular, plus the system-wide focus ring around the pill (2px `border/accent-indigo`, 2px outside, `border-radii/rounded-8`) | | |
+
+![Calendar, two months with a range](../assets/reference/calendar-range.png)
+
 ## Anatomy
 
 The assembled calendar (`CalendarBody`) stacks, top to bottom: **Calendar Header** → **Day of Week** row → 6-row grid of **Date States** day cells. On the platform, that assembly sits inside an outer card frame (the "Light Mode" wrapper in the Example section) that owns the actual visible card chrome — `CalendarBody` itself renders edge-to-edge with no radius of its own.
@@ -14,15 +49,15 @@ The assembled calendar (`CalendarBody`) stacks, top to bottom: **Calendar Header
 | Header/body divider — bottom edge of `CalendarBody` only (not a full border) | `border/primary-subtle`, `border-width/xs` |
 | Card padding / row-to-row gap | `spacing/2` (8px) |
 | Month/year dropdown label | `text + icon/primary`, `Body/Small-regular` |
-| Nav chevrons (prev/next month) | `text + icon/secondary` |
+| Nav chevrons (prev/next month) | `text + icon/tertiary` |
 | Weekday header labels (Mo, Tu, …) | `text + icon/tertiary`, `Body/Small-regular` |
-| Day cell — default number | `text + icon/primary`, `Body/Small-regular` |
+| Day cell — default number | `text + icon/secondary`, `Body/Small-medium` |
 | Day cell — disabled / outside allowed range | `text + icon/disabled` |
-| Day cell — hover | `bg/accent-indigo-subtlest` fill, `border-radii/rounded-4` |
+| Day cell — hover | `bg/accent-indigo-subtlest` fill, `text + icon/accent-indigo` number, `border-radii/rounded-4` |
 | Day cell — selected / range start / range end | `bg/accent-indigo` fill, `text + icon/primary-inverse` text, `border-radii/rounded-4` (start rounds left corners only, end rounds right corners only — square where they meet an adjacent in-range day) |
 | Day cell — in selection (same month) | `bg/accent-indigo-subtlest` fill, flat corners (no radius — forms a continuous strip) |
 | Day cell — in selection (adjacent month, shown for context) | Same `bg/accent-indigo-subtlest` fill, additionally faded via a ~54% white overlay to de-emphasize vs. the current month |
-| Day cell — today (not selected) | White fill, `border/accent-indigo` outline, `border-width/xs`, `border-radii/rounded-4`, `text + icon/accent-indigo` text |
+| Day cell — today (not selected) | White fill, `border/accent-indigo` outline, `border-width/xs`, `border-radii/rounded-4`, `text + icon/secondary` text |
 | Day cell — today + selected | Same as selected (solid `bg/accent-indigo`) — today's ring is not shown once selected |
 
 ### Sub-components
@@ -46,15 +81,16 @@ The assembled calendar (`CalendarBody`) stacks, top to bottom: **Calendar Header
 
 ## Known gaps (component doesn't yet match spec, or naming is inconsistent)
 
-- **Misleading variant name:** the day-cell variant used for an unselected "today" is named `Type=Today, State=Disabled, Selected=False`. Despite the `Disabled` state label, it renders as a normal, presumably-interactive cell (full-opacity text, no disabled styling) — the name conflicts with the `Basic/State=Disabled` variant's actual disabled treatment. Flagging as a naming inconsistency rather than renaming now, since the `State` variant property is shared with `Basic` and `Hover`, and confirming intent first avoids breaking other instances.
+- **Not coded yet:** the `DateTime` header (with a time field), the two-month layouts and the preset sidebar, and the faded "in range, adjacent month" cell (days outside the shown month are simply disabled in code).
+
 - **No explicit "Today, Regular, Selected=False" cell exists** as its own combination — the only "Today" variants are Today+Selected and the Today+"Disabled" one described above. If a future need arises for today to render distinctly while also being hoverable/interactive, this gap will need a new variant.
 - Day-cell pill padding/spacing (20/20/13/13/10px on the inner `Frame 3813` wrapper) doesn't cleanly map to the `spacing/*` primitive scale (13px isn't a defined step) and the wrapper is fixed-size, so this padding may be vestigial rather than actually driving layout — left unbound rather than force-fit to an incorrect token.
 - Nested instances inside Calendar Header (Dropdown selection, time Input field, chevron icons) carry their own unbound geometry (padding, stroke weight) — out of scope here since they belong to the Dropdown and Text Input components, which haven't been audited yet themselves.
-- **Unbound shadow effect on the outer card:** the card's drop shadow (`BACKGROUND_BLUR` radius 40 + two `DROP_SHADOW`s) doesn't match any of the system's 4 named effect styles (`shadow-sm/md/lg/xl`) and isn't bound to one — likely another import from the same foreign library as the `Borders/*` and `Transparent/*` stray variables fixed below. Left as-is rather than force-binding to a mismatched style, since none of the 4 existing styles reproduce this shadow's actual appearance.
 - No dark-mode variant exists for Calendar, consistent with the rest of the file (dark-mode token values exist per §5 note in `DESIGN.md`, but no component has a built dark-mode variant yet).
 
 ## Changelog
 
+- **2026-10-06:** added the Spec section and tidied with the design owner. In Figma: the range Start/End connector strip (a raw blue at 8%) and the white underlay of the in-range cells are bound to `bg/accent-indigo-subtlest` and `bg/primary`; today's outline is bound to `border/accent-indigo` instead of a text token; the misnamed `Type=Today, State=Disabled, Selected=False` is renamed `State=Regular`; a `Type=Basic, State=Focus` day cell is added with the system-wide focus ring; the calendar card's custom shadow is replaced with the `shadow-lg` effect style on the three example cards. Corrected this doc: day numbers are `Body/Small-medium` in `text + icon/secondary`, today's number is not indigo, and the nav chevrons are `text + icon/tertiary`. First coded version added (single date and range, one month).
 - Fixed `CalendarBody`'s bottom divider — all instances (`Edit` and `Read-Only`) were bound to a stray `Borders/Light` variable imported from an unrelated/deprecated library (key prefix `b638e62f83d6d07138a5e8abfc60e1df4c208c20`, not this file's semantic collection) rather than `border/primary-subtle`. Same "Twenty library leftover" pattern seen in prior components.
 - Bound the selected/today/hover day-cell pill's corner radius (previously a raw `4`) to `border-radii/rounded-4` — including the asymmetric per-corner binding on the `Start`/`End` range variants (rounded only on the outer edge).
 - Bound `CalendarBody`'s card padding and row gap (previously raw `8`) to `spacing/2`.
