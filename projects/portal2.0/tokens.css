@@ -14,7 +14,7 @@
 :root {
   --text-primary: var(--neutral-950);
   --text-secondary: var(--neutral-700);
-  --text-tertiary: var(--neutral-400);
+  --text-tertiary: var(--neutral-500);
   --text-primary-inverse: var(--neutral-50);
   --text-secondary-inverse: var(--neutral-200);
   --text-accent-indigo-subtle: var(--indigo-400);

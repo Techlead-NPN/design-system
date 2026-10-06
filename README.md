@@ -9,7 +9,7 @@ foundations/              shared by every project
 ├── tokens/               primitive values, as code (foundations.css)
 └── workflow/             audit process and drift-check instructions
 components/               coded React + Tailwind components, shared by every project
-└── src/                  one folder per component family (button/, selection/, badge/, avatar/, divider/, toggle/, tooltip/ so far)
+└── src/                  one folder per component family (button/, selection/, badge/, avatar/, divider/, toggle/, tooltip/, field/ so far)
 projects/
 └── portal2.0/            one folder per project
     ├── DESIGN.md         semantic tokens, text styles, accessibility, changelog

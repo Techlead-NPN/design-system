@@ -46,7 +46,7 @@ Ten "accent" colors exist: `sky`, `ocean`, `emerald`, `teal`, `sun`, `fuchsia`, 
 |---|---|---|
 | `text + icon/primary` | `#0a0a0a` | Primary text and icons — headings, body copy |
 | `text + icon/secondary` | `#404040` | Secondary text and icons — supporting copy, helper text |
-| `text + icon/tertiary` | `#a3a3a3` | Tertiary text — metadata, timestamps, placeholder text ⚠️ *see §5* |
+| `text + icon/tertiary` | `#737373` | Tertiary text — field labels, table headers, metadata, timestamps, placeholder text |
 | `text + icon/primary-inverse` | `#fafafa` | Primary text/icons on dark or bold backgrounds |
 | `text + icon/secondary-inverse` | `#e5e5e5` | Secondary text/icons on dark or bold backgrounds |
 | `text + icon/disabled` | `#d4d4d4` | Text/icons in a disabled state (exempt from contrast requirements) |
@@ -209,18 +209,17 @@ Neither rhythm is enforced by Figma or named as a distinct scale in the Foundati
 
 ### Rules
 
-- **Text & icon contrast:** `text/primary` and `text/secondary` on `bg/primary`/`bg/secondary` must meet 4.5:1 (WCAG AA body text). `text/tertiary` may drop to 3:1 for de-emphasized metadata only, never primary content. `text/disabled` is exempt.
+- **Text & icon contrast:** `text/primary`, `text/secondary` and `text/tertiary` on `bg/primary`/`bg/secondary` must meet 4.5:1 (WCAG AA body text). `text/tertiary` is the lightest text that does (4.7:1 on white), so use nothing lighter for text people need to read. `text/disabled` is exempt.
 - **Inverse text** (`primary-inverse`, `secondary-inverse`) is only valid on `bg/primary-inverse` or bold/`-bolder` backgrounds — never on light backgrounds.
 - **Background tiers:** `-subtle` backgrounds (badges, pills, tags) don't need to pass contrast against the page themselves, but text/icon on top of them does. Bold/default backgrounds (buttons, banners) must pass 3:1 against the surrounding surface.
 - **Status colors:** always pair background, text/icon, and border from the *same* status family — never mix. Never convey status by color alone; pair with an icon or label.
 - **Accent colors:** the 9 decorative accents must never imply state or urgency. `accent-indigo` is reserved for primary/interactive use only.
-- **Keyboard focus:** one rule for every interactive component — the element keeps its normal colors and gains a 2px (`border-width/sm`) `border/accent-indigo` ring, 2px outside its edge, shown for keyboard focus only. Never signal focus by a color change alone. (Agreed 2026-10-05; applied to Button, Icon Button, Checkbox, Radio, Radio card, Chips/Tag, Toggle and Toggle card so far.)
+- **Keyboard focus:** one rule for every interactive component — the element keeps its normal colors and gains a 2px (`border-width/sm`) `border/accent-indigo` ring, 2px outside its edge, shown for keyboard focus only. Never signal focus by a color change alone. (Agreed 2026-10-05; applied to Button, Icon Button, Checkbox, Radio, Radio card, Chips/Tag, Toggle, Toggle card and the form fields so far. Fields keep their indigo border and add the ring.)
 
 ### Known gaps (documented, not yet fixed)
 
 | Pairing | Ratio | Needs | Note |
 |---|---|---|---|
-| `text/tertiary` on `bg/primary` | 2.52:1 | 3:1 | Under the relaxed bar for metadata/placeholder text |
 | `text/danger` on `bg/danger-subtle` | 3.09:1 | 4.5:1 | Same shortfall pattern on `text/warning` (1.93:1), `text/success` (1.87:1), `text/info` (3.01:1) — fine for short badge labels, fails if used for longer text |
 | White text on `bg/danger` (default button) | 3.76:1 | 4.5:1 | The **hover** state (`bg/danger-bolder`, 4.83:1) actually passes — the resting state is less accessible than hover, which is backwards |
 | White text on `bg/accent-indigo` (primary button) | 4.47:1 | 4.5:1 | Fails by a hair — borderline in practice |
@@ -237,6 +236,7 @@ Neither rhythm is enforced by Figma or named as a distinct scale in the Foundati
 | `bg/disabled-subtle` → `bg/disabled` | Label correction | Same pattern — no `-subtle` variant of this token actually exists |
 | Various orphaned variable rebinds | `text+icon/idle`, `bg/disabled`, `border/primary-subtle`, `text+icon/brand`→`accent-indigo`, `border/brand`→`accent-indigo` | These cards were bound to deleted variable IDs; rebound to the current live equivalents |
 | `Body/Large-meduum` → `Body/Large-medium` | Typo fix | Fixed at the source (the live text style name itself) |
+| `text + icon/tertiary` value | `neutral/400` (`#a3a3a3`) → `neutral/500` (`#737373`) | At 2.52:1 on white it failed contrast, yet it is used for field labels, table headers and other text people need to read. `neutral/500` is the lightest grey that passes 4.5:1 on white (4.7:1; about 4.5:1 on `bg/secondary`). Darkens every use of the token at once |
 | Added `border/idle` (`#14b8a6`, `teal/500`) | New token | The Idle badge used the text token `text + icon/idle` as its border; added so every status family has text, background and border tokens. Same teal, no visual change |
 | Added `border/urgent` (`#f97316`, `orange/500`) | New token | The "Revising" status badge had a raw `#bd4b00` border because the urgent family had text and background tokens but no border; added so the badge is fully token-driven, using the same orange as `text + icon/urgent` |
 | `Priority status` Medium fill | `bg/urgent-subtle` → `bg/warning-subtle` | Medium mixed an urgent background with warning text, breaking the same-family rule (§5); it is now warning throughout |
