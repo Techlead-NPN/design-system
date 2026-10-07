@@ -50,6 +50,8 @@ Only the fill changes on hover; border and label stay as they are at rest.
 | Outline | none | `border/primary` |
 | Ghost | none | none |
 
+**Shortcut hint** (`ShortcutHelper?`) — optional, after the label: a 1px line 16px high, then the hint (e.g. "⌘O") in `Support/Caption`, each `spacing/1` (4px) apart. Line and hint are tinted per `Accent` (see "Anatomy & tokens by Accent" below); when the button is disabled the hint is `text + icon/disabled`.
+
 **`IconButton/Icon Button`** — a square button holding one icon, `border-radii/rounded-6`. It has no `Accent`.
 
 | | `Size=24px` | `Size=32px` |
@@ -115,13 +117,14 @@ This component is the **desktop** pattern — a horizontal or vertical cluster o
 ## Known gaps
 
 - **`Inverted?=True` (72 variants) is not specified or coded yet.** These variants are the least consistent part of the component — several use a text token as a border or fill, or `bg/primary` as a text color — and were deliberately left untouched in Figma on 2026-10-05. They need their own rule table before a screen uses one.
-- **The shortcut hint (`ShortcutHelper?`) is not coded yet** — its text style is an unbound, off-scale style in Figma.
+- **The shortcut hint is hard to read on filled buttons.** On a Primary/Blue button the hint is `text + icon/accent-indigo-subtle` on `bg/accent-indigo`, and on Primary/Danger it is `text + icon/accent-blush` on `bg/danger`; both are low contrast. The colors are as documented and drawn; worth a design decision.
 
 - **Adaptive subtle overlay (16 instances) — resolved 2026-08-20:** a very low-opacity black (4%) used as both a barely-visible edge stroke on solid buttons and a hover-fill tint on outline/ghost buttons. Previously described here as "left unbound," but was actually bound to a variable named `transparent/light` that had since been **deleted from the file's active variable collection** — an orphaned reference invisible in Figma's own Variables panel (`getLocalVariablesAsync` no longer lists it) yet still resolvable via its old ID, so the 16 instances kept rendering correctly while silently pointing at nothing real. Discovered while auditing [Approve & Reject dialog](request-detail-approve-reject-dialog.md) and confirmed file-wide on this page. At the user's request, cleared all 16 dangling bindings and set the same `rgba(0,0,0,0.04)` as a static (unbound) color — visually identical, no more orphaned reference. The underlying gap remains real: our token system still has no equivalent "adaptive overlay" utility that would correctly invert to a light tint on `Inverted?=True` surfaces (this fix keeps the value fixed-black, matching the original's actual behavior, which also had no such adaptation — confirmed via a single-mode variable value, not a genuine light/dark pair). Worth considering as a future Foundation primitive if this pattern recurs.
 - **Icon internal vector stroke (24 instances, 1.1px):** same pattern seen in every other component so far — icon glyph strokes don't align to the `border-width` scale (only `xs`=1px exists). Left unbound.
 
 ## Changelog
 
+- **2026-10-07:** the shortcut hint's text switched from a foreign 13px style (`Base/Medium`) to the existing `Support/Caption` on all 144 variants, at the design owner's request, so it can be built from tokens. The hint is now coded (`shortcut` prop on `Button`).
 - **2026-10-05:** added the Spec section and normalised the component with the design owner, in Figma and in code. (1) **Focus:** all 18 normal `Button` Focus variants and all 6 `Icon Button` Focus variants now keep their resting colors and carry a `Focus ring` layer; previously focus was an indigo tint on some, a white inner ring on others, and a bare fill change on the rest. (2) **Disabled:** all 18 normal Disabled variants follow one rule per hierarchy. (3) Removed the static 4% black edge stroke from the normal filled variants (see the 2026-08-20 entry; it remains on inverted variants). (4) Renamed the variant property `Hierachy` → `Hierarchy`. (5) Corrected this doc's anatomy table, which described the Default-accent Primary button as a dark fill with inverse text; it is `bg/secondary` with `text + icon/secondary`. First coded version added in `components/src/button/`. (6) The `Focus ring` layer's width is bound to the new Foundations primitive `border-width/sm` (2px) and its radius to `border-radii/rounded-10`.
 
 - **2026-08-20:** cleaned up 16 dangling `transparent/light` variable bindings (see Known gaps for the full orphaned-variable story) — discovered while auditing a moved Request list component, traced back to this shared page. Fixed on the actual master components, so every Button instance across the file benefits. Verified visually before/after on the specific Danger/Medium/Default variant and the downstream [Approve & Reject dialog](request-detail-approve-reject-dialog.md) — pixel-identical, no rendering changes.

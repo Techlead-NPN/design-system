@@ -14,6 +14,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   prefixIcon?: ReactNode
   /** 14px icon after the label. */
   suffixIcon?: ReactNode
+  /** Keyboard shortcut hint shown after the label, e.g. "⌘O". */
+  shortcut?: ReactNode
 }
 
 // Spec: projects/portal2.0/components/button.md
@@ -42,6 +44,13 @@ const styles: Record<ButtonHierarchy, Record<ButtonAccent, string>> = {
   },
 }
 
+// Shortcut hint: a 16px separator line and the hint text, tinted per accent.
+const shortcutTone: Record<ButtonAccent, { line: string; text: string }> = {
+  default: { line: 'border-primary-subtle', text: 'text-tertiary' },
+  danger: { line: 'border-accent-blush', text: 'text-accent-blush' },
+  blue: { line: 'border-accent-sky', text: 'text-accent-indigo-subtle' },
+}
+
 // One disabled rule per hierarchy, whatever the accent.
 const disabled: Record<ButtonHierarchy, string> = {
   primary: 'disabled:bg-disabled disabled:inset-ring-0',
@@ -55,6 +64,7 @@ export function Button({
   size = 'md',
   prefixIcon,
   suffixIcon,
+  shortcut,
   className = '',
   type = 'button',
   children,
@@ -69,6 +79,12 @@ export function Button({
       {prefixIcon}
       {children}
       {suffixIcon}
+      {shortcut != null && (
+        <>
+          <span aria-hidden="true" className={`h-4 border-l ${shortcutTone[accent].line}`} />
+          <span className={`text-support-caption ${rest.disabled ? '' : shortcutTone[accent].text}`}>{shortcut}</span>
+        </>
+      )}
     </button>
   )
 }
