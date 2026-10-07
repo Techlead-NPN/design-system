@@ -67,7 +67,7 @@
     ]},
     { "id": "2042:4512", "name": "✅ Modal & Dialog", "components": [
       { "id": "2056:4803", "name": "Confirmation Dialog", "type": "COMPONENT_SET", "variants": ["Type=Default","Type=Destructive"] },
-      { "id": "2048:11206", "name": "Content Dialog", "type": "COMPONENT_SET", "variants": ["Size=Medium","Size=Large"] }
+      { "id": "2048:11206", "name": "Content Dialog", "type": "COMPONENT_SET", "variants": ["Size=Medium","Size=Small","Size=Large"] }
     ]},
     { "id": "83:1518", "name": "✅ Radio button, Radio Card & Checkbox", "components": [
       { "id": "107:782", "name": "Radio button", "type": "COMPONENT_SET", "variantCount": 30, "variants": ["Type={Selected,Not-Selected} × State={Disabled,Default,Error,Focus,Error Focus} × Label={None,Left,Right}"] },

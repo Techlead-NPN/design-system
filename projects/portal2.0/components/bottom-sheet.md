@@ -4,6 +4,26 @@ A panel that slides up from the bottom of the screen, used for confirmations and
 
 Figma: [`✅ Bottom sheet`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-07, then tidied with the design owner; Figma was updated to match. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/overlay/Dialog.tsx`](../../../components/src/overlay/Dialog.tsx) (`BottomSheet`; place it inside `<Overlay align="bottom">`).
+
+![Bottom sheet, Content and Confirmation](../assets/reference/bottom-sheet.png)
+
+A mobile-only panel, the full width of the screen (390px in the reference), attached to the bottom edge.
+
+| Part | Value |
+|---|---|
+| Sheet | fill `bg/primary`, top corners `border-radii/rounded-16`, bottom corners square, no border or shadow; `spacing/4` (16px) side padding, `spacing/3` (12px) between grabber, title and content |
+| Grabber | a 36×5px pill centered in a 16px-high strip at the top. OS chrome: in Figma it keeps Apple's system color; in code it is drawn with `bg/tertiary` |
+| Title | `Body/Medium-semibold`, `text + icon/primary`, centered |
+| Detail (`Type=Confirmation` only) | `Body/Small-medium`, `text + icon/tertiary`, centered, `spacing/2` (8px) below the title |
+| Content | fills the remaining height, scrolls if needed |
+| Footer | padding 12px top, 16px sides, 24px bottom; two Medium [Buttons](button.md) sharing the width, `spacing/3` (12px) apart, Outline first and Primary/Blue last |
+| Home indicator | OS chrome below the footer; not drawn in code |
+
 ## When to use each variant
 
 - **`Type=Confirmation`** — the platform-wide system dialog for a user to proceed or cancel an action (e.g. a delete confirmation). Use this whenever the pattern is "confirm or back out," not a general-purpose form/content sheet.
@@ -99,6 +119,7 @@ These are real mismatches between the usage rules above and what's currently bui
 
 ## Changelog
 
+- **2026-10-07:** added the Spec section. No Figma changes were needed. First coded version added.
 - Fixed 11 corner-radius, 2 stroke-weight, 28 spacing, and 1 color binding across both variants to reference Foundation primitives/semantic tokens instead of raw values.
 - Identified and correctly *excluded* the Grabber and Home Indicator from rebinding — they're OS chrome, not app design. This prompted the general "OS chrome" exception now documented in DESIGN.md §1.
 - Documented usage/behavior rules (variant selection, sizing, dismissal, button-count layout, destructive-vs-primary button variant) that weren't previously written down anywhere — sourced directly from the design owner, not inferred from the file.
