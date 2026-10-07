@@ -83,7 +83,7 @@
     ]},
     { "id": "83:1538", "name": "✅ Tab & Tab/Content", "components": [
       { "id": "30:5016", "name": "Tab", "type": "COMPONENT_SET", "variants": ["Default/More=F","Selected/More=F","Unselected/More=F"] },
-      { "id": "30:4959", "name": "Tab/Content", "type": "COMPONENT_SET", "variants": ["Default/24px","Selected/24px","Hover/24px","Default/32px","Selected/32px","Hover/32px"] }
+      { "id": "30:4959", "name": "Tab/Content", "type": "COMPONENT_SET", "variants": ["Default/28px","Selected/28px","Hover/28px","Default/32px","Selected/32px","Hover/32px","Focus/28px","Focus/32px"] }
     ]},
     { "id": "122:10180", "name": "✅ Table", "components": [
       { "id": "135:11648", "name": "Table Column header", "type": "COMPONENT_SET", "variants": ["Default","Hover","On Click"] },

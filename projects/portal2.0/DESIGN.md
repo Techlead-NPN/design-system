@@ -100,7 +100,7 @@ Ten "accent" colors exist: `sky`, `ocean`, `emerald`, `teal`, `sun`, `fuchsia`, 
 | `bg/urgent-bolder` | `#ffedd5` | Urgent priority badge, hover state |
 | `bg/accent-indigo` | `#6366f1` | **Primary interactive background** — primary buttons, selected radio/checkbox, toggle-on, calendar date selection, progress steps |
 | `bg/accent-indigo-subtlest` | `#eef2ff` | Lightest indigo tint — hover/focus/selected states on buttons and nav |
-| `bg/accent-indigo-subtler` | `#a5b4fc` | Stronger indigo tint than subtlest *(currently unused)* |
+| `bg/accent-indigo-subtler` | `#a5b4fc` | Stronger indigo tint than subtlest — the middle ring of the in-progress step indicator |
 | `bg/accent-indigo-bolder` | `#4f46e5` | Primary button hover background |
 | `bg/brand` | `#4450f7` | Legacy direct brand reference, outside the accent-indigo system *(currently unused)* |
 | `bg/accent-sky` | `#e0f2fe` | Decorative avatar/icon background tint |

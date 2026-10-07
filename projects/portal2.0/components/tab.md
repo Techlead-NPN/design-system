@@ -4,6 +4,42 @@
 
 Figma: [`✅ Tab & Tab/Content`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-07, then tidied with the design owner; Figma was updated to match. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/navigation/Tabs.tsx`](../../../components/src/navigation/Tabs.tsx) (`Tabs`, `Tab`).
+
+![Tab](../assets/reference/tab.png)
+
+**`Tab`** (one tab in a tab bar)
+
+| Part | Value |
+|---|---|
+| Tab | 40px high; the label area sits vertically centered in it; width hugs the label |
+| Selected underline | `border-width/xs` (1px), `border/accent-indigo`, along the bottom edge of the 40px tab, as wide as the tab |
+| Gap between tabs | `spacing/2` (8px) |
+| "More" tab | a normal unselected tab whose label is e.g. "+4 More" with a 16px `icon/chevron-down` after it |
+
+**`Tab/Content`** (the label area)
+
+![Tab/Content](../assets/reference/tab-content.png)
+
+| Part | Value |
+|---|---|
+| Height | `Size=28px`: 28px · `Size=32px`: 32px |
+| Padding | `spacing/2` (8px) left and right |
+| Gap between icon and label | `spacing/1` (4px) |
+| Label | `Body/Small-medium`, one line |
+| Icons (optional prefix, suffix) | 16px, same color as the label |
+
+| State | Fill | Label and icons |
+|---|---|---|
+| `Default` | none | `text + icon/secondary` |
+| `Hover` | `bg/primary-hover`, `border-radii/rounded-6` | `text + icon/secondary` |
+| `Selected` | none | `text + icon/accent-indigo` |
+| `Focus` | as `Default`, plus the system-wide focus ring around the label area (`border-radii/rounded-8`) | |
+
 ## Tab/Content
 
 | Part | Token(s) |
@@ -16,13 +52,13 @@ Figma: [`✅ Tab & Tab/Content`](https://www.figma.com/design/YFci6zgeYAQqX2OlHK
 | Prefix/suffix icon | Independently toggleable boolean slots, `INSTANCE_SWAP` |
 | Badge | Boolean-toggleable, embeds a [Badge](chips-tag-badge.md) instance |
 
-**Variants:** `State` = `Default` / `Selected` / `Hover`. `Size` = `24px` / `32px` (row height only — same padding/type scale either way).
+**Variants:** `State` = `Default` / `Selected` / `Hover` / `Focus`. `Size` = `28px` / `32px` (row height only — same padding/type scale either way).
 
 ## Tab
 
 | Part | Token(s) |
 |---|---|
-| Selected underline — color | `text + icon/accent-indigo` |
+| Selected underline — color | `border/accent-indigo` |
 | Selected underline — weight | `border-width/xs` (1px) |
 | Row gap | `spacing/2` (8px) |
 
@@ -42,6 +78,7 @@ Figma: [`✅ Tab & Tab/Content`](https://www.figma.com/design/YFci6zgeYAQqX2OlHK
 
 ## Changelog
 
+- **2026-10-07:** added the Spec section. In Figma: `Tab/Content`'s `Size=24px` renamed `Size=28px` (it measures 28px); the selected underline bound to `border/accent-indigo` instead of a text token; two `State=Focus` variants added with the system-wide focus ring. First coded version added.
 - **User fix (2026-08-18):** the selected-tab underline was 1.5px, which didn't match this system's only border-width primitive (`border-width/xs`, 1px). Changed to 1px and bound to `border-width/xs`, rather than leaving it unbound as a gap.
 - Bound padding (previously raw `8`/`4`, unbound) → `spacing/2`/`spacing/1`, and gap (previously raw `8`/`4`, unbound) → `spacing/2`/`spacing/1` — across all 3 `Tab` variants and all 6 `Tab/Content` variants (48 individual bindings total).
 - Verified colors and text styles were already fully and correctly bound on both components — no color-binding bugs found here.
