@@ -30,7 +30,7 @@ In this project:
 - Category prefix: `text + icon/`, `bg/`, `border/`, `overlay/`
 - Tier suffixes follow increasing emphasis: `-subtlest` → `-subtler` → `-subtle` → *(base)* → `-bolder`
 - State suffixes: `-hover`, `-inverse`, `-disabled`
-- `-A80` suffix = the same color at 80% opacity (used for toast/alert banners specifically, distinct from the solid `-subtle` variant used for badges/pills)
+- `-A80` suffix = the token's solid `-subtle` color at 80% opacity (used for toast/alert banners specifically, distinct from the solid `-subtle` variant used for badges/pills). The opacity is part of the token: never add opacity again on the layer
 
 ### 2.2 The accent color rule (important)
 
@@ -88,10 +88,10 @@ Ten "accent" colors exist: `sky`, `ocean`, `emerald`, `teal`, `sun`, `fuchsia`, 
 | `bg/warning-subtle` | `#fef3c7` | Subtle warning background |
 | `bg/success-subtle` | `#f0faea` | Subtle success background |
 | `bg/info-subtle` | `#dbeafe` | Subtle info background |
-| `bg/info-subtle-A80` | `#eff6ff` @80% | Semi-transparent info background — toasts, alert banners |
+| `bg/info-subtle-A80` | `#dbeafe` @80% | Semi-transparent info background — toasts, alert banners |
 | `bg/success-subtle-A80` | `#f0faea` @80% | Semi-transparent success background — toasts, alerts |
-| `bg/warning-subtle-A80` | `#fffbeb` @80% | Semi-transparent warning background — toasts, alerts |
-| `bg/danger-subtle-A80` | `#fef2f2` @80% | Semi-transparent danger background — toasts, alerts |
+| `bg/warning-subtle-A80` | `#fef3c7` @80% | Semi-transparent warning background — toasts, alerts |
+| `bg/danger-subtle-A80` | `#ffe2e2` @80% | Semi-transparent danger background — toasts, alerts |
 | `bg/danger` | `#ef4444` | Danger button, default state ⚠️ *see §5* |
 | `bg/danger-bolder` | `#dc2626` | Danger button, hover state |
 | `bg/info` | `#3b82f6` | Informational background *(currently unused)* |
@@ -236,6 +236,7 @@ Neither rhythm is enforced by Figma or named as a distinct scale in the Foundati
 | `bg/disabled-subtle` → `bg/disabled` | Label correction | Same pattern — no `-subtle` variant of this token actually exists |
 | Various orphaned variable rebinds | `text+icon/idle`, `bg/disabled`, `border/primary-subtle`, `text+icon/brand`→`accent-indigo`, `border/brand`→`accent-indigo` | These cards were bound to deleted variable IDs; rebound to the current live equivalents |
 | `Body/Large-meduum` → `Body/Large-medium` | Typo fix | Fixed at the source (the live text style name itself) |
+| `-A80` backgrounds | Each aliased a project-local raw token (`blue/opa-A80` etc., the `/50` step at 80%) → each now aliases the same Foundations primitive as its solid `-subtle` token, with 80% opacity set on the semantic token itself | Design owner's change (2026-10-07): removes the four local raw 80% tokens, so every semantic color points straight at Foundations. Info, warning and danger moved from the `/50` step to `/100`, so they are slightly stronger; success is unchanged (`green/50`). The extra 80% opacity that toast and alert layers also carried was removed, so the token is the only transparency |
 | `text + icon/tertiary` value | `neutral/400` (`#a3a3a3`) → `neutral/500` (`#737373`) | At 2.52:1 on white it failed contrast, yet it is used for field labels, table headers and other text people need to read. `neutral/500` is the lightest grey that passes 4.5:1 on white (4.7:1; about 4.5:1 on `bg/secondary`). Darkens every use of the token at once |
 | Added `border/idle` (`#14b8a6`, `teal/500`) | New token | The Idle badge used the text token `text + icon/idle` as its border; added so every status family has text, background and border tokens. Same teal, no visual change |
 | Added `border/urgent` (`#f97316`, `orange/500`) | New token | The "Revising" status badge had a raw `#bd4b00` border because the urgent family had text and background tokens but no border; added so the badge is fully token-driven, using the same orange as `text + icon/urgent` |

@@ -4,6 +4,39 @@ Desktop's equivalent of [Bottom sheet](bottom-sheet.md) — a centered, elevated
 
 Figma: [`✅ Pop up/ Modal/ Dialog`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-07, then tidied with the design owner; Figma was updated to match. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/overlay/Dialog.tsx`](../../../components/src/overlay/Dialog.tsx) (`ConfirmationDialog`, `ContentDialog`, and `Overlay` for the dimmed backdrop).
+
+Both dialogs share one panel: fill `bg/primary`, `border-radii/rounded-8`, effect `shadow-lg`, no border. They sit centered on the [Overlay](overlay.md) scrim (`overlay/overlay-default`).
+
+**Confirmation Dialog**
+
+![Confirmation Dialog](../assets/reference/dialog-confirmation.png)
+
+| Part | Value |
+|---|---|
+| Panel | 400px wide, padding `spacing/6` (24px), `spacing/4` (16px) between title block, optional content and buttons |
+| Title | `Body/Medium-semibold`, `text + icon/primary` |
+| Subparagraph (optional) | `Body/Small-regular`, `text + icon/primary`, `spacing/2` (8px) below the title |
+| Buttons | two Medium [Buttons](button.md) sharing the width equally, `spacing/4` (16px) apart: Outline/Default on the left, Primary on the right |
+| `Type=Default` | the right button is Primary/Blue |
+| `Type=Destructive` | the right button is Primary/Danger |
+
+**Content Dialog**
+
+![Content Dialog, three sizes](../assets/reference/dialog-content.png)
+
+| Part | Value |
+|---|---|
+| Width | `Size=Small` 400px · `Size=Medium` 600px · `Size=Large` 780px |
+| Header | padding 24px top, 24px sides, 12px bottom; title in `Body/Medium-semibold`, `text + icon/primary`; a 24px Ghost [Icon Button](button.md) with `icon/x` at the right, `spacing/4` (16px) from the title |
+| Content | `spacing/6` (24px) side padding on every size; scrolls when it is taller than the space available |
+| Footer | padding 16px top, 24px sides, 24px to the dialog's bottom edge; Medium buttons `spacing/3` (12px) apart, Outline first and Primary/Blue last |
+| Footer buttons | Small: the buttons share the full width. Medium and Large: right-aligned, each at least 120px wide |
+
 ## Confirmation Dialog
 
 `Title` → `Subparagraph` → `Slot` (arbitrary content area) → up to 3 CTA buttons.
@@ -51,6 +84,7 @@ Figma: [`✅ Pop up/ Modal/ Dialog`](https://www.figma.com/design/YFci6zgeYAQqX2
 
 ## Changelog
 
+- **2026-10-07:** added the Spec section and tidied with the design owner. In Figma: the Large Content Dialog's side padding changed from 16px to `spacing/6` (24px) to match Small and Medium; a leftover `border/primary` stroke was removed from the Destructive dialog's red button. Corrected this doc and the snapshot: Content Dialog has three sizes (Small, Medium, Large), not two. First coded versions added.
 - Fixed a **local instance override** on Confirmation Dialog's secondary/outline CTA button — its border was overridden to a stray `transparent/light` token (near-invisible, ~4% black) instead of inheriting the main [Button](button.md) component's documented `border/primary`. Rebound to match.
 - **Retroactive fix to a shared atom:** found the `.Slot Inner` component (defined on the [Content Area](content-area.md) page, reused here for both dialog types' "Slot" placeholder) had never had its own dashed-border stroke-width bound — fixed on the main component (`border-width/xs`), which automatically corrected every instance across both this page and Content Area itself. Missed on the original Content Area audit; caught here because this page reuses the same atom.
 - Verified colors, text styles, padding, gap, and corner-radius were otherwise already fully and correctly bound on both dialog types.

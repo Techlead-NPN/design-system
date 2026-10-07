@@ -4,6 +4,59 @@ Three status/feedback components sharing one Figma page, all keyed by the same f
 
 Figma: [`✅ Toast & Alert message`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-07, then tidied with the design owner; Figma was updated to match. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/feedback/Toast.tsx`](../../../components/src/feedback/Toast.tsx) (`Toast`, `Alert`, `Callout`).
+
+All three use the same four statuses. Each status has one icon (16px) and one color family:
+
+| Status | Icon | Icon color | `-A80` background | Border |
+|---|---|---|---|---|
+| Info | `icon/info-circle` | `text + icon/info` | `bg/info-subtle-A80` | `border/info` |
+| Success | `icon/circle-check` | `text + icon/success` | `bg/success-subtle-A80` | `border/success` |
+| Warning | `icon/alert-triangle` | `text + icon/warning` | `bg/warning-subtle-A80` | `border/warning` |
+| Danger / Error | `icon/circle-x` | `text + icon/danger` | `bg/danger-subtle-A80` | `border/danger` |
+
+The `-A80` tokens are already 80% transparent. Do not add opacity on the layer as well.
+
+**Toast notification** — floats over the page.
+
+![Toast notification](../assets/reference/toast.png)
+
+| Part | Value |
+|---|---|
+| Box | 450px wide, padding `spacing/2` (8px), `border-radii/rounded-6`, fill the status's `-A80` background, no border |
+| Effect | `shadow-lg`, the same style as menus, dialogs and the calendar card |
+| Left | status icon, then `spacing/1` (4px), then title and description `spacing/1` (4px) apart |
+| Title | `Body/Small-medium`, `text + icon/secondary` |
+| Description (optional) | `Support/Caption`, `text + icon/tertiary` |
+| Right, `spacing/4` (16px) from the text | optional Small Ghost [Button](button.md), then a 24px close button with `icon/x` |
+
+**Alert message** — an inline banner.
+
+![Alert message, Full and Short](../assets/reference/alert.png)
+
+| Part | Value |
+|---|---|
+| Box | padding `spacing/2` (8px), `spacing/2` (8px) between parts, `border-radii/rounded-6`, fill the status's `-A80` background, no border or shadow |
+| Text | `Body/Small-regular`, in the status's **text** color (not neutral) |
+| Action (optional) | Small Primary/Default [Button](button.md) |
+| `Type=Full` | one row, 40px high: icon, text, action at the right edge |
+| `Type=Short` | the action drops to a second row, right-aligned (for narrow containers; 327px in the reference) |
+
+**Callout** — a boxed note.
+
+![Callout](../assets/reference/callout.png)
+
+| Part | Value |
+|---|---|
+| Box | padding `spacing/3` (12px), `spacing/1` (4px) between rows, `border-radii/rounded-8`, fill `bg/secondary`, `border-width/xs` border in the status's border color |
+| Title row | status icon, `spacing/2` (8px), title in `Body/Small-medium`, `text + icon/primary`, then a 24px Ghost close [Icon Button](button.md) |
+| Body (optional) | `Body/Small-regular`, `text + icon/tertiary`, indented 24px so it lines up with the title |
+| Action (optional) | Small Ghost Button, right-aligned on its own row |
+
 ## Toast notification
 
 450×56px (base, grows with content). A temporary popup that appears in response to a user action or system event and auto-dismisses or is manually closed.
@@ -66,6 +119,7 @@ Figma: [`✅ Toast & Alert message`](https://www.figma.com/design/YFci6zgeYAQqX2
 
 ## Known gaps (component doesn't yet match spec, or naming is inconsistent)
 
+
 - **Inconsistent naming for the same 4-state concept across all three components**: variant property is `Type` (Toast, Alert) vs `State` (Callout); the error/danger option is `Error` (Toast, Callout) vs `Danger` (Alert). Flagging rather than renaming, since renaming a variant option or property is a structural change that would need to be re-confirmed on real usages first.
 - **Toast's `Type=Info` fill uses `bg/info-subtle` (opaque) while `Success`/`Error`/`Warning` all use their `-subtle-A80` (translucent) equivalents.** Might be an intentional exception or might be a stray pick — flagging, not changing the fill.
 - **Toast's remote `Close` button and all four components' remote status icons are external icon/icon-button library components** (`remote: true`, no local main component in this file) — their internal styling (e.g. a foreign `Text/Secondary` color token seen on the Close button) belongs to that external library and is out of scope to rebind here, same precedent as [Table](table.md)'s `IconButton/Floating Icon Button`. Visually they already render correctly against this system's palette; only worth an instance-level override if that changes.
@@ -73,6 +127,7 @@ Figma: [`✅ Toast & Alert message`](https://www.figma.com/design/YFci6zgeYAQqX2
 
 ## Changelog
 
+- **2026-10-07:** added the Spec section and tidied with the design owner. In Figma: the extra 80% paint opacity was removed from 3 toasts and all 8 alert variants, which had stacked on top of the already-80% `-A80` tokens (rendering at about 64%); the Info toast was switched from `bg/info-subtle` to `bg/info-subtle-A80` so all four match. The `-A80` tokens themselves were re-pointed by the design owner (see `DESIGN.md` changelog), so info, warning and danger backgrounds are slightly stronger. The toast's custom effect (a background blur plus three drop shadows) was replaced with the `shadow-lg` effect style on all four variants. First coded versions added.
 - Bound previously-unbound `itemSpacing`/padding on inert single-child "Icon" wrapper frames (10px → `spacing/2,5`) across all 12 variants (Toast ×4, Alert ×4, Callout ×4), matching the "bind inert gaps for consistency" precedent from [Toggle](toggle.md)/[Divider](divider.md).
 - Toast: bound `CTA` frame's `itemSpacing`/padding (0 → `spacing/0`) — a real, non-inert gap between the CTA button and close button, previously unbound.
 - Alert message: bound the `text` wrapper's `itemSpacing` (8px → `spacing/2`), and the embedded `Button/Button`'s `strokeWeight` (1px → `border-width/xs`, was unbound despite the Button component itself already being token-bound on its own page — an instance-level override had reset it).
