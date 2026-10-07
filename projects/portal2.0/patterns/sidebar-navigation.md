@@ -22,7 +22,7 @@ Measured from the composed `Sidebar Navigation` instance (`Type=Expand`) on 2026
 |---|---|---|
 | 1 | [Workspace menu](../components/nav-workspace-menu.md) | 28px row: 24px logo, `spacing/2` (8px) gap, "E-Approval" in `Body/Small-bold`, `text + icon/primary` |
 | | *gap* | `spacing/2` (8px) |
-| 2 | Search row | 28px row, `rounded-4`, padding 4px (2px right): 16px `icon/search`, `spacing/2` gap, "Search" in `Body/Small-medium`, `text + icon/secondary`; the [⌘K chip](../components/nav-shortcut-container.md) at the right edge (16px high, `bg/secondary`, `border/primary`, `rounded-4`) |
+| 2 | Search row | 28px row, `rounded-4`, padding 4px (2px right): 16px `icon/search`, `spacing/2` gap, "Search" in `Body/Small-medium`, `text + icon/secondary`; the [⌘K chip](../components/nav-shortcut-container.md) at the right edge (16px high, `bg/secondary`, `border/primary`, `rounded-4`, label in `Support/Caption`, `text + icon/tertiary`) |
 | | *gap* | `spacing/3` (12px) |
 | 3 | Favorites | heading "Favorites" (`Body/Mini-bold`, `text + icon/primary`, no chevron), then [L1 items](../components/nav-item-l1.md) `spacing/0,5` (2px) apart |
 | 4 | [Divider](../components/divider.md) | 1px, `border/primary-subtle`, with `spacing/3` (12px) above and below |
