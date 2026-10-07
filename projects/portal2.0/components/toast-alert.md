@@ -19,7 +19,7 @@ All three use the same four statuses. Each status has one icon (16px) and one co
 | Warning | `icon/alert-triangle` | `text + icon/warning` | `bg/warning-subtle-A80` | `border/warning` |
 | Danger / Error | `icon/circle-x` | `text + icon/danger` | `bg/danger-subtle-A80` | `border/danger` |
 
-The `-A80` tokens are already 80% transparent. Do not add opacity on the layer as well.
+The `-A80` tokens are 80% transparent. In Figma the fill of a toast or alert shows "80%": that is the token's own opacity, so leave it as it is.
 
 **Toast notification** — floats over the page.
 
@@ -127,7 +127,7 @@ The `-A80` tokens are already 80% transparent. Do not add opacity on the layer a
 
 ## Changelog
 
-- **2026-10-07:** added the Spec section and tidied with the design owner. In Figma: the extra 80% paint opacity was removed from 3 toasts and all 8 alert variants, which had stacked on top of the already-80% `-A80` tokens (rendering at about 64%); the Info toast was switched from `bg/info-subtle` to `bg/info-subtle-A80` so all four match. The `-A80` tokens themselves were re-pointed by the design owner (see `DESIGN.md` changelog), so info, warning and danger backgrounds are slightly stronger. The toast's custom effect (a background blur plus three drop shadows) was replaced with the `shadow-lg` effect style on all four variants. First coded versions added.
+- **2026-10-07:** added the Spec section and tidied with the design owner. In Figma: the Info toast was switched from `bg/info-subtle` to `bg/info-subtle-A80` so all four match. (An earlier version of this entry said an extra 80% layer opacity had been removed. That was a misreading: the 80% shown on each fill is the token's own opacity. The fills were briefly forced to 100% and then restored the same day; nothing else changed.) The `-A80` tokens themselves were re-pointed by the design owner (see `DESIGN.md` changelog), so info, warning and danger backgrounds are slightly stronger. The toast's custom effect (a background blur plus three drop shadows) was replaced with the `shadow-lg` effect style on all four variants. First coded versions added.
 - Bound previously-unbound `itemSpacing`/padding on inert single-child "Icon" wrapper frames (10px → `spacing/2,5`) across all 12 variants (Toast ×4, Alert ×4, Callout ×4), matching the "bind inert gaps for consistency" precedent from [Toggle](toggle.md)/[Divider](divider.md).
 - Toast: bound `CTA` frame's `itemSpacing`/padding (0 → `spacing/0`) — a real, non-inert gap between the CTA button and close button, previously unbound.
 - Alert message: bound the `text` wrapper's `itemSpacing` (8px → `spacing/2`), and the embedded `Button/Button`'s `strokeWeight` (1px → `border-width/xs`, was unbound despite the Button component itself already being token-bound on its own page — an instance-level override had reset it).

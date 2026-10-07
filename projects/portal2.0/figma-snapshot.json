@@ -91,7 +91,7 @@
       { "id": "140:3498", "name": "Field first column", "type": "COMPONENT_SET", "variants": ["Default/Empty=F","Default/Empty=T","Hover/Empty=F","Selected/Empty=F","Hover/Empty=T","Selected/Empty=T","Loading/Empty=F","Loading/Empty=T"] },
       { "id": "149:4005", "name": "column", "type": "COMPONENT_SET", "variants": ["Default/Empty=F","Default/Empty=T","Hover/Empty=F","Selected/Empty=F","Hover/Empty=T","Selected/Empty=T","Loading/Empty=F","Loading/Empty=T"] },
       { "id": "142:2627", "name": "Simple text (no chip)", "type": "COMPONENT_SET", "variants": ["Default","Read-Only","Loading"] },
-      { "id": "142:2634", "name": "Simple text underlined (no chip)", "type": "COMPONENT_SET", "variants": ["Default","Read-Only","hover","Loading"] }
+      { "id": "142:2634", "name": "Simple text underlined (no chip)", "type": "COMPONENT_SET", "variants": ["Default","Read-Only","Hover","Loading"] }
     ]},
     { "id": "58:1499", "name": "✅ Text Input", "components": [
       { "id": "60:7071", "name": "Input/Text input", "type": "COMPONENT_SET", "variants": ["Placeholder","Filled","Focus","Error Filled","Error Placeholder","Disabled Placeholder","Disabled Filled"] },

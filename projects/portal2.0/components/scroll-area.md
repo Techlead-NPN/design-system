@@ -4,6 +4,20 @@ The scrollbar thumb used inside custom-scrolled containers (panels, dropdowns, m
 
 Figma: [`✅ Scroll Area`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-07. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/layout/ScrollArea.tsx`](../../../components/src/layout/ScrollArea.tsx).
+
+| Part | Value |
+|---|---|
+| Scrollbar thumb | 6px thick, `border-radii/rounded-4`, filled with `border/primary-subtle` |
+| Track | none (transparent) |
+| `Type` | `Vertical` (6px wide) or `Horizontal` (6px high) |
+
+In code the browser draws the scrollbar, so its exact thickness varies by browser; the color and the missing track match.
+
 ## Anatomy
 
 | Part | Token(s) |
@@ -28,5 +42,6 @@ None found — fill and corner-radius were already correctly bound on both varia
 
 ## Changelog
 
+- **2026-10-07:** added the Spec section. No Figma changes were needed. First coded version added.
 - Audited fill and corner-radius bindings on both variants — already fully correct, no fixes needed.
 - Documented anatomy and behavior (in particular, that this is the thumb only, and that its length is meant to be dynamic in real usage) — not previously written down.

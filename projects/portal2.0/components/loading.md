@@ -4,6 +4,27 @@ A skeleton-loading placeholder bar with a two-phase shimmer gradient, used to in
 
 Figma: [`✅ Loading`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-07. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/layout/Loading.tsx`](../../../components/src/layout/Loading.tsx).
+
+![Loading bar](../assets/reference/loading.png)
+
+| Part | Value |
+|---|---|
+| Bar | 16px high, `border-radii/rounded-4`; its width is set by where it is used (96px in the component) |
+| Fill | a left-to-right gradient from a paint style, not a color token (see table) |
+| Animation | the bar fades between `Phase=1` and `Phase=2`, which are the same gradient reversed |
+
+| `Light Mode?` | Use on | `Phase=1` (style) | `Phase=2` (style) |
+|---|---|---|---|
+| `True` | light surfaces | black 6% → black 2% (`Loading/light`) | black 2% → black 6% (`Loading/light-2`) |
+| `False` | dark surfaces | white 10% → white 3% (`Loading/dark`) | white 3% → white 10% (`Loading/dark-2`) |
+
+In code these four gradients are the utilities `bg-loading-light`, `bg-loading-light-2`, `bg-loading-dark` and `bg-loading-dark-2`, defined in the project's `tokens.css`.
+
 ## Anatomy
 
 | Part | Token(s) |
@@ -33,6 +54,7 @@ Figma: [`✅ Loading`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page
 
 ## Changelog
 
+- **2026-10-07:** added the Spec section. No Figma changes were needed. First coded version added, with the four `Loading/*` paint styles mirrored as utilities in `tokens.css`.
 - Bound corner radius (previously raw `4`, unbound) to `border-radii/rounded-4`, and horizontal padding + gap (previously raw `4`, unbound) to `spacing/1`, across all 4 variants.
 - Investigated the gradient fills initially flagged as "unbound raw color" — confirmed on closer inspection these correctly reference 4 dedicated local **paint styles** (`Loading/light`, `light-2`, `dark`, `dark-2`) via `fillStyleId`, a different (and in this case correct) Figma binding mechanism from the color *variables* used elsewhere in this system. Not a bug.
 - Verified visually before/after — no rendering changes.
