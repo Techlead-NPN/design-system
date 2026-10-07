@@ -1,0 +1,56 @@
+# Builds the component Storybook and publishes it to GitHub Pages.
+# Live at https://techlead-npn.github.io/design-system/
+name: Publish Storybook
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'components/**'
+      - 'foundations/tokens/**'
+      - 'projects/**/tokens.css'
+      - '.github/workflows/storybook.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deployment finish; only the newest queued one waits behind it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: components/package-lock.json
+      - name: Install
+        working-directory: components
+        run: npm ci
+      - name: Typecheck
+        working-directory: components
+        run: npm run typecheck
+      - name: Build Storybook
+        working-directory: components
+        run: npm run build-storybook
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: components/storybook-static
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
