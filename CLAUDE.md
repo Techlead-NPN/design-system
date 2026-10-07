@@ -11,6 +11,12 @@ Before writing any UI code, read these two files, in order, and follow them:
 
 Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/foundations.css` and `projects/<project>/tokens.css`; never invent a color, spacing or type value.
 
+## When adding or changing a coded component
+
+- Code lives in `components/src/<family>/`; export it from `components/src/index.ts`.
+- Add or update its story in the same folder (`*.stories.tsx`) so it appears in Storybook.
+- Check with `npm run typecheck` and `npm run build-storybook` in `components/`.
+
 ## When editing the docs
 
 - The `.css` token files are the source of truth for values; keep the `.md` tables in sync with them.
