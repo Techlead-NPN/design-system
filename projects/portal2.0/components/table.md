@@ -4,12 +4,62 @@ Six components that assemble into a data table: two header cells (**Table Column
 
 Figma: [`✅ Table`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-07. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/table/Table.tsx`](../../../components/src/table/Table.tsx) (`Table`, `TableRow`, `TableHeaderCell`, `TableCell`, `TableSelectCell`). For a full worked table with column widths, see [Request list / Table row](request-list-table-row.md).
+
+![Table header cell states](../assets/reference/table-header.png)
+![Table body cells: default, hover, selected, loading](../assets/reference/table-cells.png)
+
+**Every cell**
+
+| Part | Value |
+|---|---|
+| Height | 36px, header and body alike |
+| Border | **bottom only** — `border/primary-subtle`, `border-width/xs`. No vertical lines between columns |
+| Text | one line, never wraps |
+
+**Header cell** (`Table Column header`)
+
+| Part | Value |
+|---|---|
+| Padding | `spacing/2` (8px) left and right |
+| Icon (optional) | 14px, `text + icon/tertiary`, `spacing/1` (4px) before the label |
+| Label | `Body/Small-medium`, `text + icon/tertiary` |
+| Sort button (optional) | 24px Ghost [Icon Button](button.md) at the right edge, icon `text + icon/tertiary` |
+
+| `State` | Fill |
+|---|---|
+| `Default` | `bg/primary` |
+| `Hover` | `bg/secondary` |
+| `On Click` (its menu is open, or it is the active sort column) | `bg/accent-indigo-subtlest` |
+
+**Body cell** (`column`, `Field first column`)
+
+| Part | Value |
+|---|---|
+| Padding | `spacing/2` (8px) left, `spacing/1` (4px) right |
+| Value | `Body/Small-regular`, `text + icon/primary`; read-only values `text + icon/secondary` |
+| Empty value (`Empty?=True`) | a placeholder label in `Body/Small-medium`, `text + icon/tertiary` (e.g. "Set Name") |
+| Selection checkbox (first column) | 14px [Checkbox](radio-checkbox-card.md) in a 22px box, 4px from the row's left edge |
+
+| `State` | Fill of every cell in the row |
+|---|---|
+| `Default` | `bg/primary` |
+| `Hover` | `bg/primary-hover` |
+| `Selected` | `bg/accent-indigo-subtlest` |
+| `Loading` | `bg/primary`, with a [Loading](loading.md) bar (16px high) in place of the value |
+
+**Underlined text cell** (`Simple text underlined (no chip)`): the value sits on a 1px underline in `border/primary`, which darkens to `text + icon/secondary` on `Hover`. It reads as a link.
+
 ## Shared anatomy
 
 | Part | Token(s) |
 |---|---|
 | Cell fill | `bg/primary` (default/loading), `bg/primary-hover` (hover) |
-| Cell border (right + bottom, forming the grid) | `border/primary-subtle`, `border-width/xs` |
+| Cell border (bottom only) | `border/primary-subtle`, `border-width/xs` |
 | Header label | `text + icon/tertiary`, `Body/Small-medium` |
 | Cell value | `text + icon/primary`, `Body/Small-regular` |
 | Read-only/secondary cell value | `text + icon/secondary` |
@@ -43,7 +93,6 @@ Compact text-only cells for denser tables. The underlined variant reads as a lin
 
 ## Known gaps (component doesn't yet match spec, or naming is inconsistent)
 
-- **`Simple text underlined (no chip)`'s hover variant is named lowercase `hover`**, breaking convention with every other `State` property in this system (`Hover`, capitalized). Flagging rather than renaming — same reasoning as Steps' analogous `state` property finding: a global rename, not done without confirmation.
 - **The header's select-all checkbox can now show a true indeterminate state** (`Type=Half`, added to Checkbox button 2026-08-18) for "some but not all rows selected" — not yet wired up to any real selection-count logic in the static Figma component, since that's an interaction behavior, not a design-time property.
 - **This page embeds instances of a `remote` (external library) `IconButton/Floating Icon Button` component** (a row-action icon button, in `Field first column` and `column`'s hover states) — it isn't part of this file at all, so there's no main component here to fix, and it has no dedicated page of its own anywhere in this system. Fixed its bindings as **instance-level overrides** on the 3 instances used within Table (see Changelog) rather than at the source, since the source is a library file this project doesn't own/edit. Worth a decision on whether this component should be adopted into this design system properly (with its own page) rather than staying an external dependency.
 - Several skeleton-placeholder wrappers ("Placeholder", "Loading") have 3px top/bottom padding that doesn't cleanly map to the `spacing/*` scale — left unbound, same pattern as Divider's off-scale values.
@@ -51,6 +100,7 @@ Compact text-only cells for denser tables. The underlined variant reads as a lin
 
 ## Changelog
 
+- **2026-10-07:** added the Spec section. In Figma: the underlined text cell's `State=hover` renamed `State=Hover`. Corrected this doc: cells have a bottom border only, not a right-and-bottom grid. First coded version added.
 - **User-directed consolidation (2026-08-18):** relinked all 9 embedded row-selection checkboxes (`Table First Column header` ×1, `Field first column` ×8) from a separate "bare" checkbox component (previously on the Toggle & Checkbox page, no longer used here) to [Checkbox button](radio-checkbox-card.md) — the canonical checkbox for this system. Resized each instance to 14×14px (Checkbox button's native size is 24×24) to preserve existing row spacing. See `radio-checkbox-card.md` for the full consolidation writeup.
 - This page had by far the heaviest foreign-token contamination found in this audit so far — roughly a dozen distinct stray tokens (`Text/Primary`, `Text/Secondary`, `Text/Tertiary`, `Text/Light`, `Background/Primary`, `Borders/Stronger`, `Base/Medium` text style, plus `bg/accent-stone` misused as a neutral hover fill) spread across all 6 components. All rebound to this system's real equivalents (`text + icon/primary`/`secondary`/`tertiary`, `bg/primary`, `border/primary`, `Body/Small-medium`, `bg/primary-hover`) — same "Twenty library leftover" pattern seen throughout this audit, just far more of it in one place.
 - Bound padding, gap, corner-radius, and border-width (previously raw, unbound) to `spacing/1`/`spacing/2`/`spacing/2,5`, `border-radii/rounded-4`, and `border-width/xs` — 179 individual bindings across all 6 components.
