@@ -9,7 +9,9 @@ foundations/              shared by every project
 ├── tokens/               primitive values, as code (foundations.css)
 └── workflow/             audit process and drift-check instructions
 components/               coded React + Tailwind components, shared by every project
-└── src/                  one folder per component family (button/, selection/, badge/, avatar/, divider/, toggle/, tooltip/, field/, menu/, calendar/, navigation/, feedback/, overlay/, table/, layout/)
+├── .storybook/           Storybook setup (uses the Portal 2.0 tokens)
+└── src/                  one folder per component family, each with its stories
+                           (button/, selection/, badge/, avatar/, divider/, toggle/, tooltip/, field/, menu/, calendar/, navigation/, feedback/, overlay/, table/, layout/)
 projects/
 └── portal2.0/            one folder per project
     ├── DESIGN.md         semantic tokens, text styles, accessibility, changelog
@@ -29,6 +31,22 @@ projects/
 ## Building UI from these docs
 
 Start at [`foundations/BUILD_GUIDE.md`](foundations/BUILD_GUIDE.md), then the project's own `BUILD_GUIDE.md`. The `.css` token files hold the values; the `.md` docs explain how to use them.
+
+## Viewing the coded components
+
+The coded components have a Storybook: a browsable catalogue with every component, its variants and states.
+
+**Live:** https://techlead-npn.github.io/design-system/ — rebuilt and published automatically whenever a change to the components or tokens is merged into `main` (see `.github/workflows/storybook.yml`).
+
+To run it on your own machine:
+
+```bash
+cd components
+npm install
+npm run storybook
+```
+
+It opens at http://localhost:6006. Each component family has an "All variants" style page and, where useful, a Playground with controls. Storybook renders with the Portal 2.0 tokens; to preview another project, change the last token import in `components/.storybook/storybook.css`.
 
 ## Adding a project
 
