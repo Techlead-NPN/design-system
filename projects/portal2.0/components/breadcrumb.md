@@ -4,6 +4,28 @@ Navigational trail showing the user's current location in the app hierarchy, fro
 
 Figma: [`✅ Breadrcumb`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) page. Tokens referenced below are defined in [`../DESIGN.md`](../DESIGN.md).
 
+## Spec
+
+Measured from Figma on 2026-10-07, then tidied with the design owner; Figma was updated to match. Where this section and the sections below disagree, this section is right.
+
+Coded in [`components/src/navigation/Breadcrumb.tsx`](../../../components/src/navigation/Breadcrumb.tsx).
+
+![Breadcrumb, 2 to 4 levels](../assets/reference/breadcrumb.png)
+
+| Part | Value |
+|---|---|
+| Row | 24px high, everything on one line, `spacing/1` (4px) between every part |
+| Leading icon (optional) | 16px, `text + icon/tertiary` (`icon/home` by default) |
+| Level | `Body/Small-regular` |
+| Separator | a "/" in `Body/Small-regular`, placed before every level except the first, in the same color as the level that follows it |
+
+| Level | Color |
+|---|---|
+| Earlier levels (`state=Inactive`), which are links | `text + icon/tertiary` |
+| The current page (`state=Active`), always last, not a link | `text + icon/primary` |
+
+Keyboard focus on a link uses the system-wide focus ring. There is no hover state in Figma.
+
 ## Anatomy
 
 `[icon]  Level / Level / Level / Level` — leading icon, then one `.breadcrumb step` per level, separated by `/`.
@@ -35,6 +57,7 @@ None of the behavior rules above have a matching Figma variant yet — only the 
 
 ## Changelog
 
+- **2026-10-07:** added the Spec section. No Figma changes were needed. First coded version added; the `…` collapse for long trails and the mobile back-chevron pattern described under Behavior rules are not built in Figma and not coded.
 - Fixed 5 unbound white-fill color bindings (2 at the shared step-state components, cascading to all nested instances; 3 on the leading icon) to `bg/primary`.
 - **Replaced the leading icon** — it was a bell (notifications icon), which made no sense as a default breadcrumb-root icon and was confirmed to be an arbitrary placeholder, not intentional. Swapped to Tabler's outline `icon/home` (matching the file's existing outline-icon style over the alternate filled version), resized to match the original 16×16 slot, and colored to `text + icon/tertiary` to match the rest of the ancestor styling. Applied across all 3 Level variants.
 - Left the leading icon's internal vector stroke weight (1.1px) unbound — no exact Foundation match, same pattern as prior components.
