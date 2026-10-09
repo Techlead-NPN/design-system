@@ -13,7 +13,7 @@ Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/found
 
 ## When adding or changing a coded component
 
-- Code lives in `components/src/<family>/`; export it from `components/src/index.ts`.
+- Code lives in `components/src/<family>/`; export it from `components/src/index.ts` with a `DS` prefix (`export { Button as DSButton }`), types included. Files, stories and docs keep the plain name.
 - Add or update its story in the same folder (`*.stories.tsx`) so it appears in Storybook.
 - Check with `npm run typecheck` and `npm run build-storybook` in `components/`.
 
