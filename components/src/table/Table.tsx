@@ -2,7 +2,7 @@ import type { ComponentProps, ReactNode } from 'react'
 import { IconButton } from '../button/IconButton'
 
 // Spec: projects/portal2.0/components/table.md
-// Rows are 36px high; every cell has a bottom border only.
+// Row height is the project token `--table-row-height` (36px in Portal 2.0); every cell has a bottom border only.
 
 export function Table({ className = '', ...rest }: ComponentProps<'table'>) {
   return <table className={`w-full border-separate border-spacing-0 text-left ${className}`} {...rest} />
@@ -36,7 +36,7 @@ export interface TableHeaderCellProps extends ComponentProps<'th'> {
 
 export function TableHeaderCell({ icon, onSort, active = false, className = '', children, ...rest }: TableHeaderCellProps) {
   return (
-    <th scope="col" className={`h-9 border-b border-primary-subtle px-2 py-0 hover:bg-secondary ${active ? 'bg-accent-indigo-subtlest' : 'bg-primary'} ${className}`} {...rest}>
+    <th scope="col" className={`h-table-row border-b border-primary-subtle px-2 py-0 hover:bg-secondary ${active ? 'bg-accent-indigo-subtlest' : 'bg-primary'} ${className}`} {...rest}>
       <div className="flex items-center justify-between">
         <span className="flex min-w-0 items-center gap-1 text-body-small-medium text-tertiary">
           {icon}
@@ -56,14 +56,14 @@ export interface TableCellProps extends ComponentProps<'td'> {
 const cellFill = 'bg-primary group-hover/row:bg-primary-hover group-data-selected/row:bg-accent-indigo-subtlest'
 
 export function TableCell({ readOnly = false, className = '', ...rest }: TableCellProps) {
-  return <td className={`h-9 border-b border-primary-subtle py-0 pl-2 pr-1 text-body-small-regular ${readOnly ? 'text-secondary' : 'text-primary'} ${cellFill} ${className}`} {...rest} />
+  return <td className={`h-table-row border-b border-primary-subtle py-0 pl-2 pr-1 text-body-small-regular ${readOnly ? 'text-secondary' : 'text-primary'} ${cellFill} ${className}`} {...rest} />
 }
 
 /** The narrow leading cell that holds the row-selection checkbox (use `<Checkbox size={14} />`). */
 export function TableSelectCell({ header = false, className = '', children, ...rest }: ComponentProps<'td'> & { header?: boolean }) {
   const Tag = header ? 'th' : 'td'
   return (
-    <Tag className={`h-9 w-[26px] border-b border-primary-subtle pl-1 ${header ? 'bg-primary' : cellFill} ${className}`} {...rest}>
+    <Tag className={`h-table-row w-[26px] border-b border-primary-subtle pl-1 ${header ? 'bg-primary' : cellFill} ${className}`} {...rest}>
       <span className="flex size-[22px] items-center justify-center">{children}</span>
     </Tag>
   )

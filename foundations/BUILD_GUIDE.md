@@ -39,6 +39,7 @@ Docs refer to tokens by their design name. Convert them like this:
 | `border-width/sm` | `border-2`, `outline-2` (2px) | focus rings |
 | `shadow-sm/md/lg/xl` | same name | `shadow-md` |
 | `breakpoint/sm/md/lg` | `sm:` `md:` `lg:` prefixes (390 / 768 / 1280px, min-width) | `lg:p-6` |
+| Component token `--badge-radius`, `--table-row-height` | `rounded-badge`, `h-table-row` | set per project in its `tokens.css` |
 | Text style `Group/Name` | `text-group-name`, lower-case | `Body/Small-medium` → `text-body-small-medium` |
 
 Icons take their color from the surrounding text color, so color an icon with a `text-<name>` class.

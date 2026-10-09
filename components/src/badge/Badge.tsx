@@ -25,7 +25,7 @@ const states: Record<BadgeState, string> = {
 export function Badge({ state, icon, className = '', children, ...rest }: BadgeProps) {
   return (
     <span
-      className={`inline-flex h-5 shrink-0 items-center gap-1 whitespace-nowrap rounded-infinite border px-2 text-body-small-medium ${states[state]} ${className}`}
+      className={`inline-flex h-5 shrink-0 items-center gap-1 whitespace-nowrap rounded-badge border px-2 text-body-small-medium ${states[state]} ${className}`}
       {...rest}
     >
       {icon}
