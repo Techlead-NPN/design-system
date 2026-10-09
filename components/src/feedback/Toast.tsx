@@ -1,11 +1,11 @@
-import type { HTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 import { IconButton } from '../button/IconButton'
 import { CloseGlyph, StatusIcon, statusBorder, statusFillA80, statusText } from './status'
 import type { Status } from './status'
 
 // Spec: projects/portal2.0/components/toast-alert.md
 
-export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface ToastProps extends Omit<ComponentProps<'div'>, 'title'> {
   status: Status
   title: ReactNode
   description?: ReactNode
@@ -33,7 +33,7 @@ export function Toast({ status, title, description, action, onClose, className =
   )
 }
 
-export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
+export interface AlertProps extends ComponentProps<'div'> {
   status: Status
   /** `full` = one row; `short` = the action drops below the text, for narrow spaces. */
   layout?: 'full' | 'short'
@@ -54,7 +54,7 @@ export function Alert({ status, layout = 'full', action, className = '', childre
   )
 }
 
-export interface CalloutProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface CalloutProps extends Omit<ComponentProps<'div'>, 'title'> {
   status: Status
   title: ReactNode
   /** Optional action shown bottom right, e.g. a small Ghost Button. */

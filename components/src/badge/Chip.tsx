@@ -1,8 +1,8 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 
 export type ChipHierarchy = 'primary' | 'secondary'
 
-export interface ChipProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ChipProps extends ComponentProps<'button'> {
   /** Primary = filled, Secondary = outlined. */
   hierarchy?: ChipHierarchy
   /** true = full pill, false = rounded rectangle. */

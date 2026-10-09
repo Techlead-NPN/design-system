@@ -1,6 +1,6 @@
-import type { HTMLAttributes } from 'react'
+import type { ComponentProps } from 'react'
 
-export interface LoadingProps extends HTMLAttributes<HTMLSpanElement> {
+export interface LoadingProps extends ComponentProps<'span'> {
   /** Which surface the bar sits on: `light` for light backgrounds, `dark` for dark ones. */
   surface?: 'light' | 'dark'
 }

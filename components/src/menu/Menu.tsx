@@ -1,19 +1,19 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 import { CheckIcon, ChevronRightIcon } from './icons'
 
 // Spec: projects/portal2.0/components/menu-item.md
 
 /** The floating panel that holds menu rows. */
-export function Menu({ className = '', ...rest }: HTMLAttributes<HTMLDivElement>) {
+export function Menu({ className = '', ...rest }: ComponentProps<'div'>) {
   return <div className={`flex flex-col gap-0.5 rounded-8 border border-primary-subtle bg-primary p-1 shadow-lg ${className}`} {...rest} />
 }
 
 /** Small caption that titles a group of rows inside a menu. */
-export function MenuGroupLabel({ className = '', ...rest }: HTMLAttributes<HTMLDivElement>) {
+export function MenuGroupLabel({ className = '', ...rest }: ComponentProps<'div'>) {
   return <div className={`flex h-7 items-center px-2 text-support-caption text-tertiary ${className}`} {...rest} />
 }
 
-export interface MenuItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface MenuItemProps extends ComponentProps<'button'> {
   /** 16px leading icon, or a Checkbox for multi-select rows. */
   leading?: ReactNode
   /** Second line under the title. */

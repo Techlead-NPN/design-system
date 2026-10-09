@@ -1,6 +1,6 @@
-import type { InputHTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 
-export interface ToggleProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'children'> {
+export interface ToggleProps extends Omit<ComponentProps<'input'>, 'type' | 'children'> {
   /** Required when the toggle has no visible label next to it. */
   'aria-label'?: string
 }
@@ -24,7 +24,7 @@ export function Toggle({ className = '', ...rest }: ToggleProps) {
   )
 }
 
-export interface ToggleCardProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'children'> {
+export interface ToggleCardProps extends Omit<ComponentProps<'input'>, 'type' | 'children'> {
   /** 20px leading icon. */
   icon?: ReactNode
   /** The card title. */

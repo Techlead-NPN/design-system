@@ -1,6 +1,6 @@
-import type { InputHTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 
-export interface RadioCardProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'children'> {
+export interface RadioCardProps extends Omit<ComponentProps<'input'>, 'type' | 'children'> {
   /** 20px leading icon. */
   icon?: ReactNode
   /** The card title. */
