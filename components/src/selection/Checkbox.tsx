@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
-import type { InputHTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 
-export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'children'> {
+export interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type' | 'children'> {
   /** Label text. Omit for a bare checkbox and pass `aria-label` instead. */
   children?: ReactNode
   /** Which side of the box the label sits on. */
@@ -27,8 +27,14 @@ const tone = {
   error: 'border-danger group-has-checked:bg-danger group-has-indeterminate:bg-danger',
 }
 
-export function Checkbox({ children, labelSide = 'right', indeterminate = false, error = false, size = 16, className = '', ...rest }: CheckboxProps) {
+export function Checkbox({ children, labelSide = 'right', indeterminate = false, error = false, size = 16, className = '', ref: outerRef, ...rest }: CheckboxProps) {
   const ref = useRef<HTMLInputElement>(null)
+  // The input needs our ref for `indeterminate`; pass the node on to the caller's ref too.
+  const setRef = (node: HTMLInputElement | null) => {
+    ref.current = node
+    if (typeof outerRef === 'function') outerRef(node)
+    else if (outerRef) outerRef.current = node
+  }
   useEffect(() => {
     if (ref.current) ref.current.indeterminate = indeterminate
   }, [indeterminate])
@@ -39,7 +45,7 @@ export function Checkbox({ children, labelSide = 'right', indeterminate = false,
   return (
     <label className={`group inline-flex items-center gap-2 has-disabled:cursor-not-allowed ${className}`}>
       {labelSide === 'left' && label}
-      <input ref={ref} type="checkbox" aria-invalid={error || undefined} className="sr-only" {...rest} />
+      <input ref={setRef} type="checkbox" aria-invalid={error || undefined} className="sr-only" {...rest} />
       <span className={`${box} ${size === 14 ? 'size-3.5' : 'size-4'} ${error ? tone.error : tone.default}`}>
         <svg viewBox="0 0 8 6" className="hidden h-1.5 w-2 group-has-checked:block group-has-indeterminate:hidden" fill="none" aria-hidden="true">
           <path d="M1 3l2 2 4-4" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />

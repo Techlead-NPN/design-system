@@ -1,13 +1,13 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 
 // Spec: projects/portal2.0/components/tab.md
 
 /** A horizontal tab bar. Put `Tab`s inside. */
-export function Tabs({ className = '', ...rest }: HTMLAttributes<HTMLDivElement>) {
+export function Tabs({ className = '', ...rest }: ComponentProps<'div'>) {
   return <div role="tablist" className={`flex gap-2 ${className}`} {...rest} />
 }
 
-export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface TabProps extends ComponentProps<'button'> {
   selected?: boolean
   /** Height of the label area: 28px or 32px. */
   size?: 28 | 32

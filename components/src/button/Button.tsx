@@ -1,10 +1,10 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 
 export type ButtonHierarchy = 'primary' | 'outline' | 'ghost'
 export type ButtonAccent = 'default' | 'danger' | 'blue'
 export type ButtonSize = 'sm' | 'md'
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ComponentProps<'button'> {
   /** Primary = the one main action; Outline = secondary; Ghost = lowest emphasis. */
   hierarchy?: ButtonHierarchy
   accent?: ButtonAccent

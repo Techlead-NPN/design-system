@@ -1,9 +1,9 @@
-import type { HTMLAttributes } from 'react'
+import type { ComponentProps } from 'react'
 
 export type AvatarSize = 16 | 20 | 24 | 36
 export type AvatarColor = 'green' | 'teal' | 'sky' | 'blue' | 'purple' | 'pink' | 'red' | 'orange' | 'yellow' | 'gray'
 
-export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {
+export interface AvatarProps extends ComponentProps<'span'> {
   size?: AvatarSize
   /** Photo URL. When set, the photo replaces the initials. */
   src?: string

@@ -1,6 +1,6 @@
-import type { InputHTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 
-export interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'children'> {
+export interface RadioProps extends Omit<ComponentProps<'input'>, 'type' | 'children'> {
   /** Label text. Omit for a bare radio and pass `aria-label` instead. */
   children?: ReactNode
   /** Which side of the dot the label sits on. */

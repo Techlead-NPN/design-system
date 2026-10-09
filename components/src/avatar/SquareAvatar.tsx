@@ -1,8 +1,8 @@
-import type { HTMLAttributes } from 'react'
+import type { ComponentProps } from 'react'
 
 export type SquareAvatarSize = 12 | 14 | 16 | 20 | 24 | 40
 
-export interface SquareAvatarProps extends HTMLAttributes<HTMLSpanElement> {
+export interface SquareAvatarProps extends ComponentProps<'span'> {
   size?: SquareAvatarSize
   /** Image URL (e.g. a company logo). When set, it replaces the initial. */
   src?: string

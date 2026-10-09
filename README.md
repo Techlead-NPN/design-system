@@ -48,6 +48,32 @@ npm run storybook
 
 It opens at http://localhost:6006. Each component family has an "All variants" style page and, where useful, a Playground with controls. Storybook renders with the Portal 2.0 tokens; to preview another project, change the last token import in `components/.storybook/storybook.css`.
 
+## Using the components in an app
+
+The components build into a package, `@techlead-npn/design-system`, that carries the compiled components, their types and the token files. It is not published to a registry yet; until then, build it and install the packed file:
+
+```bash
+cd components
+npm install
+npm run build
+npm pack
+```
+
+Then, in the app (React 19 or later, Tailwind CSS v4), install the `.tgz` that `npm pack` produced and set up the app's main stylesheet:
+
+```css
+@import "tailwindcss";
+@import "@techlead-npn/design-system/tokens/foundations.css";
+@import "@techlead-npn/design-system/tokens/portal2.0.css";
+@source "../node_modules/@techlead-npn/design-system/dist";
+```
+
+The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. The app loads the Inter font itself. Components are then imported by name:
+
+```tsx
+import { Button, TextInput } from '@techlead-npn/design-system'
+```
+
 ## Adding a project
 
 Create `projects/<name>/` with the same shape as `portal2.0/`. Its `tokens.css` maps its semantic tokens onto the Foundations primitives, and its `DESIGN.md` documents only what is specific to that project and links to Foundations for everything else. Follow [`foundations/workflow/AUDIT_WORKFLOW.md`](foundations/workflow/AUDIT_WORKFLOW.md) to audit and document its components.

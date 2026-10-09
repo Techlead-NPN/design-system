@@ -1,14 +1,14 @@
-import type { HTMLAttributes, ReactNode, TdHTMLAttributes, ThHTMLAttributes } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 import { IconButton } from '../button/IconButton'
 
 // Spec: projects/portal2.0/components/table.md
 // Rows are 36px high; every cell has a bottom border only.
 
-export function Table({ className = '', ...rest }: HTMLAttributes<HTMLTableElement>) {
+export function Table({ className = '', ...rest }: ComponentProps<'table'>) {
   return <table className={`w-full border-separate border-spacing-0 text-left ${className}`} {...rest} />
 }
 
-export interface TableRowProps extends HTMLAttributes<HTMLTableRowElement> {
+export interface TableRowProps extends ComponentProps<'tr'> {
   /** Selected rows are tinted indigo. */
   selected?: boolean
 }
@@ -25,7 +25,7 @@ const SortGlyph = () => (
   </svg>
 )
 
-export interface TableHeaderCellProps extends ThHTMLAttributes<HTMLTableCellElement> {
+export interface TableHeaderCellProps extends ComponentProps<'th'> {
   /** 14px icon before the label. */
   icon?: ReactNode
   /** Shows the sort button; called when it is pressed. */
@@ -48,7 +48,7 @@ export function TableHeaderCell({ icon, onSort, active = false, className = '', 
   )
 }
 
-export interface TableCellProps extends TdHTMLAttributes<HTMLTableCellElement> {
+export interface TableCellProps extends ComponentProps<'td'> {
   /** Read-only values use the secondary text color. */
   readOnly?: boolean
 }
@@ -60,7 +60,7 @@ export function TableCell({ readOnly = false, className = '', ...rest }: TableCe
 }
 
 /** The narrow leading cell that holds the row-selection checkbox (use `<Checkbox size={14} />`). */
-export function TableSelectCell({ header = false, className = '', children, ...rest }: TdHTMLAttributes<HTMLTableCellElement> & { header?: boolean }) {
+export function TableSelectCell({ header = false, className = '', children, ...rest }: ComponentProps<'td'> & { header?: boolean }) {
   const Tag = header ? 'th' : 'td'
   return (
     <Tag className={`h-9 w-[26px] border-b border-primary-subtle pl-1 ${header ? 'bg-primary' : cellFill} ${className}`} {...rest}>

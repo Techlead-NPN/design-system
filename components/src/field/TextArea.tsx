@@ -1,8 +1,8 @@
 import { useId, useState } from 'react'
-import type { TextareaHTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 import { fieldBox, fieldBoxError, fieldHint, fieldHintError, fieldLabel, fieldText } from './TextInput'
 
-export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextAreaProps extends ComponentProps<'textarea'> {
   /** Label shown above the field. */
   label?: ReactNode
   /** Hint shown below the field. In the error state it turns red. */

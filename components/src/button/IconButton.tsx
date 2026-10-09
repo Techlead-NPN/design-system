@@ -1,9 +1,9 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 
 export type IconButtonStyle = 'primary' | 'outline' | 'ghost'
 export type IconButtonSize = 'sm' | 'md'
 
-export interface IconButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
+export interface IconButtonProps extends Omit<ComponentProps<'button'>, 'children'> {
   variant?: IconButtonStyle
   /** sm = 24px with a 14px icon, md = 32px with a 20px icon. */
   size?: IconButtonSize
