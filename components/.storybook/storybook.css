@@ -1,12 +1,4 @@
-/* Storybook renders the components with the Portal 2.0 tokens. To preview
- * another project, swap the last import for that project's tokens.css. */
-@import "tailwindcss";
-@import "../../foundations/tokens/foundations.css";
-@import "../../projects/portal2.0/tokens.css";
+/* The font is shared by every project. The tokens are not: each project has
+ * its own stylesheet (project-<name>.css) and the toolbar's Project switch
+ * picks which one is applied — see preview.ts. */
 @import "@fontsource-variable/inter";
-
-@source "../src";
-
-@theme {
-  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
-}

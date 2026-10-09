@@ -9,10 +9,11 @@ foundations/              shared by every project
 ├── tokens/               primitive values, as code (foundations.css)
 └── workflow/             audit process and drift-check instructions
 components/               coded React + Tailwind components, shared by every project
-├── .storybook/           Storybook setup (uses the Portal 2.0 tokens)
+├── .storybook/           Storybook setup (one stylesheet per project, switched from the toolbar)
 └── src/                  one folder per component family, each with its stories
                            (button/, selection/, badge/, avatar/, divider/, toggle/, tooltip/, field/, menu/, calendar/, navigation/, feedback/, overlay/, table/, layout/)
 projects/
+├── paygenix-merchant/    shares Portal 2.0's look: DESIGN.md and BUILD_GUIDE.md list what differs; tokens.css is its own full copy
 └── portal2.0/            one folder per project
     ├── DESIGN.md         semantic tokens, text styles, accessibility, changelog
     ├── BUILD_GUIDE.md    which docs to read for which task
@@ -27,6 +28,7 @@ projects/
 
 - [`foundations/FOUNDATIONS.md`](foundations/FOUNDATIONS.md) — read first; applies to every project.
 - [`projects/portal2.0/DESIGN.md`](projects/portal2.0/DESIGN.md) — Portal 2.0.
+- [`projects/paygenix-merchant/DESIGN.md`](projects/paygenix-merchant/DESIGN.md) — PayGenix Merchant Dashboard; shares Portal 2.0's look and lists only what differs.
 
 ## Building UI from these docs
 
@@ -46,7 +48,7 @@ npm install
 npm run storybook
 ```
 
-It opens at http://localhost:6006. Each component family has an "All variants" style page and, where useful, a Playground with controls. Storybook renders with the Portal 2.0 tokens; to preview another project, change the last token import in `components/.storybook/storybook.css`.
+It opens at http://localhost:6006. Each component family has an "All variants" style page and, where useful, a Playground with controls. The **Project** switch in the toolbar shows the same components with another project's tokens. To add a project to it, add a `project-<name>.css` in `components/.storybook/` and list it in `preview.ts`.
 
 ## Using the components in an app
 
@@ -64,7 +66,7 @@ Then, in the app (React 19 or later, Tailwind CSS v4), install the `.tgz` that `
 ```css
 @import "tailwindcss";
 @import "@techlead-npn/design-system/tokens/foundations.css";
-@import "@techlead-npn/design-system/tokens/portal2.0.css";
+@import "@techlead-npn/design-system/tokens/portal2.0.css"; /* or paygenix-merchant.css */
 @source "../node_modules/@techlead-npn/design-system/dist";
 ```
 

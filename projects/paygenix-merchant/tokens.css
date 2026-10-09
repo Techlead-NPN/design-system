@@ -1,8 +1,11 @@
 /*
- * Portal 2.0 — semantic tokens and text styles (Tailwind CSS v4).
- * Source of truth for Portal 2.0's values. Mirrors the "semantic color"
- * collection (light mode) and the 30 text styles of the Portal 2.0 Figma file
- * (YFci6zgeYAQqX2OlHKQB0e) as read on 2026-10-05. Documented in DESIGN.md.
+ * PayGenix Merchant Dashboard — semantic tokens and text styles (Tailwind CSS v4).
+ * Source of truth for this project's values. Documented in DESIGN.md.
+ *
+ * The Merchant Dashboard shares Portal 2.0's look, so this file began as a copy
+ * of Portal 2.0's tokens (as of 2026-10-09). It is independent: a later change
+ * in Portal 2.0 does not reach this file. PayGenix's own additions and
+ * differences are marked "PayGenix".
  *
  * Import after foundations.css — see BUILD_GUIDE.md.
  *
@@ -10,7 +13,7 @@
  * `text + icon/primary` is `text-primary`; `border/primary` is `border-primary`.
  */
 
-/* Semantic color tokens (87), each aliasing a Foundations primitive. */
+/* Semantic color tokens, each aliasing a Foundations primitive (or, for bg/brand, the brand ramp). */
 :root {
   --text-primary: var(--neutral-950);
   --text-secondary: var(--neutral-700);
@@ -76,7 +79,7 @@
   --bg-urgent-subtle: var(--orange-50);
   --bg-urgent-bolder: var(--orange-100);
   --bg-disabled: var(--neutral-100);
-  --bg-brand: #4450f7;
+  --bg-brand: var(--brand-primary-500);
 
   --border-primary: var(--neutral-300);
   --border-primary-bolder: var(--neutral-400);
@@ -103,9 +106,47 @@
 
   --overlay-default: var(--base-black-A25);
 
-  /* Component tokens: shape values a project may set differently. */
-  --badge-radius: var(--radius-infinite);
-  --table-row-height: 2.25rem; /* 36px */
+  /* PayGenix: chart colors. */
+  --bg-data-visualize-accent-red: var(--red-300);
+  --bg-data-visualize-accent-blue: var(--blue-300);
+  --bg-data-visualize-accent-orange: var(--orange-300);
+  --bg-data-visualize-accent-amber: var(--amber-300);
+  --bg-data-visualize-accent-cyan: var(--cyan-300);
+  --bg-data-visualize-accent-sky: var(--sky-300);
+  --bg-data-visualize-accent-indigo: var(--indigo-300);
+  --bg-data-visualize-accent-fuchsia: var(--fuchsia-300);
+  --bg-data-visualize-accent-green: var(--green-300);
+
+  /* Component tokens: shape values a project may set differently.
+   * PayGenix: 4px badge corners and 32px table rows (Portal 2.0: pill, 36px). */
+  --badge-radius: var(--radius-4);
+  --table-row-height: 2rem; /* 32px */
+}
+
+/* PayGenix: brand ramps (raw colors). Components never use these directly. */
+:root {
+  --brand-primary-50: #ececfe;
+  --brand-primary-100: #dcddfe;
+  --brand-primary-200: #b9bcfc;
+  --brand-primary-300: #9397fb;
+  --brand-primary-400: #6e75f9;
+  --brand-primary-500: #4450f7;
+  --brand-primary-600: #1731ee;
+  --brand-primary-700: #0f23b7;
+  --brand-primary-800: #08188a;
+  --brand-primary-900: #030c59;
+  --brand-primary-950: #01053b;
+  --brand-secondary-50: #ffeded;
+  --brand-secondary-100: #fed6d6;
+  --brand-secondary-200: #feafaf;
+  --brand-secondary-300: #fd8080;
+  --brand-secondary-400: #fd4848;
+  --brand-secondary-500: #df0b0c;
+  --brand-secondary-600: #b60708;
+  --brand-secondary-700: #8a0404;
+  --brand-secondary-800: #640202;
+  --brand-secondary-900: #3d0101;
+  --brand-secondary-950: #2c0000;
 }
 
 /* Expose the semantic tokens as Tailwind utilities. `inline` keeps the
@@ -280,6 +321,27 @@
   /* Component tokens → `rounded-badge`, `h-table-row`. */
   --radius-badge: var(--badge-radius);
   --spacing-table-row: var(--table-row-height);
+
+  /* PayGenix: bg/data visualize/accent-<name> → `bg-data-visualize-accent-<name>`
+   * (also `fill-…` for chart shapes). */
+  --background-color-data-visualize-accent-red: var(--bg-data-visualize-accent-red);
+  --background-color-data-visualize-accent-blue: var(--bg-data-visualize-accent-blue);
+  --background-color-data-visualize-accent-orange: var(--bg-data-visualize-accent-orange);
+  --background-color-data-visualize-accent-amber: var(--bg-data-visualize-accent-amber);
+  --background-color-data-visualize-accent-cyan: var(--bg-data-visualize-accent-cyan);
+  --background-color-data-visualize-accent-sky: var(--bg-data-visualize-accent-sky);
+  --background-color-data-visualize-accent-indigo: var(--bg-data-visualize-accent-indigo);
+  --background-color-data-visualize-accent-fuchsia: var(--bg-data-visualize-accent-fuchsia);
+  --background-color-data-visualize-accent-green: var(--bg-data-visualize-accent-green);
+  --fill-data-visualize-accent-red: var(--bg-data-visualize-accent-red);
+  --fill-data-visualize-accent-blue: var(--bg-data-visualize-accent-blue);
+  --fill-data-visualize-accent-orange: var(--bg-data-visualize-accent-orange);
+  --fill-data-visualize-accent-amber: var(--bg-data-visualize-accent-amber);
+  --fill-data-visualize-accent-cyan: var(--bg-data-visualize-accent-cyan);
+  --fill-data-visualize-accent-sky: var(--bg-data-visualize-accent-sky);
+  --fill-data-visualize-accent-indigo: var(--bg-data-visualize-accent-indigo);
+  --fill-data-visualize-accent-fuchsia: var(--bg-data-visualize-accent-fuchsia);
+  --fill-data-visualize-accent-green: var(--bg-data-visualize-accent-green);
 }
 
 /* Text styles (30) → one class each, e.g. `Body/Small-medium` is

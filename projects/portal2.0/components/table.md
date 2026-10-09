@@ -17,7 +17,7 @@ Coded in [`components/src/table/Table.tsx`](../../../components/src/table/Table.
 
 | Part | Value |
 |---|---|
-| Height | 36px, header and body alike |
+| Height | 36px, header and body alike. Set through the component token `--table-row-height`, which another project may change |
 | Border | **bottom only** — `border/primary-subtle`, `border-width/xs`. No vertical lines between columns |
 | Text | one line, never wraps |
 

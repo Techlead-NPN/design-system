@@ -19,7 +19,7 @@ Coded in [`components/src/badge/`](../../../components/src/badge/) (`Badge`, `Ch
 | Height | 20px (hugs the label's line height; no vertical padding) |
 | Horizontal padding | `spacing/2` (8px) each side |
 | Gap between icon and label | `spacing/1` (4px) |
-| Radius | `border-radii/rounded-infinite` — always a full pill |
+| Radius | `border-radii/rounded-infinite` — always a full pill. Set through the component token `--badge-radius`, which another project may change |
 | Border | `border-width/xs` (1px), always present |
 | Label | `Body/Small-medium`, one line |
 
