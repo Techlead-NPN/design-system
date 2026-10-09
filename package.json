@@ -1,0 +1,24 @@
+{
+  "name": "@techlead-npn/design-system",
+  "version": "0.1.0",
+  "type": "module",
+  "sideEffects": false,
+  "description": "Portal 2.0 design system — coded React + Tailwind components. Packaging wrapper: the source lives in components/, this root package ships the build so the repo can be installed directly as a git dependency.",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens/*": "./dist/tokens/*"
+  },
+  "scripts": {
+    "prepare": "node scripts/build-root.mjs"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "tailwindcss": "^4"
+  }
+}

@@ -1,0 +1,552 @@
+/*
+ * PayGenix Merchant Dashboard — semantic tokens and text styles (Tailwind CSS v4).
+ * Source of truth for this project's values. Documented in DESIGN.md.
+ *
+ * The Merchant Dashboard shares Portal 2.0's look, so this file began as a copy
+ * of Portal 2.0's tokens (as of 2026-10-09). It is independent: a later change
+ * in Portal 2.0 does not reach this file. PayGenix's own additions and
+ * differences are marked "PayGenix".
+ *
+ * Import after foundations.css — see BUILD_GUIDE.md.
+ *
+ * Naming: the Figma token `bg/primary` is the class `bg-primary`;
+ * `text + icon/primary` is `text-primary`; `border/primary` is `border-primary`.
+ */
+
+/* Semantic color tokens, each aliasing a Foundations primitive (or, for bg/brand, the brand ramp). */
+:root {
+  --text-primary: var(--neutral-950);
+  --text-secondary: var(--neutral-700);
+  --text-tertiary: var(--neutral-500);
+  --text-primary-inverse: var(--neutral-50);
+  --text-secondary-inverse: var(--neutral-200);
+  --text-accent-indigo-subtle: var(--indigo-400);
+  --text-accent-indigo: var(--indigo-500);
+  --text-accent-indigo-bolder: var(--indigo-600);
+  --text-accent-sky: var(--sky-500);
+  --text-accent-ocean: var(--blue-600);
+  --text-accent-emerald: var(--emerald-500);
+  --text-accent-teal: var(--teal-500);
+  --text-accent-sun: var(--yellow-400);
+  --text-accent-fuchsia: var(--fuchsia-600);
+  --text-accent-blossom: var(--pink-500);
+  --text-accent-blush: var(--rose-500);
+  --text-accent-peach: var(--orange-500);
+  --text-accent-stone: var(--stone-500);
+  --text-info: var(--blue-500);
+  --text-warning: var(--amber-500);
+  --text-urgent: var(--orange-500);
+  --text-success: var(--green-500);
+  --text-danger: var(--red-500);
+  --text-danger-bolder: var(--red-600);
+  --text-idle: var(--teal-500);
+  --text-disabled: var(--neutral-300);
+
+  --bg-primary: var(--base-white);
+  --bg-primary-hover: var(--neutral-100);
+  --bg-primary-inverse: var(--neutral-800);
+  --bg-secondary: var(--neutral-50);
+  --bg-secondary-hover: var(--neutral-100);
+  --bg-secondary-inverse: var(--neutral-700);
+  --bg-tertiary: var(--neutral-300);
+  --bg-tertiary-inverse: var(--neutral-600);
+  --bg-accent-indigo-subtlest: var(--indigo-50);
+  --bg-accent-indigo-subtler: var(--indigo-300);
+  --bg-accent-indigo: var(--indigo-500);
+  --bg-accent-indigo-bolder: var(--indigo-600);
+  --bg-accent-sky: var(--sky-100);
+  --bg-accent-ocean: var(--blue-100);
+  --bg-accent-emerald: var(--emerald-100);
+  --bg-accent-teal: var(--teal-100);
+  --bg-accent-sun: var(--yellow-100);
+  --bg-accent-fuchsia: var(--fuchsia-100);
+  --bg-accent-blossom: var(--pink-100);
+  --bg-accent-blush: var(--rose-100);
+  --bg-accent-peach: var(--orange-100);
+  --bg-accent-stone: var(--stone-100);
+  --bg-info: var(--blue-500);
+  --bg-info-subtle: var(--blue-100);
+  --bg-info-subtle-A80: color-mix(in srgb, var(--blue-100) 80%, transparent);
+  --bg-success-subtle: var(--green-50);
+  --bg-success-subtle-A80: color-mix(in srgb, var(--green-50) 80%, transparent);
+  --bg-warning-subtle: var(--amber-100);
+  --bg-warning-subtle-A80: color-mix(in srgb, var(--amber-100) 80%, transparent);
+  --bg-danger-subtle: var(--red-100);
+  --bg-danger-subtle-A80: color-mix(in srgb, var(--red-100) 80%, transparent);
+  --bg-danger: var(--red-500);
+  --bg-danger-bolder: var(--red-600);
+  --bg-idle-subtle: var(--teal-100);
+  --bg-urgent-subtle: var(--orange-50);
+  --bg-urgent-bolder: var(--orange-100);
+  --bg-disabled: var(--neutral-100);
+  --bg-brand: var(--brand-primary-500);
+
+  --border-primary: var(--neutral-300);
+  --border-primary-bolder: var(--neutral-400);
+  --border-primary-subtle: var(--neutral-200);
+  --border-accent-indigo: var(--indigo-500);
+  --border-accent-indigo-bolder: var(--indigo-600);
+  --border-accent-sky: var(--sky-200);
+  --border-accent-ocean: var(--blue-200);
+  --border-accent-emerald: var(--emerald-200);
+  --border-accent-teal: var(--teal-200);
+  --border-accent-sun: var(--yellow-200);
+  --border-accent-fuchsia: var(--fuchsia-200);
+  --border-accent-blossom: var(--pink-200);
+  --border-accent-blush: var(--rose-200);
+  --border-accent-peach: var(--orange-200);
+  --border-accent-stone: var(--stone-200);
+  --border-info: var(--blue-400);
+  --border-success: var(--green-500);
+  --border-warning: var(--amber-500);
+  --border-danger: var(--red-500);
+  --border-urgent: var(--orange-500);
+  --border-idle: var(--teal-500);
+  --border-disabled: var(--neutral-100);
+
+  --overlay-default: var(--base-black-A25);
+
+  /* PayGenix: chart colors. */
+  --bg-data-visualize-accent-red: var(--red-300);
+  --bg-data-visualize-accent-blue: var(--blue-300);
+  --bg-data-visualize-accent-orange: var(--orange-300);
+  --bg-data-visualize-accent-amber: var(--amber-300);
+  --bg-data-visualize-accent-cyan: var(--cyan-300);
+  --bg-data-visualize-accent-sky: var(--sky-300);
+  --bg-data-visualize-accent-indigo: var(--indigo-300);
+  --bg-data-visualize-accent-fuchsia: var(--fuchsia-300);
+  --bg-data-visualize-accent-green: var(--green-300);
+
+  /* Component tokens: shape values a project may set differently.
+   * PayGenix: 4px badge corners and 32px table rows (Portal 2.0: pill, 36px). */
+  --badge-radius: var(--radius-4);
+  --table-row-height: 2rem; /* 32px */
+}
+
+/* PayGenix: brand ramps (raw colors). Components never use these directly. */
+:root {
+  --brand-primary-50: #ececfe;
+  --brand-primary-100: #dcddfe;
+  --brand-primary-200: #b9bcfc;
+  --brand-primary-300: #9397fb;
+  --brand-primary-400: #6e75f9;
+  --brand-primary-500: #4450f7;
+  --brand-primary-600: #1731ee;
+  --brand-primary-700: #0f23b7;
+  --brand-primary-800: #08188a;
+  --brand-primary-900: #030c59;
+  --brand-primary-950: #01053b;
+  --brand-secondary-50: #ffeded;
+  --brand-secondary-100: #fed6d6;
+  --brand-secondary-200: #feafaf;
+  --brand-secondary-300: #fd8080;
+  --brand-secondary-400: #fd4848;
+  --brand-secondary-500: #df0b0c;
+  --brand-secondary-600: #b60708;
+  --brand-secondary-700: #8a0404;
+  --brand-secondary-800: #640202;
+  --brand-secondary-900: #3d0101;
+  --brand-secondary-950: #2c0000;
+}
+
+/* Expose the semantic tokens as Tailwind utilities. `inline` keeps the
+ * var() reference in the generated CSS, so a future theme only has to
+ * override the custom properties above. */
+@theme inline {
+  /* text + icon/* → `text-<name>` (icons inherit via currentColor) */
+  --text-color-primary: var(--text-primary);
+  --text-color-secondary: var(--text-secondary);
+  --text-color-tertiary: var(--text-tertiary);
+  --text-color-primary-inverse: var(--text-primary-inverse);
+  --text-color-secondary-inverse: var(--text-secondary-inverse);
+  --text-color-accent-indigo-subtle: var(--text-accent-indigo-subtle);
+  --text-color-accent-indigo: var(--text-accent-indigo);
+  --text-color-accent-indigo-bolder: var(--text-accent-indigo-bolder);
+  --text-color-accent-sky: var(--text-accent-sky);
+  --text-color-accent-ocean: var(--text-accent-ocean);
+  --text-color-accent-emerald: var(--text-accent-emerald);
+  --text-color-accent-teal: var(--text-accent-teal);
+  --text-color-accent-sun: var(--text-accent-sun);
+  --text-color-accent-fuchsia: var(--text-accent-fuchsia);
+  --text-color-accent-blossom: var(--text-accent-blossom);
+  --text-color-accent-blush: var(--text-accent-blush);
+  --text-color-accent-peach: var(--text-accent-peach);
+  --text-color-accent-stone: var(--text-accent-stone);
+  --text-color-info: var(--text-info);
+  --text-color-warning: var(--text-warning);
+  --text-color-urgent: var(--text-urgent);
+  --text-color-success: var(--text-success);
+  --text-color-danger: var(--text-danger);
+  --text-color-danger-bolder: var(--text-danger-bolder);
+  --text-color-idle: var(--text-idle);
+  --text-color-disabled: var(--text-disabled);
+
+  /* bg/* → `bg-<name>`; overlay/overlay-default → `bg-overlay` */
+  --background-color-primary: var(--bg-primary);
+  --background-color-primary-hover: var(--bg-primary-hover);
+  --background-color-primary-inverse: var(--bg-primary-inverse);
+  --background-color-secondary: var(--bg-secondary);
+  --background-color-secondary-hover: var(--bg-secondary-hover);
+  --background-color-secondary-inverse: var(--bg-secondary-inverse);
+  --background-color-tertiary: var(--bg-tertiary);
+  --background-color-tertiary-inverse: var(--bg-tertiary-inverse);
+  --background-color-accent-indigo-subtlest: var(--bg-accent-indigo-subtlest);
+  --background-color-accent-indigo-subtler: var(--bg-accent-indigo-subtler);
+  --background-color-accent-indigo: var(--bg-accent-indigo);
+  --background-color-accent-indigo-bolder: var(--bg-accent-indigo-bolder);
+  --background-color-accent-sky: var(--bg-accent-sky);
+  --background-color-accent-ocean: var(--bg-accent-ocean);
+  --background-color-accent-emerald: var(--bg-accent-emerald);
+  --background-color-accent-teal: var(--bg-accent-teal);
+  --background-color-accent-sun: var(--bg-accent-sun);
+  --background-color-accent-fuchsia: var(--bg-accent-fuchsia);
+  --background-color-accent-blossom: var(--bg-accent-blossom);
+  --background-color-accent-blush: var(--bg-accent-blush);
+  --background-color-accent-peach: var(--bg-accent-peach);
+  --background-color-accent-stone: var(--bg-accent-stone);
+  --background-color-info: var(--bg-info);
+  --background-color-info-subtle: var(--bg-info-subtle);
+  --background-color-info-subtle-A80: var(--bg-info-subtle-A80);
+  --background-color-success-subtle: var(--bg-success-subtle);
+  --background-color-success-subtle-A80: var(--bg-success-subtle-A80);
+  --background-color-warning-subtle: var(--bg-warning-subtle);
+  --background-color-warning-subtle-A80: var(--bg-warning-subtle-A80);
+  --background-color-danger-subtle: var(--bg-danger-subtle);
+  --background-color-danger-subtle-A80: var(--bg-danger-subtle-A80);
+  --background-color-danger: var(--bg-danger);
+  --background-color-danger-bolder: var(--bg-danger-bolder);
+  --background-color-idle-subtle: var(--bg-idle-subtle);
+  --background-color-urgent-subtle: var(--bg-urgent-subtle);
+  --background-color-urgent-bolder: var(--bg-urgent-bolder);
+  --background-color-disabled: var(--bg-disabled);
+  --background-color-brand: var(--bg-brand);
+  --background-color-overlay: var(--overlay-default);
+
+  /* border/* → `border-<name>` */
+  --border-color-primary: var(--border-primary);
+  --border-color-primary-bolder: var(--border-primary-bolder);
+  --border-color-primary-subtle: var(--border-primary-subtle);
+  --border-color-accent-indigo: var(--border-accent-indigo);
+  --border-color-accent-indigo-bolder: var(--border-accent-indigo-bolder);
+  --border-color-accent-sky: var(--border-accent-sky);
+  --border-color-accent-ocean: var(--border-accent-ocean);
+  --border-color-accent-emerald: var(--border-accent-emerald);
+  --border-color-accent-teal: var(--border-accent-teal);
+  --border-color-accent-sun: var(--border-accent-sun);
+  --border-color-accent-fuchsia: var(--border-accent-fuchsia);
+  --border-color-accent-blossom: var(--border-accent-blossom);
+  --border-color-accent-blush: var(--border-accent-blush);
+  --border-color-accent-peach: var(--border-accent-peach);
+  --border-color-accent-stone: var(--border-accent-stone);
+  --border-color-info: var(--border-info);
+  --border-color-success: var(--border-success);
+  --border-color-warning: var(--border-warning);
+  --border-color-danger: var(--border-danger);
+  --border-color-urgent: var(--border-urgent);
+  --border-color-idle: var(--border-idle);
+  --border-color-disabled: var(--border-disabled);
+
+  /* same tokens for `divide-<name>` */
+  --divide-color-primary: var(--border-primary);
+  --divide-color-primary-bolder: var(--border-primary-bolder);
+  --divide-color-primary-subtle: var(--border-primary-subtle);
+  --divide-color-accent-indigo: var(--border-accent-indigo);
+  --divide-color-accent-indigo-bolder: var(--border-accent-indigo-bolder);
+  --divide-color-accent-sky: var(--border-accent-sky);
+  --divide-color-accent-ocean: var(--border-accent-ocean);
+  --divide-color-accent-emerald: var(--border-accent-emerald);
+  --divide-color-accent-teal: var(--border-accent-teal);
+  --divide-color-accent-sun: var(--border-accent-sun);
+  --divide-color-accent-fuchsia: var(--border-accent-fuchsia);
+  --divide-color-accent-blossom: var(--border-accent-blossom);
+  --divide-color-accent-blush: var(--border-accent-blush);
+  --divide-color-accent-peach: var(--border-accent-peach);
+  --divide-color-accent-stone: var(--border-accent-stone);
+  --divide-color-info: var(--border-info);
+  --divide-color-success: var(--border-success);
+  --divide-color-warning: var(--border-warning);
+  --divide-color-danger: var(--border-danger);
+  --divide-color-urgent: var(--border-urgent);
+  --divide-color-idle: var(--border-idle);
+  --divide-color-disabled: var(--border-disabled);
+
+  /* same tokens for `outline-<name>` */
+  --outline-color-primary: var(--border-primary);
+  --outline-color-primary-bolder: var(--border-primary-bolder);
+  --outline-color-primary-subtle: var(--border-primary-subtle);
+  --outline-color-accent-indigo: var(--border-accent-indigo);
+  --outline-color-accent-indigo-bolder: var(--border-accent-indigo-bolder);
+  --outline-color-accent-sky: var(--border-accent-sky);
+  --outline-color-accent-ocean: var(--border-accent-ocean);
+  --outline-color-accent-emerald: var(--border-accent-emerald);
+  --outline-color-accent-teal: var(--border-accent-teal);
+  --outline-color-accent-sun: var(--border-accent-sun);
+  --outline-color-accent-fuchsia: var(--border-accent-fuchsia);
+  --outline-color-accent-blossom: var(--border-accent-blossom);
+  --outline-color-accent-blush: var(--border-accent-blush);
+  --outline-color-accent-peach: var(--border-accent-peach);
+  --outline-color-accent-stone: var(--border-accent-stone);
+  --outline-color-info: var(--border-info);
+  --outline-color-success: var(--border-success);
+  --outline-color-warning: var(--border-warning);
+  --outline-color-danger: var(--border-danger);
+  --outline-color-urgent: var(--border-urgent);
+  --outline-color-idle: var(--border-idle);
+  --outline-color-disabled: var(--border-disabled);
+
+  /* same tokens for `ring-<name>` (focus rings) */
+  --ring-color-primary: var(--border-primary);
+  --ring-color-primary-bolder: var(--border-primary-bolder);
+  --ring-color-primary-subtle: var(--border-primary-subtle);
+  --ring-color-accent-indigo: var(--border-accent-indigo);
+  --ring-color-accent-indigo-bolder: var(--border-accent-indigo-bolder);
+  --ring-color-accent-sky: var(--border-accent-sky);
+  --ring-color-accent-ocean: var(--border-accent-ocean);
+  --ring-color-accent-emerald: var(--border-accent-emerald);
+  --ring-color-accent-teal: var(--border-accent-teal);
+  --ring-color-accent-sun: var(--border-accent-sun);
+  --ring-color-accent-fuchsia: var(--border-accent-fuchsia);
+  --ring-color-accent-blossom: var(--border-accent-blossom);
+  --ring-color-accent-blush: var(--border-accent-blush);
+  --ring-color-accent-peach: var(--border-accent-peach);
+  --ring-color-accent-stone: var(--border-accent-stone);
+  --ring-color-info: var(--border-info);
+  --ring-color-success: var(--border-success);
+  --ring-color-warning: var(--border-warning);
+  --ring-color-danger: var(--border-danger);
+  --ring-color-urgent: var(--border-urgent);
+  --ring-color-idle: var(--border-idle);
+  --ring-color-disabled: var(--border-disabled);
+
+  /* Component tokens → `rounded-badge`, `h-table-row`. */
+  --radius-badge: var(--badge-radius);
+  --spacing-table-row: var(--table-row-height);
+
+  /* PayGenix: bg/data visualize/accent-<name> → `bg-data-visualize-accent-<name>`
+   * (also `fill-…` for chart shapes). */
+  --background-color-data-visualize-accent-red: var(--bg-data-visualize-accent-red);
+  --background-color-data-visualize-accent-blue: var(--bg-data-visualize-accent-blue);
+  --background-color-data-visualize-accent-orange: var(--bg-data-visualize-accent-orange);
+  --background-color-data-visualize-accent-amber: var(--bg-data-visualize-accent-amber);
+  --background-color-data-visualize-accent-cyan: var(--bg-data-visualize-accent-cyan);
+  --background-color-data-visualize-accent-sky: var(--bg-data-visualize-accent-sky);
+  --background-color-data-visualize-accent-indigo: var(--bg-data-visualize-accent-indigo);
+  --background-color-data-visualize-accent-fuchsia: var(--bg-data-visualize-accent-fuchsia);
+  --background-color-data-visualize-accent-green: var(--bg-data-visualize-accent-green);
+  --fill-data-visualize-accent-red: var(--bg-data-visualize-accent-red);
+  --fill-data-visualize-accent-blue: var(--bg-data-visualize-accent-blue);
+  --fill-data-visualize-accent-orange: var(--bg-data-visualize-accent-orange);
+  --fill-data-visualize-accent-amber: var(--bg-data-visualize-accent-amber);
+  --fill-data-visualize-accent-cyan: var(--bg-data-visualize-accent-cyan);
+  --fill-data-visualize-accent-sky: var(--bg-data-visualize-accent-sky);
+  --fill-data-visualize-accent-indigo: var(--bg-data-visualize-accent-indigo);
+  --fill-data-visualize-accent-fuchsia: var(--bg-data-visualize-accent-fuchsia);
+  --fill-data-visualize-accent-green: var(--bg-data-visualize-accent-green);
+}
+
+/* Text styles (30) → one class each, e.g. `Body/Small-medium` is
+ * `text-body-small-medium`. Each class sets size, line height, letter spacing,
+ * weight and (for the italic styles) font style. Family: Inter. */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility text-display-desktop {
+  font-size: 4.5rem; /* 72px */
+  line-height: 5.625rem; /* 90px */
+  letter-spacing: -1.5px;
+  font-weight: 700;
+}
+@utility text-display-tablet {
+  font-size: 4.5rem; /* 72px */
+  line-height: 5.625rem; /* 90px */
+  letter-spacing: -1.5px;
+  font-weight: 700;
+}
+@utility text-display-mobile {
+  font-size: 3.5rem; /* 56px */
+  line-height: 4.5rem; /* 72px */
+  letter-spacing: -1px;
+  font-weight: 700;
+}
+@utility text-heading-h1 {
+  font-size: 3.5rem; /* 56px */
+  line-height: 4.5rem; /* 72px */
+  letter-spacing: -1px;
+  font-weight: 700;
+}
+@utility text-heading-h2 {
+  font-size: 3rem; /* 48px */
+  line-height: 3.75rem; /* 60px */
+  letter-spacing: -0.5px;
+  font-weight: 700;
+}
+@utility text-heading-h3 {
+  font-size: 2.5rem; /* 40px */
+  line-height: 2.75rem; /* 44px */
+  letter-spacing: 0;
+  font-weight: 700;
+}
+@utility text-heading-h4 {
+  font-size: 2rem; /* 32px */
+  line-height: 2.75rem; /* 44px */
+  letter-spacing: 0;
+  font-weight: 700;
+}
+@utility text-heading-h5 {
+  font-size: 1.5rem; /* 24px */
+  line-height: 2.125rem; /* 34px */
+  letter-spacing: 0;
+  font-weight: 700;
+}
+@utility text-heading-h6 {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem; /* 28px */
+  letter-spacing: 0;
+  font-weight: 700;
+}
+@utility text-body-large-regular {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+  letter-spacing: 0;
+  font-weight: 400;
+}
+@utility text-body-large-medium {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+  letter-spacing: 0;
+  font-weight: 500;
+}
+@utility text-body-large-semibold {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+  letter-spacing: 0;
+  font-weight: 600;
+}
+@utility text-body-large-bold {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+  letter-spacing: 0;
+  font-weight: 700;
+}
+@utility text-body-medium-regular {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  letter-spacing: 0;
+  font-weight: 400;
+}
+@utility text-body-medium-medium {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  letter-spacing: 0;
+  font-weight: 500;
+}
+@utility text-body-medium-semibold {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  letter-spacing: 0;
+  font-weight: 600;
+}
+@utility text-body-medium-bold {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  letter-spacing: 0;
+  font-weight: 700;
+}
+@utility text-body-small-regular {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  font-weight: 400;
+}
+@utility text-body-small-medium {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  font-weight: 500;
+}
+@utility text-body-small-semibold {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  font-weight: 600;
+}
+@utility text-body-small-bold {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  font-weight: 700;
+}
+@utility text-body-mini-regular {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  font-weight: 400;
+}
+@utility text-body-mini-medium {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  font-weight: 500;
+}
+@utility text-body-mini-semibold {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  font-weight: 600;
+}
+@utility text-body-mini-italic {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  font-weight: 400;
+  font-style: italic;
+}
+@utility text-body-mini-bold {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  font-weight: 700;
+}
+@utility text-body-tiny-italic {
+  font-size: 0.625rem; /* 10px */
+  line-height: 1rem; /* 16px */
+  letter-spacing: 0;
+  font-weight: 400;
+  font-style: italic;
+}
+@utility text-body-tiny-regular {
+  font-size: 0.625rem; /* 10px */
+  line-height: 1rem; /* 16px */
+  letter-spacing: 0;
+  font-weight: 400;
+}
+@utility text-support-label {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  font-weight: 500;
+}
+@utility text-support-caption {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+/* Loading shimmer (paint styles Loading/light, light-2, dark, dark-2).
+ * Gradients are styles, not color tokens, so they are defined as utilities.
+ * `light` sits on light surfaces, `dark` on dark ones; `-2` is the reversed
+ * phase the shimmer fades to and from. */
+@utility bg-loading-light {
+  background-image: linear-gradient(90deg, rgb(0 0 0 / 0.06), rgb(0 0 0 / 0.02));
+}
+@utility bg-loading-light-2 {
+  background-image: linear-gradient(90deg, rgb(0 0 0 / 0.02), rgb(0 0 0 / 0.06));
+}
+@utility bg-loading-dark {
+  background-image: linear-gradient(90deg, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.03));
+}
+@utility bg-loading-dark-2 {
+  background-image: linear-gradient(90deg, rgb(255 255 255 / 0.03), rgb(255 255 255 / 0.1));
+}
