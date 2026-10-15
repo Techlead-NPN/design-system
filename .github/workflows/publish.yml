@@ -1,0 +1,42 @@
+# Publishes @techlead-npn/design-system to GitHub Packages
+# (https://github.com/orgs/Techlead-NPN/packages) whenever a release is published.
+# The release tag (v0.3.0) must match components/package.json, or the job fails.
+name: Publish package
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: components
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com
+          scope: '@techlead-npn'
+          cache: npm
+          cache-dependency-path: components/package-lock.json
+      - name: Install
+        run: npm ci
+      - name: Check version matches tag
+        if: github.event_name == 'release'
+        run: |
+          PKG=$(node -p "require('./package.json').version")
+          TAG=${GITHUB_REF_NAME#v}
+          [ "$PKG" = "$TAG" ] || { echo "components/package.json is $PKG but the tag is $TAG"; exit 1; }
+      # prepublishOnly runs typecheck + build before the upload.
+      - name: Publish
+        run: npm publish

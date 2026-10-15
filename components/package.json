@@ -1,9 +1,17 @@
 {
   "name": "@techlead-npn/design-system",
-  "private": true,
   "version": "0.2.0",
+  "description": "Coded React + Tailwind v4 components and design tokens for Techlead projects.",
   "type": "module",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Techlead-NPN/design-system.git",
+    "directory": "components"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "files": [
     "dist"
   ],
@@ -18,7 +26,8 @@
     "typecheck": "tsc --noEmit",
     "build": "vite build && tsc -p tsconfig.build.json && node scripts/copy-tokens.mjs",
     "storybook": "storybook dev -p 6006 --no-open",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepublishOnly": "npm run typecheck && npm run build"
   },
   "peerDependencies": {
     "react": ">=19",

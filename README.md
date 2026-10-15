@@ -52,16 +52,20 @@ It opens at http://localhost:6006. Each component family has an "All variants" s
 
 ## Using the components in an app
 
-The components build into a package, `@techlead-npn/design-system`, that carries the compiled components, their types and the token files. It is not published to a registry yet; until then, build it and install the packed file:
+The components build into a package, `@techlead-npn/design-system`, that carries the compiled components, their types and the token files. It is published to GitHub Packages at https://github.com/orgs/Techlead-NPN/packages. GitHub Packages needs a token even to install, so give the app an `.npmrc` that points the `@techlead-npn` scope there:
 
-```bash
-cd components
-npm install
-npm run build
-npm pack
+```ini
+@techlead-npn:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${NPM_TOKEN}
 ```
 
-Then, in the app (React 19 or later, Tailwind CSS v4), install the `.tgz` that `npm pack` produced and set up the app's main stylesheet:
+`NPM_TOKEN` is a personal access token with `read:packages`. For an app built in GitHub Actions, also give its repo Read access under the package's **Manage Actions access** setting. Then install it:
+
+```bash
+npm install @techlead-npn/design-system   # or: bun add @techlead-npn/design-system
+```
+
+The app needs React 19 or later and Tailwind CSS v4. Set up the app's main stylesheet:
 
 ```css
 @import "tailwindcss";
@@ -81,6 +85,12 @@ import type { DSButtonProps } from '@techlead-npn/design-system'
 ```
 
 The docs and Storybook use the plain names (Button, Text input); in code, add the prefix.
+
+## Releasing a new version
+
+1. Bump `version` in `components/package.json` (semver) in the PR with the change, and merge it into `main`.
+2. Create a GitHub release whose tag is that version with a `v` prefix (`v0.3.0`).
+3. `.github/workflows/publish.yml` typechecks, builds and publishes it. It fails if the tag and `package.json` disagree, and npm refuses a version that is already published.
 
 ## Adding a project
 
