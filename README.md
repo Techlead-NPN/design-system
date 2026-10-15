@@ -70,16 +70,17 @@ Then, in the app (React 19 or later, Tailwind CSS v4), install the `.tgz` that `
 @source "../node_modules/@techlead-npn/design-system/dist";
 ```
 
-The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. The app loads the Inter font itself. Import the components under the name `DS`, so they are easy to tell apart from an app's own components of the same name:
+The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. The app loads the Inter font itself. Every component and type is exported with a `DS` prefix, so it is easy to tell apart from an app's own component of the same name. Import only the ones you use:
 
 ```tsx
-import * as DS from '@techlead-npn/design-system'
+import { DSButton, DSTextInput } from '@techlead-npn/design-system'
+import type { DSButtonProps } from '@techlead-npn/design-system'
 
-<DS.Button>Save</DS.Button>
-<DS.TextInput label="Title" />
+<DSButton>Save</DSButton>
+<DSTextInput label="Title" />
 ```
 
-`DS` is the agreed label in every project. Importing single components by name (`import { Button } from …`) also works.
+The docs and Storybook use the plain names (Button, Text input); in code, add the prefix.
 
 ## Adding a project
 
