@@ -1,6 +1,6 @@
 {
   "name": "@techlead-npn/design-system",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Coded React + Tailwind v4 components and design tokens for Techlead projects.",
   "type": "module",
   "sideEffects": false,

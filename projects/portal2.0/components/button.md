@@ -75,6 +75,22 @@ Focus is the same ring as Button.
 
 Use an accent the same way as on Button: Default for most icon actions; Blue for an icon action that sits inside indigo content (e.g. the copy icon next to an indigo code); Danger for a destructive icon action such as delete. In code: `<IconButton variant="ghost" accent="danger">`.
 
+**`Floating action button`** — a round button holding one icon, for the **one main create action on a mobile screen**, floating above the content (e.g. the "+" beside the [mobile bottom navigation](../patterns/mobile-bottom-navigation.md)). Mobile only, never more than one per screen. For inline or repeated icon actions use Icon Button.
+
+| | |
+|---|---|
+| Box | 40×40px circle, `border-radii/rounded-infinite` |
+| Icon | 24px, centered |
+| Shadow | `shadow-md` |
+
+| State | Fill | Icon |
+|---|---|---|
+| Default | `bg/accent-indigo` | `text + icon/primary-inverse` |
+| Hover / pressed | `bg/accent-indigo-bolder` | `text + icon/primary-inverse` |
+| Disabled | `bg/disabled` | `text + icon/disabled` |
+
+Focus keeps the resting look and adds the same 2px `border/accent-indigo` ring 2px outside, here a circle (`rounded-infinite`). In code: `<FloatingActionButton aria-label="New request"><IconPlus size={24} /></FloatingActionButton>` (`DSFloatingActionButton` in an app).
+
 **`Group Buttons`** — `Type=Horizontal`: buttons in a row, `spacing/3` (12px) apart, the group right-aligned in a bar padded `spacing/2` (8px) top/bottom and `spacing/4` (16px) left/right. `Type=Vertical`: buttons stacked 12px apart, each filling the width, same padding.
 
 ## Variant properties
@@ -131,6 +147,8 @@ This component is the **desktop** pattern — a horizontal or vertical cluster o
 - **Icon internal vector stroke (24 instances, 1.1px):** same pattern seen in every other component so far — icon glyph strokes don't align to the `border-width` scale (only `xs`=1px exists). Left unbound.
 
 ## Changelog
+
+- **2026-10-16:** added the `Floating action button` component (Buttons page, 4 states, swappable icon) from the bare `CTA` frame in the mobile bottom navigation, which now uses an instance of it. Its shadow changed from a zero-offset glow bound to raw effect primitives to the named `shadow-md`, at the design owner's choice. First coded version: `FloatingActionButton`.
 
 - **2026-10-16:** Icon Button gained `Accent` on Outline and Ghost (Default / Blue / Danger), with the same per-accent tokens as Button; coded as the `accent` prop. Done first in the PayGenix Merchant Figma file, where the set had a partial, inconsistent version: the indigo Primary was named `Accent=Blue` at 32px and `Accent=Default` at 24px (now `Default` at both), Outline Blue and Ghost Danger were missing (16 variants added), Focus variants used the old tint style (now resting colors + `Focus ring`), disabled Outline used `border/disabled` (now `border/primary`), and Ghost Blue hover was grey at 24px (now the indigo tint at both sizes). Portal 2.0's Figma set got the same `Accent` property (existing 24 variants became `Accent=Default`, 32 accent variants added), and its page Description, which was still the empty placeholder, now holds the usage rules.
 - **2026-10-07:** the shortcut hint's text switched from a foreign 13px style (`Base/Medium`) to the existing `Support/Caption` on all 144 variants, at the design owner's request, so it can be built from tokens. The hint is now coded (`shortcut` prop on `Button`).

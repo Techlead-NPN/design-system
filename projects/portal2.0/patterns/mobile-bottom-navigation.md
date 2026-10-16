@@ -13,7 +13,7 @@ Figma: [`📱 Navigation`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) 
 ## Layout rules
 
 - **Floating pill bar**: `bg/primary` fill, fully rounded (`border-radii/rounded-infinite`), sitting with margin above the device edge rather than spanning edge-to-edge — this is a floating bar, not a fixed-to-edge tab bar.
-- **Floating "+" action button** sits to the right of the pill, separate from the 3 tabs — it's a persistent create-action shortcut, not a 4th tab.
+- **Floating "+" action button** sits to the right of the pill, `spacing/2` (8px) away, separate from the 3 tabs — it's a persistent create-action shortcut, not a 4th tab. It is a [`Floating action button`](../components/button.md) instance with a 24px `icon/plus`.
 - **`Home Indicator`** (the black pill at the very bottom) is genuine OS chrome (iOS's home indicator) — exempt from this system's color tokens per [`DESIGN.md`](../DESIGN.md)'s OS-chrome rule, correctly left on its own system reference.
 
 ## States
@@ -22,10 +22,11 @@ Figma: [`📱 Navigation`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) 
 
 ## Known gaps (component doesn't yet match spec, or naming is inconsistent)
 
-- **The floating "+" button's drop shadow is bound to raw effect-primitive variables** (`base/black-A10`, `spread/s`, `blur/5xl`, `offset-x/md`) rather than one of this system's named effect styles (`shadow-sm`/`md`/`lg`/`xl`), which is the intended architecture per [`DESIGN.md`](../DESIGN.md) §4. No exact match exists among the named styles either — the button's shadow is an ambient, zero-offset glow (`offset (0,0)`, blur 24 + blur 7.5), while every named `shadow-*` style is a directional shadow with a positive Y-offset. Flagging rather than force-fitting a visually different style or inventing a new one without design-owner confirmation.
+None open.
 
 ## Changelog
 
+- **2026-10-16:** the "+" button (`CTA`, a bare frame in each `navbar menu` variant) is now an instance of the new `Floating action button` component. Its shadow, previously a zero-offset glow bound to raw effect primitives, is now `shadow-md` (design owner's choice), which closes the gap that was listed here.
 - Fixed a **duplicate corner-radius token** (`border-radii/rounded-infinite 2` → canonical `border-radii/rounded-infinite`) across `menu` and `navbar menu`.
 - Bound previously-unbound `itemSpacing`/padding/`cornerRadius`/`strokeWeight` across both components (34 total fixes) via exact-value match against the spacing/radius primitive scale.
 - No other foreign color tokens found — `navbar menu`/`Sticky_bar menu` were otherwise already using real semantic tokens (a cleaner starting point than most components audited so far).
