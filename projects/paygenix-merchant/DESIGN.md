@@ -49,7 +49,7 @@ For chart shapes drawn as SVG, the same names work with `fill-` (`fill-data-visu
 
 Compared with Portal 2.0's components, the PayGenix Figma file (`OGNevBxvmOopy3v0AilDdB`, read 2026-10-09) also has the following, none of which is coded or documented yet:
 
-- **Different variants:** icon button with blue and danger accents; alert in large and small sizes.
+- **Different variants:** alert in large and small sizes. (Icon button accents are done: see the Icon Button section of [`../portal2.0/components/button.md`](../portal2.0/components/button.md).)
 - **New generic components:** tag input, check card, banners, table pagination, table cell types (link, balance, settlement status, number), auto-saved state, top navbar, flags, an illustration set.
 - **Smaller value differences not yet reviewed:** menu container, tooltip, content dialog spacing, two extra small avatar sizes.
 - **About 96 dashboard-specific components** (authentication, home, verify business, transaction, balance, report, webhook logs, activity, settings). These belong in the dashboard's app repo.

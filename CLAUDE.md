@@ -16,6 +16,7 @@ Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/found
 - Code lives in `components/src/<family>/`; export it from `components/src/index.ts` with a `DS` prefix (`export { Button as DSButton }`), types included. Files, stories and docs keep the plain name.
 - Add or update its story in the same folder (`*.stories.tsx`) so it appears in Storybook.
 - Check with `npm run typecheck` and `npm run build-storybook` in `components/`.
+- Any change that alters what the package ships (components, their exports, or the token files) raises `version` in `components/package.json` in the same PR, using semver: patch for a fix that changes no API, minor for a new component, prop or token, major for a removal or rename that breaks an app. Run `npm version <x.y.z> --no-git-tag-version` in `components/` so the lockfile follows. Doc-only and Storybook-only changes do not bump it. After merging, a GitHub release tagged `v<x.y.z>` publishes it (see README "Releasing a new version").
 
 ## When editing the docs
 

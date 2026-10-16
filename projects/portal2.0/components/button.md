@@ -52,20 +52,28 @@ Only the fill changes on hover; border and label stay as they are at rest.
 
 **Shortcut hint** (`ShortcutHelper?`) — optional, after the label: a 1px line 16px high, then the hint (e.g. "⌘O") in `Support/Caption`, each `spacing/1` (4px) apart. Line and hint are tinted per `Accent` (see "Anatomy & tokens by Accent" below); when the button is disabled the hint is `text + icon/disabled`.
 
-**`IconButton/Icon Button`** — a square button holding one icon, `border-radii/rounded-6`. It has no `Accent`.
+**`IconButton/Icon Button`** — a square button holding one icon, `border-radii/rounded-6`. Outline and Ghost take an `Accent` (Default / Blue / Danger) with the same meaning as Button's; Primary has one look (indigo) and no accent choice.
 
 | | `Size=24px` | `Size=32px` |
 |---|---|---|
 | Box | 24×24px | 32×32px |
 | Icon | 14px | 20px |
 
-| Style | Fill | Border | Icon | Hover fill | Disabled |
+| Style | Accent | Fill | Border (`border-width/xs`) | Icon | Hover fill |
 |---|---|---|---|---|---|
-| Primary | `bg/accent-indigo` | none | `text + icon/primary-inverse` | `bg/accent-indigo-bolder` | fill `bg/disabled`, icon `text + icon/disabled` |
-| Outline | `bg/primary` | `border/primary` | `text + icon/secondary` | `bg/primary-hover` | icon `text + icon/disabled` |
-| Ghost | none | none | `text + icon/secondary` | `bg/primary-hover` | icon `text + icon/disabled` |
+| Primary | — | `bg/accent-indigo` | none | `text + icon/primary-inverse` | `bg/accent-indigo-bolder` |
+| Outline | Default | `bg/primary` | `border/primary` | `text + icon/secondary` | `bg/primary-hover` |
+| Outline | Blue | `bg/primary` | `border/accent-indigo` | `text + icon/accent-indigo` | `bg/accent-indigo-subtlest` |
+| Outline | Danger | `bg/primary` | `border/danger` | `text + icon/danger` | `bg/danger-subtle` |
+| Ghost | Default | none | none | `text + icon/secondary` | `bg/primary-hover` |
+| Ghost | Blue | none | none | `text + icon/accent-indigo` | `bg/accent-indigo-subtlest` |
+| Ghost | Danger | none | none | `text + icon/danger` | `bg/danger-subtle` |
+
+Only the fill changes on hover. **Disabled, whatever the accent:** icon `text + icon/disabled`, no hover; Primary fill `bg/disabled`; Outline keeps `bg/primary` with a `border/primary` border; Ghost has no fill.
 
 Focus is the same ring as Button.
+
+Use an accent the same way as on Button: Default for most icon actions; Blue for an icon action that sits inside indigo content (e.g. the copy icon next to an indigo code); Danger for a destructive icon action such as delete. In code: `<IconButton variant="ghost" accent="danger">`.
 
 **`Group Buttons`** — `Type=Horizontal`: buttons in a row, `spacing/3` (12px) apart, the group right-aligned in a bar padded `spacing/2` (8px) top/bottom and `spacing/4` (16px) left/right. `Type=Vertical`: buttons stacked 12px apart, each filling the width, same padding.
 
@@ -73,7 +81,7 @@ Focus is the same ring as Button.
 
 **`Button/Button`** (144 variants): `Hierarchy` (Primary / Outline / Ghost) × `Accent` (Default / Danger / Blue) × `Size` (Small / Medium) × `State` (Default / Hover / Disabled / Focus) × `Inverted?` (False / True). Plus non-variant properties: `Prefix Icon` / `Suffix icon` (boolean toggles), `Prefix icon type` / `Suffix icon type` (instance-swap), `Button Text`, `ShortcutHelper?` + `ShortcutValue` (the trailing `⌘O`-style hint).
 
-**`IconButton/Icon Button`** (24 variants): `Style` (Primary / Outline / Ghost) × `State` (Default / Hover / Disable / Focus) × `Size` (32px / 24px).
+**`IconButton/Icon Button`** (56 variants): `Style` (Primary / Outline / Ghost) × `Accent` (Default / Blue / Danger; Primary has Default only) × `State` (Default / Hover / Disable / Focus) × `Size` (32px / 24px). Same set in the Portal 2.0 and PayGenix Merchant Figma files.
 
 **`Group Buttons`** (2 variants): `Type` (Horizontal / Vertical) × `Tertiary button?` (boolean). See "Button groups" below — this is the responsive 2-or-3-button cluster, distinct from Bottom sheet's own mobile-specific button rules.
 
@@ -124,6 +132,7 @@ This component is the **desktop** pattern — a horizontal or vertical cluster o
 
 ## Changelog
 
+- **2026-10-16:** Icon Button gained `Accent` on Outline and Ghost (Default / Blue / Danger), with the same per-accent tokens as Button; coded as the `accent` prop. Done first in the PayGenix Merchant Figma file, where the set had a partial, inconsistent version: the indigo Primary was named `Accent=Blue` at 32px and `Accent=Default` at 24px (now `Default` at both), Outline Blue and Ghost Danger were missing (16 variants added), Focus variants used the old tint style (now resting colors + `Focus ring`), disabled Outline used `border/disabled` (now `border/primary`), and Ghost Blue hover was grey at 24px (now the indigo tint at both sizes). Portal 2.0's Figma set got the same `Accent` property (existing 24 variants became `Accent=Default`, 32 accent variants added), and its page Description, which was still the empty placeholder, now holds the usage rules.
 - **2026-10-07:** the shortcut hint's text switched from a foreign 13px style (`Base/Medium`) to the existing `Support/Caption` on all 144 variants, at the design owner's request, so it can be built from tokens. The hint is now coded (`shortcut` prop on `Button`).
 - **2026-10-05:** added the Spec section and normalised the component with the design owner, in Figma and in code. (1) **Focus:** all 18 normal `Button` Focus variants and all 6 `Icon Button` Focus variants now keep their resting colors and carry a `Focus ring` layer; previously focus was an indigo tint on some, a white inner ring on others, and a bare fill change on the rest. (2) **Disabled:** all 18 normal Disabled variants follow one rule per hierarchy. (3) Removed the static 4% black edge stroke from the normal filled variants (see the 2026-08-20 entry; it remains on inverted variants). (4) Renamed the variant property `Hierachy` → `Hierarchy`. (5) Corrected this doc's anatomy table, which described the Default-accent Primary button as a dark fill with inverse text; it is `bg/secondary` with `text + icon/secondary`. First coded version added in `components/src/button/`. (6) The `Focus ring` layer's width is bound to the new Foundations primitive `border-width/sm` (2px) and its radius to `border-radii/rounded-10`.
 

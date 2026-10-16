@@ -3,7 +3,7 @@
 export { Button as DSButton } from './button/Button'
 export type { ButtonProps as DSButtonProps, ButtonHierarchy as DSButtonHierarchy, ButtonAccent as DSButtonAccent, ButtonSize as DSButtonSize } from './button/Button'
 export { IconButton as DSIconButton } from './button/IconButton'
-export type { IconButtonProps as DSIconButtonProps, IconButtonStyle as DSIconButtonStyle, IconButtonSize as DSIconButtonSize } from './button/IconButton'
+export type { IconButtonProps as DSIconButtonProps, IconButtonStyle as DSIconButtonStyle, IconButtonAccent as DSIconButtonAccent, IconButtonSize as DSIconButtonSize } from './button/IconButton'
 export { Checkbox as DSCheckbox } from './selection/Checkbox'
 export type { CheckboxProps as DSCheckboxProps } from './selection/Checkbox'
 export { Radio as DSRadio } from './selection/Radio'
