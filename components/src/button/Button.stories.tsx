@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { IconCircleDashed } from '@tabler/icons-react'
+import { IconCircleDashed, IconPlus } from '@tabler/icons-react'
 import { Button } from './Button'
+import { FloatingActionButton } from './FloatingActionButton'
 import { IconButton } from './IconButton'
 
 const meta = {
@@ -69,6 +70,16 @@ export const IconButtons: Story = {
           <IconButton variant={v} accent={a} size="sm" aria-label="Example" disabled><IconCircleDashed size={14} /></IconButton>
         </div>
       ))}
+    </div>
+  ),
+}
+
+export const FloatingActionButtons: Story = {
+  name: 'Floating action button',
+  render: () => (
+    <div className="flex items-center gap-6 p-4">
+      <FloatingActionButton aria-label="New request"><IconPlus size={24} /></FloatingActionButton>
+      <FloatingActionButton aria-label="New request" disabled><IconPlus size={24} /></FloatingActionButton>
     </div>
   ),
 }
