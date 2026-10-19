@@ -33,6 +33,18 @@ export const Alerts: Story = {
   ),
 }
 
+/** PayGenix Merchant only: a one-line message under a field or uploaded file. Text only by default. */
+export const SmallAlerts: Story = {
+  name: 'Alert, small (PayGenix)',
+  globals: { project: 'paygenix-merchant' },
+  render: () => (
+    <div className="flex flex-col gap-3">
+      {statuses.map((s) => <Alert key={s} className="w-[512px]" size="sm" status={s}>Image too blurry</Alert>)}
+      <Alert className="w-[512px]" size="sm" icon status="warning">With the icon turned on</Alert>
+    </div>
+  ),
+}
+
 export const Callouts: Story = {
   render: () => (
     <div className="flex flex-col gap-3">

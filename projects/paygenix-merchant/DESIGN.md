@@ -39,17 +39,30 @@ Both are intended PayGenix character, confirmed by the design owner.
 
 For chart shapes drawn as SVG, the same names work with `fill-` (`fill-data-visualize-accent-red`). Use them for chart series only, never for status.
 
+### Small alert
+
+PayGenix's Alert message has a `Size` property: `Large` is Portal 2.0's standard alert ([`toast-alert.md`](../portal2.0/components/toast-alert.md)), and `Small` is a compact one-line message attached to a field or an uploaded file, typically review feedback ("Image too blurry", "The provided information is inconsistent with the uploaded document(s)."). For a standalone notice, use Large.
+
+| Part | Small |
+|---|---|
+| Box | 28px high, padding `spacing/1` (4px) top/bottom and `spacing/2` (8px) left/right, `border-radii/rounded-6`, fill the status's `-A80` background |
+| Text | `Body/Mini-regular` (12px), in the status's text color |
+| Icon | off by default; when on, the same 16px status icon as Large, `spacing/2` (8px) before the text |
+| Action | none |
+
+In code: `<Alert size="sm" status="warning">Image too blurry</Alert>` (`DSAlert` in an app). Add `icon` to show the icon.
+
 ## 3. Decisions
 
 - **Portal 2.0's audit corrections apply here.** The PayGenix Figma file is an older copy of Portal 2.0's and still has the earlier values (for example lighter tertiary text and lighter status borders). The repo uses Portal 2.0's corrected values; where the Figma file disagrees, the repo is right.
 - **Independent tokens.** Decided by the design owner on 2026-10-09: a Portal 2.0 color change must not reach PayGenix by itself.
-- **No dark mode.** The Figma file defines dark values for some tokens; they are out of scope and not carried into `tokens.css`.
+- **Alert message in the Figma file was aligned with Portal 2.0 on 2026-10-19:** its status property is now named `State` (it was `Type`), warning text and icon use `text + icon/warning` (amber, it was `urgent` orange), and all variants are vertically centered. The four `bg/*-subtle-A80` tokens now follow Portal 2.0's pattern: each points at its raw color (`blue/100`, `green/50`, `amber/100`, `red/100`) with 80% opacity, instead of at separate `*/opa-A80` raw colors (one of which, amber, had no transparency); those four raw colors were deleted.
+- **No dark mode.** The `dark` mode was removed from the Figma file's `semantic color` collection on 2026-10-19; only `light` remains.
 
 ## 4. Not done yet
 
 Compared with Portal 2.0's components, the PayGenix Figma file (`OGNevBxvmOopy3v0AilDdB`, read 2026-10-09) also has the following, none of which is coded or documented yet:
 
-- **Different variants:** alert in large and small sizes. (Icon button accents are done: see the Icon Button section of [`../portal2.0/components/button.md`](../portal2.0/components/button.md).)
 - **New generic components:** tag input, check card, banners, table pagination, table cell types (link, balance, settlement status, number), auto-saved state, top navbar, flags, an illustration set.
 - **Smaller value differences not yet reviewed:** menu container, tooltip, content dialog spacing, two extra small avatar sizes.
 - **About 96 dashboard-specific components** (authentication, home, verify business, transaction, balance, report, webhook logs, activity, settings). These belong in the dashboard's app repo.
