@@ -70,6 +70,8 @@ export function Button({
   children,
   ...rest
 }: ButtonProps) {
+  // On a filled Blue or Danger button a tinted hint is unreadable, so it takes the label's color.
+  const filledHint = hierarchy === 'primary' && accent !== 'default'
   return (
     <button
       type={type}
@@ -82,7 +84,7 @@ export function Button({
       {shortcut != null && (
         <>
           <span aria-hidden="true" className={`h-4 border-l ${shortcutTone[accent].line}`} />
-          <span className={`text-support-caption ${rest.disabled ? '' : shortcutTone[accent].text}`}>{shortcut}</span>
+          <span className={`text-support-caption ${rest.disabled ? '' : filledHint ? 'text-primary-inverse' : shortcutTone[accent].text}`}>{shortcut}</span>
         </>
       )}
     </button>

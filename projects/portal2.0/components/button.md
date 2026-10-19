@@ -50,7 +50,7 @@ Only the fill changes on hover; border and label stay as they are at rest.
 | Outline | none | `border/primary` |
 | Ghost | none | none |
 
-**Shortcut hint** (`ShortcutHelper?`) — optional, after the label: a 1px line 16px high, then the hint (e.g. "⌘O") in `Support/Caption`, each `spacing/1` (4px) apart. Line and hint are tinted per `Accent` (see "Anatomy & tokens by Accent" below); when the button is disabled the hint is `text + icon/disabled`.
+**Shortcut hint** (`ShortcutHelper?`) — optional, after the label: a 1px line 16px high, then the hint (e.g. "⌘O") in `Support/Caption`, each `spacing/1` (4px) apart. Line and hint are tinted per `Accent` (see "Anatomy & tokens by Accent" below), except on a filled button (Primary with Blue or Danger accent), where the hint is `text + icon/primary-inverse`, the same as the label, because a tinted hint is unreadable on the fill. When the button is disabled the hint is `text + icon/disabled`.
 
 **`IconButton/Icon Button`** — a square button holding one icon, `border-radii/rounded-6`. Outline and Ghost take an `Accent` (Default / Blue / Danger) with the same meaning as Button's; Primary has one look (indigo) and no accent choice.
 
@@ -120,7 +120,8 @@ Each `Accent` drives a full set of role tokens, not just the background:
 | Outline border/text | `border/primary`, `text+icon/secondary` | `border/danger`, `text+icon/danger` | `border/accent-indigo`, `text+icon/accent-indigo` |
 | Focus ring | `border/accent-indigo` | `border/accent-indigo` | `border/accent-indigo` |
 | Separator (the `\|` before a shortcut hint) | `border/primary-subtle` | `border/accent-blush` | `border/accent-sky` |
-| Shortcut hint text (e.g. `⌘O`) | `text+icon/tertiary` | `text+icon/accent-blush` | `text+icon/accent-indigo-subtle` |
+| Shortcut hint text (e.g. `⌘O`), Outline and Ghost | `text+icon/tertiary` | `text+icon/accent-blush` | `text+icon/accent-indigo-subtle` |
+| Shortcut hint text, Primary | `text+icon/tertiary` | `text+icon/primary-inverse` | `text+icon/primary-inverse` |
 
 The Separator/Shortcut mapping is a deliberate, narrow exception to "accent colors are decorative" (see DESIGN.md §2.2) — `accent-blush`/`accent-sky` are reused here specifically to tint the shortcut-hint UI to match the button's Accent, not because blush/sky carry meaning on their own.
 
@@ -141,12 +142,14 @@ This component is the **desktop** pattern — a horizontal or vertical cluster o
 ## Known gaps
 
 - **`Inverted?=True` (72 variants) is not specified or coded yet.** These variants are the least consistent part of the component — several use a text token as a border or fill, or `bg/primary` as a text color — and were deliberately left untouched in Figma on 2026-10-05. They need their own rule table before a screen uses one. Checked on 2026-10-07: none of the 72 variants has a live instance anywhere in the file. Left untouched at the design owner's request.
-- **The shortcut hint is hard to read on filled buttons.** On a Primary/Blue button the hint is `text + icon/accent-indigo-subtle` on `bg/accent-indigo`, and on Primary/Danger it is `text + icon/accent-blush` on `bg/danger`; both are low contrast. The colors are as documented and drawn; worth a design decision.
+- **White label on indigo is just under WCAG AA.** `text + icon/primary-inverse` on `bg/accent-indigo` is 4.28:1 (AA for normal text is 4.5:1), on every filled indigo Button, Icon Button and the Floating action button. Fixing it means a darker `accent-indigo`, a system-wide decision not yet taken.
 
 - **Adaptive subtle overlay (16 instances) — resolved 2026-08-20:** a very low-opacity black (4%) used as both a barely-visible edge stroke on solid buttons and a hover-fill tint on outline/ghost buttons. Previously described here as "left unbound," but was actually bound to a variable named `transparent/light` that had since been **deleted from the file's active variable collection** — an orphaned reference invisible in Figma's own Variables panel (`getLocalVariablesAsync` no longer lists it) yet still resolvable via its old ID, so the 16 instances kept rendering correctly while silently pointing at nothing real. Discovered while auditing [Approve & Reject dialog](request-detail-approve-reject-dialog.md) and confirmed file-wide on this page. At the user's request, cleared all 16 dangling bindings and set the same `rgba(0,0,0,0.04)` as a static (unbound) color — visually identical, no more orphaned reference. The underlying gap remains real: our token system still has no equivalent "adaptive overlay" utility that would correctly invert to a light tint on `Inverted?=True` surfaces (this fix keeps the value fixed-black, matching the original's actual behavior, which also had no such adaptation — confirmed via a single-mode variable value, not a genuine light/dark pair). Worth considering as a future Foundation primitive if this pattern recurs.
 - **Icon internal vector stroke (24 instances, 1.1px):** same pattern seen in every other component so far — icon glyph strokes don't align to the `border-width` scale (only `xs`=1px exists). Left unbound.
 
 ## Changelog
+
+- **2026-10-19:** the shortcut hint on filled Primary/Blue and Primary/Danger buttons changed from `text + icon/accent-indigo-subtle` (1.5:1 on the fill) and `text + icon/accent-blush` (about 1:1) to `text + icon/primary-inverse`, at the design owner's choice, in Figma (12 variants, also in the PayGenix Merchant file) and in code.
 
 - **2026-10-16:** added the `Floating action button` component (Buttons page, 4 states, swappable icon) from the bare `CTA` frame in the mobile bottom navigation, which now uses an instance of it. Its shadow changed from a zero-offset glow bound to raw effect primitives to the named `shadow-md`, at the design owner's choice. First coded version: `FloatingActionButton`.
 
