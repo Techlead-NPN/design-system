@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { IconCircleDashed } from '@tabler/icons-react'
+import { useState } from 'react'
 import { Table, TableCell, TableHeaderCell, TableRow, TableSelectCell } from './Table'
+import { TablePagination } from './TablePagination'
 import { Checkbox } from '../selection/Checkbox'
 import { Badge } from '../badge/Badge'
 import { Loading } from '../layout/Loading'
@@ -49,4 +51,30 @@ export const Dividers: Story = {
       </div>
     </div>
   ),
+}
+
+function PaginationDemo() {
+  const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState(15)
+  return (
+    <div className="pt-40">
+      <TablePagination
+        page={page}
+        pageSize={pageSize}
+        total={100}
+        onPageChange={setPage}
+        onPageSizeChange={(size) => {
+          setPageSize(size)
+          setPage(1)
+        }}
+      />
+    </div>
+  )
+}
+
+/** PayGenix Merchant: sits under a table. The page-size menu opens upward. */
+export const Pagination: Story = {
+  name: 'Table pagination (PayGenix)',
+  globals: { project: 'paygenix-merchant' },
+  render: () => <PaginationDemo />,
 }

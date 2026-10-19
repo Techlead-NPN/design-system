@@ -52,6 +52,23 @@ PayGenix's Alert message has a `Size` property: `Large` is Portal 2.0's standard
 
 In code: `<Alert size="sm" status="warning">Image too blurry</Alert>` (`DSAlert` in an app). Add `icon` to show the icon.
 
+### Table pagination
+
+Sits under a table it controls (Transaction, Balance, Report, Webhook Logs), left-aligned with the table's 16px inset, on desktop and mobile. One 24px row of two groups, `spacing/6` (24px) apart:
+
+| Part | Value |
+|---|---|
+| Left group, `spacing/2` (8px) gap | label "Items per page:", then a Small Primary/Default [Button](../portal2.0/components/button.md) showing the page size with a 14px `chevron-down` |
+| Page-size menu | the standard [Menu](../portal2.0/components/menu-item.md) (`shadow-lg`), 48px wide, opening **upward**, left-aligned with the button, `spacing/1` (4px) above it. Options 15, 25, 50, 100; default 15 |
+| Right group, `spacing/2` (8px) gap | the range "1–15 of 100" (first–last row shown, of the total), then ‹ and › as 24px Outline [Icon Buttons](../portal2.0/components/button.md) |
+| Text | `Body/Small-medium`, `text + icon/primary` |
+
+Behavior: ‹ is disabled on the first page and › on the last. Choosing a new page size closes the menu and returns to page 1. With no rows the range reads "0–0 of 0" and both arrows are disabled.
+
+In code: `<TablePagination page={page} pageSize={size} total={total} onPageChange={setPage} onPageSizeChange={(s) => { setSize(s); setPage(1) }} />` (`DSTablePagination` in an app).
+
+Figma (2026-10-19): the variant property was renamed `Property 1` → `State` (`Default` / `Open`); the label was corrected from "Item per page:"; the options were 10/25/50/100 although the default is 15, now 15/25/50/100; the 7px gaps were snapped to `spacing/2`; the menu now sits 4px above the button like other menus.
+
 ## 3. Decisions
 
 - **Portal 2.0's audit corrections apply here.** The PayGenix Figma file is an older copy of Portal 2.0's and still has the earlier values (for example lighter tertiary text and lighter status borders). The repo uses Portal 2.0's corrected values; where the Figma file disagrees, the repo is right.
@@ -63,6 +80,6 @@ In code: `<Alert size="sm" status="warning">Image too blurry</Alert>` (`DSAlert`
 
 Compared with Portal 2.0's components, the PayGenix Figma file (`OGNevBxvmOopy3v0AilDdB`, read 2026-10-09) also has the following, none of which is coded or documented yet:
 
-- **New generic components:** tag input, check card, banners, table pagination, table cell types (link, balance, settlement status, number), auto-saved state, top navbar, flags, an illustration set.
+- **New generic components:** tag input, check card, banners, table cell types (link, balance, settlement status, number), auto-saved state, top navbar, flags, an illustration set.
 - **Smaller value differences not yet reviewed:** menu container, tooltip, content dialog spacing, two extra small avatar sizes.
 - **About 96 dashboard-specific components** (authentication, home, verify business, transaction, balance, report, webhook logs, activity, settings). These belong in the dashboard's app repo.

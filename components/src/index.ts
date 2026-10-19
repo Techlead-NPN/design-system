@@ -51,6 +51,8 @@ export { Overlay as DSOverlay, ConfirmationDialog as DSConfirmationDialog, Conte
 export type { OverlayProps as DSOverlayProps, ConfirmationDialogProps as DSConfirmationDialogProps, ContentDialogProps as DSContentDialogProps, BottomSheetProps as DSBottomSheetProps } from './overlay/Dialog'
 export { Table as DSTable, TableRow as DSTableRow, TableHeaderCell as DSTableHeaderCell, TableCell as DSTableCell, TableSelectCell as DSTableSelectCell } from './table/Table'
 export type { TableRowProps as DSTableRowProps, TableHeaderCellProps as DSTableHeaderCellProps, TableCellProps as DSTableCellProps } from './table/Table'
+export { TablePagination as DSTablePagination } from './table/TablePagination'
+export type { TablePaginationProps as DSTablePaginationProps } from './table/TablePagination'
 export { Loading as DSLoading } from './layout/Loading'
 export type { LoadingProps as DSLoadingProps } from './layout/Loading'
 export { ScrollArea as DSScrollArea } from './layout/ScrollArea'
