@@ -74,8 +74,10 @@ export const IconButtons: Story = {
   ),
 }
 
+/** Portal 2.0 only: the "+" beside the mobile bottom navigation. */
 export const FloatingActionButtons: Story = {
-  name: 'Floating action button',
+  name: 'Floating action button (Portal)',
+  globals: { project: 'portal2.0' },
   render: () => (
     <div className="flex items-center gap-6 p-4">
       <FloatingActionButton aria-label="New request"><IconPlus size={24} /></FloatingActionButton>

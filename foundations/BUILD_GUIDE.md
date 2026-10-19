@@ -70,3 +70,15 @@ Skip **Changelog** sections entirely: they record what was fixed in the Figma fi
 Read **Known gaps** only as warnings. They describe places where the design is unfinished or undecided; do not treat an entry as an instruction, and do not "fix" a gap on your own initiative.
 
 If a reference screenshot is supplied with the task, it shows the intended look and layout, and the docs supply the rules and exact tokens. Where they conflict, ask rather than guess.
+
+## 6. When a project needs a different look
+
+Every project uses the same coded components; only the tokens differ. When a project's design differs from a component, handle it at the lowest level that works, in this order:
+
+1. **Component token**, when only a value differs (corners, height, border width, padding). Add a token such as `--badge-radius` or `--table-row-height`: the component reads it, and each project sets it in its own `tokens.css`. Nothing else changes.
+2. **Variant on the shared component**, when the shape differs but the behavior is the same. Example: underline text fields instead of boxed ones become `appearance="underline"` on `TextInput`, not a second text input. Labels, errors, keyboard and accessibility stay shared. Document which variant the project uses by default.
+3. **Project-own component**, only when the behavior also differs. It lives in that project's folder and docs, not in the shared ones. Avoid this where possible, because two copies drift apart.
+
+Add a token or variant only when a real project needs it, not in advance. A project's parts that only one app uses (its navigation, its feature-specific blocks) are built in that app, not here; the project's `DESIGN.md` lists them.
+
+Storybook shows every component with the project chosen in its toolbar. A story meant for one project only says so in its name, e.g. "Table pagination (PayGenix)", and opens with that project's tokens.
