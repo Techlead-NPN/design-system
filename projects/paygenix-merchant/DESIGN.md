@@ -76,10 +76,12 @@ Figma (2026-10-19): the variant property was renamed `Property 1` → `State` (`
 - **Alert message in the Figma file was aligned with Portal 2.0 on 2026-10-19:** its status property is now named `State` (it was `Type`), warning text and icon use `text + icon/warning` (amber, it was `urgent` orange), and all variants are vertically centered. The four `bg/*-subtle-A80` tokens now follow Portal 2.0's pattern: each points at its raw color (`blue/100`, `green/50`, `amber/100`, `red/100`) with 80% opacity, instead of at separate `*/opa-A80` raw colors (one of which, amber, had no transparency); those four raw colors were deleted.
 - **No dark mode.** The `dark` mode was removed from the Figma file's `semantic color` collection on 2026-10-19; only `light` remains.
 
-## 4. Not done yet
+## 4. Built in the app, not in the design system
 
-Compared with Portal 2.0's components, the PayGenix Figma file (`OGNevBxvmOopy3v0AilDdB`, read 2026-10-09) also has the following, none of which is coded or documented yet:
+The dashboard's developers decided on 2026-10-19 that the rest of the PayGenix Figma file (`OGNevBxvmOopy3v0AilDdB`) is built in the dashboard's app repo, not in this package:
 
-- **New generic components:** tag input, check card, banners, table cell types (link, balance, settlement status, number), auto-saved state, top navbar, flags, an illustration set.
-- **Smaller value differences not yet reviewed:** menu container, tooltip, content dialog spacing, two extra small avatar sizes.
-- **About 96 dashboard-specific components** (authentication, home, verify business, transaction, balance, report, webhook logs, activity, settings). These belong in the dashboard's app repo.
+- **Components:** Info displaying (label/value block), tag input, check card, banners, table cell types (link, balance, settlement status, number), auto-saved state, top navbar, flags, the illustration set.
+- **Small value differences from Portal 2.0** that were not reviewed: menu container, tooltip, content dialog spacing, two extra-small avatar sizes. The package keeps Portal 2.0's values.
+- **About 96 dashboard-specific components** (authentication, home, verify business, transaction, balance, report, webhook logs, activity, settings).
+
+When building a dashboard screen, take these from the app; do not ask for them here. What the package adds for PayGenix is listed in §1 and §2.

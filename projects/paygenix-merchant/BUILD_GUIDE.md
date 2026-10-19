@@ -14,6 +14,6 @@ How to build a Merchant Dashboard screen. Read [`../../foundations/BUILD_GUIDE.m
 - `bg-brand` is for the logo and email template only. Buttons, links and focus use `accent-indigo`.
 - Portal 2.0's app components (`nav-`, `home-`, `request-`, `create-form-`, `notification-`, `profile-`, `settings-`) and its patterns describe Portal's features. Do not reuse them here.
 
-## 3. Gaps
+## 3. Parts that live in the app
 
-This project has no pattern docs and no docs for its own components yet; see [`DESIGN.md`](DESIGN.md) §4. If a screen needs one of the parts listed there, say so instead of inventing it.
+The dashboard's own parts (navbar, info displaying, check card, tag input, table cell types and the rest listed in [`DESIGN.md`](DESIGN.md) §4) are built in the dashboard's app repo, not here. When working in that repo, reuse them from there. When working only from this repo and a screen needs one of them, say so instead of inventing it.
