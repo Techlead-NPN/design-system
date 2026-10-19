@@ -45,6 +45,9 @@ The `-A80` tokens are 80% transparent. In Figma the fill of a toast or alert sho
 | Action (optional) | Small Primary/Default [Button](button.md) |
 | `Type=Full` | one row, 40px high: icon, text, action at the right edge |
 | `Type=Short` | the action drops to a second row, right-aligned (for narrow containers; 327px in the reference) |
+| Icon (`Icon?`) | on by default; can be turned off (`icon={false}` in code) |
+
+In code the Alert also has `size="sm"`, a compact one-line version. It belongs to PayGenix Merchant only (see [its DESIGN.md](../../paygenix-merchant/DESIGN.md) §2); do not use it in Portal 2.0.
 
 **Callout** — a boxed note.
 
@@ -126,6 +129,8 @@ The `-A80` tokens are 80% transparent. In Figma the fill of a toast or alert sho
 - **The page's `.Component Page Header` Description field previously contained leftover Tooltip copy** ("Small, interactive popup boxes that appear when a user hovers over...") — replaced with accurate copy for this page as part of this audit (see Changelog).
 
 ## Changelog
+
+- **2026-10-19:** coded Alert gained `icon` (turn the status icon off, as `Icon?` does in Figma) and `size="sm"`, the compact alert of PayGenix Merchant (documented in its DESIGN.md, not used in Portal 2.0). Portal 2.0's Figma set is unchanged.
 
 - **2026-10-07:** added the Spec section and tidied with the design owner. In Figma: the Info toast was switched from `bg/info-subtle` to `bg/info-subtle-A80` so all four match. (An earlier version of this entry said an extra 80% layer opacity had been removed. That was a misreading: the 80% shown on each fill is the token's own opacity. The fills were briefly forced to 100% and then restored the same day; nothing else changed.) The `-A80` tokens themselves were re-pointed by the design owner (see `DESIGN.md` changelog), so info, warning and danger backgrounds are slightly stronger. The toast's custom effect (a background blur plus three drop shadows) was replaced with the `shadow-lg` effect style on all four variants. First coded versions added.
 - Bound previously-unbound `itemSpacing`/padding on inert single-child "Icon" wrapper frames (10px → `spacing/2,5`) across all 12 variants (Toast ×4, Alert ×4, Callout ×4), matching the "bind inert gaps for consistency" precedent from [Toggle](toggle.md)/[Divider](divider.md).

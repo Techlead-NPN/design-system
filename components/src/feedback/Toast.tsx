@@ -33,20 +33,37 @@ export function Toast({ status, title, description, action, onClose, className =
   )
 }
 
+export type AlertSize = 'md' | 'sm'
+
 export interface AlertProps extends ComponentProps<'div'> {
   status: Status
+  /**
+   * `md` = the standard banner. `sm` = a compact one-line message attached to a field or file
+   * (PayGenix Merchant only; see its DESIGN.md). `sm` has no action and ignores `layout`.
+   */
+  size?: AlertSize
   /** `full` = one row; `short` = the action drops below the text, for narrow spaces. */
   layout?: 'full' | 'short'
-  /** Optional action, e.g. a small Primary Button. */
+  /** Show the status icon. Defaults to on for `md`, off for `sm`. */
+  icon?: boolean
+  /** Optional action, e.g. a small Primary Button. Not shown when `size="sm"`. */
   action?: ReactNode
 }
 
 /** Inline banner that stays in the page until its condition changes. */
-export function Alert({ status, layout = 'full', action, className = '', children, ...rest }: AlertProps) {
+export function Alert({ status, size = 'md', layout = 'full', icon = size === 'md', action, className = '', children, ...rest }: AlertProps) {
+  if (size === 'sm') {
+    return (
+      <div role="alert" className={`flex items-center gap-2 rounded-6 px-2 py-1 ${statusFillA80[status]} ${className}`} {...rest}>
+        {icon && <StatusIcon status={status} />}
+        <div className={`min-w-0 flex-1 text-body-mini-regular ${statusText[status]}`}>{children}</div>
+      </div>
+    )
+  }
   return (
     <div role="alert" className={`flex gap-2 rounded-6 p-2 ${layout === 'short' ? 'flex-col' : 'items-center'} ${statusFillA80[status]} ${className}`} {...rest}>
       <div className="flex min-w-0 flex-1 gap-2">
-        <StatusIcon status={status} />
+        {icon && <StatusIcon status={status} />}
         <div className={`min-w-0 flex-1 text-body-small-regular ${statusText[status]}`}>{children}</div>
       </div>
       {action != null && <div className={`flex shrink-0 ${layout === 'short' ? 'justify-end' : ''}`}>{action}</div>}

@@ -45,7 +45,7 @@ export type { BreadcrumbProps as DSBreadcrumbProps, BreadcrumbItem as DSBreadcru
 export { Steps as DSSteps, StepIndicator as DSStepIndicator } from './navigation/Steps'
 export type { StepItem as DSStepItem, StepState as DSStepState } from './navigation/Steps'
 export { Toast as DSToast, Alert as DSAlert, Callout as DSCallout } from './feedback/Toast'
-export type { ToastProps as DSToastProps, AlertProps as DSAlertProps, CalloutProps as DSCalloutProps } from './feedback/Toast'
+export type { ToastProps as DSToastProps, AlertProps as DSAlertProps, AlertSize as DSAlertSize, CalloutProps as DSCalloutProps } from './feedback/Toast'
 export type { Status as DSStatus } from './feedback/status'
 export { Overlay as DSOverlay, ConfirmationDialog as DSConfirmationDialog, ContentDialog as DSContentDialog, BottomSheet as DSBottomSheet } from './overlay/Dialog'
 export type { OverlayProps as DSOverlayProps, ConfirmationDialogProps as DSConfirmationDialogProps, ContentDialogProps as DSContentDialogProps, BottomSheetProps as DSBottomSheetProps } from './overlay/Dialog'
