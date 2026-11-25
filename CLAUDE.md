@@ -21,5 +21,6 @@ Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/found
 ## When editing the docs
 
 - The `.css` token files are the source of truth for values; keep the `.md` tables in sync with them.
+- Every theme in `themes/` defines the same token names as `themes/workspace.css` (`themes/CONTRACT.md`). A name added to `workspace.css` goes into every other theme in the same PR; `npm run check-themes` in `components/` checks it.
 - Shared content goes in `foundations/`; anything specific to one project stays in that project's folder.
 - Process for auditing a component against Figma: `foundations/workflow/AUDIT_WORKFLOW.md`.

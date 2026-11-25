@@ -10,7 +10,8 @@ foundations/              shared by every project
 └── workflow/             audit process and drift-check instructions
 themes/                   semantic colors and text styles, as code; every theme defines the same token names
 ├── workspace.css         the house style shared by every internal app (E-Approval and the apps that follow)
-└── paygenix.css          PayGenix; began as a copy of workspace.css and is independent of it
+├── paygenix.css          PayGenix; began as a copy of workspace.css and is independent of it
+└── CONTRACT.md           the rule every theme follows, and the check that enforces it
 components/               coded React + Tailwind components, shared by every project
 ├── .storybook/           Storybook setup (one stylesheet per theme, switched from the toolbar)
 └── src/                  one folder per component family, each with its stories
@@ -96,4 +97,4 @@ The docs and Storybook use the plain names (Button, Text input); in code, add th
 
 ## Adding a project
 
-Create `projects/<name>/` with the same shape as `portal2.0/`. An internal app uses `themes/workspace.css` and needs no tokens of its own. A product with a different brand gets its own theme: copy `themes/workspace.css` to `themes/<brand>.css`, keep every token name and change the values. A client's theme stays in the client's private repo, not in this public one. The project's `DESIGN.md` documents only what is specific to it and links to Foundations for everything else. Follow [`foundations/workflow/AUDIT_WORKFLOW.md`](foundations/workflow/AUDIT_WORKFLOW.md) to audit and document its components.
+Create `projects/<name>/` with the same shape as `portal2.0/`. An internal app uses `themes/workspace.css` and needs no tokens of its own. A product with a different brand gets its own theme: copy `themes/workspace.css` to `themes/<brand>.css`, keep every token name and change the values, then run `npm run check-themes` in `components/` (see [`themes/CONTRACT.md`](themes/CONTRACT.md)). A client's theme stays in the client's private repo, not in this public one. The project's `DESIGN.md` documents only what is specific to it and links to Foundations for everything else. Follow [`foundations/workflow/AUDIT_WORKFLOW.md`](foundations/workflow/AUDIT_WORKFLOW.md) to audit and document its components.
