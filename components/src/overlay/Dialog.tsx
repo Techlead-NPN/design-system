@@ -4,7 +4,7 @@ import { Button } from '../button/Button'
 import { IconButton } from '../button/IconButton'
 import { CloseGlyph } from '../feedback/status'
 
-// Spec: projects/portal2.0/components/dialog.md, overlay.md, bottom-sheet.md
+// Spec: projects/e-approval/components/dialog.md, overlay.md, bottom-sheet.md
 
 export interface OverlayProps {
   /** Called when the scrim is clicked or Escape is pressed. */

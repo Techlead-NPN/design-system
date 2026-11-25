@@ -30,7 +30,7 @@ export type DropdownProps =
   | (Common & { multiple?: false; value: string | null; onChange: (value: string | null) => void })
   | (Common & { multiple: true; value: string[]; onChange: (value: string[]) => void })
 
-// Spec: projects/portal2.0/components/dropdown.md
+// Spec: projects/e-approval/components/dropdown.md
 export function Dropdown(props: DropdownProps) {
   const { options, label, hint, placeholder = 'Select', error = false, disabled = false, prefix, className = '' } = props
   const id = useId()

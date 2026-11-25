@@ -8,7 +8,7 @@ export interface BadgeProps extends ComponentProps<'span'> {
   icon?: ReactNode
 }
 
-// Spec: projects/portal2.0/components/chips-tag-badge.md
+// Spec: projects/e-approval/components/chips-tag-badge.md
 // Fill, border and text always come from the same status family.
 const states: Record<BadgeState, string> = {
   success: 'bg-success-subtle border-success text-success',

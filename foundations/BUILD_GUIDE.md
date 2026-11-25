@@ -1,6 +1,6 @@
 # Build Guide — rules for building UI in any project
 
-Read this first when building or changing UI from this design system, whether you are a developer or an AI tool. Then read the project's own `BUILD_GUIDE.md` (e.g. [`../projects/portal2.0/BUILD_GUIDE.md`](../projects/portal2.0/BUILD_GUIDE.md)), which says which docs to read for which task.
+Read this first when building or changing UI from this design system, whether you are a developer or an AI tool. Then read the project's own `BUILD_GUIDE.md` (e.g. [`../projects/e-approval/BUILD_GUIDE.md`](../projects/e-approval/BUILD_GUIDE.md)), which says which docs to read for which task. For a new internal app that has no folder yet, read [`../workspace/README.md`](../workspace/README.md) instead.
 
 Stack: **Tailwind CSS v4**. Every project uses it.
 

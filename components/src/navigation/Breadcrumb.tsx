@@ -15,7 +15,7 @@ export interface BreadcrumbProps {
   className?: string
 }
 
-// Spec: projects/portal2.0/components/breadcrumb.md
+// Spec: projects/e-approval/components/breadcrumb.md
 export function Breadcrumb({ items, icon, className = '' }: BreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb" className={className}>

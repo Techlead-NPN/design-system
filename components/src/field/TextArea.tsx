@@ -13,7 +13,7 @@ export interface TextAreaProps extends ComponentProps<'textarea'> {
   counter?: boolean
 }
 
-// Spec: projects/portal2.0/components/text-input.md
+// Spec: projects/e-approval/components/text-input.md
 export function TextArea({ label, hint, error = false, counter = false, id, className = '', onChange, ...rest }: TextAreaProps) {
   const auto = useId()
   const areaId = id ?? auto

@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from 'react'
 import { CheckIcon, ChevronRightIcon } from './icons'
 
-// Spec: projects/portal2.0/components/menu-item.md
+// Spec: projects/e-approval/components/menu-item.md
 
 /** The floating panel that holds menu rows. */
 export function Menu({ className = '', ...rest }: ComponentProps<'div'>) {

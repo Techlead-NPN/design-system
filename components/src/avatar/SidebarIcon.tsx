@@ -11,7 +11,7 @@ export interface SidebarIconProps extends ComponentProps<'span'> {
   children: ReactNode
 }
 
-// Spec: projects/portal2.0/components/icon-sidebar.md
+// Spec: projects/e-approval/components/icon-sidebar.md
 const colors: Record<SidebarIconColor, string> = {
   ocean: 'bg-accent-ocean border-accent-ocean text-accent-ocean',
   sky: 'bg-accent-sky border-accent-sky text-accent-sky',

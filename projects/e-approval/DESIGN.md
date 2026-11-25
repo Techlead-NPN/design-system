@@ -1,8 +1,10 @@
-# [DS] Portal 2.0 — Design System Reference
+# E-Approval — Design System Reference
 
-This document is the source of truth for how design tokens and styles work in Portal 2.0. It's written for three audiences at once: designers, engineers implementing tokens in code, and AI tools generating or modifying designs from this spec ("vibe design"). If a rule here isn't followed, treat it as a bug.
+E-Approval was called Portal 2.0 until November 2026; its Figma file is still named "[DS] Portal 2.0". Its tokens are now the Workspace theme, shared by every internal app.
 
-It covers only what is specific to Portal 2.0. Everything shared across projects — the token architecture, raw primitives, and icon set — lives in [`../../foundations/FOUNDATIONS.md`](../../foundations/FOUNDATIONS.md). Read that first.
+This document is the source of truth for how design tokens and styles work in E-Approval and the other internal apps. It's written for three audiences at once: designers, engineers implementing tokens in code, and AI tools generating or modifying designs from this spec ("vibe design"). If a rule here isn't followed, treat it as a bug.
+
+It covers only what is specific to E-Approval. Everything shared across projects — the token architecture, raw primitives, and icon set — lives in [`../../foundations/FOUNDATIONS.md`](../../foundations/FOUNDATIONS.md). Read that first.
 
 **Values live in code:** the Workspace theme, [`../../themes/workspace.css`](../../themes/workspace.css), holds the semantic colors (§2) and text styles (§3) as Tailwind CSS v4 tokens and is the source of truth for the values. To build a screen, start at [`BUILD_GUIDE.md`](BUILD_GUIDE.md).
 
@@ -17,7 +19,7 @@ Defined once for all projects in [Foundations §1](../../foundations/FOUNDATIONS
 In this project:
 
 - **Foundations file** (shared): raw color, sizing, and typography primitives, plus effect and grid styles. Icons are **Tabler Icons**.
-- **Portal 2.0 file** (this project): semantic color tokens that alias Foundation primitives (§2), the 30 text styles (§3), plus all components (§7).
+- **[DS] Portal 2.0 Figma file** (this project): semantic color tokens that alias Foundation primitives (§2), the 30 text styles (§3), plus all components (§7).
 
 **If you're an AI tool reading this to generate a design:** never invent a hex value or a spacing number. Always resolve to an existing token name from the tables below or from Foundations.
 
@@ -38,7 +40,7 @@ Ten "accent" colors exist: `sky`, `ocean`, `emerald`, `teal`, `sun`, `fuchsia`, 
 
 **Nine of them carry no meaning whatsoever.** They exist purely for visual variety — avatar initials, sidebar icons, notification icon tints — so that adjacent items in a list are visually distinguishable. **Do not** assign status or semantic meaning to them (e.g. don't use `accent-blush` because it's reddish and you want "danger-adjacent" — use the actual `danger` tokens).
 
-**`accent-indigo` is the one exception.** It is Portal 2.0's brand color (the original brand blue/navy), repurposed as the primary interactive color — primary buttons, selected states, focus rings, checked toggles, calendar selection. Treat it as a distinct, meaningful token, not as "just another accent."
+**`accent-indigo` is the one exception.** It is E-Approval's brand color (the original brand blue/navy), repurposed as the primary interactive color — primary buttons, selected states, focus rings, checked toggles, calendar selection. Treat it as a distinct, meaningful token, not as "just another accent."
 
 ### 2.3 Text + Icon (26 tokens)
 
@@ -192,7 +194,7 @@ Family: **Inter**, all weights. 30 styles total.
 
 ## 4. Spacing, Radii & Effects (Foundation primitives)
 
-These are bound **directly** by components — no semantic layer (see §1). The scales themselves (`spacing/*`, `border-width/*`, `border-radii/*`, `breakpoint/*`, `font-size/*`, `line-height/*`, `letter-spacing/*`), the `shadow-sm/md/lg/xl` effect styles, the Desktop/Tablet/Mobile grid styles, the color primitives, and the Tabler icon set are documented in [Foundations §2–§3](../../foundations/FOUNDATIONS.md#2-primitives). What follows is only how Portal 2.0 uses them.
+These are bound **directly** by components — no semantic layer (see §1). The scales themselves (`spacing/*`, `border-width/*`, `border-radii/*`, `breakpoint/*`, `font-size/*`, `line-height/*`, `letter-spacing/*`), the `shadow-sm/md/lg/xl` effect styles, the Desktop/Tablet/Mobile grid styles, the color primitives, and the Tabler icon set are documented in [Foundations §2–§3](../../foundations/FOUNDATIONS.md#2-primitives). What follows is only how E-Approval uses them.
 
 **Spacing rhythm:** the raw scale is a strict 4px base (`spacing/N` = N × 4px, including half-steps like `spacing/0,5` = 2px), but real usage across every component audited in this project follows two informal rhythms rather than treating all 35 steps as equally likely:
 

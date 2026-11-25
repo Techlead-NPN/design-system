@@ -9,7 +9,7 @@ export interface RadioProps extends Omit<ComponentProps<'input'>, 'type' | 'chil
   error?: boolean
 }
 
-// Spec: projects/portal2.0/components/radio-checkbox-card.md
+// Spec: projects/e-approval/components/radio-checkbox-card.md
 const circle =
   'flex size-4 items-center justify-center rounded-infinite border ' +
   'group-has-focus-visible/radio:outline-2 group-has-focus-visible/radio:outline-offset-2 group-has-focus-visible/radio:outline-accent-indigo ' +

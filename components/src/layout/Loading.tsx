@@ -5,7 +5,7 @@ export interface LoadingProps extends ComponentProps<'span'> {
   surface?: 'light' | 'dark'
 }
 
-// Spec: projects/portal2.0/components/loading.md
+// Spec: projects/e-approval/components/loading.md
 /** Skeleton bar shown in place of content that is still loading. Set its width with `className`. */
 export function Loading({ surface = 'light', className = '', ...rest }: LoadingProps) {
   return (

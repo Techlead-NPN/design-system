@@ -11,7 +11,7 @@ export interface SquareAvatarProps extends ComponentProps<'span'> {
   children?: string
 }
 
-// Spec: projects/portal2.0/components/avatar.md
+// Spec: projects/e-approval/components/avatar.md
 const sizes: Record<SquareAvatarSize, string> = {
   12: 'size-3 rounded-2 text-body-tiny-regular',
   14: 'size-3.5 rounded-2 text-body-tiny-regular',

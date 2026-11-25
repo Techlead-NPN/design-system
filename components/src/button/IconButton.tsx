@@ -16,7 +16,7 @@ export interface IconButtonProps extends Omit<ComponentProps<'button'>, 'childre
   children: ReactNode
 }
 
-// Spec: projects/portal2.0/components/button.md
+// Spec: projects/e-approval/components/button.md
 const base =
   'inline-flex shrink-0 items-center justify-center rounded-6 ' +
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo ' +

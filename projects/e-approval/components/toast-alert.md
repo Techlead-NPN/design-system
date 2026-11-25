@@ -47,7 +47,7 @@ The `-A80` tokens are 80% transparent. In Figma the fill of a toast or alert sho
 | `Type=Short` | the action drops to a second row, right-aligned (for narrow containers; 327px in the reference) |
 | Icon (`Icon?`) | on by default; can be turned off (`icon={false}` in code) |
 
-In code the Alert also has `size="sm"`, a compact one-line version. It belongs to PayGenix Merchant only (see [its DESIGN.md](../../paygenix-merchant/DESIGN.md) §2); do not use it in Portal 2.0.
+In code the Alert also has `size="sm"`, a compact one-line version. It belongs to PayGenix Merchant only (see [its DESIGN.md](../../paygenix-merchant/DESIGN.md) §2); do not use it in E-Approval.
 
 **Callout** — a boxed note.
 

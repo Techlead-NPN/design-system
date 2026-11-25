@@ -18,7 +18,7 @@ export interface ButtonProps extends ComponentProps<'button'> {
   shortcut?: ReactNode
 }
 
-// Spec: projects/portal2.0/components/button.md
+// Spec: projects/e-approval/components/button.md
 const base =
   'inline-flex shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-6 px-2 text-body-small-medium ' +
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo ' +

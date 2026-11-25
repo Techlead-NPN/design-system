@@ -10,7 +10,7 @@ export interface RadioCardProps extends Omit<ComponentProps<'input'>, 'type' | '
   tag?: ReactNode
 }
 
-// Spec: projects/portal2.0/components/radio-checkbox-card.md
+// Spec: projects/e-approval/components/radio-checkbox-card.md
 // The whole card is the click target and takes the focus ring; the dot only shows the state.
 export function RadioCard({ icon, label, description, tag, className = '', ...rest }: RadioCardProps) {
   return (

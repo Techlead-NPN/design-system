@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 
 export type StepState = 'empty' | 'progressing' | 'checked' | 'rejected' | 'disabled' | 'checked-disabled'
 
-// Spec: projects/portal2.0/components/steps.md
+// Spec: projects/e-approval/components/steps.md
 const Glyph = ({ d, px }: { d: string; px: number }) => (
   <svg width={px} height={px} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d={d} />
