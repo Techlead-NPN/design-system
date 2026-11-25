@@ -1,6 +1,6 @@
 # Design System
 
-This repo is the design system for all projects: shared foundations plus one folder per project. See [README.md](README.md) for the layout.
+This repo is the design system for all projects: shared foundations, one theme per look (`themes/`), plus one folder per project. See [README.md](README.md) for the layout.
 
 ## When building or changing UI
 
@@ -9,7 +9,7 @@ Before writing any UI code, read these two files, in order, and follow them:
 1. `foundations/BUILD_GUIDE.md` — setup, token-to-class mapping, and rules for every project
 2. `projects/<project>/BUILD_GUIDE.md` — which docs to read for the task (e.g. `projects/portal2.0/BUILD_GUIDE.md`, `projects/paygenix-merchant/BUILD_GUIDE.md`)
 
-Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/foundations.css` and `projects/<project>/tokens.css`; never invent a color, spacing or type value.
+Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/foundations.css` and the project's theme in `themes/` (`themes/workspace.css` for every internal app, `themes/paygenix.css` for PayGenix; the project's `BUILD_GUIDE.md` says which); never invent a color, spacing or type value.
 
 ## When adding or changing a coded component
 

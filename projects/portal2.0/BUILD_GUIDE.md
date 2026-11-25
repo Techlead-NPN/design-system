@@ -6,7 +6,7 @@ There are about 90 docs here. Do not read them all — read the ones this page p
 
 ## 1. Always
 
-1. Import [`tokens.css`](tokens.css) after the Foundations tokens. Every color and text style comes from it.
+1. Import the Workspace theme, [`../../themes/workspace.css`](../../themes/workspace.css), after the Foundations tokens. Every color and text style comes from it.
 2. Read [`DESIGN.md`](DESIGN.md) §2.1–2.2 (color naming and the accent rule) and §5 (accessibility rules). The token tables in §2–§3 are a reference for what each token is for; you don't need to memorise them.
 3. **Start every desktop screen from the app shell**: [`patterns/app-shell.md`](patterns/app-shell.md). It defines the page backdrop, sidebar, header and the white content card that all page content sits inside. Getting this wrong is the most visible way a screen ends up looking unlike Portal 2.0.
 

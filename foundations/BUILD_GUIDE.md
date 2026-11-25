@@ -6,12 +6,12 @@ Stack: **Tailwind CSS v4**. Every project uses it.
 
 ## 1. Setup
 
-In the project's main stylesheet, import Tailwind, then the shared primitives, then the project's own tokens:
+In the project's main stylesheet, import Tailwind, then the shared primitives, then the project's theme:
 
 ```css
 @import "tailwindcss";
 @import "<path>/foundations/tokens/foundations.css";
-@import "<path>/projects/<project>/tokens.css";
+@import "<path>/themes/<theme>.css";   /* workspace.css for every internal app */
 ```
 
 Load the **Inter** font and the **Tabler Icons** set. Do not add any other token or theme definitions; if a value is missing, it is missing from the design system (see §4).
@@ -19,7 +19,7 @@ Load the **Inter** font and the **Tabler Icons** set. Do not add any other token
 ## 2. The token files are the source of truth
 
 - [`tokens/foundations.css`](tokens/foundations.css) — primitives shared by every project.
-- `projects/<project>/tokens.css` — that project's semantic colors and text styles.
+- [`../themes/`](../themes/) — semantic colors and text styles, one file per theme. Every internal app uses [`workspace.css`](../themes/workspace.css); PayGenix uses [`paygenix.css`](../themes/paygenix.css). Every theme defines the same token names, so the components work with any of them.
 
 The `.md` docs explain what each token is *for*. The `.css` files hold the *values*. If the two ever disagree, the `.css` file is right and the doc needs fixing.
 
@@ -39,7 +39,7 @@ Docs refer to tokens by their design name. Convert them like this:
 | `border-width/sm` | `border-2`, `outline-2` (2px) | focus rings |
 | `shadow-sm/md/lg/xl` | same name | `shadow-md` |
 | `breakpoint/sm/md/lg` | `sm:` `md:` `lg:` prefixes (390 / 768 / 1280px, min-width) | `lg:p-6` |
-| Component token `--badge-radius`, `--table-row-height` | `rounded-badge`, `h-table-row` | set per project in its `tokens.css` |
+| Component token `--badge-radius`, `--table-row-height` | `rounded-badge`, `h-table-row` | set per theme in its `themes/<theme>.css` |
 | Text style `Group/Name` | `text-group-name`, lower-case | `Body/Small-medium` → `text-body-small-medium` |
 
 Icons take their color from the surrounding text color, so color an icon with a `text-<name>` class.
@@ -73,12 +73,12 @@ If a reference screenshot is supplied with the task, it shows the intended look 
 
 ## 6. When a project needs a different look
 
-Every project uses the same coded components; only the tokens differ. When a project's design differs from a component, handle it at the lowest level that works, in this order:
+Every project uses the same coded components; only the theme differs. Internal apps all share the Workspace theme and do not get a theme of their own. When a project's design differs from a component, handle it at the lowest level that works, in this order:
 
-1. **Component token**, when only a value differs (corners, height, border width, padding). Add a token such as `--badge-radius` or `--table-row-height`: the component reads it, and each project sets it in its own `tokens.css`. Nothing else changes.
+1. **Component token**, when only a value differs (corners, height, border width, padding). Add a token such as `--badge-radius` or `--table-row-height`: the component reads it, and each theme sets it. Nothing else changes.
 2. **Variant on the shared component**, when the shape differs but the behavior is the same. Example: underline text fields instead of boxed ones become `appearance="underline"` on `TextInput`, not a second text input. Labels, errors, keyboard and accessibility stay shared. Document which variant the project uses by default.
 3. **Project-own component**, only when the behavior also differs. It lives in that project's folder and docs, not in the shared ones. Avoid this where possible, because two copies drift apart.
 
 Add a token or variant only when a real project needs it, not in advance. A project's parts that only one app uses (its navigation, its feature-specific blocks) are built in that app, not here; the project's `DESIGN.md` lists them.
 
-Storybook shows every component with the project chosen in its toolbar. A story meant for one project only says so in its name, e.g. "Table pagination (PayGenix)", and opens with that project's tokens.
+Storybook shows every component with the theme chosen in its toolbar. A story meant for one project only says so in its name, e.g. "Table pagination (PayGenix)", and opens with that project's theme.

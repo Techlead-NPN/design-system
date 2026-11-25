@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "../../foundations/tokens/foundations.css";
-@import "../../projects/portal2.0/tokens.css";
+@import "../../themes/workspace.css";
 
 @source "../src";
 

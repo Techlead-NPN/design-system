@@ -1,43 +1,43 @@
 import type { Preview } from '@storybook/react-vite'
 import './storybook.css'
-import paygenixMerchant from './project-paygenix-merchant.css?inline'
-import portal from './project-portal2.0.css?inline'
+import paygenix from './theme-paygenix.css?inline'
+import workspace from './theme-workspace.css?inline'
 
-// One stylesheet per project. To add a project: add project-<name>.css next to
-// this file, import it here and list it below.
-const projects: Record<string, { title: string; css: string }> = {
-  'portal2.0': { title: 'Portal 2.0', css: portal },
-  'paygenix-merchant': { title: 'PayGenix Merchant', css: paygenixMerchant },
+// One stylesheet per theme. To add a theme: add theme-<name>.css next to this
+// file, import it here and list it below.
+const themes: Record<string, { title: string; css: string }> = {
+  workspace: { title: 'Workspace', css: workspace },
+  paygenix: { title: 'PayGenix', css: paygenix },
 }
 
-function applyProject(name: string) {
-  let style = document.getElementById('project-tokens')
+function applyTheme(name: string) {
+  let style = document.getElementById('theme-tokens')
   if (!style) {
     style = document.createElement('style')
-    style.id = 'project-tokens'
+    style.id = 'theme-tokens'
     document.head.appendChild(style)
   }
-  if (style.dataset.project === name) return
-  style.dataset.project = name
-  style.textContent = projects[name].css
+  if (style.dataset.theme === name) return
+  style.dataset.theme = name
+  style.textContent = (themes[name] ?? themes.workspace).css
 }
 
 const preview: Preview = {
   globalTypes: {
-    project: {
-      description: 'Project whose tokens the components are shown with',
+    theme: {
+      description: 'Theme whose tokens the components are shown with',
       toolbar: {
-        title: 'Project',
+        title: 'Theme',
         icon: 'paintbrush',
-        items: Object.entries(projects).map(([value, { title }]) => ({ value, title })),
+        items: Object.entries(themes).map(([value, { title }]) => ({ value, title })),
         dynamicTitle: true,
       },
     },
   },
-  initialGlobals: { project: 'portal2.0' },
+  initialGlobals: { theme: 'workspace' },
   decorators: [
     (Story, context) => {
-      applyProject(context.globals.project)
+      applyTheme(context.globals.theme)
       return Story()
     },
   ],

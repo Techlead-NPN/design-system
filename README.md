@@ -1,6 +1,6 @@
 # Design System
 
-Design system documentation for all projects, mirroring how the Figma files are organised: one shared Foundations file, plus one design system file per project.
+Design system documentation for all projects: shared Foundations, one theme per look, and one folder per project. Every internal app in the employee workspace uses the Workspace theme; another brand (PayGenix) or a client gets its own theme on the same components.
 
 ```
 foundations/              shared by every project
@@ -8,16 +8,18 @@ foundations/              shared by every project
 ├── BUILD_GUIDE.md        rules for building UI (Tailwind CSS v4)
 ├── tokens/               primitive values, as code (foundations.css)
 └── workflow/             audit process and drift-check instructions
+themes/                   semantic colors and text styles, as code; every theme defines the same token names
+├── workspace.css         the house style shared by every internal app (E-Approval and the apps that follow)
+└── paygenix.css          PayGenix; began as a copy of workspace.css and is independent of it
 components/               coded React + Tailwind components, shared by every project
-├── .storybook/           Storybook setup (one stylesheet per project, switched from the toolbar)
+├── .storybook/           Storybook setup (one stylesheet per theme, switched from the toolbar)
 └── src/                  one folder per component family, each with its stories
                            (button/, selection/, badge/, avatar/, divider/, toggle/, tooltip/, field/, menu/, calendar/, navigation/, feedback/, overlay/, table/, layout/)
 projects/
-├── paygenix-merchant/    shares Portal 2.0's look: DESIGN.md and BUILD_GUIDE.md list what differs; tokens.css is its own full copy
-└── portal2.0/            one folder per project
-    ├── DESIGN.md         semantic tokens, text styles, accessibility, changelog
+├── paygenix-merchant/    uses themes/paygenix.css: DESIGN.md and BUILD_GUIDE.md list what differs from Portal 2.0
+└── portal2.0/            one folder per project (Portal 2.0 is now called E-Approval; uses themes/workspace.css)
+    ├── DESIGN.md         what the semantic tokens and text styles are for, accessibility, changelog
     ├── BUILD_GUIDE.md    which docs to read for which task
-    ├── tokens.css        semantic colors and text styles, as code
     ├── components/       one doc per component
     ├── patterns/         composite structures built from components
     ├── assets/           exported SVGs (logo, illustrations)
@@ -48,7 +50,7 @@ npm install
 npm run storybook
 ```
 
-It opens at http://localhost:6006. Each component family has an "All variants" style page and, where useful, a Playground with controls. The **Project** switch in the toolbar shows the same components with another project's tokens. To add a project to it, add a `project-<name>.css` in `components/.storybook/` and list it in `preview.ts`.
+It opens at http://localhost:6006. Each component family has an "All variants" style page and, where useful, a Playground with controls. The **Theme** switch in the toolbar shows the same components with another theme's tokens. To add a theme to it, add a `theme-<name>.css` in `components/.storybook/` and list it in `preview.ts`.
 
 ## Using the components in an app
 
@@ -70,11 +72,11 @@ The app needs React 19 or later and Tailwind CSS v4. Set up the app's main style
 ```css
 @import "tailwindcss";
 @import "@techlead-npn/design-system/tokens/foundations.css";
-@import "@techlead-npn/design-system/tokens/portal2.0.css"; /* or paygenix-merchant.css */
+@import "@techlead-npn/design-system/tokens/workspace.css"; /* or paygenix.css */
 @source "../node_modules/@techlead-npn/design-system/dist";
 ```
 
-The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. The app loads the Inter font itself. Every component and type is exported with a `DS` prefix, so it is easy to tell apart from an app's own component of the same name. Import only the ones you use:
+The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. Before 0.7.0 the theme files were called `tokens/portal2.0.css` and `tokens/paygenix-merchant.css`; those paths still work as aliases and will be removed in 1.0.0. The app loads the Inter font itself. Every component and type is exported with a `DS` prefix, so it is easy to tell apart from an app's own component of the same name. Import only the ones you use:
 
 ```tsx
 import { DSButton, DSTextInput } from '@techlead-npn/design-system'
@@ -94,4 +96,4 @@ The docs and Storybook use the plain names (Button, Text input); in code, add th
 
 ## Adding a project
 
-Create `projects/<name>/` with the same shape as `portal2.0/`. Its `tokens.css` maps its semantic tokens onto the Foundations primitives, and its `DESIGN.md` documents only what is specific to that project and links to Foundations for everything else. Follow [`foundations/workflow/AUDIT_WORKFLOW.md`](foundations/workflow/AUDIT_WORKFLOW.md) to audit and document its components.
+Create `projects/<name>/` with the same shape as `portal2.0/`. An internal app uses `themes/workspace.css` and needs no tokens of its own. A product with a different brand gets its own theme: copy `themes/workspace.css` to `themes/<brand>.css`, keep every token name and change the values. A client's theme stays in the client's private repo, not in this public one. The project's `DESIGN.md` documents only what is specific to it and links to Foundations for everything else. Follow [`foundations/workflow/AUDIT_WORKFLOW.md`](foundations/workflow/AUDIT_WORKFLOW.md) to audit and document its components.

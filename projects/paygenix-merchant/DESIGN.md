@@ -4,7 +4,7 @@ The Merchant Dashboard is PayGenix's platform for merchants to register and moni
 
 This doc therefore states only what differs. For everything else, [`../portal2.0/DESIGN.md`](../portal2.0/DESIGN.md) applies as written, including the color rules, the text styles and the accessibility rules.
 
-Values live in [`tokens.css`](tokens.css). It began as a copy of Portal 2.0's tokens (2026-10-09) and is independent: a later change in Portal 2.0 does not reach this project. If Portal 2.0 changes a shared value and PayGenix should follow, make the same change here on purpose.
+Values live in the PayGenix theme, [`../../themes/paygenix.css`](../../themes/paygenix.css). It began as a copy of Portal 2.0's tokens, now the Workspace theme (2026-10-09), and is independent: a later change in the Workspace theme does not reach this project. If the Workspace theme changes a shared value and PayGenix should follow, make the same change here on purpose.
 
 ## 1. What PayGenix sets differently
 
