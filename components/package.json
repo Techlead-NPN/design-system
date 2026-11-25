@@ -1,6 +1,6 @@
 {
   "name": "@techlead-npn/design-system",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Coded React + Tailwind v4 components and design tokens for Techlead projects.",
   "type": "module",
   "sideEffects": false,
@@ -15,6 +15,9 @@
   "files": [
     "dist"
   ],
+  "bin": {
+    "ds-check-theme": "./dist/check-theme.mjs"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -24,10 +27,11 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "vite build && tsc -p tsconfig.build.json && node scripts/copy-tokens.mjs",
+    "build": "vite build && tsc -p tsconfig.build.json && node scripts/copy-tokens.mjs && cp scripts/check-theme.mjs dist/check-theme.mjs",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run typecheck && npm run build"
+    "prepublishOnly": "npm run typecheck && npm run check-themes && npm run build",
+    "check-themes": "node scripts/check-theme.mjs"
   },
   "peerDependencies": {
     "react": ">=19",

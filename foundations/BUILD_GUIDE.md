@@ -19,7 +19,7 @@ Load the **Inter** font and the **Tabler Icons** set. Do not add any other token
 ## 2. The token files are the source of truth
 
 - [`tokens/foundations.css`](tokens/foundations.css) — primitives shared by every project.
-- [`../themes/`](../themes/) — semantic colors and text styles, one file per theme. Every internal app uses [`workspace.css`](../themes/workspace.css); PayGenix uses [`paygenix.css`](../themes/paygenix.css). Every theme defines the same token names, so the components work with any of them.
+- [`../themes/`](../themes/) — semantic colors and text styles, one file per theme. Every internal app uses [`workspace.css`](../themes/workspace.css); PayGenix uses [`paygenix.css`](../themes/paygenix.css). Every theme defines the same token names, so the components work with any of them; [`../themes/CONTRACT.md`](../themes/CONTRACT.md) has the rule and the check.
 
 The `.md` docs explain what each token is *for*. The `.css` files hold the *values*. If the two ever disagree, the `.css` file is right and the doc needs fixing.
 
