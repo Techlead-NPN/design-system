@@ -8,7 +8,7 @@ on:
     paths:
       - 'components/**'
       - 'foundations/tokens/**'
-      - 'projects/**/tokens.css'
+      - 'themes/**'
       - '.github/workflows/storybook.yml'
   workflow_dispatch:
 
