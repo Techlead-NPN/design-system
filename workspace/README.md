@@ -39,6 +39,8 @@ A doc moves into this folder once a second app uses it and its E-Approval-only p
 
 The coded generic components (Button, Table, Dialog, …) are already shared by every app; they live in [`../components/`](../components/).
 
+**Building blocks** (section card, stat tiles, list toolbar, detail panel, approval timeline, form page, …) sit between components and pages. [`blocks.md`](blocks.md) lists the ones E-Approval and ProcureApp share and the order to build them.
+
 ## Building a new internal app
 
 1. Follow [`../foundations/BUILD_GUIDE.md`](../foundations/BUILD_GUIDE.md) and import `themes/workspace.css`.
