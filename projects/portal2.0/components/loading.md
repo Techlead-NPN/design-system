@@ -23,7 +23,7 @@ Coded in [`components/src/layout/Loading.tsx`](../../../components/src/layout/Lo
 | `True` | light surfaces | black 6% → black 2% (`Loading/light`) | black 2% → black 6% (`Loading/light-2`) |
 | `False` | dark surfaces | white 10% → white 3% (`Loading/dark`) | white 3% → white 10% (`Loading/dark-2`) |
 
-In code these four gradients are the utilities `bg-loading-light`, `bg-loading-light-2`, `bg-loading-dark` and `bg-loading-dark-2`, defined in the project's `tokens.css`.
+In code these four gradients are the utilities `bg-loading-light`, `bg-loading-light-2`, `bg-loading-dark` and `bg-loading-dark-2`, defined in the theme (`themes/workspace.css`).
 
 ## Anatomy
 

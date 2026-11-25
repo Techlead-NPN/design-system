@@ -12,10 +12,12 @@ Figma source: the shared **Foundations** file (`n9KB4M3kiVBxwWJPe1HGyB`).
 
 ## 1. Token Architecture
 
-Two files per project, two layers:
+Two token layers:
 
-- **Foundations file** (shared across all projects): raw color, sizing, and typography primitives, plus effect and grid styles. Sourced from **Tailwind CSS's default palette** for color. Icons are **Tabler Icons**.
-- **Project file** (one per project, e.g. Portal 2.0): semantic color tokens that alias Foundation primitives, the project's text styles, plus all components.
+- **Foundations** (shared across all projects, [`tokens/foundations.css`](tokens/foundations.css)): raw color, sizing, and typography primitives, plus effect and grid styles. Sourced from **Tailwind CSS's default palette** for color. Icons are **Tabler Icons**.
+- **Theme** (one per look, [`../themes/`](../themes/)): semantic color tokens that alias Foundation primitives, plus text styles. Every internal app in the employee workspace shares the Workspace theme (`workspace.css`); another brand gets its own theme (`paygenix.css`). Every theme defines the same token names, so the same components work with any of them.
+
+In Figma, each project file (e.g. Portal 2.0) still holds its theme's semantic tokens and text styles plus its components.
 
 ### The binding rule
 

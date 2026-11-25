@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "../../foundations/tokens/foundations.css";
-@import "../../projects/paygenix-merchant/tokens.css";
+@import "../../themes/paygenix.css";
 
 @source "../src";
 

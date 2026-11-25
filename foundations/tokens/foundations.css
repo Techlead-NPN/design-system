@@ -6,10 +6,10 @@
  * Usage, in a project's main stylesheet:
  *   @import "tailwindcss";
  *   @import "<path>/foundations/tokens/foundations.css";
- *   @import "<path>/projects/<project>/tokens.css";
+ *   @import "<path>/themes/<theme>.css";
  *
  * This file is not usable on its own for color: it deliberately exposes NO color
- * utilities. Color utilities come from the project's semantic tokens.
+ * utilities. Color utilities come from the theme's semantic tokens.
  */
 
 /* ---------------------------------------------------------------------------

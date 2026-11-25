@@ -2,7 +2,7 @@ import type { ComponentProps, ReactNode } from 'react'
 import { IconButton } from '../button/IconButton'
 
 // Spec: projects/portal2.0/components/table.md
-// Row height is the project token `--table-row-height` (36px in Portal 2.0); every cell has a bottom border only.
+// Row height is the theme token `--table-row-height` (36px in the Workspace theme); every cell has a bottom border only.
 
 export function Table({ className = '', ...rest }: ComponentProps<'table'>) {
   return <table className={`w-full border-separate border-spacing-0 text-left ${className}`} {...rest} />

@@ -1,13 +1,14 @@
 /*
- * PayGenix Merchant Dashboard — semantic tokens and text styles (Tailwind CSS v4).
- * Source of truth for this project's values. Documented in DESIGN.md.
+ * PayGenix theme — semantic tokens and text styles (Tailwind CSS v4).
+ * Used by the PayGenix Merchant Dashboard. Source of truth for PayGenix's
+ * values. Documented in ../projects/paygenix-merchant/DESIGN.md.
  *
- * The Merchant Dashboard shares Portal 2.0's look, so this file began as a copy
- * of Portal 2.0's tokens (as of 2026-10-09). It is independent: a later change
- * in Portal 2.0 does not reach this file. PayGenix's own additions and
- * differences are marked "PayGenix".
+ * PayGenix shares the Workspace look, so this file began as a copy of the
+ * Portal 2.0 tokens, now workspace.css (as of 2026-10-09). It is independent:
+ * a later change in workspace.css does not reach this file. PayGenix's own
+ * additions and differences are marked "PayGenix".
  *
- * Import after foundations.css — see BUILD_GUIDE.md.
+ * Import after foundations.css — see ../foundations/BUILD_GUIDE.md.
  *
  * Naming: the Figma token `bg/primary` is the class `bg-primary`;
  * `text + icon/primary` is `text-primary`; `border/primary` is `border-primary`.
@@ -118,7 +119,7 @@
   --bg-data-visualize-accent-green: var(--green-300);
 
   /* Component tokens: shape values a project may set differently.
-   * PayGenix: 4px badge corners and 32px table rows (Portal 2.0: pill, 36px). */
+   * PayGenix: 4px badge corners and 32px table rows (Workspace: pill, 36px). */
   --badge-radius: var(--radius-4);
   --table-row-height: 2rem; /* 32px */
 }

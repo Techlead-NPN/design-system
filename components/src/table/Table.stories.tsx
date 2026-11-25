@@ -75,6 +75,6 @@ function PaginationDemo() {
 /** PayGenix Merchant: sits under a table. The page-size menu opens upward. */
 export const Pagination: Story = {
   name: 'Table pagination (PayGenix)',
-  globals: { project: 'paygenix-merchant' },
+  globals: { theme: 'paygenix' },
   render: () => <PaginationDemo />,
 }

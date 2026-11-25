@@ -1,10 +1,13 @@
 /*
- * Portal 2.0 — semantic tokens and text styles (Tailwind CSS v4).
- * Source of truth for Portal 2.0's values. Mirrors the "semantic color"
- * collection (light mode) and the 30 text styles of the Portal 2.0 Figma file
- * (YFci6zgeYAQqX2OlHKQB0e) as read on 2026-10-05. Documented in DESIGN.md.
+ * Workspace theme — semantic tokens and text styles (Tailwind CSS v4).
+ * The house style shared by every internal app in the employee workspace
+ * (E-Approval, formerly Portal 2.0, and the apps that follow). Source of truth
+ * for these values. Mirrors the "semantic color" collection (light mode) and the
+ * 30 text styles of the Portal 2.0 Figma file (YFci6zgeYAQqX2OlHKQB0e) as read
+ * on 2026-10-05. Documented in ../projects/portal2.0/DESIGN.md.
  *
- * Import after foundations.css — see BUILD_GUIDE.md.
+ * Import after foundations.css — see ../foundations/BUILD_GUIDE.md.
+ * Every other theme defines the same token names (e.g. paygenix.css).
  *
  * Naming: the Figma token `bg/primary` is the class `bg-primary`;
  * `text + icon/primary` is `text-primary`; `border/primary` is `border-primary`.

@@ -1,4 +1,4 @@
-/* The font is shared by every project. The tokens are not: each project has
- * its own stylesheet (project-<name>.css) and the toolbar's Project switch
- * picks which one is applied — see preview.ts. */
+/* The font is shared by every theme. The tokens are not: each theme has its
+ * own stylesheet (theme-<name>.css) and the toolbar's Theme switch picks
+ * which one is applied — see preview.ts. */
 @import "@fontsource-variable/inter";
