@@ -14,7 +14,7 @@ export interface TextInputProps extends Omit<ComponentProps<'input'>, 'prefix'> 
   suffix?: ReactNode
 }
 
-// Spec: projects/portal2.0/components/text-input.md
+// Spec: projects/e-approval/components/text-input.md
 export const fieldLabel = 'text-support-label text-tertiary'
 export const fieldHint = 'text-support-caption text-tertiary'
 export const fieldHintError = 'text-support-caption text-danger'

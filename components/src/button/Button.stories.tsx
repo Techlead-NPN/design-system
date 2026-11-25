@@ -74,9 +74,9 @@ export const IconButtons: Story = {
   ),
 }
 
-/** Portal 2.0 only: the "+" beside the mobile bottom navigation. */
+/** E-Approval only: the "+" beside the mobile bottom navigation. */
 export const FloatingActionButtons: Story = {
-  name: 'Floating action button (Portal)',
+  name: 'Floating action button (E-Approval)',
   globals: { theme: 'workspace' },
   render: () => (
     <div className="flex items-center gap-6 p-4">

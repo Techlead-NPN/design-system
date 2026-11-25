@@ -5,7 +5,7 @@ export interface ToggleProps extends Omit<ComponentProps<'input'>, 'type' | 'chi
   'aria-label'?: string
 }
 
-// Spec: projects/portal2.0/components/toggle.md
+// Spec: projects/e-approval/components/toggle.md
 const track =
   'flex h-5 w-8 shrink-0 items-center rounded-infinite bg-tertiary p-0.5 ' +
   'group-has-checked/toggle:bg-accent-indigo ' +

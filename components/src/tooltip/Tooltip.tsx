@@ -12,7 +12,7 @@ export interface TooltipProps extends Omit<ComponentProps<'div'>, 'title'> {
   children: ReactNode
 }
 
-// Spec: projects/portal2.0/components/tooltip.md
+// Spec: projects/e-approval/components/tooltip.md
 // This is the tooltip bubble only. Showing it on hover/focus and positioning it
 // against its trigger is left to the app.
 const arrow = 'shrink-0 bg-secondary-inverse'

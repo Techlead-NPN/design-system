@@ -17,7 +17,7 @@ export interface AvatarProps extends ComponentProps<'span'> {
   children?: string
 }
 
-// Spec: projects/portal2.0/components/avatar.md
+// Spec: projects/e-approval/components/avatar.md
 const sizes: Record<AvatarSize, string> = {
   16: 'size-4 text-body-tiny-regular',
   20: 'size-5 text-support-caption',

@@ -6,7 +6,7 @@ export interface DividerProps extends ComponentProps<'div'> {
   spacing?: 'none' | 'regular' | 'spacious'
 }
 
-// Spec: projects/portal2.0/components/divider.md
+// Spec: projects/e-approval/components/divider.md
 // The outer box sizes are the component's own dimensions (not spacing tokens).
 const horizontal = { none: 'h-px', regular: 'h-[9px]', spacious: 'h-4' }
 const vertical = { none: 'w-px', regular: 'w-[5px]', spacious: 'w-4' }

@@ -14,7 +14,7 @@ export interface ChipProps extends ComponentProps<'button'> {
   suffixIcon?: ReactNode
 }
 
-// Spec: projects/portal2.0/components/chips-tag-badge.md
+// Spec: projects/e-approval/components/chips-tag-badge.md
 const base =
   'inline-flex h-5 shrink-0 items-center gap-1 whitespace-nowrap px-1.5 text-body-small-regular ' +
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo ' +

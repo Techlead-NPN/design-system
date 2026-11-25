@@ -1,6 +1,8 @@
-# Portal 2.0 — Build Guide
+# E-Approval — Build Guide
 
-How to build a Portal 2.0 screen from these docs. Read [`../../foundations/BUILD_GUIDE.md`](../../foundations/BUILD_GUIDE.md) first: it has the setup, the token-to-class mapping, and the rules that apply to every project. This page only adds what is specific to Portal 2.0.
+E-Approval was called Portal 2.0 until November 2026; its Figma file is still named Portal 2.0. It is the first app of the employee workspace, and its look is the Workspace theme every internal app shares.
+
+How to build an E-Approval screen from these docs. Read [`../../foundations/BUILD_GUIDE.md`](../../foundations/BUILD_GUIDE.md) first: it has the setup, the token-to-class mapping, and the rules that apply to every project. This page only adds what is specific to E-Approval.
 
 There are about 90 docs here. Do not read them all — read the ones this page points to for your task.
 
@@ -8,9 +10,9 @@ There are about 90 docs here. Do not read them all — read the ones this page p
 
 1. Import the Workspace theme, [`../../themes/workspace.css`](../../themes/workspace.css), after the Foundations tokens. Every color and text style comes from it.
 2. Read [`DESIGN.md`](DESIGN.md) §2.1–2.2 (color naming and the accent rule) and §5 (accessibility rules). The token tables in §2–§3 are a reference for what each token is for; you don't need to memorise them.
-3. **Start every desktop screen from the app shell**: [`patterns/app-shell.md`](patterns/app-shell.md). It defines the page backdrop, sidebar, header and the white content card that all page content sits inside. Getting this wrong is the most visible way a screen ends up looking unlike Portal 2.0.
+3. **Start every desktop screen from the app shell**: [`patterns/app-shell.md`](patterns/app-shell.md). It defines the page backdrop, sidebar, header and the white content card that all page content sits inside. Getting this wrong is the most visible way a screen ends up looking unlike E-Approval.
 
-## 2. Portal 2.0 color rules in short
+## 2. E-Approval color rules in short
 
 - `accent-indigo` is the primary interactive color: primary buttons, selected states, focus rings, checked toggles.
 - Keyboard focus is always the same: normal colors plus a 2px indigo ring outside the element (`focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo`).
@@ -36,7 +38,7 @@ For a screen that has no pattern doc, build it inside the app shell from the gen
 
 **Generic components** (usable on any screen): [`avatar`](components/avatar.md), [`bottom-sheet`](components/bottom-sheet.md), [`breadcrumb`](components/breadcrumb.md), [`button`](components/button.md), [`calendar`](components/calendar.md), [`chips-tag-badge`](components/chips-tag-badge.md), [`content-area`](components/content-area.md), [`dialog`](components/dialog.md), [`divider`](components/divider.md), [`dropdown`](components/dropdown.md), [`icon-sidebar`](components/icon-sidebar.md), [`loading`](components/loading.md), [`menu-item`](components/menu-item.md), [`overlay`](components/overlay.md), [`radio-checkbox-card`](components/radio-checkbox-card.md), [`scroll-area`](components/scroll-area.md), [`steps`](components/steps.md), [`tab`](components/tab.md), [`table`](components/table.md), [`text-input`](components/text-input.md), [`toast-alert`](components/toast-alert.md), [`toggle`](components/toggle.md), [`tooltip`](components/tooltip.md).
 
-**App components** are the ones prefixed `nav-`, `home-`, `request-`, `create-form-`, `notification-`, `profile-` and `settings-`. They belong to a specific Portal 2.0 feature; reuse one only for that same purpose.
+**App components** are the ones prefixed `nav-`, `home-`, `request-`, `create-form-`, `notification-`, `profile-` and `settings-`. They belong to a specific E-Approval feature; reuse one only for that same purpose.
 
 **Coded components so far** (import these, don't rebuild them; from the package each name has a `DS` prefix, e.g. `DSButton`): `Button`, `IconButton`, `Checkbox`, `Radio`, `RadioCard`, `Badge`, `Chip`, `Avatar`, `SquareAvatar`, `SidebarIcon`, `Divider`, `Toggle`, `ToggleCard`, `Tooltip`, `TextInput`, `TextArea`, `Menu`, `MenuGroupLabel`, `MenuItem`, `Dropdown`, `Calendar`, `Tabs`, `Tab`, `Breadcrumb`, `Steps`, `StepIndicator`, `Toast`, `Alert`, `Callout`, `Overlay`, `ConfirmationDialog`, `ContentDialog`, `BottomSheet`, `Table`, `TableRow`, `TableHeaderCell`, `TableCell`, `TableSelectCell`, `Loading`, `ScrollArea` from [`components/src/`](../../components/src/).
 

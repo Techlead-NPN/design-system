@@ -7,7 +7,7 @@ export interface FloatingActionButtonProps extends Omit<ComponentProps<'button'>
   children: ReactNode
 }
 
-// Spec: projects/portal2.0/components/button.md (Floating action button)
+// Spec: projects/e-approval/components/button.md (Floating action button)
 // The one main create action on a mobile screen. For inline or repeated icon actions use IconButton.
 export function FloatingActionButton({ className = '', type = 'button', children, ...rest }: FloatingActionButtonProps) {
   return (

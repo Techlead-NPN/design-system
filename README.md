@@ -12,13 +12,14 @@ themes/                   semantic colors and text styles, as code; every theme 
 ├── workspace.css         the house style shared by every internal app (E-Approval and the apps that follow)
 ├── paygenix.css          PayGenix; began as a copy of workspace.css and is independent of it
 └── CONTRACT.md           the rule every theme follows, and the check that enforces it
+workspace/                the shell and request/approval patterns every internal app shares (README.md is the index)
 components/               coded React + Tailwind components, shared by every project
 ├── .storybook/           Storybook setup (one stylesheet per theme, switched from the toolbar)
 └── src/                  one folder per component family, each with its stories
                            (button/, selection/, badge/, avatar/, divider/, toggle/, tooltip/, field/, menu/, calendar/, navigation/, feedback/, overlay/, table/, layout/)
 projects/
-├── paygenix-merchant/    uses themes/paygenix.css: DESIGN.md and BUILD_GUIDE.md list what differs from Portal 2.0
-└── portal2.0/            one folder per project (Portal 2.0 is now called E-Approval; uses themes/workspace.css)
+├── paygenix-merchant/    uses themes/paygenix.css: DESIGN.md and BUILD_GUIDE.md list what differs from E-Approval
+└── e-approval/           one folder per project (E-Approval, formerly Portal 2.0; uses themes/workspace.css)
     ├── DESIGN.md         what the semantic tokens and text styles are for, accessibility, changelog
     ├── BUILD_GUIDE.md    which docs to read for which task
     ├── components/       one doc per component
@@ -30,8 +31,9 @@ projects/
 ## Where to start
 
 - [`foundations/FOUNDATIONS.md`](foundations/FOUNDATIONS.md) — read first; applies to every project.
-- [`projects/portal2.0/DESIGN.md`](projects/portal2.0/DESIGN.md) — Portal 2.0.
-- [`projects/paygenix-merchant/DESIGN.md`](projects/paygenix-merchant/DESIGN.md) — PayGenix Merchant Dashboard; shares Portal 2.0's look and lists only what differs.
+- [`workspace/README.md`](workspace/README.md) — building a new internal app: the shared shell and patterns.
+- [`projects/e-approval/DESIGN.md`](projects/e-approval/DESIGN.md) — E-Approval, the first internal app.
+- [`projects/paygenix-merchant/DESIGN.md`](projects/paygenix-merchant/DESIGN.md) — PayGenix Merchant Dashboard; shares E-Approval's look and lists only what differs.
 
 ## Building UI from these docs
 
@@ -97,4 +99,4 @@ The docs and Storybook use the plain names (Button, Text input); in code, add th
 
 ## Adding a project
 
-Create `projects/<name>/` with the same shape as `portal2.0/`. An internal app uses `themes/workspace.css` and needs no tokens of its own. A product with a different brand gets its own theme: copy `themes/workspace.css` to `themes/<brand>.css`, keep every token name and change the values, then run `npm run check-themes` in `components/` (see [`themes/CONTRACT.md`](themes/CONTRACT.md)). A client's theme stays in the client's private repo, not in this public one. The project's `DESIGN.md` documents only what is specific to it and links to Foundations for everything else. Follow [`foundations/workflow/AUDIT_WORKFLOW.md`](foundations/workflow/AUDIT_WORKFLOW.md) to audit and document its components.
+Create `projects/<name>/` with the same shape as `e-approval/`. An internal app uses `themes/workspace.css` and needs no tokens of its own. A product with a different brand gets its own theme: copy `themes/workspace.css` to `themes/<brand>.css`, keep every token name and change the values, then run `npm run check-themes` in `components/` (see [`themes/CONTRACT.md`](themes/CONTRACT.md)). A client's theme stays in the client's private repo, not in this public one. The project's `DESIGN.md` documents only what is specific to it and links to Foundations for everything else. Follow [`foundations/workflow/AUDIT_WORKFLOW.md`](foundations/workflow/AUDIT_WORKFLOW.md) to audit and document its components.

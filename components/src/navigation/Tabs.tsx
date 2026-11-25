@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react'
 
-// Spec: projects/portal2.0/components/tab.md
+// Spec: projects/e-approval/components/tab.md
 
 /** A horizontal tab bar. Put `Tab`s inside. */
 export function Tabs({ className = '', ...rest }: ComponentProps<'div'>) {

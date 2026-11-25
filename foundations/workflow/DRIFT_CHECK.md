@@ -1,10 +1,10 @@
 # Checking a project's Figma file for drift
 
-Each project keeps a `figma-snapshot.json` in its own folder (e.g. [`projects/portal2.0/figma-snapshot.json`](../../projects/portal2.0/figma-snapshot.json)). It is a structural baseline of every component and component-set in that project's Figma file (names, variant lists, IDs) as of the date in its `generatedAt` field. It does **not** capture token bindings, colors, or spacing — only "what components/variants exist." That's a deliberate scope limit: it's cheap to regenerate and diff, but it can't tell you a color got rebound to the wrong token. For that, someone still needs to ask for a real audit on the specific area that changed.
+Each project keeps a `figma-snapshot.json` in its own folder (e.g. [`projects/e-approval/figma-snapshot.json`](../../projects/e-approval/figma-snapshot.json)). It is a structural baseline of every component and component-set in that project's Figma file (names, variant lists, IDs) as of the date in its `generatedAt` field. It does **not** capture token bindings, colors, or spacing — only "what components/variants exist." That's a deliberate scope limit: it's cheap to regenerate and diff, but it can't tell you a color got rebound to the wrong token. For that, someone still needs to ask for a real audit on the specific area that changed.
 
 ## How to run a check (with Claude + the Figma MCP connection)
 
-Ask: **"Check the Figma file for drift against projects/&lt;project&gt;/figma-snapshot.json"** — for example `projects/portal2.0/figma-snapshot.json`.
+Ask: **"Check the Figma file for drift against projects/&lt;project&gt;/figma-snapshot.json"** — for example `projects/e-approval/figma-snapshot.json`.
 
 What happens:
 1. Claude re-runs the same discovery script against the live Figma file named in the snapshot's `fileKey` (one page at a time — `figma.getNodeByIdAsync` + `setCurrentPageAsync` + `findAllWithCriteria({ types: ['COMPONENT', 'COMPONENT_SET'] })`) and collects fresh names/variants/IDs.

@@ -4,7 +4,7 @@
  * (E-Approval, formerly Portal 2.0, and the apps that follow). Source of truth
  * for these values. Mirrors the "semantic color" collection (light mode) and the
  * 30 text styles of the Portal 2.0 Figma file (YFci6zgeYAQqX2OlHKQB0e) as read
- * on 2026-10-05. Documented in ../projects/portal2.0/DESIGN.md.
+ * on 2026-10-05. Documented in ../projects/e-approval/DESIGN.md.
  *
  * Import after foundations.css — see ../foundations/BUILD_GUIDE.md.
  * Every other theme defines the same token names (e.g. paygenix.css).

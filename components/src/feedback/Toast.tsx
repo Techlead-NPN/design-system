@@ -3,7 +3,7 @@ import { IconButton } from '../button/IconButton'
 import { CloseGlyph, StatusIcon, statusBorder, statusFillA80, statusText } from './status'
 import type { Status } from './status'
 
-// Spec: projects/portal2.0/components/toast-alert.md
+// Spec: projects/e-approval/components/toast-alert.md
 
 export interface ToastProps extends Omit<ComponentProps<'div'>, 'title'> {
   status: Status

@@ -14,7 +14,7 @@ export interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type' | 'c
   size?: 14 | 16
 }
 
-// Spec: projects/portal2.0/components/radio-checkbox-card.md
+// Spec: projects/e-approval/components/radio-checkbox-card.md
 const box =
   'flex shrink-0 items-center justify-center rounded-4 border text-primary-inverse ' +
   'group-has-focus-visible:outline-2 group-has-focus-visible:outline-offset-2 group-has-focus-visible:outline-accent-indigo ' +

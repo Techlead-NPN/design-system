@@ -23,7 +23,7 @@ export type CalendarProps =
   | (Common & { mode?: 'single'; value: Date | null; onChange: (value: Date) => void })
   | (Common & { mode: 'range'; value: DateRange; onChange: (value: DateRange) => void })
 
-// Spec: projects/portal2.0/components/calendar.md
+// Spec: projects/e-approval/components/calendar.md
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 const day = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime()
