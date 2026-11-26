@@ -354,8 +354,10 @@
   --radius-24: 24px;
   --radius-infinite: 9999px;
 
-  /* Effect styles → `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-xl`. */
+  /* Effect styles → `shadow-xs`, `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-xl`.
+   * `shadow-xs` is the very soft card shadow of the Duo theme (2026-11-26). */
   --shadow-*: initial;
+  --shadow-xs: 0 2px 8px 0 rgb(20 20 20 / 0.03);
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.1), 0 1px 3px 0 rgb(0 0 0 / 0.1);
   --shadow-md: 0 2px 4px -2px rgb(0 0 0 / 0.1), 0 4px 6px 0 rgb(0 0 0 / 0.1);
   --shadow-lg: 0 4px 6px -4px rgb(0 0 0 / 0.1), 0 10px 15px 0 rgb(0 0 0 / 0.1);

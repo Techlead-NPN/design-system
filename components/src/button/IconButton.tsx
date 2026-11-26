@@ -18,11 +18,11 @@ export interface IconButtonProps extends Omit<ComponentProps<'button'>, 'childre
 
 // Spec: projects/e-approval/components/button.md
 const base =
-  'inline-flex shrink-0 items-center justify-center rounded-6 ' +
+  'inline-flex shrink-0 items-center justify-center rounded-button ' +
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo ' +
   'disabled:cursor-not-allowed disabled:text-disabled'
 
-const sizes: Record<IconButtonSize, string> = { sm: 'size-6', md: 'size-8' }
+const sizes: Record<IconButtonSize, string> = { sm: 'size-button-sm', md: 'size-button-md' }
 
 const primary = 'bg-accent-indigo text-primary-inverse enabled:hover:bg-accent-indigo-bolder disabled:bg-disabled'
 

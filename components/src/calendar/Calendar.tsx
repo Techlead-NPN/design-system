@@ -58,7 +58,7 @@ export function Calendar(props: CalendarProps) {
   }
 
   return (
-    <div className={`inline-flex w-[268px] flex-col gap-2 p-2 ${card ? 'rounded-8 bg-primary shadow-lg inset-ring inset-ring-primary-subtle' : ''} ${className}`}>
+    <div className={`inline-flex w-[268px] flex-col gap-2 p-2 ${card ? 'rounded-popover bg-primary shadow-lg inset-ring inset-ring-primary-subtle' : ''} ${className}`}>
       <div className="flex h-8 items-center justify-between gap-2">
         <div className="flex gap-1">
           <Dropdown

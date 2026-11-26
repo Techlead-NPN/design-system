@@ -69,7 +69,7 @@ Named text styles (e.g. `Body/Small-medium`) are built from these scales but liv
 
 ### 2.4 Effect styles
 
-Shadows: `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-xl` — built from primitive `offset-x/y`, `blur`, `spread`, and `opacity` tokens.
+Shadows: `shadow-xs` (the very soft card shadow used by the Duo theme), `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-xl` — built from primitive `offset-x/y`, `blur`, `spread`, and `opacity` tokens.
 
 ### 2.5 Grid styles
 

@@ -14,7 +14,7 @@ Internal apps use Classic or Duo; no app gets a theme of its own. A new theme is
 
 **A theme defines every name that `workspace.css` defines.** That means:
 
-1. Every CSS variable: the semantic colours in `:root` (`--text-primary`, `--bg-accent-indigo`, …), the component tokens (`--badge-radius`, `--table-row-height`), and the variables in its `@theme` blocks that turn them into Tailwind classes.
+1. Every CSS variable: the semantic colours in `:root` (`--text-primary`, `--bg-accent-indigo`, …), the component tokens (`--button-radius`, `--card-radius`, `--table-row-height`, … see [`COMPONENT_TOKENS.md`](COMPONENT_TOKENS.md)), and the variables in its `@theme` blocks that turn them into Tailwind classes.
 2. Every `@utility`: the 30 text styles (`text-body-small-medium`, …) and the loading shimmers (`bg-loading-light`, …).
 
 A theme may change any value and may add names of its own (PayGenix adds a brand ramp and chart colours). It may not leave a name out or rename one: a component that uses a missing name renders with no colour or the wrong size, and nothing warns you.

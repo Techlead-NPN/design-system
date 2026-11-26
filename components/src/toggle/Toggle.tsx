@@ -37,7 +37,7 @@ export function ToggleCard({ icon, label, description, className = '', ...rest }
   return (
     <label
       className={
-        'group/toggle flex flex-col gap-2 rounded-8 border border-primary-subtle bg-primary p-2 ' +
+        'group/toggle flex flex-col gap-2 rounded-card border border-primary-subtle bg-primary p-2 ' +
         'has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-accent-indigo ' +
         'has-disabled:cursor-not-allowed has-disabled:border-disabled has-disabled:bg-disabled ' +
         className

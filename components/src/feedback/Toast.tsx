@@ -82,7 +82,7 @@ export interface CalloutProps extends Omit<ComponentProps<'div'>, 'title'> {
 /** Boxed note with a title and explanation, for guidance that belongs next to the content. */
 export function Callout({ status, title, action, onClose, className = '', children, ...rest }: CalloutProps) {
   return (
-    <div className={`flex flex-col gap-1 rounded-8 border bg-secondary p-3 ${statusBorder[status]} ${className}`} {...rest}>
+    <div className={`flex flex-col gap-1 rounded-card border bg-secondary p-3 ${statusBorder[status]} ${className}`} {...rest}>
       <div className="flex min-h-6 items-center gap-2">
         <StatusIcon status={status} />
         <div className="min-w-0 flex-1 text-body-small-medium text-primary">{title}</div>

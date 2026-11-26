@@ -39,7 +39,7 @@ export type { DropdownProps as DSDropdownProps, DropdownOption as DSDropdownOpti
 export { Calendar as DSCalendar } from './calendar/Calendar'
 export type { CalendarProps as DSCalendarProps, DateRange as DSDateRange } from './calendar/Calendar'
 export { Tabs as DSTabs, Tab as DSTab } from './navigation/Tabs'
-export type { TabProps as DSTabProps } from './navigation/Tabs'
+export type { TabProps as DSTabProps, TabsProps as DSTabsProps, TabsVariant as DSTabsVariant } from './navigation/Tabs'
 export { Breadcrumb as DSBreadcrumb } from './navigation/Breadcrumb'
 export type { BreadcrumbProps as DSBreadcrumbProps, BreadcrumbItem as DSBreadcrumbItem } from './navigation/Breadcrumb'
 export { Steps as DSSteps, StepIndicator as DSStepIndicator } from './navigation/Steps'

@@ -5,9 +5,8 @@
  * value is a Foundations primitive; decisions and the mapping from the Duo
  * Figma style guide are in DUO.md.
  *
- * Preview: the values are validated, but components still have some corner
- * sizes and heights written into them (pill buttons, 16px cards, taller rows
- * need component tokens). See DUO.md "Not yet covered by the theme".
+ * Preview: colours, type and component shapes are validated; the icon-rail
+ * shell is still to come. See DUO.md and COMPONENT_TOKENS.md.
  *
  * Import after foundations.css — see ../foundations/BUILD_GUIDE.md.
  */
@@ -107,7 +106,22 @@
 
   /* Component tokens: shape values a project may set differently. */
   --badge-radius: var(--radius-infinite);
-  --table-row-height: 3rem; /* 36px */
+  --table-row-height: 3rem; /* 48px */
+  --button-radius: var(--radius-infinite);
+  --button-height-md: 2.25rem; /* 36px */
+  --button-height-sm: 1.75rem; /* 28px */
+  --field-radius: var(--radius-12);
+  --search-radius: var(--radius-infinite);
+  --field-height: 2.75rem; /* 44px */
+  --chip-radius: var(--radius-infinite);
+  --card-radius: var(--radius-16);
+  --card-border: transparent;
+  --card-shadow: var(--shadow-xs);
+  --popover-radius: var(--radius-12);
+  --checkbox-radius: var(--radius-6);
+  --button-padding-md: 1rem; /* 16px */
+  --button-padding-sm: 0.75rem; /* 12px */
+  --field-padding: 0.75rem; /* 12px */
 }
 
 /* Expose the semantic tokens as Tailwind utilities. `inline` keeps the
@@ -279,9 +293,28 @@
   --ring-color-idle: var(--border-idle);
   --ring-color-disabled: var(--border-disabled);
 
-  /* Component tokens → `rounded-badge`, `h-table-row`. */
+  /* Component tokens → `rounded-badge`, `h-table-row`, `rounded-button`, `h-button-md`,
+   * `h-button-sm`, `rounded-field`, `rounded-search`, `h-field`, `rounded-chip`, `rounded-card`,
+   * `border-card`, `shadow-card`, `rounded-popover`, `rounded-checkbox`, `px-button-padding-md`,
+   * `px-button-padding-sm`, `px-field-padding`.
+   * See themes/COMPONENT_TOKENS.md. */
   --radius-badge: var(--badge-radius);
   --spacing-table-row: var(--table-row-height);
+  --radius-button: var(--button-radius);
+  --radius-field: var(--field-radius);
+  --radius-search: var(--search-radius);
+  --radius-chip: var(--chip-radius);
+  --radius-card: var(--card-radius);
+  --radius-popover: var(--popover-radius);
+  --radius-checkbox: var(--checkbox-radius);
+  --spacing-button-md: var(--button-height-md);
+  --spacing-button-sm: var(--button-height-sm);
+  --spacing-field: var(--field-height);
+  --border-color-card: var(--card-border);
+  --shadow-card: var(--card-shadow);
+  --spacing-button-padding-md: var(--button-padding-md);
+  --spacing-button-padding-sm: var(--button-padding-sm);
+  --spacing-field-padding: var(--field-padding);
 }
 
 /* Text styles (30) → one class each, e.g. `Body/Small-medium` is

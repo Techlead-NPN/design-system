@@ -45,6 +45,7 @@ This page compares two sources, keeps the blocks that appear in both, and propos
 | Empty state | Icon, message, hint | [`request-list-empty-state`](../projects/e-approval/components/request-list-empty-state.md) | Empty request list | — | 1 |
 | Card view | The card alternative to a table row | [`request-card`](../projects/e-approval/components/request-card.md) | Table/card switch | Badge, Avatar | 2 |
 | Filter panel | The panel behind the Filter button | [`request-list-filter-panel`](../projects/e-approval/components/request-list-filter-panel.md) | Filter button | Dropdown, Calendar, Checkbox | 2 |
+| Segmented search bar | One capsule split into parts (for example Company · Status · Date), each opening its own picker, like Airbnb's "Where · When · Who" | — | — | TextInput, Dropdown, Calendar | Candidate: build only when two apps need it |
 | Bulk action bar | Appears when rows are selected | [`request-list-viewbar`](../projects/e-approval/components/request-list-viewbar.md) | Row checkboxes (bar not seen) | Button | 2 |
 | Kanban board | Lanes by stage, a card per document | — | Purchasing "Overview" board | Badge, Avatar | App only |
 

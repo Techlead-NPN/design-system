@@ -16,7 +16,7 @@ export function RadioCard({ icon, label, description, tag, className = '', ...re
   return (
     <label
       className={
-        'group/radio flex flex-col gap-2 rounded-8 border border-primary-subtle bg-primary p-2 ' +
+        'group/radio flex flex-col gap-2 rounded-card border border-primary-subtle bg-primary p-2 ' +
         'has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-accent-indigo ' +
         'has-disabled:cursor-not-allowed has-disabled:border-disabled has-disabled:bg-disabled ' +
         className

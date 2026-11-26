@@ -20,11 +20,11 @@ export interface ButtonProps extends ComponentProps<'button'> {
 
 // Spec: projects/e-approval/components/button.md
 const base =
-  'inline-flex shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-6 px-2 text-body-small-medium ' +
+  'inline-flex shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-button text-body-small-medium ' +
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo ' +
   'disabled:cursor-not-allowed disabled:text-disabled'
 
-const sizes: Record<ButtonSize, string> = { sm: 'h-6', md: 'h-8' }
+const sizes: Record<ButtonSize, string> = { sm: 'h-button-sm px-button-padding-sm', md: 'h-button-md px-button-padding-md' }
 
 const styles: Record<ButtonHierarchy, Record<ButtonAccent, string>> = {
   primary: {
