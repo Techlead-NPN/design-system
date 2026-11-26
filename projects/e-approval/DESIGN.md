@@ -52,16 +52,16 @@ Ten "accent" colors exist: `sky`, `ocean`, `emerald`, `teal`, `sun`, `fuchsia`, 
 | `text + icon/primary-inverse` | `#fafafa` | Primary text/icons on dark or bold backgrounds |
 | `text + icon/secondary-inverse` | `#e5e5e5` | Secondary text/icons on dark or bold backgrounds |
 | `text + icon/disabled` | `#d4d4d4` | Text/icons in a disabled state (exempt from contrast requirements) |
-| `text + icon/danger` | `#ef4444` | Critical information — error messages |
-| `text + icon/warning` | `#f59e0b` | Caution — warning messages |
-| `text + icon/info` | `#3b82f6` | Informational / in-progress states |
-| `text + icon/success` | `#6ecd32` | Favorable outcome — success messages |
-| `text + icon/idle` | `#14b8a6` | Idle/inactive status (e.g. offline indicator) — chosen to read as neutral without colliding with gray, which is already used for "cancelled" |
-| `text + icon/accent-indigo` | `#6366f1` | Brand-reinforcing text/icons — logos, primary actions |
+| `text + icon/danger` | `#b91c1c` | Critical information — error messages |
+| `text + icon/warning` | `#b45309` | Caution — warning messages |
+| `text + icon/info` | `#1d4ed8` | Informational / in-progress states |
+| `text + icon/success` | `#427b1e` | Favorable outcome — success messages |
+| `text + icon/idle` | `#0f766e` | Idle/inactive status (e.g. offline indicator) — chosen to read as neutral without colliding with gray, which is already used for "cancelled" |
+| `text + icon/accent-indigo` | `#4f46e5` | Brand-reinforcing text/icons — logos, primary actions |
 | `text + icon/accent-indigo-subtle` | `#818cf8` | Indigo accent at lighter weight than base |
-| `text + icon/accent-indigo-bolder` | `#4f46e5` | Text/icons on hover/focus of accent-indigo elements |
-| `text + icon/urgent` | `#f97316` | Text/icons on urgent-priority badges |
-| `text + icon/danger-bolder` | `#dc2626` | Text on danger buttons in hover/focus state |
+| `text + icon/accent-indigo-bolder` | `#4338ca` | Text/icons on hover/focus of accent-indigo elements |
+| `text + icon/urgent` | `#c2410c` | Text/icons on urgent-priority badges |
+| `text + icon/danger-bolder` | `#991b1b` | Text on danger buttons in hover/focus state |
 | `text + icon/accent-sky` | `#0ea5e9` | Decorative — avatar initials, sidebar icons |
 | `text + icon/accent-ocean` | `#2563eb` | Decorative |
 | `text + icon/accent-emerald` | `#10b981` | Decorative |
@@ -222,9 +222,10 @@ Neither rhythm is enforced by Figma or named as a distinct scale in the Foundati
 
 ### Known gaps (documented, not yet fixed)
 
+Fixed 2026-11-26: status text on its tinted background (was 1.9–3.1:1) now passes 4.5:1; see the changelog.
+
 | Pairing | Ratio | Needs | Note |
 |---|---|---|---|
-| `text/danger` on `bg/danger-subtle` | 3.09:1 | 4.5:1 | Same shortfall pattern on `text/warning` (1.93:1), `text/success` (1.87:1), `text/info` (3.01:1) — fine for short badge labels, fails if used for longer text |
 | White text on `bg/danger` (default button) | 3.76:1 | 4.5:1 | The **hover** state (`bg/danger-bolder`, 4.83:1) actually passes — the resting state is less accessible than hover, which is backwards |
 | White text on `bg/accent-indigo` (primary button) | 4.47:1 | 4.5:1 | Fails by a hair — borderline in practice |
 
@@ -234,6 +235,7 @@ Neither rhythm is enforced by Figma or named as a distinct scale in the Foundati
 
 | Change | From → To | Why |
 |---|---|---|
+| Status text moved to the 700 steps (`danger`, `warning`, `info`, `success`, `urgent`, `idle`), `danger-bolder` to `red-800`, indigo text to `indigo-600` (bolder `indigo-700`) — 2026-11-26 | Contrast fix | Status badges were 1.9–3.1:1 (green on light green 1.9:1) and red error text on white 3.8:1. Now every status badge and status text passes 4.5:1 on its tint and on white. Text gets darker; badge backgrounds and borders are unchanged |
 | Idle status color | Gray → `text+icon/idle` (`#14b8a6`, teal) | Gray was already claimed by the "cancelled" status; teal reads as neutral/calm without the collision |
 | Brand token | `brand/primary-500` → `accent-indigo` family | Consolidated the original brand blue/navy into the accent-indigo naming, and expanded its role to be the system's primary interactive color (buttons, selection, focus) rather than a single flat "brand" swatch |
 | `border/primary-default` → `border/primary` | Label correction | Card was labeled with a suffix that didn't match its actual bound variable |

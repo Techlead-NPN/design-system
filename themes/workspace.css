@@ -13,7 +13,9 @@
  * `text + icon/primary` is `text-primary`; `border/primary` is `border-primary`.
  */
 
-/* Semantic color tokens (87), each aliasing a Foundations primitive. */
+/* Semantic color tokens (87), each aliasing a Foundations primitive.
+ * 2026-11-26: status text moved to the 700 steps and indigo text to 600 so text passes
+ * 4.5:1 on its tinted badge background and on white (it was 1.9–4.0:1). */
 :root {
   --text-primary: var(--neutral-950);
   --text-secondary: var(--neutral-700);
@@ -21,8 +23,8 @@
   --text-primary-inverse: var(--neutral-50);
   --text-secondary-inverse: var(--neutral-200);
   --text-accent-indigo-subtle: var(--indigo-400);
-  --text-accent-indigo: var(--indigo-500);
-  --text-accent-indigo-bolder: var(--indigo-600);
+  --text-accent-indigo: var(--indigo-600);
+  --text-accent-indigo-bolder: var(--indigo-700);
   --text-accent-sky: var(--sky-500);
   --text-accent-ocean: var(--blue-600);
   --text-accent-emerald: var(--emerald-500);
@@ -33,13 +35,13 @@
   --text-accent-blush: var(--rose-500);
   --text-accent-peach: var(--orange-500);
   --text-accent-stone: var(--stone-500);
-  --text-info: var(--blue-500);
-  --text-warning: var(--amber-500);
-  --text-urgent: var(--orange-500);
-  --text-success: var(--green-500);
-  --text-danger: var(--red-500);
-  --text-danger-bolder: var(--red-600);
-  --text-idle: var(--teal-500);
+  --text-info: var(--blue-700);
+  --text-warning: var(--amber-700);
+  --text-urgent: var(--orange-700);
+  --text-success: var(--green-700);
+  --text-danger: var(--red-700);
+  --text-danger-bolder: var(--red-800);
+  --text-idle: var(--teal-700);
   --text-disabled: var(--neutral-300);
 
   --bg-primary: var(--base-white);

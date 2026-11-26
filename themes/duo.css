@@ -330,7 +330,7 @@
  * for Thai. Duo is lighter than Classic: no 700 weight (bold styles use 600), and
  * large headings use tighter letter spacing. */
 @theme {
-  --font-sans: "Inter", "IBM Plex Sans Thai", ui-sans-serif, system-ui, sans-serif; /* Thai font: proposed, confirm in DUO.md */
+  --font-sans: "Inter", "IBM Plex Sans Thai", ui-sans-serif, system-ui, sans-serif;
 }
 
 @utility text-display-desktop {

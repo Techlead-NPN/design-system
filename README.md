@@ -80,7 +80,7 @@ The app needs React 19 or later and Tailwind CSS v4. Set up the app's main style
 @source "../node_modules/@techlead-npn/design-system/dist";
 ```
 
-The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. Before 0.7.0 the theme files were called `tokens/portal2.0.css` and `tokens/paygenix-merchant.css`; those paths still work as aliases and will be removed in 1.0.0. The app loads the Inter font itself. Every component and type is exported with a `DS` prefix, so it is easy to tell apart from an app's own component of the same name. Import only the ones you use:
+The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. Before 0.7.0 the theme files were called `tokens/portal2.0.css` and `tokens/paygenix-merchant.css`; those paths still work as aliases and will be removed in 1.0.0. The app loads its fonts itself: Inter, plus IBM Plex Sans Thai for apps on the Duo theme (e.g. from `@fontsource-variable/inter` and `@fontsource/ibm-plex-sans-thai`). Every component and type is exported with a `DS` prefix, so it is easy to tell apart from an app's own component of the same name. Import only the ones you use:
 
 ```tsx
 import { DSButton, DSTextInput } from '@techlead-npn/design-system'

@@ -2,3 +2,7 @@
  * own stylesheet (theme-<name>.css) and the toolbar's Theme switch picks
  * which one is applied — see preview.ts. */
 @import "@fontsource-variable/inter";
+/* Thai text in the Duo theme (Inter has no Thai letters). */
+@import "@fontsource/ibm-plex-sans-thai/400.css";
+@import "@fontsource/ibm-plex-sans-thai/500.css";
+@import "@fontsource/ibm-plex-sans-thai/600.css";

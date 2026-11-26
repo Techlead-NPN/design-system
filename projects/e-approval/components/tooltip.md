@@ -52,6 +52,9 @@ Coded in [`components/src/tooltip/Tooltip.tsx`](../../../components/src/tooltip/
 
 None found beyond the fixed items below.
 
+
+**Small size (code only, 2026-11-26):** `<Tooltip size="sm">` is a one-line label for an icon button or a collapsed menu item: no title, as wide as its text, `px-2 py-1`, `Body/Mini-medium`, same colours and pointer options. The Duo rail uses it for item names. It closes the "no small one-word Tooltip" gap found in the October 2026 vibe test.
+
 ## Changelog
 
 - **2026-10-06:** added the Spec section. No Figma changes were needed. First coded version (bubble only) added.

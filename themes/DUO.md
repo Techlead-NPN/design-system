@@ -13,7 +13,7 @@ This page records how the Duo draft was tied to Foundations. The theme file is [
 | Card corners | **16px** (`rounded-16`) | What employees saw in the prototype they chose; calmer in dense tables and forms than the style guide's 24px |
 | Primary buttons | **`indigo-600`** (hover `indigo-700`) | White on `indigo-500` is 4.47:1, under the 4.5:1 minimum; `indigo-600` is 6.3:1. `indigo-500` stays for focus rings and highlights |
 | Accent colours | **Reuse Classic's accents** | No new colours. Duo's purple, pink, blue, green and orange map to Classic's fuchsia, blossom, ocean, emerald and peach |
-| Thai font | **Inter + IBM Plex Sans Thai** (proposed, to confirm) | Thai is the main language, so a web font keeps Thai the same on Mac and Windows (Linear does this; Notion and Claude fall back to system Thai). Plex is what the voted prototypes used. One line in `duo.css` to change |
+| Thai font | **Inter + IBM Plex Sans Thai** (confirmed 2026-11-26) | Thai is the main language, so a web font keeps Thai the same on Mac and Windows (Linear does this; Notion and Claude fall back to system Thai). Plex is what the voted prototypes used. Apps load both fonts themselves, like Inter today (e.g. `@fontsource-variable/inter` and `@fontsource/ibm-plex-sans-thai`) |
 | Weights | No 700; bold styles use 600, large headings 500–600 | Duo's style guide uses Medium and SemiBold only |
 
 ## Colour mapping

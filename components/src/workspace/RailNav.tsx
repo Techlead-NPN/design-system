@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ElementType, type KeyboardEvent } from 'react'
 import { Menu, MenuItem } from '../menu/Menu'
+import { Tooltip } from '../tooltip/Tooltip'
 import type { NavGroup, NavItem } from './SidebarNav'
 import { ChevronIcon } from './icons'
 
@@ -22,15 +23,11 @@ const focus = 'outline-none focus-visible:outline-2 focus-visible:outline-offset
 // Rail icons render at 18px whatever size the app passes.
 const iconBox = 'flex size-[18px] shrink-0 items-center justify-center [&_svg]:size-[18px]'
 
-/** Small dark label beside a collapsed rail item, placed against the window so a scrolling rail doesn't clip it. Visual only: the item carries the accessible name. */
+/** The item's name beside a collapsed rail item, as a small Tooltip placed against the window so a scrolling rail doesn't clip it. Visual only: the item carries the accessible name. */
 function RailLabel({ text, at }: { text: string; at: DOMRect }) {
   return (
-    <span
-      aria-hidden
-      style={{ left: at.right + 12, top: at.top + at.height / 2 }}
-      className="pointer-events-none fixed z-50 -translate-y-1/2 whitespace-nowrap rounded-6 bg-primary-inverse px-2 py-1 text-body-mini-medium text-primary-inverse"
-    >
-      {text}
+    <span aria-hidden style={{ left: at.right + 6, top: at.top + at.height / 2 }} className="pointer-events-none fixed z-50 -translate-y-1/2">
+      <Tooltip size="sm" pointer="left">{text}</Tooltip>
     </span>
   )
 }

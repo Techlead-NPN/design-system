@@ -54,6 +54,19 @@ export const BottomSheets: Story = {
   ),
 }
 
+/** `size="sm"`: a one-line label for an icon button or a collapsed menu item. */
+export const SmallTooltips: Story = {
+  name: 'Tooltip, small',
+  render: () => (
+    <div className="flex flex-wrap items-center gap-8 p-4">
+      <Tooltip size="sm" pointer="left">Job levels</Tooltip>
+      <Tooltip size="sm" pointer="top-center">Notifications</Tooltip>
+      <Tooltip size="sm" pointer="bottom-center">Hide sidebar</Tooltip>
+      <Tooltip size="sm" pointer="right">Search</Tooltip>
+    </div>
+  ),
+}
+
 export const Tooltips: Story = {
   render: () => (
     <div className="flex flex-wrap items-start gap-6">
