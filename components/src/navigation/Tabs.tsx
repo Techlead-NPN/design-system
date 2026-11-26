@@ -1,23 +1,77 @@
-import type { ComponentProps, ReactNode } from 'react'
+import { createContext, useContext, type ComponentProps, type ReactNode } from 'react'
 
-// Spec: projects/e-approval/components/tab.md
+// Spec: projects/e-approval/components/tab.md (underline); themes/COMPONENT_TOKENS.md (pill, segmented)
+
+/**
+ * `underline`: the indigo line under the selected tab (Classic).
+ * `pill`: the selected tab is a dark pill, for page-level status tabs (Duo).
+ * `segmented`: the selected tab is a white pill in a grey track, for switching views inside a card (Duo).
+ */
+export type TabsVariant = 'underline' | 'pill' | 'segmented'
+
+const VariantContext = createContext<TabsVariant>('underline')
+
+export interface TabsProps extends ComponentProps<'div'> {
+  variant?: TabsVariant
+}
+
+const bars: Record<TabsVariant, string> = {
+  underline: 'flex gap-2',
+  pill: 'flex gap-1',
+  segmented: 'inline-flex gap-1 rounded-12 bg-primary-hover p-1',
+}
 
 /** A horizontal tab bar. Put `Tab`s inside. */
-export function Tabs({ className = '', ...rest }: ComponentProps<'div'>) {
-  return <div role="tablist" className={`flex gap-2 ${className}`} {...rest} />
+export function Tabs({ variant = 'underline', className = '', ...rest }: TabsProps) {
+  return (
+    <VariantContext.Provider value={variant}>
+      <div role="tablist" className={`${bars[variant]} ${className}`} {...rest} />
+    </VariantContext.Provider>
+  )
 }
 
 export interface TabProps extends ComponentProps<'button'> {
   selected?: boolean
-  /** Height of the label area: 28px or 32px. */
+  /** Underline variant only: height of the label area, 28px or 32px. */
   size?: 28 | 32
   /** 16px icon before the label. */
   prefixIcon?: ReactNode
   /** 16px icon after the label (e.g. a chevron on a "+4 More" tab). */
   suffixIcon?: ReactNode
+  /** Pill and segmented variants: a count after the label. */
+  count?: ReactNode
 }
 
-export function Tab({ selected = false, size = 28, prefixIcon, suffixIcon, className = '', type = 'button', children, ...rest }: TabProps) {
+const focus = 'outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo'
+
+export function Tab({ selected = false, size = 28, prefixIcon, suffixIcon, count, className = '', type = 'button', children, ...rest }: TabProps) {
+  const variant = useContext(VariantContext)
+
+  if (variant === 'pill' || variant === 'segmented') {
+    const look =
+      variant === 'pill'
+        ? selected
+          ? 'rounded-infinite bg-primary-inverse text-primary-inverse'
+          : 'rounded-infinite text-secondary hover:bg-primary-hover'
+        : selected
+          ? 'rounded-10 bg-primary text-primary shadow-xs'
+          : 'rounded-10 text-secondary hover:text-primary'
+    return (
+      <button
+        type={type}
+        role="tab"
+        aria-selected={selected}
+        className={`flex h-9 shrink-0 items-center gap-1.5 whitespace-nowrap px-3 text-body-small-medium ${look} ${focus} ${className}`}
+        {...rest}
+      >
+        {prefixIcon}
+        {children}
+        {count != null && <span className={`text-body-small-regular ${variant === 'pill' && selected ? 'text-secondary-inverse' : 'text-tertiary'}`}>{count}</span>}
+        {suffixIcon}
+      </button>
+    )
+  }
+
   return (
     <button
       type={type}

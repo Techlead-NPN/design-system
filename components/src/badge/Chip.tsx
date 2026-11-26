@@ -48,7 +48,7 @@ export function Chip({
     <button
       type={type}
       aria-pressed={selected}
-      className={`${base} ${rounded ? 'rounded-infinite' : 'rounded-6'} ${selected ? s.selected : s.rest} ${className}`}
+      className={`${base} ${rounded ? 'rounded-infinite' : 'rounded-chip'} ${selected ? s.selected : s.rest} ${className}`}
       {...rest}
     >
       {prefixIcon}

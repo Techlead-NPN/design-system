@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { IconCircleDashed } from '@tabler/icons-react'
+import { IconSearch, IconCircleDashed } from '@tabler/icons-react'
 import { TextInput } from './TextInput'
 import { TextArea } from './TextArea'
 import { Dropdown } from '../menu/Dropdown'
@@ -28,6 +28,17 @@ export const TextInputs: Story = {
       <TextInput className="w-[280px]" label="Title" placeholder="Placeholder" disabled hint={hint} />
       <TextInput className="w-[280px]" label="Title" defaultValue="Value" disabled hint={hint} />
       <TextInput className="w-[280px]" label="Title" placeholder="Search" prefix={<IconCircleDashed size={16} />} />
+    </div>
+  ),
+}
+
+/** `type="search"` takes the search shape: a pill in Duo, the same as other fields in Classic. Every other field takes the form-field shape. */
+export const SearchAndFormFields: Story = {
+  name: 'Search field and form field',
+  render: () => (
+    <div className="flex flex-wrap items-start gap-6">
+      <TextInput className="w-[280px]" type="search" aria-label="Search requests" placeholder="Search requests" prefix={<IconSearch size={16} />} />
+      <TextInput className="w-[280px]" label="Title" placeholder="Laptop for the design team" />
     </div>
   ),
 }

@@ -2,7 +2,7 @@
 
 Duo is the softer look chosen for new internal apps (November 2026). E-Approval keeps the Classic look (`workspace.css`). Both themes use the same components and the same token names ([`CONTRACT.md`](CONTRACT.md)); only the values differ.
 
-This page records how the Duo draft was tied to Foundations. The theme file is [`duo.css`](duo.css). **Status: preview.** The colours and type are validated; some component sizes still need component tokens (see the last section).
+This page records how the Duo draft was tied to Foundations. The theme file is [`duo.css`](duo.css). **Status: preview.** Colours, type and component shapes are validated; the icon-rail shell is still to come.
 
 **Source:** the Duo Figma style guide ("Styleguide · Option B, Warm / Soft", file `CWIyerZWpc1pNJ6ZYyYJK3`, node `11:50`) and the Vercel prototypes employees voted on. The draft started from one visual reference and was not tied to Foundations; this pass does that.
 
@@ -81,19 +81,14 @@ Duo's 11 draft styles fill the same 30 text-style names the components use. Size
 
 Display and `h1`–`h2` keep Classic's sizes at weight 600; the draft doesn't use sizes above 40px.
 
-## Not yet covered by the theme
+## Shapes and sizes
 
-These Duo features need component tokens or variants, because the components have the value written in. They're the next step (the component-token audit); until then a Duo app will show Classic's shapes for them.
+Since package 0.11.0 the components read their shapes from component tokens ([`COMPONENT_TOKENS.md`](COMPONENT_TOKENS.md)), so Duo now has pill buttons (36px / 28px), 44px fields with 12px corners, pill search fields, pill chips, 16px cards with the soft `shadow-xs` shadow, 12px menus and 48px table rows. Tabs have `variant="pill"` and `variant="segmented"` for Duo's two tab styles.
 
-| Duo feature | Today | Needs |
-|---|---|---|
-| Pill buttons and inputs | Buttons and fields use 6px corners | Component tokens, e.g. `--button-radius`, `--field-radius` (like the existing `--badge-radius`) |
-| 16px cards and content card | 8–12px corners written in | `--card-radius` |
-| Taller table rows | Theme sets `--table-row-height` to 48px (draft prototype ~53px, style guide 76px) | Confirm the height in testing |
-| Pill tabs (black active pill in a grey track) | Underline tabs | A `variant` on `Tabs` |
-| Icon rail | Labelled sidebar | `layout="rail"` on `WorkspaceShell` |
-| Cards without a border on the page, large page titles | Shell's single content card | Part of the rail layout |
+**Still to come:** the icon-rail shell (`layout="rail"`), cards placed straight on the page, and the large page title. That's the Duo shell step.
 
 ## Changelog
+
+- **2026-11-26 (0.11.0):** component tokens added; Duo's shapes and sizes now come from the theme. Fields 44px, soft card shadow, table rows 48px, field corners 12px and pill search fields decided with the design owner.
 
 - **2026-11-26:** first pass. Decisions above made with the design owner; `duo.css` added as a preview theme and to Storybook's Theme switch.

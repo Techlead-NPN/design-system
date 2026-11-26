@@ -5,7 +5,7 @@ import { CheckIcon, ChevronRightIcon } from './icons'
 
 /** The floating panel that holds menu rows. */
 export function Menu({ className = '', ...rest }: ComponentProps<'div'>) {
-  return <div className={`flex flex-col gap-0.5 rounded-8 border border-primary-subtle bg-primary p-1 shadow-lg ${className}`} {...rest} />
+  return <div className={`flex flex-col gap-0.5 rounded-popover border border-primary-subtle bg-primary p-1 shadow-lg ${className}`} {...rest} />
 }
 
 /** Small caption that titles a group of rows inside a menu. */

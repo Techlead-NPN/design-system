@@ -90,7 +90,7 @@ export function Dropdown(props: DropdownProps) {
         onClick={() => !disabled && setOpen((o) => !o)}
         onKeyDown={onKeyDown}
         className={
-          `flex h-8 items-center gap-1 px-2 ${fieldBox} ${error ? fieldBoxError : ''} ` +
+          `flex h-field items-center gap-1 px-field-padding ${fieldBox} ${error ? fieldBoxError : ''} ` +
           'focus-visible:inset-ring-accent-indigo focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo ' +
           (open ? 'inset-ring-accent-indigo outline-2 outline-offset-2 outline-accent-indigo ' : '') +
           (disabled ? 'cursor-not-allowed bg-disabled' : 'cursor-pointer')

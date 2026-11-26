@@ -37,9 +37,9 @@ Docs refer to tokens by their design name. Convert them like this:
 | `border-radii/rounded-N` | `rounded-N` | `rounded-8`, `rounded-infinite` |
 | `border-width/xs` | `border` (1px) | |
 | `border-width/sm` | `border-2`, `outline-2` (2px) | focus rings |
-| `shadow-sm/md/lg/xl` | same name | `shadow-md` |
+| `shadow-xs/sm/md/lg/xl` | same name | `shadow-md` |
 | `breakpoint/sm/md/lg` | `sm:` `md:` `lg:` prefixes (390 / 768 / 1280px, min-width) | `lg:p-6` |
-| Component token `--badge-radius`, `--table-row-height` | `rounded-badge`, `h-table-row` | set per theme in its `themes/<theme>.css` |
+| Component tokens: button, field, chip, card, popover and checkbox shapes and sizes, `--badge-radius`, `--table-row-height` | `rounded-button`, `h-button-md`, `rounded-field`, `h-field`, `rounded-card`, `shadow-card`, `rounded-badge`, `h-table-row`, … (full list in [`../themes/COMPONENT_TOKENS.md`](../themes/COMPONENT_TOKENS.md)) | set per theme in its `themes/<theme>.css` |
 | Text style `Group/Name` | `text-group-name`, lower-case | `Body/Small-medium` → `text-body-small-medium` |
 
 Icons take their color from the surrounding text color, so color an icon with a `text-<name>` class.

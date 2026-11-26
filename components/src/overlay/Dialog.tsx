@@ -46,7 +46,7 @@ export interface ConfirmationDialogProps {
 export function ConfirmationDialog({ title, description, children, destructive = false, confirmLabel, cancelLabel, onConfirm, onCancel }: ConfirmationDialogProps) {
   const id = useId()
   return (
-    <div role="alertdialog" aria-modal="true" aria-labelledby={`${id}-title`} aria-describedby={description != null ? `${id}-desc` : undefined} className="flex w-[400px] flex-col gap-4 rounded-8 bg-primary p-6 shadow-lg">
+    <div role="alertdialog" aria-modal="true" aria-labelledby={`${id}-title`} aria-describedby={description != null ? `${id}-desc` : undefined} className="flex w-[400px] flex-col gap-4 rounded-card bg-primary p-6 shadow-lg">
       <div className="flex flex-col gap-2">
         <h2 id={`${id}-title`} className="text-body-medium-semibold text-primary">{title}</h2>
         {description != null && <p id={`${id}-desc`} className="text-body-small-regular text-primary">{description}</p>}
@@ -76,7 +76,7 @@ const widths = { sm: 'w-[400px]', md: 'w-[600px]', lg: 'w-[780px]' }
 export function ContentDialog({ size = 'md', title, onClose, children, actions }: ContentDialogProps) {
   const id = useId()
   return (
-    <div role="dialog" aria-modal="true" aria-labelledby={`${id}-title`} className={`flex max-h-full flex-col rounded-8 bg-primary shadow-lg ${widths[size]}`}>
+    <div role="dialog" aria-modal="true" aria-labelledby={`${id}-title`} className={`flex max-h-full flex-col rounded-card bg-primary shadow-lg ${widths[size]}`}>
       <div className="flex items-center gap-4 px-6 pb-3 pt-6">
         <h2 id={`${id}-title`} className="min-w-0 flex-1 truncate text-body-medium-semibold text-primary">{title}</h2>
         {onClose && <IconButton size="sm" aria-label="Close" onClick={onClose}><CloseGlyph /></IconButton>}

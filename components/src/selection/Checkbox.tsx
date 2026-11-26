@@ -16,7 +16,7 @@ export interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type' | 'c
 
 // Spec: projects/e-approval/components/radio-checkbox-card.md
 const box =
-  'flex shrink-0 items-center justify-center rounded-4 border text-primary-inverse ' +
+  'flex shrink-0 items-center justify-center rounded-checkbox border text-primary-inverse ' +
   'group-has-focus-visible:outline-2 group-has-focus-visible:outline-offset-2 group-has-focus-visible:outline-accent-indigo ' +
   'group-has-checked:border-transparent group-has-indeterminate:border-transparent ' +
   'group-has-disabled:border-disabled group-has-disabled:group-has-checked:border-transparent ' +

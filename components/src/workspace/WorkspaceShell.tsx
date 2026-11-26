@@ -168,7 +168,7 @@ export function WorkspaceShell({
             </button>
           </div>
         </header>
-        <main className="min-h-0 flex-1 overflow-auto rounded-8 border border-primary-subtle bg-primary p-4">{children}</main>
+        <main className="min-h-0 flex-1 overflow-auto rounded-card border border-card bg-primary p-4 shadow-card">{children}</main>
       </div>
     </div>
   )

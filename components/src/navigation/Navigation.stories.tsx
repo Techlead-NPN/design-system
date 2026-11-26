@@ -23,6 +23,29 @@ function TabsDemo({ size }: { size: 28 | 32 }) {
 }
 export const TabBar: Story = { render: () => <div className="flex flex-col gap-6"><TabsDemo size={28} /><TabsDemo size={32} /></div> }
 
+function VariantDemo({ variant }: { variant: 'pill' | 'segmented' }) {
+  const items = variant === 'pill' ? [['All', 48], ['Waiting for me', 5], ['In review', 12], ['Approved', 30]] : [['Approval', 5], ['Comments', 2], ['Activity', null]]
+  const [current, setCurrent] = useState(0)
+  return (
+    <Tabs variant={variant}>
+      {items.map(([label, count], i) => (
+        <Tab key={label as string} selected={i === current} count={count ?? undefined} onClick={() => setCurrent(i)}>{label}</Tab>
+      ))}
+    </Tabs>
+  )
+}
+
+/** Duo: `pill` for page-level status tabs, `segmented` for switching views inside a card. Switch the toolbar Theme to Duo to see them as designed. */
+export const TabVariants: Story = {
+  name: 'Tab variants (pill, segmented)',
+  render: () => (
+    <div className="flex flex-col items-start gap-6">
+      <VariantDemo variant="pill" />
+      <VariantDemo variant="segmented" />
+    </div>
+  ),
+}
+
 export const Breadcrumbs: Story = {
   render: () => (
     <div className="flex flex-col gap-3">
