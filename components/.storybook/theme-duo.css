@@ -3,6 +3,7 @@
 @import "../../themes/duo.css";
 
 @source "../src";
+@source "../starter";
 
 @theme {
   --font-sans: "Inter Variable", "Inter", "IBM Plex Sans Thai", ui-sans-serif, system-ui, sans-serif;

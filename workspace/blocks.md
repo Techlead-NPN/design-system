@@ -116,6 +116,20 @@ Built in Storybook from the shell plus blocks, as whole pages to copy. They are 
 | Form | Form page with form sections and the approval and preview steps |
 | Type picker | Section cards of shortcut tiles |
 
+**Starter app (2026-11-26):** all of tier 1 put together as one working app, [Leave](../components/starter/leave/README.md), in the Duo rail shell: home, two request lists with the detail panel, approve, reject and cancel, and a two-step form. Storybook: **Starter app → Leave**. New apps copy it.
+
+## Gaps found by the starter app
+
+Building Leave from the package alone turned up these. The first three are package fixes; the rest are candidates.
+
+| Gap | What happened | Proposed fix |
+|---|---|---|
+| **Calendar header in Duo** | The month and year are two full-size `Dropdown`s in a 268px calendar. In Duo, fields are 44px tall with 12px padding, so they read "Dece…" and "20…" and overflow the 32px header row | A compact header control in `Calendar` that doesn't use the field tokens |
+| **Form page title** | `FormPage` needs a `title`. In the rail shell the page title is already shown above it, so the page shows "Request leave" and then "New leave request" | Make `title` optional |
+| **Requester step in the approval flow** | Every `ApprovalStep` needs a `role`, so the requester's own step shows a "Verifier" tag | Make `role` optional; no tag when it's left out |
+| Toast placement | Apps position `DSToast` themselves (the starter uses bottom centre, so it doesn't cover the detail panel's footer buttons) | Decide one placement for every app; a small toast host if more apps need it |
+| Date field | Picking dates needs the calendar inline in the form; there is no field that opens it | Tier 2 candidate: a date and date-range field |
+
 ## Differences to settle before building
 
 The two sources mostly agree, which is why these blocks are good candidates. Where they differ:
@@ -127,4 +141,5 @@ The two sources mostly agree, which is why these blocks are good candidates. Whe
 
 ## Changelog
 
+- **2026-11-26:** the Leave starter app, and the gaps it found.
 - **2026-11-25:** first inventory, from E-Approval's docs and the ProcureApp prototype.

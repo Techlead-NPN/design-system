@@ -3,6 +3,7 @@
 @import "../../themes/workspace.css";
 
 @source "../src";
+@source "../starter";
 
 @theme {
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
