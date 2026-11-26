@@ -4,6 +4,8 @@ Blocks are the parts between single components and whole pages: a section card, 
 
 This page compares two sources, keeps the blocks that appear in both, and proposes an order to build them. **It is an inventory, not a spec.** Each block gets its own spec when it is built.
 
+**Built so far (package 0.14.0, batch A):** `DSSectionCard`, `DSStatTile` / `DSStatTiles`, `DSEmptyState`, `DSListToolbar`, `DSFilterChip` / `DSFilterChips`, `DSViewSwitch`, `DSCompanyChip`, `DSPersonLabel`, `DSAmount` in [`components/src/blocks/`](../components/src/blocks/). Status tabs use `DSTabs` (`variant="pill"` in Duo apps; `Tab` takes a `count`); the status column uses `DSBadge`. Storybook: **Blocks → Dashboard and list**, including a list page and a dashboard template; switch the Theme to compare Classic and Duo. Next: batch B (detail panel, field grid, approval timeline, approve/reject dialog), then batch C (form page).
+
 **Sources**
 
 - **E-Approval**: its app component and pattern docs in [`../projects/e-approval/`](../projects/e-approval/).
@@ -73,6 +75,15 @@ This page compares two sources, keeps the blocks that appear in both, and propos
 | Preview | Read-only summary before submitting | [`create-form-preview`](../projects/e-approval/components/create-form-preview.md) | Preview step | Field grid | 2 |
 
 Notifications, the ⌘K command palette, keyboard shortcuts and the account menu belong to the shell, not to blocks; see [`shell.md`](shell.md).
+
+## Block rules (batch A)
+
+- **Section card** — `rounded-card`, `border-card`, `shadow-card`, `p-4`; title row: 24px tinted icon chip (`SidebarIcon`), title in `text-body-medium-semibold text-secondary`, optional action at the right.
+- **Stat tile** — `bg-secondary` (hover `bg-secondary-hover`), 8px corners; number in `text-body-large-bold` coloured by status (Draft = idle, Under review = info, Approved = success, Rejected = danger), label in `text-body-mini-medium`. `variant="highlight"` is the orange "needs you" banner (`bg-urgent-subtle`) with a green count, as in E-Approval. A tile with `onClick` is a button that opens the filtered list.
+- **Empty state** — centred illustration, title (`text-body-medium-semibold`), one line of description (`text-tertiary`) and at most one action. Write it as an invitation ("No requests yet"), or say what happened ("No requests match these filters") with a way out.
+- **List toolbar** — search (`TextInput type="search"`) and the Filter button on the left; view switch, column settings and export on the right. Status tabs sit above it, filter chips below it.
+- **Filter chip** — 28px pill with a count; `aria-pressed` for its on/off state.
+- **Table cells** — ID as plain text; company as `CompanyChip` (a rounded rectangle, not a pill); people as `PersonLabel` (16px avatar and name); money as `Amount` (two decimals, tabular digits, right-aligned column); status as `Badge`.
 
 ## Page templates
 
