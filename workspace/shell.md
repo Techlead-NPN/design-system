@@ -156,7 +156,7 @@ Most internal apps have an approval workflow. The current assumption (not decide
 ## Open questions and known gaps
 
 - **Mobile** is not designed yet (step 6 of the proposal).
-- **Task test:** the rail is ready to test with employees (Storybook: Workspace → Duo rail). Things to watch: can people tell the 13 Org Chart Studio icons apart collapsed, do they find request types inside the category flyouts, and do they expand the rail.
+- **Task test:** the rail is ready to test with employees (Storybook: Workspace → Duo rail). Things to watch: can people tell the 13 Org Chart Studio icons apart collapsed, do they find request types inside the category flyouts, and do they expand the rail. Test kit: [`research/duo-rail-task-test.md`](research/duo-rail-task-test.md).
 - **Account menu:** what the avatar menu holds. E-Approval's [Account switcher](../projects/e-approval/components/profile-account-switcher.md) is the starting point.
 - **Search and notifications:** does ⌘K search only the current app or the whole workspace, and does the bell show notifications from every app?
 - **"Most used":** the rule that picks the app is not defined (for example, the app this person opened most in the last 30 days).
