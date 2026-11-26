@@ -6,7 +6,9 @@ This page compares two sources, keeps the blocks that appear in both, and propos
 
 **Built so far (package 0.14.0, batch A):** `DSSectionCard`, `DSStatTile` / `DSStatTiles`, `DSEmptyState`, `DSListToolbar`, `DSFilterChip` / `DSFilterChips`, `DSViewSwitch`, `DSCompanyChip`, `DSPersonLabel`, `DSAmount` in [`components/src/blocks/`](../components/src/blocks/). Status tabs use `DSTabs` (`variant="pill"` in Duo apps; `Tab` takes a `count`); the status column uses `DSBadge`. Storybook: **Blocks → Dashboard and list**, including a list page and a dashboard template; switch the Theme to compare Classic and Duo. 
 
-**Batch B (package 0.15.0):** `DSListWithDetail`, `DSDetailPanel`, `DSDetailSection`, `DSFieldGrid` / `DSField`, `DSHideWhenDetailOpen`, `DSApprovalTimeline`, `DSRoleTag`, `DSApprovalDialog`. Storybook: **Blocks → Detail and approval**, including a list-with-detail template. Next: batch C (form page).
+**Batch B (package 0.15.0):** `DSListWithDetail`, `DSDetailPanel`, `DSDetailSection`, `DSFieldGrid` / `DSField`, `DSHideWhenDetailOpen`, `DSApprovalTimeline`, `DSRoleTag`, `DSApprovalDialog`. Storybook: **Blocks → Detail and approval**, including a list-with-detail template.
+
+**Batch C (package 0.16.0):** `DSFormPage`, `DSFormSteps`, `DSFormSection`. Storybook: **Blocks → Form page**, with a multi-step and a one-step template. **Tier 1 is complete.**
 
 **Sources**
 
@@ -95,6 +97,13 @@ Notifications, the ⌘K command palette, keyboard shortcuts and the account menu
 - **Approval timeline** — headed "Delegation of Authority (DOA)" in indigo. One row per step, in order: marker (checked / in progress / not yet / rejected), avatar, name, role tag (Approver or Verifier), status at the right (Submitted and Approved in success, the current step in indigo, rejected in danger), position and time below, and the person's note in a grey box. The line between completed steps is indigo.
 - **Approve / reject dialog** — approving takes an optional comment; rejecting needs a reason, and confirming without one shows "Enter a reason to reject." instead of continuing. Both cap the text at 250 characters with a counter. One primary action: Approve (blue) or Reject (red). E-Approval's Figma draws Approve as an outline button; the coded dialog uses the primary style so the confirm action is the clear one.
 
+## Block rules (batch C)
+
+- **Form page** — title (`text-heading-h6`) with an optional aside (e.g. priority), the step bar for multi-step forms, the form sections, and a pinned footer: Back (from the second step), then Cancel, Save draft (when the app saves drafts) and Next, or Submit on the last step. A one-step form leaves out `steps`: no step bar, and the footer goes straight to Submit.
+- **Steps go in order** (decided 2026-11-26). Completed steps in the bar can be clicked to go back; later steps are locked. The app checks the current step when Next is pressed and only advances when it's valid; errors show on the fields themselves ("Enter a title.").
+- **Form section** — a titled card (`rounded-card`, `border-card`, `shadow-card`) with an optional one-line description, and the fields in two columns by default (`col-span-2` to span both, `columns={1}` for one column).
+- **Preview step** — reuse `DetailSection` and `FieldGrid` to show exactly what was entered, read-only.
+
 ## Page templates
 
 Built in Storybook from the shell plus blocks, as whole pages to copy. They are references, not package exports.
@@ -111,8 +120,8 @@ Built in Storybook from the shell plus blocks, as whole pages to copy. They are 
 
 The two sources mostly agree, which is why these blocks are good candidates. Where they differ:
 
-- **Detail panel placement:** in the prototype the panel opens beside the table and the list stays visible. E-Approval's docs describe a slide-over, but don't say whether it covers the list or pushes it aside.
-- **Form steps:** E-Approval's docs say the three steps are free tabs, not a locked wizard. The prototype shows them as a stepper. Same three steps; whether they lock needs a decision.
+- **Detail panel placement — decided 2026-11-26:** the panel opens inside the list's card and pushes the list narrower; the table drops to its key columns (see `ListWithDetail`).
+- **Form steps — decided 2026-11-26:** steps go in order (a locked stepper), unlike the free tabs in E-Approval's docs.
 - **Off-theme values:** the prototype uses some sizes that aren't in the theme (as with the app switcher). Blocks use theme values; the prototype is the layout reference, not the measurement source.
 - **Labels:** the prototype is in Thai; the decision is English labels.
 
