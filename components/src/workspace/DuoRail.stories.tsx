@@ -71,7 +71,7 @@ const navs: Record<string, { nav: NavGroup[]; action: string }> = {
       ] },
       { id: 'jobs', label: 'Jobs', items: [
         { id: 'levels', label: 'Job levels', icon: <IconLayersSubtract /> },
-        { id: 'families', label: 'Job families', icon: <IconUsers /> },
+        { id: 'families', label: 'Job families', icon: <IconBriefcase /> },
         { id: 'profiles', label: 'Job profiles', icon: <IconId /> },
       ] },
       { id: 'people', items: [{ id: 'employees', label: 'Employees', icon: <IconUsers />, count: 36 }] },

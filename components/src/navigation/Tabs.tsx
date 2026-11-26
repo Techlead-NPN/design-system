@@ -38,7 +38,7 @@ export interface TabProps extends ComponentProps<'button'> {
   prefixIcon?: ReactNode
   /** 16px icon after the label (e.g. a chevron on a "+4 More" tab). */
   suffixIcon?: ReactNode
-  /** Pill and segmented variants: a count after the label. */
+  /** A count after the label, e.g. items in that tab. */
   count?: ReactNode
 }
 
@@ -89,6 +89,7 @@ export function Tab({ selected = false, size = 28, prefixIcon, suffixIcon, count
       >
         {prefixIcon}
         {children}
+        {count != null && <span className="text-body-small-regular text-tertiary">{count}</span>}
         {suffixIcon}
       </span>
     </button>
