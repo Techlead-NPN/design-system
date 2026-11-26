@@ -9,7 +9,8 @@ export interface BadgeProps extends ComponentProps<'span'> {
 }
 
 // Spec: projects/e-approval/components/chips-tag-badge.md
-// Fill, border and text always come from the same status family.
+// Fill, border and text always come from the same status family. Size, padding,
+// text size and border width are theme tokens: Classic has a 1px border, Duo none.
 const states: Record<BadgeState, string> = {
   success: 'bg-success-subtle border-success text-success',
   error: 'bg-danger-subtle border-danger text-danger',
@@ -25,7 +26,7 @@ const states: Record<BadgeState, string> = {
 export function Badge({ state, icon, className = '', children, ...rest }: BadgeProps) {
   return (
     <span
-      className={`inline-flex h-5 shrink-0 items-center gap-1 whitespace-nowrap rounded-badge border px-2 text-body-small-medium ${states[state]} ${className}`}
+      className={`inline-flex h-badge shrink-0 items-center gap-1 whitespace-nowrap rounded-badge border-(length:--badge-border-width) px-badge-padding text-(length:--badge-font-size) leading-(--badge-line-height) font-medium ${states[state]} ${className}`}
       {...rest}
     >
       {icon}

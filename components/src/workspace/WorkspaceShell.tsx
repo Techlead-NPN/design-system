@@ -5,6 +5,7 @@ import { Divider } from '../divider/Divider'
 import { AppIcon, AppSwitcher, type WorkspaceApp } from './AppSwitcher'
 import { SidebarNav, type NavGroup, type NavItem } from './SidebarNav'
 import { BellIcon, HelpIcon, MessageIcon, SearchIcon, SidebarIcon } from './icons'
+import { WorkspaceRail } from './WorkspaceRail'
 
 // Spec: workspace/shell.md (Shell)
 
@@ -16,6 +17,12 @@ export interface WorkspaceUser {
 }
 
 export interface WorkspaceShellProps {
+  /**
+   * `sidebar`: labelled sidebar and one content card (Classic look, e.g. E-Approval).
+   * `rail`: icon rail that expands to labels, a large page title, and page content placed
+   * straight on the page (Duo look). Use with the matching theme.
+   */
+  layout?: 'sidebar' | 'rail'
   /** Every app this person can open, for the app switcher. */
   apps: WorkspaceApp[]
   /** The app this screen belongs to. */
@@ -35,6 +42,8 @@ export interface WorkspaceShellProps {
   title: ReactNode
   /** The page's one main action, e.g. a primary blue `Button`. */
   primaryAction?: ReactNode
+  /** Rail layout only: a line under the page title. */
+  subtitle?: ReactNode
 
   /** Shows the Search row; called when it is clicked. */
   onSearch?: () => void
@@ -56,6 +65,11 @@ export interface WorkspaceShellProps {
   defaultSidebarOpen?: boolean
   onSidebarOpenChange?: (open: boolean) => void
 
+  /** Rail layout only: controlled expanded state. Leave out to let the shell manage it; save it per person to remember their choice. */
+  railExpanded?: boolean
+  defaultRailExpanded?: boolean
+  onRailExpandedChange?: (expanded: boolean) => void
+
   /** Page content. It sits in the white content card. */
   children: ReactNode
   /** Extra classes on the root. The root fills the viewport height by default (`h-dvh`). */
@@ -65,7 +79,15 @@ export interface WorkspaceShellProps {
 const focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo'
 
 /** The frame every internal app's screens sit in: sidebar with the app switcher, header and content card. */
-export function WorkspaceShell({
+export function WorkspaceShell(props: WorkspaceShellProps) {
+  if (props.layout === 'rail') {
+    const { layout: _layout, sidebarOpen: _a, defaultSidebarOpen: _b, onSidebarOpenChange: _c, sidebarFooter: _d, ...rail } = props
+    return <WorkspaceRail {...rail} />
+  }
+  return <SidebarShell {...props} />
+}
+
+function SidebarShell({
   apps, app, onOpenApp, onOpenLauncher, launcherHref,
   nav, currentNavId, onNavigate, linkComponent,
   title, primaryAction,

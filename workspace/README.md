@@ -20,7 +20,7 @@ A doc moves into this folder once a second app uses it and its E-Approval-only p
 |---|---|---|
 | Page frame: backdrop, sidebar, header, content card | [`app-shell.md`](../projects/e-approval/patterns/app-shell.md) | Documented, not coded |
 | Desktop sidebar | [`sidebar-navigation.md`](../projects/e-approval/patterns/sidebar-navigation.md) | Documented, not coded. Its menu items are E-Approval's |
-| Shell, app switcher, sidebar menu and launcher | [`shell.md`](shell.md) | **Coded** (0.9.0): `DSWorkspaceShell`, `DSAppSwitcher`, `DSSidebarNav`, `DSAppLauncher`. Replaces E-Approval's top-left Workspace menu |
+| Shell, app switcher, sidebar menu and launcher | [`shell.md`](shell.md) | **Coded** (0.9.0): `DSWorkspaceShell`, `DSAppSwitcher`, `DSSidebarNav`, `DSAppLauncher`. Replaces E-Approval's top-left Workspace menu. Duo apps use `layout="rail"` (0.12.0) |
 | Top bar | [`nav-header-navigation.md`](../projects/e-approval/components/nav-header-navigation.md) | Documented, not coded |
 | Mobile bottom navigation | [`mobile-bottom-navigation.md`](../projects/e-approval/patterns/mobile-bottom-navigation.md) | Documented, not coded. Its tabs are E-Approval's |
 | Mobile top bar | [`nav-mobile-top-bar.md`](../projects/e-approval/components/nav-mobile-top-bar.md) | Documented, not coded |

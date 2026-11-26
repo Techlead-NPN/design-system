@@ -2,7 +2,7 @@
 
 Duo is the softer look chosen for new internal apps (November 2026). E-Approval keeps the Classic look (`workspace.css`). Both themes use the same components and the same token names ([`CONTRACT.md`](CONTRACT.md)); only the values differ.
 
-This page records how the Duo draft was tied to Foundations. The theme file is [`duo.css`](duo.css). **Status: preview.** Colours, type and component shapes are validated; the icon-rail shell is still to come.
+This page records how the Duo draft was tied to Foundations. The theme file is [`duo.css`](duo.css). **Status: preview** until the task test with employees. Colours, type, component shapes and the rail shell are built.
 
 **Source:** the Duo Figma style guide ("Styleguide · Option B, Warm / Soft", file `CWIyerZWpc1pNJ6ZYyYJK3`, node `11:50`) and the Vercel prototypes employees voted on. The draft started from one visual reference and was not tied to Foundations; this pass does that.
 
@@ -54,7 +54,7 @@ Every value is a Foundations primitive. "Draft" is the Figma style guide value.
 | Urgent | `orange-700` | `orange-50` | 4.9:1 | #C9561A |
 | Idle | `teal-700` | `teal-50` | 5.3:1 | #0F7A6E |
 
-Solid danger and info backgrounds use the 600 step so white text on them passes. Duo's chips have no visible outline, so the status borders that only badges and callouts use are soft (200 steps). `border-danger` stays strong (`red-600`) because checkboxes and radios use it for their error state; a badge-only border token would let the error badge go soft too.
+Solid danger and info backgrounds use the 600 step so white text on them passes. Duo's badges have no border at all (`--badge-border-width: 0`), matching Org Chart Studio: soft tinted pills with darker text. The status border colours that callouts use are soft (200 steps); `border-danger` stays strong (`red-600`) because checkboxes and radios use it for their error state.
 
 Success uses **emerald**, not Foundations' `green`: Foundations' green is lime-leaning (`green-700` is olive), while the draft's green is emerald.
 
@@ -85,7 +85,7 @@ Display and `h1`–`h2` keep Classic's sizes at weight 600; the draft doesn't us
 
 Since package 0.11.0 the components read their shapes from component tokens ([`COMPONENT_TOKENS.md`](COMPONENT_TOKENS.md)), so Duo now has pill buttons (36px / 28px), 44px fields with 12px corners, pill search fields, pill chips, 16px cards with the soft `shadow-xs` shadow, 12px menus and 48px table rows. Tabs have `variant="pill"` and `variant="segmented"` for Duo's two tab styles.
 
-**Still to come:** the icon-rail shell (`layout="rail"`), cards placed straight on the page, and the large page title. That's the Duo shell step.
+**Shell:** `<DSWorkspaceShell layout="rail">` (since 0.12.0) gives the icon rail that expands to labels, page content straight on the page, and the large page title. See [`../workspace/shell.md`](../workspace/shell.md).
 
 ## Changelog
 
