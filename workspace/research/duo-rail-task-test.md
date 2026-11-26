@@ -92,7 +92,7 @@ Three short prompts, one after another. After each, wait for "done", then read t
 
 Time limit: 45 seconds each.
 
-Struggle: hovers all three Jobs icons before choosing; picks Employees or Positions and seats first; says the icons look alike. Note that **Job families and Employees use the same icon** in the current build: watch for people mixing them up.
+Struggle: hovers all three Jobs icons before choosing; picks Employees or Positions and seats first; says the icons look alike. Before the sessions, check that Job families and Employees show different icons; this was fixed in the blocks batch A release.
 
 ### Task 2: change requests, upcoming, history (Org Chart Studio, collapsed)
 
