@@ -72,3 +72,5 @@ export { ListWithDetail as DSListWithDetail, DetailPanel as DSDetailPanel, Detai
 export type { ListWithDetailProps as DSListWithDetailProps, DetailPanelProps as DSDetailPanelProps, DetailSectionProps as DSDetailSectionProps, FieldProps as DSFieldProps } from './blocks/Detail'
 export { ApprovalTimeline as DSApprovalTimeline, ApprovalDialog as DSApprovalDialog, RoleTag as DSRoleTag } from './blocks/Approval'
 export type { ApprovalTimelineProps as DSApprovalTimelineProps, ApprovalStep as DSApprovalStep, ApprovalStepStatus as DSApprovalStepStatus, ApprovalRole as DSApprovalRole, ApprovalDialogProps as DSApprovalDialogProps } from './blocks/Approval'
+export { FormPage as DSFormPage, FormSteps as DSFormSteps, FormSection as DSFormSection } from './blocks/Form'
+export type { FormPageProps as DSFormPageProps, FormStepsProps as DSFormStepsProps, FormSectionProps as DSFormSectionProps } from './blocks/Form'
