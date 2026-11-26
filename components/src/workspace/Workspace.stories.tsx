@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useState, type ReactNode } from 'react'
+import { useState } from 'react'
 import {
   IconBuildingWarehouse, IconCalendarEvent, IconCash, IconDeviceDesktop, IconFileInvoice, IconHome,
-  IconPlus, IconReceipt, IconStack2, IconTicket, IconUsers,
+  IconPlus, IconReceipt, IconStack2, IconStar, IconTicket, IconUsers,
 } from '@tabler/icons-react'
-import { AppLauncher, AppSwitcher, WorkspaceShell, type NavItem, type WorkspaceApp } from './Workspace'
+import { WorkspaceShell } from './WorkspaceShell'
+import { AppSwitcher, type WorkspaceApp } from './AppSwitcher'
+import { AppLauncher } from './AppLauncher'
+import { SidebarNav, type NavGroup, type NavItem } from './SidebarNav'
 import { Button } from '../button/Button'
 import itsm from './assets/app-itsm.svg'
 import procure from './assets/app-procureapp.svg'
@@ -13,7 +16,7 @@ import accounting from './assets/app-accounting-tools.svg'
 import wordmark from './assets/techlead-wordmark-on-light.svg'
 
 const meta = {
-  title: 'Workspace (draft)/App shell and switcher',
+  title: 'Workspace/Shell, app switcher and launcher',
   parameters: { layout: 'fullscreen' },
 } satisfies Meta
 export default meta
@@ -26,103 +29,127 @@ const apps: WorkspaceApp[] = [
   { id: 'accounting', name: 'Accounting Tools', icon: accounting },
 ]
 
-const i = (node: ReactNode) => node
-const navByApp: Record<string, { nav: NavItem[]; action: string }> = {
+const home: NavItem = { id: 'home', label: 'Home', icon: <IconHome size={14} />, color: 'peach' }
+const navByApp: Record<string, { nav: NavGroup[]; action: string }> = {
   itsm: {
     action: 'New ticket',
-    nav: [
-      { id: 'home', label: 'Home', icon: i(<IconHome size={14} />), color: 'peach' },
-      { id: 'tickets', label: 'Tickets', icon: i(<IconTicket size={14} />), color: 'sky', count: 4 },
-      { id: 'assets', label: 'Assets', icon: i(<IconDeviceDesktop size={14} />), color: 'ocean' },
-    ],
+    nav: [{ id: 'main', items: [home,
+      { id: 'tickets', label: 'Tickets', icon: <IconTicket size={14} />, color: 'sky', count: 4 },
+      { id: 'assets', label: 'Assets', icon: <IconDeviceDesktop size={14} />, color: 'ocean' },
+    ] }],
   },
   procure: {
     action: 'Create request',
     nav: [
-      { id: 'home', label: 'Home', icon: i(<IconHome size={14} />), color: 'peach' },
-      { id: 'requests', label: 'Requests', icon: i(<IconStack2 size={14} />), color: 'sky', count: 13 },
-      { id: 'purchasing', label: 'Purchasing', icon: i(<IconBuildingWarehouse size={14} />), color: 'ocean' },
+      { id: 'fav', label: 'Favorites', items: [{ id: 'fav-pr', label: 'PR : Purchase Request', icon: <IconStar size={14} />, color: 'stone' }] },
+      { id: 'main', label: 'ProcureApp', items: [home,
+        { id: 'requests', label: 'Requests', icon: <IconStack2 size={14} />, color: 'sky', children: [
+          { id: 'all', label: 'All requests', icon: <IconStack2 size={14} />, color: 'ocean', count: 13 },
+          { id: 'mine', label: 'Waiting for me', icon: <IconStack2 size={14} />, color: 'stone', count: 2 },
+        ] },
+        { id: 'purchasing', label: 'Purchasing', icon: <IconBuildingWarehouse size={14} />, color: 'ocean' },
+      ] },
     ],
   },
   hr: {
     action: 'Request leave',
-    nav: [
-      { id: 'home', label: 'Home', icon: i(<IconHome size={14} />), color: 'peach' },
-      { id: 'leave', label: 'Leave', icon: i(<IconCalendarEvent size={14} />), color: 'emerald' },
-      { id: 'people', label: 'People', icon: i(<IconUsers size={14} />), color: 'sky' },
-    ],
+    nav: [{ id: 'main', items: [home,
+      { id: 'leave', label: 'Leave', icon: <IconCalendarEvent size={14} />, color: 'emerald' },
+      { id: 'people', label: 'People', icon: <IconUsers size={14} />, color: 'sky' },
+    ] }],
   },
   accounting: {
     action: 'New invoice',
-    nav: [
-      { id: 'home', label: 'Home', icon: i(<IconHome size={14} />), color: 'peach' },
-      { id: 'invoices', label: 'Invoices', icon: i(<IconFileInvoice size={14} />), color: 'sky' },
-      { id: 'payments', label: 'Payments', icon: i(<IconCash size={14} />), color: 'emerald' },
-      { id: 'receipts', label: 'Receipts', icon: i(<IconReceipt size={14} />), color: 'stone' },
-    ],
+    nav: [{ id: 'main', items: [home,
+      { id: 'invoices', label: 'Invoices', icon: <IconFileInvoice size={14} />, color: 'sky' },
+      { id: 'payments', label: 'Payments', icon: <IconCash size={14} />, color: 'emerald' },
+      { id: 'receipts', label: 'Receipts', icon: <IconReceipt size={14} />, color: 'stone' },
+    ] }],
   },
 }
 
-function PagePlaceholder({ app, page }: { app: WorkspaceApp; page: string }) {
-  return (
-    <div className="flex flex-col gap-3">
-      <p className="text-body-medium-semibold">Hello, Somchai</p>
-      <div className="flex h-60 items-center justify-center rounded-8 border border-dashed border-primary text-body-small-medium text-tertiary">
-        {app.name} · {page} — each app's own page content goes here
-      </div>
-    </div>
-  )
-}
+const findItem = (groups: NavGroup[], id: string): NavItem | undefined =>
+  groups.flatMap((g) => g.items.flatMap((i) => [i, ...(i.children ?? [])])).find((i) => i.id === id)
 
-function Prototype({ start }: { start: 'launcher' | string }) {
+function Workspace({ start }: { start: 'launcher' | string }) {
   const [appId, setAppId] = useState<string | null>(start === 'launcher' ? null : start)
   const [navId, setNavId] = useState('home')
-  const open = (id: string) => { setAppId(id); setNavId('home') }
-
-  if (appId == null) {
-    return <AppLauncher apps={apps} mostUsedId="procure" logo={wordmark} onOpenApp={open} />
+  const open = (app: WorkspaceApp) => {
+    setAppId(app.id)
+    setNavId('home')
   }
+
+  if (appId == null) return <AppLauncher apps={apps} mostUsedAppId="procure" logo={wordmark} onOpenApp={open} />
+
   const app = apps.find((a) => a.id === appId)!
   const { nav, action } = navByApp[app.id]
-  const page = nav.find((n) => n.id === navId)!
+  const page = findItem(nav, navId)!
   return (
-    <div className="h-screen">
-      <WorkspaceShell
-        apps={apps}
-        app={app}
-        nav={nav}
-        currentNavId={navId}
-        onNavigate={setNavId}
-        onOpenApp={open}
-        onOpenLauncher={() => setAppId(null)}
-        title={page.label}
-        primaryAction={<Button hierarchy="primary" accent="blue" prefixIcon={<IconPlus size={14} />}>{action}</Button>}
-        userInitials="SC"
-      >
-        <PagePlaceholder app={app} page={page.label} />
-      </WorkspaceShell>
-    </div>
+    <WorkspaceShell
+      apps={apps}
+      app={app}
+      onOpenApp={open}
+      onOpenLauncher={() => setAppId(null)}
+      nav={nav}
+      currentNavId={navId}
+      onNavigate={(item) => setNavId(item.id)}
+      title={page.label}
+      primaryAction={<Button accent="blue" prefixIcon={<IconPlus size={14} />}>{action}</Button>}
+      onSearch={() => {}}
+      notifications={{ count: 2, onClick: () => {} }}
+      onComments={() => {}}
+      user={{ name: 'Somchai C.', initials: 'SC' }}
+      onHelp={() => {}}
+    >
+      <div className="flex flex-col gap-3">
+        <p className="text-body-medium-semibold">Hello, Somchai</p>
+        <div className="flex h-60 items-center justify-center rounded-8 border border-dashed border-primary text-body-small-medium text-tertiary">
+          {app.name} · {page.label}: the app's page content goes here
+        </div>
+      </div>
+    </WorkspaceShell>
   )
 }
 
-/** Clickable: start at the launcher, open an app, switch apps from the grid button, go back with "All apps". */
-export const ClickablePrototype: Story = {
-  name: 'Clickable prototype',
-  render: () => <Prototype start="launcher" />,
+/** Start at the launcher, open an app, switch apps from the grid button, go back with "All apps". */
+export const ClickableWorkspace: Story = {
+  name: 'Clickable workspace',
+  render: () => <Workspace start="launcher" />,
 }
 
-/** The shell inside an app (ProcureApp). The grid button at the top-left opens the switcher. */
-export const InsideAnApp: Story = {
-  name: 'Inside an app',
-  render: () => <Prototype start="procure" />,
+/** Inside ProcureApp: a Favorites group, and Requests with child rows. */
+export const Shell: Story = {
+  name: 'Shell',
+  render: () => <Workspace start="procure" />,
 }
 
-/** The switcher on its own, opened. */
-export const SwitcherOpen: Story = {
+/** The launcher page shown after sign-in and from "All apps". */
+export const Launcher: Story = {
+  name: 'Launcher',
+  render: () => <AppLauncher apps={apps} mostUsedAppId="procure" logo={wordmark} onOpenApp={() => {}} />,
+}
+
+/** The switcher on its own. Click the grid button. */
+export const Switcher: Story = {
   name: 'App switcher',
   render: () => (
     <div className="h-96 bg-secondary p-4">
-      <AppSwitcher apps={apps} currentId="procure" onOpenApp={() => {}} onOpenLauncher={() => {}} />
+      <AppSwitcher apps={apps} currentAppId="procure" onOpenApp={() => {}} onOpenLauncher={() => {}} />
     </div>
   ),
+}
+
+function NavDemo() {
+  const [current, setCurrent] = useState('all')
+  return (
+    <div className="w-[228px] bg-secondary p-2">
+      <SidebarNav groups={navByApp.procure.nav} currentId={current} onNavigate={(i) => setCurrent(i.id)} aria-label="ProcureApp" />
+    </div>
+  )
+}
+
+/** The sidebar menu on its own: groups, counts, and a row with children. */
+export const Navigation: Story = {
+  name: 'Sidebar navigation',
+  render: () => <NavDemo />,
 }
