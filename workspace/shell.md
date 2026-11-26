@@ -107,7 +107,7 @@ Builds on E-Approval's [App shell](../projects/e-approval/patterns/app-shell.md)
 | Width | 56px | 244px (same as the Classic sidebar) |
 | Top | App icon (32px), then the grid button | App icon (24px), app name, grid button |
 | Menu rows | 36px round icon buttons, 18px icons. Selected: `bg-accent-indigo-subtlest`, `text-accent-indigo` | 36px pill rows: icon, label, count. Same selected colours |
-| Labels | A small dark label beside the icon on hover and keyboard focus | Visible |
+| Labels | `Tooltip size="sm"` beside the icon on hover and keyboard focus | Visible |
 | Groups | Split by a short divider | Group heading (`text-body-mini-semibold text-tertiary`) and divider |
 | Counts | Indigo badge on the icon (99+ above 99) | Plain count at the right |
 | Rows with children | Click opens a flyout menu beside the rail listing the children | Click opens the children below the row, indented |
@@ -156,7 +156,6 @@ Most internal apps have an approval workflow. The current assumption (not decide
 ## Open questions and known gaps
 
 - **Mobile** is not designed yet (step 6 of the proposal).
-- **Rail labels** are a small label built into the rail. The design system's `Tooltip` is a 300px bubble; a small one-word tooltip component would let the rail and other icon buttons share one.
 - **Task test:** the rail is ready to test with employees (Storybook: Workspace → Duo rail). Things to watch: can people tell the 13 Org Chart Studio icons apart collapsed, do they find request types inside the category flyouts, and do they expand the rail.
 - **Account menu:** what the avatar menu holds. E-Approval's [Account switcher](../projects/e-approval/components/profile-account-switcher.md) is the starting point.
 - **Search and notifications:** does ⌘K search only the current app or the whole workspace, and does the bell show notifications from every app?
@@ -167,6 +166,7 @@ Most internal apps have an approval workflow. The current assumption (not decide
 
 ## Changelog
 
+- **2026-11-26:** rail labels use the new small Tooltip (0.13.0).
 - **2026-11-26:** rail layout added for the Duo look (package 0.12.0), with a task-test workspace in Storybook.
 
 - **2026-11-26:** coded in package 0.9.0. Added sidebar groups and one level of child rows, `href` support for separate apps, optional header parts, and the usage section.

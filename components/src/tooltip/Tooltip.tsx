@@ -5,7 +5,11 @@ export type TooltipPointer =
   | 'bottom-left' | 'bottom-center' | 'bottom-right'
   | 'left' | 'right'
 
+export type TooltipSize = 'md' | 'sm'
+
 export interface TooltipProps extends Omit<ComponentProps<'div'>, 'title'> {
+  /** `md`: the 300px bubble with an optional title. `sm`: a one-line label (e.g. an icon button's name), no title, as wide as its text. */
+  size?: TooltipSize
   /** Which edge the pointer sits on, and where along it. */
   pointer?: TooltipPointer
   title?: ReactNode
@@ -24,16 +28,19 @@ const shapes = {
 }
 const inset = { left: 'self-start ml-6', center: 'self-center', right: 'self-end mr-6' }
 
-export function Tooltip({ pointer = 'top-center', title, className = '', children, ...rest }: TooltipProps) {
+export function Tooltip({ size = 'md', pointer = 'top-center', title, className = '', children, ...rest }: TooltipProps) {
   const [edge, along = 'center'] = pointer.split('-') as ['top' | 'bottom' | 'left' | 'right', 'left' | 'center' | 'right' | undefined]
-  const bubble = (
-    <div className="flex w-[300px] flex-col gap-3 rounded-6 bg-secondary-inverse p-3 text-primary-inverse">
-      {title != null && <div className="text-body-mini-medium">{title}</div>}
-      <div className="text-support-caption">{children}</div>
-    </div>
-  )
+  const bubble =
+    size === 'sm' ? (
+      <div className="whitespace-nowrap rounded-6 bg-secondary-inverse px-2 py-1 text-body-mini-medium text-primary-inverse">{children}</div>
+    ) : (
+      <div className="flex w-[300px] flex-col gap-3 rounded-6 bg-secondary-inverse p-3 text-primary-inverse">
+        {title != null && <div className="text-body-mini-medium">{title}</div>}
+        <div className="text-support-caption">{children}</div>
+      </div>
+    )
   if (edge === 'left' || edge === 'right') {
-    const tip = <div className={`${arrow} h-4 w-2 self-center ${edge === 'left' ? shapes.left : shapes.right}`} />
+    const tip = <div className={`${arrow} ${size === 'sm' ? 'h-2.5 w-1.5' : 'h-4 w-2'} self-center ${edge === 'left' ? shapes.left : shapes.right}`} />
     return (
       <div role="tooltip" className={`inline-flex ${className}`} {...rest}>
         {edge === 'left' && tip}
@@ -42,7 +49,7 @@ export function Tooltip({ pointer = 'top-center', title, className = '', childre
       </div>
     )
   }
-  const tip = <div className={`${arrow} h-2 w-4 ${inset[along]} ${edge === 'top' ? shapes.up : shapes.down}`} />
+  const tip = <div className={`${arrow} ${size === 'sm' ? 'h-1.5 w-2.5' : 'h-2 w-4'} ${size === 'sm' ? 'self-center' : inset[along]} ${edge === 'top' ? shapes.up : shapes.down}`} />
   return (
     <div role="tooltip" className={`inline-flex flex-col ${className}`} {...rest}>
       {edge === 'top' && tip}
