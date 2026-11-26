@@ -1,6 +1,6 @@
 # Design System
 
-Design system documentation for all projects: shared Foundations, one theme per look, and one folder per project. Every internal app in the employee workspace uses the Workspace theme; another brand (PayGenix) or a client gets its own theme on the same components.
+Design system documentation for all projects: shared Foundations, one theme per look, and one folder per project. Internal apps use one of two workspace looks, Classic (`workspace.css`, E-Approval) or Duo (`duo.css`, new apps); another brand (PayGenix) or a client gets its own theme on the same components.
 
 ```
 foundations/              shared by every project
@@ -9,7 +9,8 @@ foundations/              shared by every project
 ├── tokens/               primitive values, as code (foundations.css)
 └── workflow/             audit process and drift-check instructions
 themes/                   semantic colors and text styles, as code; every theme defines the same token names
-├── workspace.css         the house style shared by every internal app (E-Approval and the apps that follow)
+├── workspace.css         Classic: the look of E-Approval and other apps that keep it
+├── duo.css               Duo (preview): the softer look for new internal apps; DUO.md has the decisions
 ├── paygenix.css          PayGenix; began as a copy of workspace.css and is independent of it
 └── CONTRACT.md           the rule every theme follows, and the check that enforces it
 workspace/                the shell and request/approval patterns every internal app shares (README.md is the index)

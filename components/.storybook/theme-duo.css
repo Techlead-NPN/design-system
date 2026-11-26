@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "../../foundations/tokens/foundations.css";
+@import "../../themes/duo.css";
+
+@source "../src";
+
+@theme {
+  --font-sans: "Inter Variable", "Inter", "IBM Plex Sans Thai", ui-sans-serif, system-ui, sans-serif;
+}
