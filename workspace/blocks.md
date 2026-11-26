@@ -4,7 +4,9 @@ Blocks are the parts between single components and whole pages: a section card, 
 
 This page compares two sources, keeps the blocks that appear in both, and proposes an order to build them. **It is an inventory, not a spec.** Each block gets its own spec when it is built.
 
-**Built so far (package 0.14.0, batch A):** `DSSectionCard`, `DSStatTile` / `DSStatTiles`, `DSEmptyState`, `DSListToolbar`, `DSFilterChip` / `DSFilterChips`, `DSViewSwitch`, `DSCompanyChip`, `DSPersonLabel`, `DSAmount` in [`components/src/blocks/`](../components/src/blocks/). Status tabs use `DSTabs` (`variant="pill"` in Duo apps; `Tab` takes a `count`); the status column uses `DSBadge`. Storybook: **Blocks → Dashboard and list**, including a list page and a dashboard template; switch the Theme to compare Classic and Duo. Next: batch B (detail panel, field grid, approval timeline, approve/reject dialog), then batch C (form page).
+**Built so far (package 0.14.0, batch A):** `DSSectionCard`, `DSStatTile` / `DSStatTiles`, `DSEmptyState`, `DSListToolbar`, `DSFilterChip` / `DSFilterChips`, `DSViewSwitch`, `DSCompanyChip`, `DSPersonLabel`, `DSAmount` in [`components/src/blocks/`](../components/src/blocks/). Status tabs use `DSTabs` (`variant="pill"` in Duo apps; `Tab` takes a `count`); the status column uses `DSBadge`. Storybook: **Blocks → Dashboard and list**, including a list page and a dashboard template; switch the Theme to compare Classic and Duo. 
+
+**Batch B (package 0.15.0):** `DSListWithDetail`, `DSDetailPanel`, `DSDetailSection`, `DSFieldGrid` / `DSField`, `DSHideWhenDetailOpen`, `DSApprovalTimeline`, `DSRoleTag`, `DSApprovalDialog`. Storybook: **Blocks → Detail and approval**, including a list-with-detail template. Next: batch C (form page).
 
 **Sources**
 
@@ -84,6 +86,14 @@ Notifications, the ⌘K command palette, keyboard shortcuts and the account menu
 - **List toolbar** — search (`TextInput type="search"`) and the Filter button on the left; view switch, column settings and export on the right. Status tabs sit above it, filter chips below it.
 - **Filter chip** — 28px pill with a count; `aria-pressed` for its on/off state.
 - **Table cells** — ID as plain text; company as `CompanyChip` (a rounded rectangle, not a pill); people as `PersonLabel` (16px avatar and name); money as `Amount` (two decimals, tabular digits, right-aligned column); status as `Badge`.
+
+## Block rules (batch B)
+
+- **List with detail** — the open record's panel sits inside the list's card, to the right (440px by default), and pushes the list narrower; it never covers it (decided 2026-11-26). Mark the columns that can hide with `hideWhenDetailOpen`, so the table drops to its key columns (e.g. No., Title, Status) while the panel is open; the list scrolls sideways only as a fallback. Toolbars and tabs above the card keep their full width.
+- **Detail panel** — header: Close, a small label ("Request details"), Previous / Next (move through the list without closing) and icon actions; then the title (`text-heading-h6`) with the status badge, a meta line (number, owner, date) and optional tabs. The body scrolls; the footer (e.g. Reject, Approve) stays pinned.
+- **Detail section and field grid** — collapsible sections with a title and chevron; inside, label / value pairs in two columns (label `text-tertiary`, value `text-body-small-medium`). Long values span both columns (`wide`); empty values show a dash.
+- **Approval timeline** — headed "Delegation of Authority (DOA)" in indigo. One row per step, in order: marker (checked / in progress / not yet / rejected), avatar, name, role tag (Approver or Verifier), status at the right (Submitted and Approved in success, the current step in indigo, rejected in danger), position and time below, and the person's note in a grey box. The line between completed steps is indigo.
+- **Approve / reject dialog** — approving takes an optional comment; rejecting needs a reason, and confirming without one shows "Enter a reason to reject." instead of continuing. Both cap the text at 250 characters with a counter. One primary action: Approve (blue) or Reject (red). E-Approval's Figma draws Approve as an outline button; the coded dialog uses the primary style so the confirm action is the clear one.
 
 ## Page templates
 
