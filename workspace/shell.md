@@ -2,7 +2,7 @@
 
 The frame every internal app sits in, the menu that switches between apps, and the page that lists them. Every internal app uses these as they are; an app only supplies its name, icon, sidebar menu and page content.
 
-Status: **designed, not coded for apps yet.** A clickable prototype built from the coded components is in Storybook under **Workspace (draft) → App shell and switcher** ([`components/src/workspace/`](../components/src/workspace/)). Step 5 of the theme proposal turns it into components apps can import. Design reference: the "Company Workspace Portal" super-app prototype (November 2026).
+Status: **coded** (package 0.9.0) as `DSWorkspaceShell`, `DSAppSwitcher`, `DSSidebarNav`, `DSAppLauncher` and `DSAppIcon`, in [`components/src/workspace/`](../components/src/workspace/). Storybook: **Workspace → Shell, app switcher and launcher**, including a clickable workspace. Desktop only; mobile is not designed yet. Design reference: the "Company Workspace Portal" super-app prototype (November 2026).
 
 Values below are Workspace theme tokens and Tailwind classes (see [`../foundations/BUILD_GUIDE.md`](../foundations/BUILD_GUIDE.md) §3).
 
@@ -25,6 +25,52 @@ Nothing else changes per app: no theme, colour, header or sidebar of its own.
 
 **App icons today** (from the super-app prototype): [`app-itsm.svg`](../components/src/workspace/assets/app-itsm.svg), [`app-procureapp.svg`](../components/src/workspace/assets/app-procureapp.svg), [`app-hr-tools.svg`](../components/src/workspace/assets/app-hr-tools.svg), [`app-accounting-tools.svg`](../components/src/workspace/assets/app-accounting-tools.svg). Use the files; never redraw an app icon. A new app needs a new icon from a designer in the same style.
 
+## Using it in an app
+
+```tsx
+import { DSWorkspaceShell, DSButton } from '@techlead-npn/design-system'
+import type { DSWorkspaceApp, DSNavGroup } from '@techlead-npn/design-system'
+
+const apps: DSWorkspaceApp[] = [
+  { id: 'procure', name: 'ProcureApp', icon: '/icons/app-procureapp.svg', href: 'https://procure.example.com' },
+  // … every app this person can open, in the workspace's order
+]
+const nav: DSNavGroup[] = [
+  { id: 'main', items: [
+    { id: 'home', label: 'Home', icon: <IconHome size={14} />, color: 'peach', href: '/' },
+    { id: 'requests', label: 'Requests', icon: <IconStack2 size={14} />, color: 'sky', children: [
+      { id: 'all', label: 'All requests', count: 13, href: '/requests' },
+    ] },
+  ] },
+]
+
+<DSWorkspaceShell
+  apps={apps}
+  app={apps[0]}
+  launcherHref="https://portal.example.com"
+  nav={nav}
+  currentNavId="home"
+  linkComponent={Link}            // your router's link; defaults to <a>
+  title="Home"
+  primaryAction={<DSButton accent="blue">Create request</DSButton>}
+  onSearch={openSearch}
+  notifications={{ count: 2, onClick: openNotifications }}
+  onComments={openComments}
+  user={{ name: 'Somchai C.', initials: 'SC' }}
+  onAccount={openAccountMenu}
+  onHelp={openHelp}
+>
+  {/* the page */}
+</DSWorkspaceShell>
+```
+
+- **One web app or separate apps:** pass `onOpenApp` and `onOpenLauncher` when every app lives in one web app (switching changes the page). Leave them out and give each app an `href`, plus `launcherHref`, when apps are separate sites (switching follows the link). Both work with the same component.
+- **Optional parts:** Search, the bell, Comments and Help only show when their prop is given. `sidebarFooter` adds content next to Help.
+- **Height:** the shell fills the viewport (`h-dvh`) by default; pass `className` to change it. The content card scrolls on its own.
+- **Sidebar visibility:** the shell manages it unless you pass `sidebarOpen` and `onSidebarOpenChange`.
+- **App icons are not in the package.** Each app supplies its own file (the four existing ones are in [`components/src/workspace/assets/`](../components/src/workspace/assets/)).
+- `DSAppLauncher` takes the same `apps`, plus `logo`, `mostUsedAppId` and `onOpenApp`. `DSSidebarNav` and `DSAppSwitcher` can be used on their own.
+
 ## Shell
 
 Builds on E-Approval's [App shell](../projects/e-approval/patterns/app-shell.md); this section replaces its top-left Workspace menu with the app switcher.
@@ -37,7 +83,7 @@ Builds on E-Approval's [App shell](../projects/e-approval/patterns/app-shell.md)
 |---|---|---|
 | 1 | Brand row | 32px high (`h-8`). Grid button (below), `gap-1`, then the app's 24px icon, `gap-2`, and its name in `text-body-small-bold`, `text-primary`, with `px-1` around icon and name. The name truncates |
 | 2 | Search | `mt-2`. 28px row, `rounded-4`, `p-1`: 16px search icon, "Search" in `text-body-small-medium text-secondary`, ⌘K chip at the right (16px high, `bg-secondary`, `border-primary`, `rounded-4`, `text-support-caption text-tertiary`) |
-| 3 | App menu | `mt-3`. Navigation item L1 rows, `gap-0.5`. Selected row: `bg-accent-indigo-subtlest`, `text-accent-indigo`, `text-body-small-semibold`; its icon chip keeps its own colour |
+| 3 | App menu | `mt-3`, scrolls when long. Groups of Navigation item L1 rows, `gap-0.5`. A group may have a label (28px, `text-body-mini-semibold text-tertiary`); groups are split by a 1px `border-primary-subtle` line with 12px above and below. A row may have one level of children: the row then opens and closes them, and each child sits 11px in with a 9px connector (1px `border-primary` line and elbow; the last child's line stops at the elbow). Selected row: `bg-accent-indigo-subtlest`, `text-accent-indigo`, `text-body-small-semibold`; its icon chip keeps its own colour. A row with `href` is a link |
 | 4 | Help | Pinned to the bottom. 24px outline icon button, fully round, `bg-primary` |
 
 **Right column** — padding `pt-4 pr-2 pb-2` (`pl-2` too when the sidebar is hidden), `gap-4` between header and card.
@@ -92,4 +138,5 @@ Most internal apps have an approval workflow. The current assumption (not decide
 
 ## Changelog
 
+- **2026-11-26:** coded in package 0.9.0. Added sidebar groups and one level of child rows, `href` support for separate apps, optional header parts, and the usage section.
 - **2026-11-25:** first version, from the super-app prototype. Decided with the design owner: the grid-button switcher plus launcher; illustrated icons on white tiles; English labels; the current app marked with indigo text and a check, and standard menu sizes (40px rows, 32px icons), instead of the prototype's filled row and 48px rows.

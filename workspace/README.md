@@ -20,7 +20,7 @@ A doc moves into this folder once a second app uses it and its E-Approval-only p
 |---|---|---|
 | Page frame: backdrop, sidebar, header, content card | [`app-shell.md`](../projects/e-approval/patterns/app-shell.md) | Documented, not coded |
 | Desktop sidebar | [`sidebar-navigation.md`](../projects/e-approval/patterns/sidebar-navigation.md) | Documented, not coded. Its menu items are E-Approval's |
-| App switcher and launcher | [`shell.md`](shell.md) | Designed, prototype in Storybook, not coded for apps. Replaces E-Approval's top-left Workspace menu |
+| Shell, app switcher, sidebar menu and launcher | [`shell.md`](shell.md) | **Coded** (0.9.0): `DSWorkspaceShell`, `DSAppSwitcher`, `DSSidebarNav`, `DSAppLauncher`. Replaces E-Approval's top-left Workspace menu |
 | Top bar | [`nav-header-navigation.md`](../projects/e-approval/components/nav-header-navigation.md) | Documented, not coded |
 | Mobile bottom navigation | [`mobile-bottom-navigation.md`](../projects/e-approval/patterns/mobile-bottom-navigation.md) | Documented, not coded. Its tabs are E-Approval's |
 | Mobile top bar | [`nav-mobile-top-bar.md`](../projects/e-approval/components/nav-mobile-top-bar.md) | Documented, not coded |
@@ -44,6 +44,6 @@ The coded generic components (Button, Table, Dialog, …) are already shared by 
 ## Building a new internal app
 
 1. Follow [`../foundations/BUILD_GUIDE.md`](../foundations/BUILD_GUIDE.md) and import `themes/workspace.css`.
-2. Start every screen from the shell in [`shell.md`](shell.md), and supply what it lists: name, icon, sidebar menu, primary action.
+2. Wrap every screen in `DSWorkspaceShell` ([`shell.md`](shell.md)) and supply what it lists: name, icon, sidebar menu, primary action.
 3. For a request or approval screen, start from the matching pattern above before designing anything new.
 4. Create `projects/<app>/` for what only that app has (its own patterns, its menu items). It needs no `tokens.css`.
