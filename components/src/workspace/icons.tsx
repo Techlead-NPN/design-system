@@ -23,3 +23,6 @@ export const MessageIcon = ({ size = 20 }: { size?: number }) => (
 export const ChevronIcon = ({ open, size = 14 }: { open: boolean; size?: number }) => (
   <svg {...props(size)}>{open ? <path d="M6 9l6 6l6 -6" /> : <path d="M9 6l6 6l-6 6" />}</svg>
 )
+export const ChevronsIcon = ({ direction, size = 16 }: { direction: 'left' | 'right'; size?: number }) => (
+  <svg {...props(size)}>{direction === 'right' ? <><path d="M7 7l5 5l-5 5" /><path d="M13 7l5 5l-5 5" /></> : <><path d="M11 7l-5 5l5 5" /><path d="M17 7l-5 5l5 5" /></>}</svg>
+)

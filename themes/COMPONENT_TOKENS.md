@@ -18,6 +18,7 @@ Sources: every `.tsx` file in [`../components/src/`](../components/src/) (2026-1
 | `--search-radius` | `rounded-search` | TextInput with `type="search"` | 6px | full (pill) | B/Search. Search is a pill, form fields are rounded rectangles, as on Airbnb, Google and YouTube |
 | `--field-height` | `h-field` | TextInput, Dropdown trigger | 32px | 44px (draft 46px) | B/FormField |
 | `--field-padding` | `px-field-padding` | TextInput, Dropdown trigger sides | 8px | 12px | B/FormField |
+| `--badge-border-width`, `--badge-height`, `--badge-padding`, `--badge-font-size`, `--badge-line-height` | `border-(length:--badge-border-width)`, `h-badge`, `px-badge-padding`, `text-(length:--badge-font-size)`, `leading-(--badge-line-height)` | Badge | 1px border, 20px high, 8px sides, 14/20px text | no border, 24px high, 10px sides, 12/16px text | Org Chart Studio's badges (borderless soft pills). Duo keeps its darker status text: OCS's bright text on soft tints is about 2.5:1 |
 | `--chip-radius` | `rounded-chip` | Chip (default shape) | 6px | full | B/StatusChip, B/Tag |
 | `--card-radius` | `rounded-card` | Shell content card, RadioCard, ToggleCard, Dialog, Callout | 8px | 16px | Decided in the foundations pass. RadioCard and ToggleCard keep their visible border in both themes: they sit on white forms, where Duo's soft shadow would hide their edge |
 | `--card-border` | `border-card` | Shell content card | `border-primary-subtle` | transparent (the shadow replaces it) | B/KPICard |
@@ -35,7 +36,7 @@ Some Duo differences change structure, not a value. They become an option on the
 | Component | Today | Duo | Proposed |
 |---|---|---|---|
 | Tabs | Underline tabs | Two pill styles: **dark pill** for page-level status tabs (B/Tab), **white pill in a grey track** for switching inside a card (B/SegmentedTab) | `variant="underline"` (default) · `"pill"` · `"segmented"` |
-| Workspace shell | Labelled sidebar, one content card | Icon rail that can expand, cards straight on the page, large page title, round search button in the header | `layout="sidebar"` (default) · `"rail"` — the Duo shell prototype step |
+| Workspace shell | Labelled sidebar, one content card | Icon rail that can expand, cards straight on the page, large page title, round search button in the header | `layout="sidebar"` (default) · `"rail"` (added in 0.12.0) |
 
 ## Stays fixed in both themes
 

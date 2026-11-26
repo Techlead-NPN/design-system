@@ -2,7 +2,7 @@
 
 The frame every internal app sits in, the menu that switches between apps, and the page that lists them. Every internal app uses these as they are; an app only supplies its name, icon, sidebar menu and page content.
 
-Status: **coded** (package 0.9.0) as `DSWorkspaceShell`, `DSAppSwitcher`, `DSSidebarNav`, `DSAppLauncher` and `DSAppIcon`, in [`components/src/workspace/`](../components/src/workspace/). Storybook: **Workspace → Shell, app switcher and launcher**, including a clickable workspace. Desktop only; mobile is not designed yet. Design reference: the "Company Workspace Portal" super-app prototype (November 2026).
+Status: **coded** (package 0.9.0) as `DSWorkspaceShell`, `DSAppSwitcher`, `DSSidebarNav`, `DSAppLauncher` and `DSAppIcon`, in [`components/src/workspace/`](../components/src/workspace/). Storybook: **Workspace → Shell, app switcher and launcher**, including a clickable workspace. Two layouts: `sidebar` (the default, Classic look, as E-Approval) and `rail` (the Duo look, since 0.12.0). Desktop only; mobile is not designed yet. Design reference: the "Company Workspace Portal" super-app prototype (November 2026).
 
 Values below are Workspace theme tokens and Tailwind classes (see [`../foundations/BUILD_GUIDE.md`](../foundations/BUILD_GUIDE.md) §3).
 
@@ -94,6 +94,33 @@ Builds on E-Approval's [App shell](../projects/e-approval/patterns/app-shell.md)
 
 **Hidden sidebar** — the toggle hides the sidebar completely. The grid button then moves into the header, right after the toggle, so switching apps always takes one click.
 
+## Rail layout (Duo)
+
+`<DSWorkspaceShell layout="rail">`, used with the Duo theme (`tokens/duo.css`). Same props as the sidebar layout, plus `subtitle` and the rail's expanded state. Storybook: **Workspace → Duo rail (task test)**.
+
+**Page:** `bg-secondary` backdrop with 12px around everything (`p-3 gap-3`). There is no single content card: page content sits straight on the page, in its own cards (`rounded-card`, `shadow-card`).
+
+**Rail** — a floating card (`rounded-card`, `border-card`, `shadow-card`), full height.
+
+| | Collapsed (default) | Expanded |
+|---|---|---|
+| Width | 56px | 244px (same as the Classic sidebar) |
+| Top | App icon (32px), then the grid button | App icon (24px), app name, grid button |
+| Menu rows | 36px round icon buttons, 18px icons. Selected: `bg-accent-indigo-subtlest`, `text-accent-indigo` | 36px pill rows: icon, label, count. Same selected colours |
+| Labels | A small dark label beside the icon on hover and keyboard focus | Visible |
+| Groups | Split by a short divider | Group heading (`text-body-mini-semibold text-tertiary`) and divider |
+| Counts | Indigo badge on the icon (99+ above 99) | Plain count at the right |
+| Rows with children | Click opens a flyout menu beside the rail listing the children | Click opens the children below the row, indented |
+| Bottom | Help, then the expand button | Help and the collapse button on one line |
+
+The rail scrolls when the menu is taller than the window; labels and flyouts are placed against the window, so scrolling doesn't clip them. The expanded state is the person's choice: pass `railExpanded` and `onRailExpandedChange` and save it per person, or leave both out and the shell manages it for the session.
+
+**Top bar** (no fill): a 44px pill Search button with ⌘K (`bg-primary`, `shadow-card`) at the left; at the right the primary action, a 44px round notifications button with a red dot when unread, Comments if given, and a 36px avatar.
+
+**Page title:** `title` in `text-heading-h5` (24px), with `subtitle` under it in `text-body-small-regular text-secondary`. Then the page content.
+
+**Why a rail that expands:** a rail gives pages almost 190px more width, which helps tables, boards and the org chart canvas. But icons alone can't tell apart items such as Job levels, Job families and Job profiles, and request apps have deep menus. Expanding to labels keeps both, and is one component with two states rather than two layouts per person.
+
 ## App switcher
 
 **Trigger** — 24px ghost icon button with a grid icon (`IconLayoutGrid`), first in the brand row. Label "Switch app"; it has `aria-haspopup="menu"` and `aria-expanded`.
@@ -129,6 +156,8 @@ Most internal apps have an approval workflow. The current assumption (not decide
 ## Open questions and known gaps
 
 - **Mobile** is not designed yet (step 6 of the proposal).
+- **Rail labels** are a small label built into the rail. The design system's `Tooltip` is a 300px bubble; a small one-word tooltip component would let the rail and other icon buttons share one.
+- **Task test:** the rail is ready to test with employees (Storybook: Workspace → Duo rail). Things to watch: can people tell the 13 Org Chart Studio icons apart collapsed, do they find request types inside the category flyouts, and do they expand the rail.
 - **Account menu:** what the avatar menu holds. E-Approval's [Account switcher](../projects/e-approval/components/profile-account-switcher.md) is the starting point.
 - **Search and notifications:** does ⌘K search only the current app or the whole workspace, and does the bell show notifications from every app?
 - **"Most used":** the rule that picks the app is not defined (for example, the app this person opened most in the last 30 days).
@@ -137,6 +166,8 @@ Most internal apps have an approval workflow. The current assumption (not decide
 - **Avatar size:** the header uses the 24px avatar; the super-app prototype shows about 30px, and the design system has no 32px avatar yet.
 
 ## Changelog
+
+- **2026-11-26:** rail layout added for the Duo look (package 0.12.0), with a task-test workspace in Storybook.
 
 - **2026-11-26:** coded in package 0.9.0. Added sidebar groups and one level of child rows, `href` support for separate apps, optional header parts, and the usage section.
 - **2026-11-25:** first version, from the super-app prototype. Decided with the design owner: the grid-button switcher plus launcher; illustrated icons on white tiles; English labels; the current app marked with indigo text and a check, and standard menu sizes (40px rows, 32px icons), instead of the prototype's filled row and 48px rows.

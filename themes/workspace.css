@@ -108,6 +108,11 @@
 
   /* Component tokens: shape values a project may set differently. */
   --badge-radius: var(--radius-infinite);
+  --badge-border-width: 1px;
+  --badge-height: 1.25rem; /* 20px */
+  --badge-padding: 0.5rem; /* 8px */
+  --badge-font-size: 0.875rem; /* 14px */
+  --badge-line-height: 1.25rem; /* 20px */
   --table-row-height: 2.25rem; /* 36px */
   --button-radius: var(--radius-6);
   --button-height-md: 2rem; /* 32px */
@@ -295,12 +300,14 @@
   --ring-color-idle: var(--border-idle);
   --ring-color-disabled: var(--border-disabled);
 
-  /* Component tokens → `rounded-badge`, `h-table-row`, `rounded-button`, `h-button-md`,
+  /* Component tokens → `rounded-badge`, `h-badge`, `px-badge-padding`, `h-table-row`, `rounded-button`, `h-button-md`,
    * `h-button-sm`, `rounded-field`, `rounded-search`, `h-field`, `rounded-chip`, `rounded-card`,
    * `border-card`, `shadow-card`, `rounded-popover`, `rounded-checkbox`, `px-button-padding-md`,
    * `px-button-padding-sm`, `px-field-padding`.
    * See themes/COMPONENT_TOKENS.md. */
   --radius-badge: var(--badge-radius);
+  --spacing-badge: var(--badge-height);
+  --spacing-badge-padding: var(--badge-padding);
   --spacing-table-row: var(--table-row-height);
   --radius-button: var(--button-radius);
   --radius-field: var(--field-radius);
