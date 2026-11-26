@@ -19,7 +19,7 @@ Load the **Inter** font and the **Tabler Icons** set. Do not add any other token
 ## 2. The token files are the source of truth
 
 - [`tokens/foundations.css`](tokens/foundations.css) — primitives shared by every project.
-- [`../themes/`](../themes/) — semantic colors and text styles, one file per theme. Every internal app uses [`workspace.css`](../themes/workspace.css); PayGenix uses [`paygenix.css`](../themes/paygenix.css). Every theme defines the same token names, so the components work with any of them; [`../themes/CONTRACT.md`](../themes/CONTRACT.md) has the rule and the check.
+- [`../themes/`](../themes/) — semantic colors and text styles, one file per theme. Internal apps use [`workspace.css`](../themes/workspace.css) (Classic, e.g. E-Approval) or [`duo.css`](../themes/duo.css) (Duo, new apps, preview); PayGenix uses [`paygenix.css`](../themes/paygenix.css). Every theme defines the same token names, so the components work with any of them; [`../themes/CONTRACT.md`](../themes/CONTRACT.md) has the rule and the check.
 
 The `.md` docs explain what each token is *for*. The `.css` files hold the *values*. If the two ever disagree, the `.css` file is right and the doc needs fixing.
 
@@ -73,7 +73,7 @@ If a reference screenshot is supplied with the task, it shows the intended look 
 
 ## 6. When a project needs a different look
 
-Every project uses the same coded components; only the theme differs. Internal apps all share the Workspace theme and do not get a theme of their own. When a project's design differs from a component, handle it at the lowest level that works, in this order:
+Every project uses the same coded components; only the theme differs. Internal apps use Classic or Duo and never get a theme of their own per app. When a project's design differs from a component, handle it at the lowest level that works, in this order:
 
 1. **Component token**, when only a value differs (corners, height, border width, padding). Add a token such as `--badge-radius` or `--table-row-height`: the component reads it, and each theme sets it. Nothing else changes.
 2. **Variant on the shared component**, when the shape differs but the behavior is the same. Example: underline text fields instead of boxed ones become `appearance="underline"` on `TextInput`, not a second text input. Labels, errors, keyboard and accessibility stay shared. Document which variant the project uses by default.

@@ -11,7 +11,7 @@ Before writing any UI code, read these two files, in order, and follow them:
 
 For a new internal app (anything in the employee workspace), also read `workspace/README.md`: it lists the shared shell and request/approval patterns to start from.
 
-Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/foundations.css` and the project's theme in `themes/` (`themes/workspace.css` for every internal app, `themes/paygenix.css` for PayGenix; the project's `BUILD_GUIDE.md` says which); never invent a color, spacing or type value.
+Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/foundations.css` and the project's theme in `themes/` (`themes/workspace.css` for the Classic look such as E-Approval, `themes/duo.css` for new apps on the Duo look, `themes/paygenix.css` for PayGenix; the project's `BUILD_GUIDE.md` says which); never invent a color, spacing or type value.
 
 ## When adding or changing a coded component
 

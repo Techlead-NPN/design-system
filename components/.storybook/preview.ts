@@ -1,12 +1,14 @@
 import type { Preview } from '@storybook/react-vite'
 import './storybook.css'
+import duo from './theme-duo.css?inline'
 import paygenix from './theme-paygenix.css?inline'
 import workspace from './theme-workspace.css?inline'
 
 // One stylesheet per theme. To add a theme: add theme-<name>.css next to this
 // file, import it here and list it below.
 const themes: Record<string, { title: string; css: string }> = {
-  workspace: { title: 'Workspace', css: workspace },
+  workspace: { title: 'Classic (Workspace)', css: workspace },
+  duo: { title: 'Duo (preview)', css: duo },
   paygenix: { title: 'PayGenix', css: paygenix },
 }
 
