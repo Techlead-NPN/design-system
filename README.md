@@ -76,11 +76,11 @@ The app needs React 19 or later and Tailwind CSS v4. Set up the app's main style
 ```css
 @import "tailwindcss";
 @import "@techlead-npn/design-system/tokens/foundations.css";
-@import "@techlead-npn/design-system/tokens/workspace.css"; /* or paygenix.css */
+@import "@techlead-npn/design-system/tokens/duo.css"; /* duo.css: new internal apps; workspace.css: E-Approval (Classic); paygenix.css: PayGenix */
 @source "../node_modules/@techlead-npn/design-system/dist";
 ```
 
-The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. Before 0.7.0 the theme files were called `tokens/portal2.0.css` and `tokens/paygenix-merchant.css`; those paths still work as aliases and will be removed in 1.0.0. The app loads its fonts itself: Inter, plus IBM Plex Sans Thai for apps on the Duo theme (e.g. from `@fontsource-variable/inter` and `@fontsource/ibm-plex-sans-thai`). Every component and type is exported with a `DS` prefix, so it is easy to tell apart from an app's own component of the same name. Import only the ones you use:
+Pick one theme file per app; the components are the same in all of them. A Duo app also uses `DSWorkspaceShell layout="rail"` and starts from the [starter app](components/starter/leave/README.md). The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. Before 0.7.0 the theme files were called `tokens/portal2.0.css` and `tokens/paygenix-merchant.css`; those paths still work as aliases and will be removed in 1.0.0. The app loads its fonts itself: Inter, plus IBM Plex Sans Thai for apps on the Duo theme (e.g. from `@fontsource-variable/inter` and `@fontsource/ibm-plex-sans-thai`). Every component and type is exported with a `DS` prefix, so it is easy to tell apart from an app's own component of the same name. Import only the ones you use:
 
 ```tsx
 import { DSButton, DSTextInput } from '@techlead-npn/design-system'
