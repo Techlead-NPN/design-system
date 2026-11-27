@@ -37,7 +37,6 @@ export function RequestForm({ today, onSubmit, onCancel }: RequestFormProps) {
   return (
     <DSFormPage
       className="h-full"
-      title="New leave request"
       steps={['Details', 'Review']}
       currentStep={step}
       onStepChange={setStep}

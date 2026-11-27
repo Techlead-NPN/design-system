@@ -102,7 +102,7 @@ Notifications, the ⌘K command palette, keyboard shortcuts and the account menu
 - **Form page** — title (`text-heading-h6`) with an optional aside (e.g. priority), the step bar for multi-step forms, the form sections, and a pinned footer: Back (from the second step), then Cancel, Save draft (when the app saves drafts) and Next, or Submit on the last step. A one-step form leaves out `steps`: no step bar, and the footer goes straight to Submit.
 - **Steps go in order** (decided 2026-11-26). Completed steps in the bar can be clicked to go back; later steps are locked. The app checks the current step when Next is pressed and only advances when it's valid; errors show on the fields themselves ("Enter a title.").
 - **Form section** — a titled card (`rounded-card`, `border-card`, `shadow-card`) with an optional one-line description, and the fields in two columns by default (`col-span-2` to span both, `columns={1}` for one column).
-- **Preview step** — reuse `DetailSection` and `FieldGrid` to show exactly what was entered, read-only.
+- **Preview step** — a `FormSection` (`columns={1}`) holding a `FieldGrid`, to show exactly what was entered, read-only.
 
 ## Page templates
 
@@ -120,13 +120,13 @@ Built in Storybook from the shell plus blocks, as whole pages to copy. They are 
 
 ## Gaps found by the starter app
 
-Building Leave from the package alone turned up these. The first three are package fixes; the rest are candidates.
+Building Leave from the package alone turned up these. The first three are fixed in package 0.17.0; the rest are candidates.
 
 | Gap | What happened | Proposed fix |
 |---|---|---|
-| **Calendar header in Duo** | The month and year are two full-size `Dropdown`s in a 268px calendar. In Duo, fields are 44px tall with 12px padding, so they read "Dece…" and "20…" and overflow the 32px header row | A compact header control in `Calendar` that doesn't use the field tokens |
-| **Form page title** | `FormPage` needs a `title`. In the rail shell the page title is already shown above it, so the page shows "Request leave" and then "New leave request" | Make `title` optional |
-| **Requester step in the approval flow** | Every `ApprovalStep` needs a `role`, so the requester's own step shows a "Verifier" tag | Make `role` optional; no tag when it's left out |
+| **Calendar header in Duo** | The month and year are two full-size `Dropdown`s in a 268px calendar. In Duo, fields are 44px tall with 12px padding, so they read "Dece…" and "20…" and overflow the 32px header row | **Fixed (0.17.0):** `Dropdown size="sm"` (32px in every theme) in the calendar header; month and year widths changed so every month fits, which also fixes "September", "November" and "December" in Classic |
+| **Form page title** | `FormPage` needs a `title`. In the rail shell the page title is already shown above it, so the page shows "Request leave" and then "New leave request" | **Fixed (0.17.0):** `title` is optional |
+| **Requester step in the approval flow** | Every `ApprovalStep` needs a `role`, so the requester's own step shows a "Verifier" tag | **Fixed (0.17.0):** `role` is optional; no tag when it's left out |
 | Toast placement | Apps position `DSToast` themselves (the starter uses bottom centre, so it doesn't cover the detail panel's footer buttons) | Decide one placement for every app; a small toast host if more apps need it |
 | Date field | Picking dates needs the calendar inline in the form; there is no field that opens it | Tier 2 candidate: a date and date-range field |
 
@@ -141,5 +141,6 @@ The two sources mostly agree, which is why these blocks are good candidates. Whe
 
 ## Changelog
 
+- **2026-11-27:** fixed the calendar header, form page title and requester step (0.17.0).
 - **2026-11-26:** the Leave starter app, and the gaps it found.
 - **2026-11-25:** first inventory, from E-Approval's docs and the ProcureApp prototype.

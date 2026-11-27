@@ -62,14 +62,16 @@ export function Calendar(props: CalendarProps) {
       <div className="flex h-8 items-center justify-between gap-2">
         <div className="flex gap-1">
           <Dropdown
-            className="w-[98px]"
+            className="w-[110px]"
+            size="sm"
             aria-label="Month"
             options={MONTHS.map((m, i) => ({ value: String(i), label: m }))}
             value={String(view.getMonth())}
             onChange={(v) => v != null && setView(new Date(view.getFullYear(), Number(v), 1))}
           />
           <Dropdown
-            className="w-[76px]"
+            className="w-[72px]"
+            size="sm"
             aria-label="Year"
             options={years.map((y) => ({ value: y, label: y }))}
             value={String(view.getFullYear())}
@@ -77,10 +79,10 @@ export function Calendar(props: CalendarProps) {
           />
         </div>
         <div className="flex gap-0.5 text-tertiary">
-          <IconButton className="text-tertiary" aria-label="Previous month" onClick={() => setView(new Date(view.getFullYear(), view.getMonth() - 1, 1))}>
+          <IconButton className="size-7! text-tertiary" aria-label="Previous month" onClick={() => setView(new Date(view.getFullYear(), view.getMonth() - 1, 1))}>
             <Chevron d="M15 6l-6 6l6 6" />
           </IconButton>
-          <IconButton className="text-tertiary" aria-label="Next month" onClick={() => setView(new Date(view.getFullYear(), view.getMonth() + 1, 1))}>
+          <IconButton className="size-7! text-tertiary" aria-label="Next month" onClick={() => setView(new Date(view.getFullYear(), view.getMonth() + 1, 1))}>
             <Chevron d="M9 6l6 6l-6 6" />
           </IconButton>
         </div>

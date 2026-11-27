@@ -17,7 +17,7 @@ Coded in [`components/src/calendar/Calendar.tsx`](../../../components/src/calend
 | Part | Value |
 |---|---|
 | Body | 268px wide, padding `spacing/2` (8px), `spacing/2` (8px) between header, weekday row and weeks |
-| Header | 32px high. Left: month [Dropdown](dropdown.md) (98px) and year Dropdown (76px), `spacing/1` (4px) apart, no label or hint. Right: previous and next 32px Ghost [Icon Buttons](button.md), `spacing/0,5` (2px) apart, icons `text + icon/tertiary` |
+| Header | 32px high. Left: month [Dropdown](dropdown.md) (110px) and year Dropdown (72px), both the small 32px size, `spacing/1` (4px) apart, no label or hint. Right: previous and next 28px Ghost [Icon Buttons](button.md), `spacing/0,5` (2px) apart, icons `text + icon/tertiary` |
 | Weekday row | 7 cells of 36×32px, two-letter labels (Mo, Tu, …) in `Body/Small-regular`, `text + icon/tertiary`, centered |
 | Weeks | always 6 rows of 7 day cells, rows `spacing/1` (4px) apart, no gap between cells in a row |
 | Card (when floating) | fill `bg/primary`, border `border/primary-subtle`, `border-radii/rounded-8`, effect `shadow-lg` — the same panel style as [Menu](menu-item.md) |
@@ -90,6 +90,7 @@ The assembled calendar (`CalendarBody`) stacks, top to bottom: **Calendar Header
 
 ## Changelog
 
+- **2026-11-27:** header resized so every month name fits: month 98 → 110px, year 76 → 72px, nav buttons 32 → 28px. "September", "November" and "December" were cut off. The dropdowns use the new small size, so the header stays 32px high in Duo, where fields are 44px. Figma not yet updated.
 - **2026-10-06:** added the Spec section and tidied with the design owner. In Figma: the range Start/End connector strip (a raw blue at 8%) and the white underlay of the in-range cells are bound to `bg/accent-indigo-subtlest` and `bg/primary`; today's outline is bound to `border/accent-indigo` instead of a text token; the misnamed `Type=Today, State=Disabled, Selected=False` is renamed `State=Regular`; a `Type=Basic, State=Focus` day cell is added with the system-wide focus ring; the calendar card's custom shadow is replaced with the `shadow-lg` effect style on the three example cards. Corrected this doc: day numbers are `Body/Small-medium` in `text + icon/secondary`, today's number is not indigo, and the nav chevrons are `text + icon/tertiary`. First coded version added (single date and range, one month).
 - Fixed `CalendarBody`'s bottom divider — all instances (`Edit` and `Read-Only`) were bound to a stray `Borders/Light` variable imported from an unrelated/deprecated library (key prefix `b638e62f83d6d07138a5e8abfc60e1df4c208c20`, not this file's semantic collection) rather than `border/primary-subtle`. Same "Twenty library leftover" pattern seen in prior components.
 - Bound the selected/today/hover day-cell pill's corner radius (previously a raw `4`) to `border-radii/rounded-4` — including the asymmetric per-corner binding on the `Start`/`End` range variants (rounded only on the outer edge).

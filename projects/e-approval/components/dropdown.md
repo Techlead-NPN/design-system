@@ -84,6 +84,7 @@ Same field. When values are selected:
 
 - **Placeholder vs. Filled** is the base empty/has-value split, orthogonal to `Error`/`Disabled` — hence the compound state names (`Error Filled`, `Disabled Placeholder`, etc.) rather than separate boolean properties.
 - **`Focus`** only has a "Filled" look in the built variants (no `Focus Placeholder`/`Focus Empty` — see Known gaps).
+- **Size (code only):** `size="md"` (default) follows the theme's field tokens (32px in Classic, 44px in Duo). `size="sm"` is a fixed 32px high, 8px padding control for tight spots such as the [Calendar](calendar.md) header or a widget filter, the same in every theme. In Classic the two look identical.
 - **Multi-selection Dropdown's chip content uses the [Chips/Tag component](chips-tag-badge.md)** internally for each selected value — its own removable "✕" affordance is the same pattern documented there, not a separate mechanism.
 
 ## Behavior rules
@@ -100,6 +101,7 @@ Same field. When values are selected:
 
 ## Changelog
 
+- **2026-11-27:** added `size="sm"` in code, for the calendar header in Duo.
 - **2026-10-06:** added the Spec section and tidied with the design owner. In Figma: disabled text now matches Text input on both dropdowns (a disabled value is `text + icon/tertiary`, a disabled placeholder is `text + icon/disabled`; they were the other way round); the disabled multi-select chips' remove icon uses `text + icon/disabled` instead of a border token; the `Focus` variants carry the system-wide focus ring. First coded version added (single and multi-selection).
 - Bound the input box's border width (previously raw `1`, unbound) to `border-width/xs`, and the gap between the prefix icon and value/placeholder text (previously raw `4`, unbound) to `spacing/1` — across all 7 states, on both `Dropdown` and `Multi-selection Dropdown`.
 - **Multi-selection Dropdown:** bound the chip-row wrapper's internal gap (previously raw, unbound) — `spacing/2,5` (10px) on the 3 `Placeholder`-family states (icon-to-placeholder-text gap), `spacing/1` (4px) on the 3 `Filled`-family states (gap between chip pills). One instance (the `Focus` state's chip row) was missed on the first automated pass and caught on manual re-verification — fixed the same way.

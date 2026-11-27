@@ -16,7 +16,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const steps: ApprovalStep[] = [
-  { id: '1', name: 'Somchai C.', initials: 'SC', position: 'Requester', role: 'verifier', status: 'done', statusLabel: 'Submitted', time: '24/10/2026 09:12' },
+  { id: '1', name: 'Somchai C.', initials: 'SC', position: 'Requester', status: 'done', statusLabel: 'Submitted', time: '24/10/2026 09:12' },
   { id: '2', name: 'Wipa K.', initials: 'WK', position: 'Head of marketing', role: 'verifier', status: 'done', statusLabel: 'Verified', time: '24/10/2026 13:40', note: 'Fine for the Q4 campaign. Please use the framework vendor.' },
   { id: '3', name: 'Tharin P.', initials: 'TP', position: 'Procurement manager', role: 'approver', status: 'current', statusLabel: 'Waiting for approval' },
   { id: '4', name: 'Anan C.', initials: 'AC', position: 'Chief financial officer', role: 'approver', status: 'waiting', statusLabel: 'Not yet' },

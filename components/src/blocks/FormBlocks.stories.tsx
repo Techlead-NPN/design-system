@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>
 const companies = [{ value: 'tln', label: 'Techlead Next' }, { value: 'mdd', label: 'MarDEE Digital' }]
 const departments = [{ value: 'mkt', label: 'Marketing' }, { value: 'pro', label: 'Procurement' }, { value: 'it', label: 'IT' }]
 const approvers: ApprovalStep[] = [
-  { id: '1', name: 'Somchai C.', initials: 'SC', position: 'Requester', role: 'verifier', status: 'current', statusLabel: 'You' },
+  { id: '1', name: 'Somchai C.', initials: 'SC', position: 'Requester', status: 'current', statusLabel: 'You' },
   { id: '2', name: 'Wipa K.', initials: 'WK', position: 'Head of marketing', role: 'verifier', status: 'waiting', statusLabel: 'Verifies' },
   { id: '3', name: 'Tharin P.', initials: 'TP', position: 'Procurement manager', role: 'approver', status: 'waiting', statusLabel: 'Approves' },
 ]

@@ -24,6 +24,11 @@ interface Common {
   prefix?: ReactNode
   /** Accessible name when there is no visible `label`. */
   'aria-label'?: string
+  /**
+   * `md` (default) follows the theme's field size. `sm` is a fixed 32px control for tight
+   * spots such as the calendar header or a widget filter, the same in every theme.
+   */
+  size?: 'md' | 'sm'
   className?: string
 }
 export type DropdownProps =
@@ -32,7 +37,7 @@ export type DropdownProps =
 
 // Spec: projects/e-approval/components/dropdown.md
 export function Dropdown(props: DropdownProps) {
-  const { options, label, hint, placeholder = 'Select', error = false, disabled = false, prefix, className = '' } = props
+  const { options, label, hint, placeholder = 'Select', error = false, disabled = false, prefix, size = 'md', className = '' } = props
   const id = useId()
   const root = useRef<HTMLDivElement>(null)
   const [open, setOpen] = useState(false)
@@ -90,7 +95,7 @@ export function Dropdown(props: DropdownProps) {
         onClick={() => !disabled && setOpen((o) => !o)}
         onKeyDown={onKeyDown}
         className={
-          `flex h-field items-center gap-1 px-field-padding ${fieldBox} ${error ? fieldBoxError : ''} ` +
+          `flex items-center gap-1 ${size === 'sm' ? 'h-8 px-2' : 'h-field px-field-padding'} ${fieldBox} ${error ? fieldBoxError : ''} ` +
           'focus-visible:inset-ring-accent-indigo focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo ' +
           (open ? 'inset-ring-accent-indigo outline-2 outline-offset-2 outline-accent-indigo ' : '') +
           (disabled ? 'cursor-not-allowed bg-disabled' : 'cursor-pointer')

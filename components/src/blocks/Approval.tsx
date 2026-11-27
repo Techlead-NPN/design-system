@@ -33,7 +33,8 @@ export interface ApprovalStep {
   initials?: string
   /** Job title or position, e.g. "Head of department". */
   position?: string
-  role: ApprovalRole
+  /** Approver or verifier. Leave out for the requester's own step: no tag is shown. */
+  role?: ApprovalRole
   status: ApprovalStepStatus
   /** Shown at the right, e.g. "Approved", "Waiting for review", "Submitted". */
   statusLabel: string
@@ -75,7 +76,7 @@ export function ApprovalTimeline({ steps, heading = 'Delegation of Authority (DO
                 <div className="flex flex-wrap items-center gap-2">
                   <Avatar size={20} color="gray">{step.initials}</Avatar>
                   <span className="text-body-small-medium text-primary">{step.name}</span>
-                  <RoleTag role={step.role} />
+                  {step.role != null && <RoleTag role={step.role} />}
                   <span className={`ml-auto text-body-small-medium ${labelTone[step.status]}`}>{step.statusLabel}</span>
                 </div>
                 {(step.position != null || step.time != null) && (
