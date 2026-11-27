@@ -4,6 +4,7 @@
 
 @source "../src";
 @source "../starter";
+@source "../trial";
 
 @theme {
   --font-sans: "Inter Variable", "Inter", "IBM Plex Sans Thai", ui-sans-serif, system-ui, sans-serif;

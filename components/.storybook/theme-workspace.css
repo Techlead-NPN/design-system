@@ -4,6 +4,7 @@
 
 @source "../src";
 @source "../starter";
+@source "../trial";
 
 @theme {
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
