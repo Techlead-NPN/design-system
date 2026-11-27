@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { IconClipboardList, IconHome, IconPlus, IconStack2 } from '@tabler/icons-react'
+import { IconClipboardList, IconHome, IconLogout, IconPlus, IconStack2, IconUser } from '@tabler/icons-react'
 import {
-  DSApprovalDialog, DSButton, DSConfirmationDialog, DSOverlay, DSToast, DSWorkspaceShell,
+  DSApprovalDialog, DSButton, DSConfirmationDialog, DSMenu, DSMenuItem, DSOverlay, DSToast, DSWorkspaceShell,
   type DSNavGroup, type DSWorkspaceApp,
 } from '../../src'
 import hrIcon from '../../src/workspace/assets/app-hr-tools.svg'
@@ -58,7 +58,15 @@ export function LeaveApp() {
   const [openId, setOpenId] = useState<string | null>(null)
   const [deciding, setDeciding] = useState<{ request: LeaveRequest; decision: 'approve' | 'reject' } | null>(null)
   const [cancelling, setCancelling] = useState<LeaveRequest | null>(null)
+  const [accountOpen, setAccountOpen] = useState(false)
   const [toast, setToast] = useState<{ status: 'success' | 'info'; title: string; description?: string } | null>(null)
+
+  useEffect(() => {
+    if (!accountOpen) return
+    const close = (e: KeyboardEvent) => e.key === 'Escape' && setAccountOpen(false)
+    document.addEventListener('keydown', close)
+    return () => document.removeEventListener('keydown', close)
+  }, [accountOpen])
 
   useEffect(() => {
     if (!toast) return
@@ -115,6 +123,7 @@ export function LeaveApp() {
         onSearch={() => {}}
         notifications={{ count: team.filter((r) => r.status === 'pending').length, onClick: () => go('approvals', { status: 'pending' }) }}
         user={{ name: me.name, initials: me.initials }}
+        onAccount={() => setAccountOpen((o) => !o)}
         onHelp={() => {}}
       >
         {page === 'home' && (
@@ -176,6 +185,22 @@ export function LeaveApp() {
             }}
           />
         </DSOverlay>
+      )}
+
+      {/* The account menu: the same in every workspace app (workspace/shell.md). Profile and Sign out
+          go to the single sign-on service; Sign out signs the person out of every app. */}
+      {accountOpen && (
+        <>
+          <button type="button" aria-label="Close account menu" className="fixed inset-0 z-40 cursor-default" onClick={() => setAccountOpen(false)} />
+          <DSMenu role="menu" aria-label="Account" className="fixed right-3 top-16 z-50 w-64">
+            <div className="flex flex-col px-2 py-1.5">
+              <span className="text-body-small-medium text-primary">{me.name}</span>
+              <span className="text-support-caption text-tertiary">{me.email}</span>
+            </div>
+            <DSMenuItem role="menuitem" leading={<IconUser size={16} />} onClick={() => setAccountOpen(false)}>Profile</DSMenuItem>
+            <DSMenuItem role="menuitem" leading={<IconLogout size={16} />} onClick={() => setAccountOpen(false)}>Sign out</DSMenuItem>
+          </DSMenu>
+        </>
       )}
 
       {toast && <DSToast className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2" status={toast.status} title={toast.title} description={toast.description} onClose={() => setToast(null)} />}
