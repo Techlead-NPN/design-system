@@ -25,7 +25,7 @@ This page compares two sources, keeps the blocks that appear in both, and propos
 |---|---|---|
 | **1** — every request and approval app needs these | Section card · Stat tiles · Empty state · List toolbar · Filter chips · Data table cells · Detail panel · Field grid · Approval timeline · Approve/reject dialog · Form page | They make up the list, detail, form and dashboard pages that Procureapp, Contract management and Leave all have. Approval is expected to live inside every app |
 | **2** — common, build once tier 1 is in use | Activity list · Shortcut tile · Type picker · Comment thread · Attachments · Line items · Card view · Filter panel · Bulk action bar · Widget filter · Approval flow builder · Preview | Shared, but fewer pages need them, or they build on tier 1 |
-| **App only for now** | Kanban board · Budget card · Dashboard customise | Seen in one app, or tied to purchasing |
+| **App only for now** | Kanban board · Budget card · Dashboard customise | Seen in one app, or tied to purchasing. Tracked with every other app-built part in [`app-parts.md`](app-parts.md) |
 
 ## Inventory
 

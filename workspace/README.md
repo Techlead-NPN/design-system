@@ -66,3 +66,4 @@ Keep one colour per meaning in a list: if two states would share a colour and ne
 4. Wrap every screen in `DSWorkspaceShell` ([`shell.md`](shell.md)) and supply what it lists: name, icon, sidebar menu, primary action.
 5. For a request or approval screen, start from the matching pattern above before designing anything new.
 6. Create `projects/<app>/` for what only that app has (its own patterns, its menu items). It needs no `tokens.css`.
+7. Before building a part the package doesn't have, check [`app-parts.md`](app-parts.md): another app may already have it. When you build one, add it there.

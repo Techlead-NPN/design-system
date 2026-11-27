@@ -32,6 +32,7 @@ It is a sample, not the real Leave app: the data is made up and there is no back
 4. Set the real addresses in `apps` (each app's `href`), delete `onOpenApp` and `onOpenLauncher`, and pass `launcherHref`. Keep `RAIL_COOKIE` and `WORKSPACE_DOMAIN` exactly as they are, so the rail choice is shared with the other apps.
 5. Replace `data.ts` with your API. Keep the shapes the pages take, or change both together.
 6. Import `themes/duo.css` and load Inter and IBM Plex Sans Thai ([`README.md`](../../../README.md)).
+7. Anything your app needs that the package doesn't have: check [`workspace/app-parts.md`](../../../workspace/app-parts.md) first, and add a row when you build it.
 
 The starter is in Storybook and type-checked with the package, but it is not part of the package: nothing here is published.
 
