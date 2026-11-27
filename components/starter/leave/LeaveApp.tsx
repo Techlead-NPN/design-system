@@ -22,12 +22,23 @@ const apps: DSWorkspaceApp[] = [leave, { id: 'procure', name: 'ProcureApp', icon
 type Page = 'home' | 'mine' | 'approvals' | 'new'
 const titles: Record<Page, string> = { home: 'Home', mine: 'My requests', approvals: 'Waiting for me', new: 'Request leave' }
 
+/**
+ * The rail opens expanded the first time, then remembers the person's choice. The key is shared
+ * by every workspace app, so the choice follows the person between apps on the same site; apps on
+ * separate sites save it in the person's profile instead.
+ */
+const RAIL_KEY = 'workspace.railExpanded'
+const savedRail = () => {
+  try { return localStorage.getItem(RAIL_KEY) !== 'false' } catch { return true }
+}
+
 /** Fixed so the sample data stays current. A real app uses `new Date()`. */
 const today = new Date(2026, 10, 26)
 const now = () => '26/11/2026 ' + new Date().toTimeString().slice(0, 5)
 
 export function LeaveApp() {
   const [page, setPage] = useState<Page>('home')
+  const [railExpanded, setRailExpanded] = useState(savedRail)
   const [requests, setRequests] = useState(initialRequests)
   const [status, setStatus] = useState<LeaveStatus | 'all'>('all')
   const [openId, setOpenId] = useState<string | null>(null)
@@ -70,6 +81,11 @@ export function LeaveApp() {
     <>
       <DSWorkspaceShell
         layout="rail"
+        railExpanded={railExpanded}
+        onRailExpandedChange={(open) => {
+          setRailExpanded(open)
+          try { localStorage.setItem(RAIL_KEY, String(open)) } catch { /* private mode: keep it for this visit */ }
+        }}
         apps={apps}
         app={leave}
         onOpenApp={() => {}}
