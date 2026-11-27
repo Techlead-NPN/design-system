@@ -64,6 +64,7 @@ function DropdownDemo() {
       <Dropdown className="w-[280px]" multiple label="Title" placeholder="Select type" hint={hint} prefix={<IconCircleDashed size={16} />} options={options} value={many} onChange={setMany} />
       <Dropdown className="w-[280px]" label="Title" placeholder="Select type" error hint={hint} options={options} value={null} onChange={() => {}} />
       <Dropdown className="w-[280px]" label="Title" placeholder="Select type" disabled options={options} value={null} onChange={() => {}} />
+      <Dropdown className="w-[160px]" size="sm" aria-label="Period" options={[{ value: '3m', label: 'Last 3 months' }, { value: '6m', label: 'Last 6 months' }]} value="3m" onChange={() => {}} />
     </div>
   )
 }

@@ -51,7 +51,8 @@ export function FormSteps({ steps, current, onStepChange }: FormStepsProps) {
 }
 
 export interface FormPageProps extends Omit<ComponentProps<'form'>, 'title' | 'onSubmit'> {
-  title: ReactNode
+  /** Leave out when the page title above already names the form (e.g. in the rail shell). */
+  title?: ReactNode
   /** Right of the title, e.g. a priority picker. */
   aside?: ReactNode
   /** Step labels. Leave out for a one-step form: no step bar, and the footer offers Submit straight away. */
@@ -94,11 +95,13 @@ export function FormPage({
       className={`flex min-h-0 flex-col ${className}`}
       {...rest}
     >
-      <header className="flex shrink-0 flex-col gap-4 pb-4">
-        <div className="flex items-start gap-3">
-          <h1 className="min-w-0 flex-1 text-heading-h6 text-primary">{title}</h1>
-          {aside}
-        </div>
+      <header className={`flex shrink-0 flex-col gap-4 ${title != null || aside != null || multi ? 'pb-4' : ''}`}>
+        {(title != null || aside != null) && (
+          <div className="flex items-start gap-3">
+            {title != null && <h1 className="min-w-0 flex-1 text-heading-h6 text-primary">{title}</h1>}
+            {aside != null && <div className="ml-auto shrink-0">{aside}</div>}
+          </div>
+        )}
         {multi && <FormSteps steps={steps} current={currentStep} onStepChange={onStepChange} />}
       </header>
       <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto pb-4">{children}</div>

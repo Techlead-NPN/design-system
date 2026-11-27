@@ -68,7 +68,7 @@ export function workingDays(start: Date, end: Date) {
 export function approvalFlow(requester: Person, submitted: string): DSApprovalStep[] {
   const manager = requester.id === me.id ? director : me
   return [
-    { id: 'req', name: requester.name, initials: requester.initials, position: requester.position, role: 'verifier', status: 'done', statusLabel: 'Submitted', time: submitted },
+    { id: 'req', name: requester.name, initials: requester.initials, position: requester.position, status: 'done', statusLabel: 'Submitted', time: submitted },
     { id: 'mgr', name: manager.name, initials: manager.initials, position: manager.position, role: 'approver', status: 'current', statusLabel: 'Waiting for approval' },
     { id: 'hr', name: hr.name, initials: hr.initials, position: hr.position, role: 'verifier', status: 'waiting', statusLabel: 'Not yet' },
   ]
