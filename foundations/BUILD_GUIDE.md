@@ -19,7 +19,7 @@ Load the fonts the theme names: **Inter** for every theme, plus **IBM Plex Sans 
 ## 2. The token files are the source of truth
 
 - [`tokens/foundations.css`](tokens/foundations.css) — primitives shared by every project.
-- [`../themes/`](../themes/) — semantic colors and text styles, one file per theme. Internal apps use [`workspace.css`](../themes/workspace.css) (Classic, e.g. E-Approval) or [`duo.css`](../themes/duo.css) (Duo, new apps, preview); PayGenix uses [`paygenix.css`](../themes/paygenix.css). Every theme defines the same token names, so the components work with any of them; [`../themes/CONTRACT.md`](../themes/CONTRACT.md) has the rule and the check.
+- [`../themes/`](../themes/) — semantic colors and text styles, one file per theme. Internal apps use [`workspace.css`](../themes/workspace.css) (Classic, e.g. E-Approval) or [`duo.css`](../themes/duo.css) (Duo, new apps); PayGenix uses [`paygenix.css`](../themes/paygenix.css). Every theme defines the same token names, so the components work with any of them; [`../themes/CONTRACT.md`](../themes/CONTRACT.md) has the rule and the check.
 
 The `.md` docs explain what each token is *for*. The `.css` files hold the *values*. If the two ever disagree, the `.css` file is right and the doc needs fixing.
 

@@ -2,7 +2,7 @@
 
 Employees use one workspace with many internal apps: E-Approval today, then apps such as Org chart studio, Contract management, Procureapp (PR/PO), Room booking and Leave. They should feel like one product. Three things make that happen. (Approval is expected to become an engine inside each app rather than a separate app; this is not decided yet.)
 
-1. **A shared theme.** Each internal app imports one of the two workspace looks: [`../themes/workspace.css`](../themes/workspace.css) (Classic, as E-Approval) or [`../themes/duo.css`](../themes/duo.css) (Duo, for new apps, preview; see [`../themes/DUO.md`](../themes/DUO.md)). No app gets a theme or palette of its own.
+1. **A shared theme.** Each internal app imports one of the two workspace looks: [`../themes/workspace.css`](../themes/workspace.css) (Classic, as E-Approval) or [`../themes/duo.css`](../themes/duo.css) (Duo, for new apps; see [`../themes/DUO.md`](../themes/DUO.md)). No app gets a theme or palette of its own.
 2. **One shell.** Every app sits in the same frame: sidebar, top bar, workspace switcher, profile and notifications.
 3. **Shared patterns.** Most of these apps are request-and-approval apps, like E-Approval. They reuse the same list, form, detail and approval patterns instead of inventing new ones.
 

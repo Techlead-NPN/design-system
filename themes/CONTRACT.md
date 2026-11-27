@@ -5,7 +5,7 @@ A theme is one CSS file that gives the components their look. The components nev
 | Theme | Used by |
 |---|---|
 | [`workspace.css`](workspace.css) | Classic: E-Approval and other internal apps that keep its look. The reference theme. |
-| [`duo.css`](duo.css) | New internal apps that use the Duo look (preview). Decisions and mapping in [`DUO.md`](DUO.md). |
+| [`duo.css`](duo.css) | New internal apps that use the Duo look. Decisions and mapping in [`DUO.md`](DUO.md). |
 | [`paygenix.css`](paygenix.css) | PayGenix Merchant Dashboard. An independent copy: a change in `workspace.css` does not reach it. |
 
 Internal apps use Classic or Duo; no app gets a theme of its own. A new theme is for a new look agreed for many apps, a product with a different brand, or a client.

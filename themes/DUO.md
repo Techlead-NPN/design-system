@@ -2,7 +2,7 @@
 
 Duo is the softer look chosen for new internal apps (November 2026). E-Approval keeps the Classic look (`workspace.css`). Both themes use the same components and the same token names ([`CONTRACT.md`](CONTRACT.md)); only the values differ.
 
-This page records how the Duo draft was tied to Foundations. The theme file is [`duo.css`](duo.css). **Status: preview** until the task test with employees. Colours, type, component shapes and the rail shell are built.
+This page records how the Duo draft was tied to Foundations. The theme file is [`duo.css`](duo.css). **Status: ready for new apps** (2026-11-27; it was marked preview until then). Colours, type, component shapes, the rail shell, the blocks and the [starter app](../components/starter/leave/README.md) are built. No real app has shipped on Duo yet, and the mobile shell is not designed.
 
 **Source:** the Duo Figma style guide ("Styleguide · Option B, Warm / Soft", file `CWIyerZWpc1pNJ6ZYyYJK3`, node `11:50`) and the Vercel prototypes employees voted on. The draft started from one visual reference and was not tied to Foundations; this pass does that.
 
@@ -91,4 +91,5 @@ Since package 0.11.0 the components read their shapes from component tokens ([`C
 
 - **2026-11-26 (0.11.0):** component tokens added; Duo's shapes and sizes now come from the theme. Fields 44px, soft card shadow, table rows 48px, field corners 12px and pill search fields decided with the design owner.
 
+- **2026-11-27:** no longer a preview: the task test it waited for was replaced by the decision to open the rail expanded and remember the choice ([`../workspace/shell.md`](../workspace/shell.md)).
 - **2026-11-26:** first pass. Decisions above made with the design owner; `duo.css` added as a preview theme and to Storybook's Theme switch.
