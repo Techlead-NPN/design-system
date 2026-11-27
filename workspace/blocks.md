@@ -10,6 +10,8 @@ This page compares two sources, keeps the blocks that appear in both, and propos
 
 **Batch C (package 0.16.0):** `DSFormPage`, `DSFormSteps`, `DSFormSection`. Storybook: **Blocks → Form page**, with a multi-step and a one-step template. **Tier 1 is complete.**
 
+**Item list (package 0.18.0):** `DSItemList`, `DSItemRow`. Storybook: **Blocks → Dashboard and list → Item list**. Added because the Leave starter and the Room booking vibe test both hand-built it.
+
 **Sources**
 
 - **E-Approval**: its app component and pattern docs in [`../projects/e-approval/`](../projects/e-approval/).
@@ -104,6 +106,12 @@ Notifications, the ⌘K command palette, keyboard shortcuts and the account menu
 - **Form section** — a titled card (`rounded-card`, `border-card`, `shadow-card`) with an optional one-line description, and the fields in two columns by default (`col-span-2` to span both, `columns={1}` for one column).
 - **Preview step** — a `FormSection` (`columns={1}`) holding a `FieldGrid`, to show exactly what was entered, read-only.
 
+## Block rules (item list)
+
+- **Item list** — a short list of rows inside a card, such as upcoming items or free rooms on a home page. Not for long or sortable lists: those are a `Table`.
+- **Row** — optional leading part (a date column or avatar, with its own width so rows line up), the title (`text-body-small-medium`, one line, truncates), one meta line (`text-support-caption text-tertiary`), and a trailing badge or small button.
+- **Clickable or not** — with `onClick` the whole row is one button that opens the item, with the hover fill and focus ring, and its trailing part must not be a button. Without it the row is plain, and the trailing part can be a small outline `Button` (e.g. "Book").
+
 ## Page templates
 
 Built in Storybook from the shell plus blocks, as whole pages to copy. They are references, not package exports.
@@ -117,6 +125,21 @@ Built in Storybook from the shell plus blocks, as whole pages to copy. They are 
 | Type picker | Section cards of shortcut tiles |
 
 **Starter app (2026-11-26):** all of tier 1 put together as one working app, [Leave](../components/starter/leave/README.md), in the Duo rail shell: home, two request lists with the detail panel, approve, reject and cancel, and a two-step form. Storybook: **Starter app → Leave**. New apps copy it.
+
+## Gaps found by the Room booking vibe test (2026-11-27)
+
+A fresh agent built a Room booking app from a written brief and this repo alone (no screenshot or Figma). It used 36 design-system parts, every tier 1 block, and no invented colours or token values. What it couldn't find:
+
+| Gap | Fix |
+|---|---|
+| Build guide and `CLAUDE.md` said every internal app uses `workspace.css` and only Inter, and pointed to a project build guide new apps don't have | **Fixed:** both point new apps to Duo, IBM Plex Sans Thai, `workspace/README.md` and the starter app |
+| Calendar always marks the real today, so prototypes with a fixed date look wrong | **Fixed (0.18.0):** `Calendar today` |
+| Booking states (Confirmed, In progress, Done, Cancelled) had no agreed colours | **Fixed:** status colours by meaning in [`README.md`](README.md#status-colours) |
+| Both apps hand-built the same short list of rows | **Fixed (0.18.0):** the item list block above |
+| No time field or number field (the agent used two dropdowns and a number text input) | Candidates, with the date field below |
+| No pattern for "find something free and book it" (availability, capacity) | App-specific until a second app needs it |
+| How approver screens appear inside an app | Open: tied to the approval-engine question in [`README.md`](README.md) |
+| No Room booking app icon | Needs a designer |
 
 ## Gaps found by the starter app
 
@@ -141,6 +164,7 @@ The two sources mostly agree, which is why these blocks are good candidates. Whe
 
 ## Changelog
 
+- **2026-11-27:** the item list block, and the gaps found by the Room booking vibe test (0.18.0).
 - **2026-11-27:** fixed the calendar header, form page title and requester step (0.17.0).
 - **2026-11-26:** the Leave starter app, and the gaps it found.
 - **2026-11-25:** first inventory, from E-Approval's docs and the ProcureApp prototype.

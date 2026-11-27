@@ -41,6 +41,23 @@ The coded generic components (Button, Table, Dialog, …) are already shared by 
 
 **Building blocks** (section card, stat tiles, list toolbar, detail panel, approval timeline, form page, …) sit between components and pages. [`blocks.md`](blocks.md) lists the ones E-Approval and ProcureApp share and the order to build them.
 
+## Status colours
+
+Every app shows its records' status with `DSBadge`. Apps name their own states, but pick the colour by **what the state means**, from this table, so the same colour means the same thing in every app. The first column is the `state` prop. E-Approval's request states are the source; the other examples show how other apps map theirs.
+
+| `state` | Means | E-Approval | Examples in other apps |
+|---|---|---|---|
+| `warning` | Waiting for someone to act (approve, verify, sign) | Need approval | Waiting for approval |
+| `accent` | Being worked on or happening now | Under review | In progress, Meeting in progress, Being signed |
+| `info` | Started but not sent yet | Draft | Draft |
+| `urgent` | Sent back to the requester to change | Revising | Changes requested |
+| `success` | Approved, confirmed or done well | Approved | Confirmed, Signed, Paid |
+| `error` | Rejected or failed | Rejected | Rejected, Payment failed |
+| `idle` | Finished or no longer active, nothing wrong | — | Done (a past booking), Expired, Archived |
+| `disabled` | Cancelled or withdrawn | Cancelled | Cancelled |
+
+Keep one colour per meaning in a list: if two states would share a colour and need telling apart, say so rather than borrowing a decorative accent. Status never relies on colour alone: the badge always has its label.
+
 ## Building a new internal app
 
 1. Follow [`../foundations/BUILD_GUIDE.md`](../foundations/BUILD_GUIDE.md) and import `themes/duo.css` (new apps; `themes/workspace.css` for the Classic look).

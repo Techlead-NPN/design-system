@@ -15,6 +15,8 @@ interface Common {
   min?: Date
   /** Days after this cannot be picked. */
   max?: Date
+  /** The day marked as today. Defaults to the real today; set it in prototypes with a fixed date. */
+  today?: Date
   /** Draw the floating card around the calendar (border, radius, shadow). */
   card?: boolean
   className?: string
@@ -35,18 +37,19 @@ const Chevron = ({ d }: { d: string }) => (
 
 export function Calendar(props: CalendarProps) {
   const { weekStartsOn = 'monday', min, max, card = false, className = '' } = props
+  const now = props.today ?? new Date()
   const range: DateRange = props.mode === 'range' ? props.value : { start: props.value, end: null }
   const [view, setView] = useState(() => {
-    const d = props.defaultMonth ?? range.start ?? new Date()
+    const d = props.defaultMonth ?? range.start ?? now
     return new Date(d.getFullYear(), d.getMonth(), 1)
   })
   const offset = weekStartsOn === 'monday' ? 1 : 0
   const first = new Date(view.getFullYear(), view.getMonth(), 1 - ((view.getDay() - offset + 7) % 7))
   const cells = Array.from({ length: 42 }, (_, i) => new Date(first.getFullYear(), first.getMonth(), first.getDate() + i))
-  const today = day(new Date())
+  const today = day(now)
   const start = range.start ? day(range.start) : null
   const end = range.end ? day(range.end) : null
-  const thisYear = new Date().getFullYear()
+  const thisYear = now.getFullYear()
   const years = Array.from({ length: 21 }, (_, i) => String(thisYear - 10 + i))
 
   const pick = (d: Date) => {

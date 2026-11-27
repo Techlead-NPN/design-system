@@ -15,7 +15,7 @@ Figma source: the shared **Foundations** file (`n9KB4M3kiVBxwWJPe1HGyB`).
 Two token layers:
 
 - **Foundations** (shared across all projects, [`tokens/foundations.css`](tokens/foundations.css)): raw color, sizing, and typography primitives, plus effect and grid styles. Sourced from **Tailwind CSS's default palette** for color. Icons are **Tabler Icons**.
-- **Theme** (one per look, [`../themes/`](../themes/)): semantic color tokens that alias Foundation primitives, plus text styles. Every internal app in the employee workspace shares the Workspace theme (`workspace.css`); another brand gets its own theme (`paygenix.css`). Every theme defines the same token names, so the same components work with any of them ([`../themes/CONTRACT.md`](../themes/CONTRACT.md)).
+- **Theme** (one per look, [`../themes/`](../themes/)): semantic color tokens that alias Foundation primitives, plus text styles. Internal apps in the employee workspace share one of two workspace looks: Duo (`duo.css`, new apps) or Classic (`workspace.css`, E-Approval); another brand gets its own theme (`paygenix.css`). Every theme defines the same token names, so the same components work with any of them ([`../themes/CONTRACT.md`](../themes/CONTRACT.md)).
 
 In Figma, each project file (e.g. Portal 2.0) still holds its theme's semantic tokens and text styles plus its components.
 
