@@ -16,7 +16,7 @@ It is a sample, not the real Leave app: the data is made up and there is no back
 
 ## What works
 
-- **The rail** opens expanded the first time and remembers whether the person collapsed it, across reloads and across apps on the same site ([`shell.md`](../../../workspace/shell.md)).
+- **The rail** opens expanded the first time and remembers whether the person collapsed it, in the `workspace_rail` cookie shared by every app under `techlead.com` ([`shell.md`](../../../workspace/shell.md)).
 - **Home** counts come from the data. Each tile opens the matching list, already filtered.
 - **Lists:** status tabs with counts, search, type chips. Click a row and the detail opens beside the list, which drops to No., Type and Status. Use the arrows to move through rows without closing it. A filter with no results shows its own empty state.
 - **Approve and reject** (Waiting for me) open the confirm dialog. Rejecting needs a reason. The request then moves to Approved or Rejected, its approval flow updates, and a toast confirms.
@@ -28,8 +28,9 @@ It is a sample, not the real Leave app: the data is made up and there is no back
 1. Copy this folder into your app.
 2. Replace `'../../src'` with `'@techlead-npn/design-system'` in every file (the names are the same `DS…` exports), and the app icon imports with your app's own icon.
 3. Replace the `page` state in `LeaveApp.tsx` with your router. With separate pages per URL, give menu items an `href` and pass your router's link as `linkComponent` ([`shell.md`](../../../workspace/shell.md)).
-4. Replace `data.ts` with your API. Keep the shapes the pages take, or change both together.
-5. Import `themes/duo.css` and load Inter and IBM Plex Sans Thai ([`README.md`](../../../README.md)).
+4. Set the real addresses in `apps` (each app's `href`), delete `onOpenApp` and `onOpenLauncher`, and pass `launcherHref`. Keep `RAIL_COOKIE` and `WORKSPACE_DOMAIN` exactly as they are, so the rail choice is shared with the other apps.
+5. Replace `data.ts` with your API. Keep the shapes the pages take, or change both together.
+6. Import `themes/duo.css` and load Inter and IBM Plex Sans Thai ([`README.md`](../../../README.md)).
 
 The starter is in Storybook and type-checked with the package, but it is not part of the package: nothing here is published.
 

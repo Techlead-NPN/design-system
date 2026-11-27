@@ -64,7 +64,7 @@ const nav: DSNavGroup[] = [
 </DSWorkspaceShell>
 ```
 
-- **One web app or separate apps:** pass `onOpenApp` and `onOpenLauncher` when every app lives in one web app (switching changes the page). Leave them out and give each app an `href`, plus `launcherHref`, when apps are separate sites (switching follows the link). Both work with the same component.
+- **Separate apps — decided 2026-11-27.** Every workspace app is its own project, often built by a different team, on its own subdomain (e.g. `procure.techlead.com`, `hr.techlead.com`). Give each app an `href` and pass `launcherHref`; leave out `onOpenApp` and `onOpenLauncher`, so switching follows the link and loads the other app. Sign-in carries over between apps through single sign-on, and each team releases on its own schedule. (`onOpenApp` and `onOpenLauncher` still exist, for a prototype or a single web app.)
 - **Optional parts:** Search, the bell, Comments and Help only show when their prop is given. `sidebarFooter` adds content next to Help.
 - **Height:** the shell fills the viewport (`h-dvh`) by default; pass `className` to change it. The content card scrolls on its own.
 - **Sidebar visibility:** the shell manages it unless you pass `sidebarOpen` and `onSidebarOpenChange`.
@@ -113,7 +113,7 @@ Builds on E-Approval's [App shell](../projects/e-approval/patterns/app-shell.md)
 | Rows with children | Click opens a flyout menu beside the rail listing the children | Click opens the children below the row, indented |
 | Bottom | Help, then the expand button | Help and the collapse button on one line |
 
-The rail scrolls when the menu is taller than the window; labels and flyouts are placed against the window, so scrolling doesn't clip them. **Expanded state — decided 2026-11-27: open expanded the first time, then remember the person's choice.** Every Duo app passes `railExpanded` and `onRailExpandedChange`, starts at `true` when nothing is saved, and saves each change. Use one key for the whole workspace (`workspace.railExpanded` in the starter app) so the choice follows the person between apps; apps on separate sites save it in the person's profile instead. The [starter app](../components/starter/leave/LeaveApp.tsx) does this. Left out, the shell starts collapsed and forgets the choice when the page reloads, so don't leave them out.
+The rail scrolls when the menu is taller than the window; labels and flyouts are placed against the window, so scrolling doesn't clip them. **Expanded state — decided 2026-11-27: open expanded the first time, then remember the person's choice.** Every Duo app passes `railExpanded` and `onRailExpandedChange`, starts at `true` when nothing is saved, and saves each change in one cookie shared by every app: name `workspace_rail`, value `expanded` or `collapsed`, `Domain=techlead.com`, `Path=/`, one year. Because the apps are separate sites, browser storage can't be shared, but a cookie set for the parent domain can, so collapsing the rail in one app collapses it in all of them. It is remembered per browser, not per person: on a new device the rail starts expanded again. No central profile is needed for this; if more workspace-wide preferences appear later (language, notifications), store them with the person's account through single sign-on instead. The [starter app](../components/starter/leave/LeaveApp.tsx) has the two small functions to copy. Left out, the shell starts collapsed and forgets the choice when the page reloads, so don't leave them out.
 
 Why: icons alone are only a risk when labels are hidden. Opening expanded means new users always see labels, and only people who chose to collapse it see icons alone, by which time they know the app. This settles the question without the task test; if a live app shows most people collapse the rail, revisit.
 
@@ -168,6 +168,7 @@ Most internal apps have an approval workflow. The current assumption (not decide
 
 ## Changelog
 
+- **2026-11-27:** decided: apps are separate sites on their own subdomains, linked by `href`, with single sign-on. The rail choice is saved in a cookie shared across `techlead.com`.
 - **2026-11-27:** the rail opens expanded the first time and remembers the person's choice; the starter app does this.
 - **2026-11-26:** rail labels use the new small Tooltip (0.13.0).
 - **2026-11-26:** rail layout added for the Duo look (package 0.12.0), with a task-test workspace in Storybook.

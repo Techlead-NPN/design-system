@@ -61,7 +61,8 @@ Keep one colour per meaning in a list: if two states would share a colour and ne
 ## Building a new internal app
 
 1. Follow [`../foundations/BUILD_GUIDE.md`](../foundations/BUILD_GUIDE.md) and import `themes/duo.css` (new apps; `themes/workspace.css` for the Classic look).
-2. Start from the **starter app**, [`components/starter/leave/`](../components/starter/leave/README.md): a working Duo app made only from the package. Copy it and replace its pages and data.
-3. Wrap every screen in `DSWorkspaceShell` ([`shell.md`](shell.md)) and supply what it lists: name, icon, sidebar menu, primary action.
-4. For a request or approval screen, start from the matching pattern above before designing anything new.
-5. Create `projects/<app>/` for what only that app has (its own patterns, its menu items). It needs no `tokens.css`.
+2. Your app is its own site on its own subdomain (e.g. `leave.techlead.com`), with single sign-on; the app switcher links to the other apps ([`shell.md`](shell.md)).
+3. Start from the **starter app**, [`components/starter/leave/`](../components/starter/leave/README.md): a working Duo app made only from the package. Copy it and replace its pages and data.
+4. Wrap every screen in `DSWorkspaceShell` ([`shell.md`](shell.md)) and supply what it lists: name, icon, sidebar menu, primary action.
+5. For a request or approval screen, start from the matching pattern above before designing anything new.
+6. Create `projects/<app>/` for what only that app has (its own patterns, its menu items). It needs no `tokens.css`.
