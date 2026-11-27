@@ -10,7 +10,7 @@ When a person asks to build something new (an app, a product, a prototype) and t
 2. **A feature in an existing product**: E-Approval (Classic, `themes/workspace.css`) or PayGenix (`themes/paygenix.css`). Follow that project's `projects/<project>/BUILD_GUIDE.md`.
 3. **A client project** (external). Don't assume the company's look. Ask which way: the workspace look as it is; the client's own theme on these components (the theme goes in the client's private repo, never in this public one: see `themes/CONTRACT.md`); or separate from this design system.
 
-In Claude Code, put a prototype in `components/trial/<app-name>/` with one Storybook story; that folder is git-ignored and Storybook already shows it. In Claude Design, the prototype stays in the Claude Design project. The journey for product owners and designers is in `workspace/start-a-new-app.md`.
+In Claude Code (including Claude Design's "Design in codebase"), put a prototype in `components/trial/<app-name>/` with one Storybook story; that folder is git-ignored and Storybook already shows it. In Claude Design's canvas ("Design"), the prototype stays in the Claude Design project. The journey for product owners and designers is in `workspace/start-a-new-app.md`.
 
 ## When building or changing UI
 

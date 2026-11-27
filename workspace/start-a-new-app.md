@@ -1,6 +1,19 @@
 # Start a new app — for product owners and designers
 
-How to go from an idea to a clickable prototype that developers can build from, without Figma. Most product owners do this in **Claude Design** with this repo connected; designers and developers can also use **Claude Code**. The first three steps are the same in both.
+How to go from an idea to a clickable prototype that developers can build from, without Figma.
+
+## Which one to use
+
+Claude offers two ways to start a design:
+
+| | **Design in codebase** (recommended for app prototypes) | **Design** |
+|---|---|---|
+| What it is | Opens the Code tab (Claude Code) on this repo | A design canvas on claude.ai |
+| Builds with | The design system's real components and tokens | Its own drawing of the look, from what you give it |
+| Follows this repo's rules | Yes: it reads `CLAUDE.md` (asks what kind of project, Duo for new apps, starts from the starter, checks [`app-parts.md`](app-parts.md)) | Not guaranteed |
+| Good for | A prototype developers will build from | Early ideas, concepts, a deck |
+
+Use **Design in codebase** for anything developers will build: what you approve is made of the same parts they use. **Design** is fine for exploring before the app is worked out; expect small differences from the design system. The steps below are the same in both.
 
 ## The journey
 
@@ -13,8 +26,8 @@ How to go from an idea to a clickable prototype that developers can build from, 
    It won't ask you to choose between Classic and Duo: new apps are Duo, and Classic is E-Approval's. If it doesn't ask and the kind of project matters, say it in your first message ("a new internal app for the workspace").
 3. **Claude builds the prototype** from the design system's shell, blocks and components, and tells you about anything it had to make up or couldn't find. Ask for changes in plain language, as many rounds as you like.
 4. **Share and hand over.**
-   - **In Claude Design:** the prototype lives in your Claude Design project; share it from there.
-   - **In Claude Code:** the prototype goes in `components/trial/<app-name>/`, which isn't saved to git. Run `npm run storybook` in `components/` and open **Trial** in the sidebar to click through it. Share it the way your team shares prototypes today (for example a screen recording or a Vercel link), and keep a copy of the folder.
+   - **In Design:** the prototype lives in your Claude Design project; share it from there.
+   - **In Design in codebase (Claude Code):** the prototype goes in `components/trial/<app-name>/`, which isn't saved to git. Run `npm run storybook` in `components/` and open **Trial** in the sidebar to click through it. Share it the way your team shares prototypes today (for example a screen recording or a Vercel link), and keep a copy of the folder.
    - **Developers** start the real app in its own repo by copying the starter (see its [README](../components/starter/leave/README.md)) and use your prototype as the reference.
    - **Send the design system team** whatever Claude said was missing. Missing parts become the next design system work.
 
@@ -27,4 +40,5 @@ How to go from an idea to a clickable prototype that developers can build from, 
 
 ## Changelog
 
+- **2026-11-27:** named the two ways to start (Design in codebase, recommended for app prototypes; Design for early ideas).
 - **2026-11-27:** first version, after the Room booking vibe test showed a brief alone is enough for an on-system prototype.
