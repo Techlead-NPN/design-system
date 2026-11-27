@@ -16,20 +16,34 @@ import { RequestForm, type NewLeave } from './RequestForm'
 // Copy this folder to start a new app. In your app, import from '@techlead-npn/design-system'
 // instead of '../../src', and replace the router and data below with your own.
 
-const leave: DSWorkspaceApp = { id: 'leave', name: 'Leave', icon: hrIcon }
-const apps: DSWorkspaceApp[] = [leave, { id: 'procure', name: 'ProcureApp', icon: procureIcon }, { id: 'itsm', name: 'ITSM', icon: itsmIcon }]
+// Every workspace app is its own site on its own subdomain (decided 2026-11-27), so the app switcher
+// links between them with `href`. Replace these addresses with the real ones.
+const leave: DSWorkspaceApp = { id: 'leave', name: 'Leave', icon: hrIcon, href: 'https://leave.techlead.com' }
+const apps: DSWorkspaceApp[] = [
+  leave,
+  { id: 'procure', name: 'ProcureApp', icon: procureIcon, href: 'https://procure.techlead.com' },
+  { id: 'itsm', name: 'ITSM', icon: itsmIcon, href: 'https://itsm.techlead.com' },
+]
 
 type Page = 'home' | 'mine' | 'approvals' | 'new'
 const titles: Record<Page, string> = { home: 'Home', mine: 'My requests', approvals: 'Waiting for me', new: 'Request leave' }
 
 /**
- * The rail opens expanded the first time, then remembers the person's choice. The key is shared
- * by every workspace app, so the choice follows the person between apps on the same site; apps on
- * separate sites save it in the person's profile instead.
+ * The rail opens expanded the first time, then remembers the person's choice in a cookie shared by
+ * every app under techlead.com, so collapsing it in one app collapses it in all of them. Keep the
+ * name and domain the same in every app. On other hosts (localhost, Storybook) the cookie stays on
+ * that host only.
  */
-const RAIL_KEY = 'workspace.railExpanded'
-const savedRail = () => {
-  try { return localStorage.getItem(RAIL_KEY) !== 'false' } catch { return true }
+const RAIL_COOKIE = 'workspace_rail'
+const WORKSPACE_DOMAIN = 'techlead.com'
+const readRail = () => {
+  const match = typeof document === 'undefined' ? null : document.cookie.match(new RegExp(`(?:^|; )${RAIL_COOKIE}=([^;]*)`))
+  return match?.[1] !== 'collapsed'
+}
+const saveRail = (expanded: boolean) => {
+  const host = location.hostname
+  const domain = host === WORKSPACE_DOMAIN || host.endsWith(`.${WORKSPACE_DOMAIN}`) ? `; Domain=${WORKSPACE_DOMAIN}` : ''
+  document.cookie = `${RAIL_COOKIE}=${expanded ? 'expanded' : 'collapsed'}; Path=/; Max-Age=31536000; SameSite=Lax${domain}`
 }
 
 /** Fixed so the sample data stays current. A real app uses `new Date()`. */
@@ -38,7 +52,7 @@ const now = () => '26/11/2026 ' + new Date().toTimeString().slice(0, 5)
 
 export function LeaveApp() {
   const [page, setPage] = useState<Page>('home')
-  const [railExpanded, setRailExpanded] = useState(savedRail)
+  const [railExpanded, setRailExpanded] = useState(readRail)
   const [requests, setRequests] = useState(initialRequests)
   const [status, setStatus] = useState<LeaveStatus | 'all'>('all')
   const [openId, setOpenId] = useState<string | null>(null)
@@ -84,10 +98,12 @@ export function LeaveApp() {
         railExpanded={railExpanded}
         onRailExpandedChange={(open) => {
           setRailExpanded(open)
-          try { localStorage.setItem(RAIL_KEY, String(open)) } catch { /* private mode: keep it for this visit */ }
+          saveRail(open)
         }}
         apps={apps}
         app={leave}
+        // Prototype only: these keep Storybook from following the links. In a real app, delete both
+        // lines and pass `launcherHref` (the launcher's address); the switcher then follows each `href`.
         onOpenApp={() => {}}
         onOpenLauncher={() => {}}
         nav={nav}
