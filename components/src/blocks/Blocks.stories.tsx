@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
-import { IconAdjustmentsHorizontal, IconChecklist, IconClockHour4, IconDownload, IconFileText, IconFilter, IconInbox, IconPlus, IconSearch, IconShoppingCart } from '@tabler/icons-react'
+import { IconAdjustmentsHorizontal, IconCalendarEvent, IconDoor, IconLock, IconChecklist, IconClockHour4, IconDownload, IconFileText, IconFilter, IconInbox, IconPlus, IconSearch, IconShoppingCart } from '@tabler/icons-react'
 import { SectionCard, StatTile, StatTiles } from './Dashboard'
+import { ItemList, ItemRow } from './ItemList'
 import { Amount, CompanyChip, EmptyState, FilterChip, FilterChips, ListToolbar, PersonLabel, ViewSwitch, type ListView } from './List'
 import { Table, TableCell, TableHeaderCell, TableRow, TableSelectCell } from '../table/Table'
 import { Checkbox } from '../selection/Checkbox'
@@ -152,6 +153,35 @@ export const DashboardTemplate: Story = {
       </SectionCard>
       <SectionCard className="col-span-3" title="Nothing to approve" icon={<IconChecklist size={14} />} color="emerald">
         <EmptyState className="py-6" title="You're all caught up" description="New approvals appear here." />
+      </SectionCard>
+    </div>
+  ),
+}
+
+/** Short lists inside a card. A clickable row opens the item (trailing badge); a plain row can hold its own small button. */
+export const ItemLists: Story = {
+  name: 'Item list',
+  render: () => (
+    <div className="grid max-w-[880px] grid-cols-2 gap-4 bg-secondary p-4">
+      <SectionCard title="Coming up" icon={<IconCalendarEvent size={14} />} color="emerald">
+        <ItemList>
+          {[['Today', '11:00–12:00', 'Campaign review', 'Mekong · Floor 3 · 6 people', 'success', 'Confirmed'], ['Mon 30 Nov', '14:00–15:30', 'Q1 planning with the directors', 'Boardroom · Floor 8 · 12 people', 'warning', 'Waiting for approval']].map(([d, t, title, meta, s, l]) => (
+            <ItemRow
+              key={title}
+              onClick={() => {}}
+              leading={<span className="flex w-24 flex-col"><span className="text-body-small-medium text-primary">{d}</span><span className="text-support-caption text-tertiary tabular-nums">{t}</span></span>}
+              title={title}
+              meta={meta}
+              trailing={<Badge state={s as 'success' | 'warning'}>{l}</Badge>}
+            />
+          ))}
+        </ItemList>
+      </SectionCard>
+      <SectionCard title="Free right now" icon={<IconDoor size={14} />} color="sky">
+        <ItemList>
+          <ItemRow title="Hub 2" meta="Floor 3 · 4 seats · Free until 15:00" trailing={<Button hierarchy="outline" size="sm">Book</Button>} />
+          <ItemRow title={<span className="flex items-center gap-1">Boardroom <IconLock size={14} className="text-tertiary" aria-label="Needs approval" /></span>} meta="Floor 8 · 16 seats · Free until 13:00" trailing={<Button hierarchy="outline" size="sm">Book</Button>} />
+        </ItemList>
       </SectionCard>
     </div>
   ),

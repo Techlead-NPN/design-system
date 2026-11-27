@@ -74,3 +74,5 @@ export { ApprovalTimeline as DSApprovalTimeline, ApprovalDialog as DSApprovalDia
 export type { ApprovalTimelineProps as DSApprovalTimelineProps, ApprovalStep as DSApprovalStep, ApprovalStepStatus as DSApprovalStepStatus, ApprovalRole as DSApprovalRole, ApprovalDialogProps as DSApprovalDialogProps } from './blocks/Approval'
 export { FormPage as DSFormPage, FormSteps as DSFormSteps, FormSection as DSFormSection } from './blocks/Form'
 export type { FormPageProps as DSFormPageProps, FormStepsProps as DSFormStepsProps, FormSectionProps as DSFormSectionProps } from './blocks/Form'
+export { ItemList as DSItemList, ItemRow as DSItemRow } from './blocks/ItemList'
+export type { ItemRowProps as DSItemRowProps } from './blocks/ItemList'

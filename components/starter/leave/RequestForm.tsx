@@ -58,7 +58,7 @@ export function RequestForm({ today, onSubmit, onCancel }: RequestFormProps) {
           </DSFormSection>
           <DSFormSection title="Dates" description="Pick the first and last day. Weekends are not counted." columns={1}>
             <div className="flex flex-wrap items-start gap-6">
-              <DSCalendar mode="range" value={range} onChange={setRange} min={today} defaultMonth={today} card />
+              <DSCalendar mode="range" value={range} onChange={setRange} min={today} today={today} card />
               <div className="flex flex-col gap-1 pt-2">
                 <span className="text-body-small-regular text-tertiary">Selected</span>
                 <span className="text-body-medium-semibold text-primary">{start && end ? formatRange(start, end) : 'No dates yet'}</span>

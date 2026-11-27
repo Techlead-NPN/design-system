@@ -9,7 +9,7 @@ It is a sample, not the real Leave app: the data is made up and there is no back
 | File | Page | Built from |
 |---|---|---|
 | [`LeaveApp.tsx`](LeaveApp.tsx) | The app: shell, menu, which page is open, dialogs and the toast | `DSWorkspaceShell layout="rail"`, `DSOverlay`, `DSApprovalDialog`, `DSConfirmationDialog`, `DSToast` |
-| [`HomePage.tsx`](HomePage.tsx) | Home: waiting for you, leave left, your requests, next days off | `DSSectionCard`, `DSStatTiles`, `DSStatTile`, `DSEmptyState`, `DSBadge` |
+| [`HomePage.tsx`](HomePage.tsx) | Home: waiting for you, leave left, your requests, next days off | `DSSectionCard`, `DSStatTiles`, `DSStatTile`, `DSItemList`, `DSItemRow`, `DSEmptyState`, `DSBadge` |
 | [`RequestsPage.tsx`](RequestsPage.tsx) | My requests and Waiting for me: one page, two modes | `DSTabs variant="pill"`, `DSListToolbar`, `DSFilterChips`, `DSTable`, `DSListWithDetail`, `DSDetailPanel`, `DSFieldGrid`, `DSApprovalTimeline`, `DSEmptyState` |
 | [`RequestForm.tsx`](RequestForm.tsx) | Request leave: details, then review with who approves | `DSFormPage`, `DSFormSection`, `DSDropdown`, `DSCalendar mode="range"`, `DSTextArea`, `DSApprovalTimeline` |
 | [`data.ts`](data.ts) | Sample people, requests, balances and the approval flow | — |

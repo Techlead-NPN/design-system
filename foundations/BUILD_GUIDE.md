@@ -11,10 +11,10 @@ In the project's main stylesheet, import Tailwind, then the shared primitives, t
 ```css
 @import "tailwindcss";
 @import "<path>/foundations/tokens/foundations.css";
-@import "<path>/themes/<theme>.css";   /* workspace.css for every internal app */
+@import "<path>/themes/<theme>.css";   /* duo.css for new internal apps; workspace.css for E-Approval (Classic); paygenix.css for PayGenix */
 ```
 
-Load the **Inter** font and the **Tabler Icons** set. Do not add any other token or theme definitions; if a value is missing, it is missing from the design system (see §4).
+Load the fonts the theme names: **Inter** for every theme, plus **IBM Plex Sans Thai** for Duo (see [`../README.md`](../README.md)). Use the **Tabler Icons** set. Do not add any other token or theme definitions; if a value is missing, it is missing from the design system (see §4).
 
 ## 2. The token files are the source of truth
 
