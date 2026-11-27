@@ -102,7 +102,7 @@ Builds on E-Approval's [App shell](../projects/e-approval/patterns/app-shell.md)
 
 **Rail** — a floating card (`rounded-card`, `border-card`, `shadow-card`), full height.
 
-| | Collapsed (default) | Expanded |
+| | Collapsed | Expanded (first visit) |
 |---|---|---|
 | Width | 56px | 244px (same as the Classic sidebar) |
 | Top | App icon (32px), then the grid button | App icon (24px), app name, grid button |
@@ -113,7 +113,9 @@ Builds on E-Approval's [App shell](../projects/e-approval/patterns/app-shell.md)
 | Rows with children | Click opens a flyout menu beside the rail listing the children | Click opens the children below the row, indented |
 | Bottom | Help, then the expand button | Help and the collapse button on one line |
 
-The rail scrolls when the menu is taller than the window; labels and flyouts are placed against the window, so scrolling doesn't clip them. The expanded state is the person's choice: pass `railExpanded` and `onRailExpandedChange` and save it per person, or leave both out and the shell manages it for the session.
+The rail scrolls when the menu is taller than the window; labels and flyouts are placed against the window, so scrolling doesn't clip them. **Expanded state — decided 2026-11-27: open expanded the first time, then remember the person's choice.** Every Duo app passes `railExpanded` and `onRailExpandedChange`, starts at `true` when nothing is saved, and saves each change. Use one key for the whole workspace (`workspace.railExpanded` in the starter app) so the choice follows the person between apps; apps on separate sites save it in the person's profile instead. The [starter app](../components/starter/leave/LeaveApp.tsx) does this. Left out, the shell starts collapsed and forgets the choice when the page reloads, so don't leave them out.
+
+Why: icons alone are only a risk when labels are hidden. Opening expanded means new users always see labels, and only people who chose to collapse it see icons alone, by which time they know the app. This settles the question without the task test; if a live app shows most people collapse the rail, revisit.
 
 **Top bar** (no fill): a 44px pill Search button with ⌘K (`bg-primary`, `shadow-card`) at the left; at the right the primary action, a 44px round notifications button with a red dot when unread, Comments if given, and a 36px avatar.
 
@@ -156,7 +158,7 @@ Most internal apps have an approval workflow. The current assumption (not decide
 ## Open questions and known gaps
 
 - **Mobile** is not designed yet (step 6 of the proposal).
-- **Task test:** the rail is ready to test with employees (Storybook: Workspace → Duo rail). Things to watch: can people tell the 13 Org Chart Studio icons apart collapsed, do they find request types inside the category flyouts, and do they expand the rail. Test kit: [`research/duo-rail-task-test.md`](research/duo-rail-task-test.md).
+- **Task test:** not run. The question it was for (collapsed or expanded by default) is decided above. The kit stays for later, for example to check the category flyouts: [`research/duo-rail-task-test.md`](research/duo-rail-task-test.md).
 - **Account menu:** what the avatar menu holds. E-Approval's [Account switcher](../projects/e-approval/components/profile-account-switcher.md) is the starting point.
 - **Search and notifications:** does ⌘K search only the current app or the whole workspace, and does the bell show notifications from every app?
 - **"Most used":** the rule that picks the app is not defined (for example, the app this person opened most in the last 30 days).
@@ -166,6 +168,7 @@ Most internal apps have an approval workflow. The current assumption (not decide
 
 ## Changelog
 
+- **2026-11-27:** the rail opens expanded the first time and remembers the person's choice; the starter app does this.
 - **2026-11-26:** rail labels use the new small Tooltip (0.13.0).
 - **2026-11-26:** rail layout added for the Duo look (package 0.12.0), with a task-test workspace in Storybook.
 

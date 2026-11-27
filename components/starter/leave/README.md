@@ -16,6 +16,7 @@ It is a sample, not the real Leave app: the data is made up and there is no back
 
 ## What works
 
+- **The rail** opens expanded the first time and remembers whether the person collapsed it, across reloads and across apps on the same site ([`shell.md`](../../../workspace/shell.md)).
 - **Home** counts come from the data. Each tile opens the matching list, already filtered.
 - **Lists:** status tabs with counts, search, type chips. Click a row and the detail opens beside the list, which drops to No., Type and Status. Use the arrows to move through rows without closing it. A filter with no results shows its own empty state.
 - **Approve and reject** (Waiting for me) open the confirm dialog. Rejecting needs a reason. The request then moves to Approved or Rejected, its approval flow updates, and a toast confirms.
