@@ -1,6 +1,6 @@
 # Duo theme — foundations pass
 
-Duo is the softer look chosen for new internal apps (November 2026). E-Approval keeps the Classic look (`workspace.css`). Both themes use the same components and the same token names ([`CONTRACT.md`](CONTRACT.md)); only the values differ.
+Duo is the softer look chosen for new internal apps (November 2026). E-Approval keeps the Classic look (`classic.css`). Both themes use the same components and the same token names ([`CONTRACT.md`](CONTRACT.md)); only the values differ.
 
 This page records how the Duo draft was tied to Foundations. The theme file is [`duo.css`](duo.css). **Status: ready for new apps** (2026-11-27; it was marked preview until then). Colours, type, component shapes, the rail shell, the blocks and the [starter app](../components/starter/leave/README.md) are built. No real app has shipped on Duo yet, and the mobile shell is not designed.
 

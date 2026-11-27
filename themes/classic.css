@@ -1,7 +1,8 @@
 /*
- * Workspace theme — semantic tokens and text styles (Tailwind CSS v4).
- * The house style shared by every internal app in the employee workspace
- * (E-Approval, formerly Portal 2.0, and the apps that follow). Source of truth
+ * Classic theme — semantic tokens and text styles (Tailwind CSS v4).
+ * The Twenty-derived look of E-Approval (formerly Portal 2.0); new internal
+ * apps use duo.css. Called workspace.css until package 0.19.0; that path still
+ * works as an alias until 1.0.0. Source of truth
  * for these values. Mirrors the "semantic color" collection (light mode) and the
  * 30 text styles of the Portal 2.0 Figma file (YFci6zgeYAQqX2OlHKQB0e) as read
  * on 2026-10-05. Documented in ../projects/e-approval/DESIGN.md.

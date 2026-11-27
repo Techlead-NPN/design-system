@@ -77,7 +77,7 @@ export const IconButtons: Story = {
 /** E-Approval only: the "+" beside the mobile bottom navigation. */
 export const FloatingActionButtons: Story = {
   name: 'Floating action button (E-Approval)',
-  globals: { theme: 'workspace' },
+  globals: { theme: 'classic' },
   render: () => (
     <div className="flex items-center gap-6 p-4">
       <FloatingActionButton aria-label="New request"><IconPlus size={24} /></FloatingActionButton>

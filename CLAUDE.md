@@ -7,7 +7,7 @@ This repo is the design system for all projects: shared foundations, one theme p
 When a person asks to build something new (an app, a product, a prototype) and their message doesn't make clear which kind it is, ask before writing code. Ask one question, with these options:
 
 1. **A new internal app** for the employee workspace. Use the Duo look (`themes/duo.css`) and `DSWorkspaceShell layout="rail"`, start from the starter app in `components/starter/leave/`, and follow `workspace/README.md`. Don't ask Classic or Duo: new apps are Duo. Then ask only what's missing to start: the app's name and what people do in it.
-2. **A feature in an existing product**: E-Approval (Classic, `themes/workspace.css`) or PayGenix (`themes/paygenix.css`). Follow that project's `projects/<project>/BUILD_GUIDE.md`.
+2. **A feature in an existing product**: E-Approval (Classic, `themes/classic.css`) or PayGenix (`themes/paygenix.css`). Follow that project's `projects/<project>/BUILD_GUIDE.md`.
 3. **A client project** (external). Don't assume the company's look. Ask which way: the workspace look as it is; the client's own theme on these components (the theme goes in the client's private repo, never in this public one: see `themes/CONTRACT.md`); or separate from this design system.
 
 In Claude Code (including Claude Design's "Design in codebase"), put a prototype in `components/trial/<app-name>/` with one Storybook story; that folder is git-ignored and Storybook already shows it. In Claude Design's canvas ("Design"), the prototype stays in the Claude Design project. The journey for product owners and designers is in `workspace/start-a-new-app.md`.
@@ -34,7 +34,7 @@ A new internal app (anything in the employee workspace) usually has no project f
 
 Before building any part the package doesn't have (a canvas, a board, a special card), check `workspace/app-parts.md`. If another app already built it, don't build a second one: tell the user it exists, in which app, and that a second app needing it means it should move into the package. A prototype may use a simple stand-in, marked as one. If nobody has it, build it in the app with theme tokens and add a row to that list.
 
-Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/foundations.css` and the project's theme in `themes/` (`themes/workspace.css` for the Classic look such as E-Approval, `themes/duo.css` for new apps on the Duo look, `themes/paygenix.css` for PayGenix; the project's `BUILD_GUIDE.md` says which); never invent a color, spacing or type value.
+Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/foundations.css` and the project's theme in `themes/` (`themes/classic.css` for the Classic look such as E-Approval, `themes/duo.css` for new apps on the Duo look, `themes/paygenix.css` for PayGenix; the project's `BUILD_GUIDE.md` says which); never invent a color, spacing or type value.
 
 ## When adding or changing a coded component
 
@@ -46,6 +46,6 @@ Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/found
 ## When editing the docs
 
 - The `.css` token files are the source of truth for values; keep the `.md` tables in sync with them.
-- Every theme in `themes/` defines the same token names as `themes/workspace.css` (`themes/CONTRACT.md`). A name added to `workspace.css` goes into every other theme in the same PR; `npm run check-themes` in `components/` checks it.
+- Every theme in `themes/` defines the same token names as `themes/classic.css` (`themes/CONTRACT.md`). A name added to `classic.css` goes into every other theme in the same PR; `npm run check-themes` in `components/` checks it.
 - Shared content goes in `foundations/`; anything specific to one project stays in that project's folder.
 - Process for auditing a component against Figma: `foundations/workflow/AUDIT_WORKFLOW.md`.

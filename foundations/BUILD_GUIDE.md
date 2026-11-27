@@ -11,7 +11,7 @@ In the project's main stylesheet, import Tailwind, then the shared primitives, t
 ```css
 @import "tailwindcss";
 @import "<path>/foundations/tokens/foundations.css";
-@import "<path>/themes/<theme>.css";   /* duo.css for new internal apps; workspace.css for E-Approval (Classic); paygenix.css for PayGenix */
+@import "<path>/themes/<theme>.css";   /* duo.css for new internal apps; classic.css for E-Approval (Classic); paygenix.css for PayGenix */
 ```
 
 Load the fonts the theme names: **Inter** for every theme, plus **IBM Plex Sans Thai** for Duo (see [`../README.md`](../README.md)). Use the **Tabler Icons** set. Do not add any other token or theme definitions; if a value is missing, it is missing from the design system (see §4).
@@ -19,7 +19,7 @@ Load the fonts the theme names: **Inter** for every theme, plus **IBM Plex Sans 
 ## 2. The token files are the source of truth
 
 - [`tokens/foundations.css`](tokens/foundations.css) — primitives shared by every project.
-- [`../themes/`](../themes/) — semantic colors and text styles, one file per theme. Internal apps use [`workspace.css`](../themes/workspace.css) (Classic, e.g. E-Approval) or [`duo.css`](../themes/duo.css) (Duo, new apps); PayGenix uses [`paygenix.css`](../themes/paygenix.css). Every theme defines the same token names, so the components work with any of them; [`../themes/CONTRACT.md`](../themes/CONTRACT.md) has the rule and the check.
+- [`../themes/`](../themes/) — semantic colors and text styles, one file per theme. Internal apps use [`classic.css`](../themes/classic.css) (Classic, e.g. E-Approval) or [`duo.css`](../themes/duo.css) (Duo, new apps); PayGenix uses [`paygenix.css`](../themes/paygenix.css). Every theme defines the same token names, so the components work with any of them; [`../themes/CONTRACT.md`](../themes/CONTRACT.md) has the rule and the check.
 
 The `.md` docs explain what each token is *for*. The `.css` files hold the *values*. If the two ever disagree, the `.css` file is right and the doc needs fixing.
 

@@ -4,15 +4,15 @@ A theme is one CSS file that gives the components their look. The components nev
 
 | Theme | Used by |
 |---|---|
-| [`workspace.css`](workspace.css) | Classic: E-Approval and other internal apps that keep its look. The reference theme. |
+| [`classic.css`](classic.css) | Classic: E-Approval and other internal apps that keep its look. The reference theme. Called `workspace.css` until package 0.19.0; the package still ships that path as an alias until 1.0.0. |
 | [`duo.css`](duo.css) | New internal apps that use the Duo look. Decisions and mapping in [`DUO.md`](DUO.md). |
-| [`paygenix.css`](paygenix.css) | PayGenix Merchant Dashboard. An independent copy: a change in `workspace.css` does not reach it. |
+| [`paygenix.css`](paygenix.css) | PayGenix Merchant Dashboard. An independent copy: a change in `classic.css` does not reach it. |
 
 Internal apps use Classic or Duo; no app gets a theme of its own. A new theme is for a new look agreed for many apps, a product with a different brand, or a client.
 
 ## The rule
 
-**A theme defines every name that `workspace.css` defines.** That means:
+**A theme defines every name that `classic.css` defines.** That means:
 
 1. Every CSS variable: the semantic colours in `:root` (`--text-primary`, `--bg-accent-indigo`, …), the component tokens (`--button-radius`, `--card-radius`, `--table-row-height`, … see [`COMPONENT_TOKENS.md`](COMPONENT_TOKENS.md)), and the variables in its `@theme` blocks that turn them into Tailwind classes.
 2. Every `@utility`: the 30 text styles (`text-body-small-medium`, …) and the loading shimmers (`bg-loading-light`, …).
@@ -23,16 +23,16 @@ A theme changes the look (colours, type, radii, shadows, sizes set through token
 
 ## Making a new theme
 
-1. Copy `workspace.css` and rename it, e.g. `themes/<brand>.css`.
+1. Copy `classic.css` and rename it, e.g. `themes/<brand>.css`.
 2. Change the values. Keep every name.
 3. Run the check (below) until it passes.
-4. In the app's stylesheet, import it instead of `workspace.css`, after `foundations.css`.
+4. In the app's stylesheet, import it instead of `classic.css`, after `foundations.css`.
 
 A client's theme stays in the client's private repo, never in this repo, which is public.
 
 ## The check
 
-The check compares a theme's names with `workspace.css` and lists anything missing. It exits with code 1 if a name is missing.
+The check compares a theme's names with `classic.css` and lists anything missing. It exits with code 1 if a name is missing.
 
 In this repo (checks every theme in `themes/`; it also runs before every package publish):
 
@@ -46,4 +46,4 @@ In an app that installs `@techlead-npn/design-system` (0.8.0 or later), for exam
 npx ds-check-theme src/styles/client-theme.css
 ```
 
-When a new name is added to `workspace.css`, every other theme must add it too, or the check fails on the next publish.
+When a new name is added to `classic.css`, every other theme must add it too, or the check fails on the next publish.
