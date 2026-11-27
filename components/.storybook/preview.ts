@@ -8,7 +8,7 @@ import workspace from './theme-workspace.css?inline'
 // file, import it here and list it below.
 const themes: Record<string, { title: string; css: string }> = {
   workspace: { title: 'Classic (Workspace)', css: workspace },
-  duo: { title: 'Duo (preview)', css: duo },
+  duo: { title: 'Duo', css: duo },
   paygenix: { title: 'PayGenix', css: paygenix },
 }
 

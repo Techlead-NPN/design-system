@@ -10,7 +10,7 @@ foundations/              shared by every project
 └── workflow/             audit process and drift-check instructions
 themes/                   semantic colors and text styles, as code; every theme defines the same token names
 ├── workspace.css         Classic: the look of E-Approval and other apps that keep it
-├── duo.css               Duo (preview): the softer look for new internal apps; DUO.md has the decisions
+├── duo.css               Duo: the softer look for new internal apps; DUO.md has the decisions
 ├── paygenix.css          PayGenix; began as a copy of workspace.css and is independent of it
 └── CONTRACT.md           the rule every theme follows, and the check that enforces it
 workspace/                the shell and request/approval patterns every internal app shares (README.md is the index)

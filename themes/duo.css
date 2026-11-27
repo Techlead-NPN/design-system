@@ -1,11 +1,11 @@
 /*
- * Duo theme — semantic tokens and text styles (Tailwind CSS v4). PREVIEW.
+ * Duo theme — semantic tokens and text styles (Tailwind CSS v4).
  * The softer look for new internal apps (Duo direction, November 2026). Same
  * token names as workspace.css (the Classic look), different values. Every
  * value is a Foundations primitive; decisions and the mapping from the Duo
  * Figma style guide are in DUO.md.
  *
- * Preview until the task test with employees. Use with
+ * Ready for new apps (2026-11-27). Use with
  * <DSWorkspaceShell layout="rail">. See DUO.md and COMPONENT_TOKENS.md.
  *
  * Import after foundations.css — see ../foundations/BUILD_GUIDE.md.
