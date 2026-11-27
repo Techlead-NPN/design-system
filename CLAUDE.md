@@ -12,6 +12,17 @@ When a person asks to build something new (an app, a product, a prototype) and t
 
 In Claude Code (including Claude Design's "Design in codebase"), put a prototype in `components/trial/<app-name>/` with one Storybook story; that folder is git-ignored and Storybook already shows it. In Claude Design's canvas ("Design"), the prototype stays in the Claude Design project. The journey for product owners and designers is in `workspace/start-a-new-app.md`.
 
+### Prototype mode
+
+A prototype in `components/trial/` is for clicking through, not for shipping. Keep it cheap:
+
+- Read only what the task needs: this file, `workspace/README.md`, the starter app, and the source of the components you actually use. Skip the per-component docs and project docs unless something is unclear.
+- Copy the starter's structure instead of designing a new one.
+- Don't run checks after every change. Run `npm run typecheck` in `components/` once, when the prototype is done, and fix what it finds. Don't build Storybook.
+- Use made-up data. No tests, no back end.
+- The design system rules still apply in full: theme tokens only, no invented values, package components first.
+- Finish with a short list of anything you had to invent or couldn't find; that's what the design system team needs.
+
 ## When building or changing UI
 
 Before writing any UI code, read these two files, in order, and follow them:

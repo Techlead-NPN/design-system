@@ -2,18 +2,11 @@
 
 How to go from an idea to a clickable prototype that developers can build from, without Figma.
 
-## Which one to use
+## Where to do it
 
-Claude offers two ways to start a design:
+Use **Design in codebase** (it opens the Code tab, Claude Code, on this repo). It builds with the design system's real components and tokens and follows this repo's rules, so what you approve is made of the same parts developers use. Prototypes run in a lighter **prototype mode** (see `CLAUDE.md`) to keep the cost per round down.
 
-| | **Design in codebase** (recommended for app prototypes) | **Design** |
-|---|---|---|
-| What it is | Opens the Code tab (Claude Code) on this repo | A design canvas on claude.ai |
-| Builds with | The design system's real components and tokens | Its own drawing of the look, from what you give it |
-| Follows this repo's rules | Yes: it reads `CLAUDE.md` (asks what kind of project, Duo for new apps, starts from the starter, checks [`app-parts.md`](app-parts.md)) | Not guaranteed |
-| Good for | A prototype developers will build from | Early ideas, concepts, a deck |
-
-Use **Design in codebase** for anything developers will build: what you approve is made of the same parts they use. **Design** is fine for exploring before the app is worked out; expect small differences from the design system. The steps below are the same in both.
+Claude Design's canvas (**Design**) is still there for a very rough sketch, a deck or a diagram. It draws the look rather than using the real parts, so don't hand it to developers as the reference.
 
 ## The journey
 
@@ -24,10 +17,9 @@ Use **Design in codebase** for anything developers will build: what you approve 
    - **Client project.** It asks whether to use the company look, the client's own theme, or neither.
 
    It won't ask you to choose between Classic and Duo: new apps are Duo, and Classic is E-Approval's. If it doesn't ask and the kind of project matters, say it in your first message ("a new internal app for the workspace").
-3. **Claude builds the prototype** from the design system's shell, blocks and components, and tells you about anything it had to make up or couldn't find. Ask for changes in plain language, as many rounds as you like.
+3. **Claude builds the prototype** in prototype mode, from the design system's shell, blocks and components, and tells you about anything it had to make up or couldn't find. Ask for changes in plain language, as many rounds as you like.
 4. **Share and hand over.**
-   - **In Design:** the prototype lives in your Claude Design project; share it from there.
-   - **In Design in codebase (Claude Code):** the prototype goes in `components/trial/<app-name>/`, which isn't saved to git. Run `npm run storybook` in `components/` and open **Trial** in the sidebar to click through it. Share it the way your team shares prototypes today (for example a screen recording or a Vercel link), and keep a copy of the folder.
+   - The prototype goes in `components/trial/<app-name>/`, which isn't saved to git. Run `npm run storybook` in `components/` and open **Trial** in the sidebar to click through it. Share it the way your team shares prototypes today (for example a screen recording or a Vercel link), and keep a copy of the folder.
    - **Developers** start the real app in its own repo by copying the starter (see its [README](../components/starter/leave/README.md)) and use your prototype as the reference.
    - **Send the design system team** whatever Claude said was missing. Missing parts become the next design system work.
 
@@ -40,5 +32,6 @@ Use **Design in codebase** for anything developers will build: what you approve 
 
 ## Changelog
 
+- **2026-11-27:** one recommended path, Design in codebase in prototype mode; Design only for rough sketches, decks and diagrams.
 - **2026-11-27:** named the two ways to start (Design in codebase, recommended for app prototypes; Design for early ideas).
 - **2026-11-27:** first version, after the Room booking vibe test showed a brief alone is enough for an on-system prototype.
