@@ -11,6 +11,8 @@ Before writing any UI code, read these two files, in order, and follow them:
 
 A new internal app (anything in the employee workspace) usually has no project folder yet: read `workspace/README.md` instead. New apps use the Duo look and start from the starter app in `components/starter/leave/`.
 
+Before building any part the package doesn't have (a canvas, a board, a special card), check `workspace/app-parts.md`. If another app already built it, don't build a second one: tell the user it exists, in which app, and that a second app needing it means it should move into the package. A prototype may use a simple stand-in, marked as one. If nobody has it, build it in the app with theme tokens and add a row to that list.
+
 Stack is always Tailwind CSS v4. Values come only from `foundations/tokens/foundations.css` and the project's theme in `themes/` (`themes/workspace.css` for the Classic look such as E-Approval, `themes/duo.css` for new apps on the Duo look, `themes/paygenix.css` for PayGenix; the project's `BUILD_GUIDE.md` says which); never invent a color, spacing or type value.
 
 ## When adding or changing a coded component
