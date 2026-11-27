@@ -1,12 +1,12 @@
 # E-Approval — Design System Reference
 
-E-Approval was called Portal 2.0 until November 2026; its Figma file is still named "[DS] Portal 2.0". Its tokens are now the Workspace theme, shared by every internal app.
+E-Approval was called Portal 2.0 until November 2026; its Figma file is still named "[DS] Portal 2.0". Its tokens are now the Classic theme (`themes/classic.css`); new internal apps use the Duo theme instead.
 
 This document is the source of truth for how design tokens and styles work in E-Approval and the other internal apps. It's written for three audiences at once: designers, engineers implementing tokens in code, and AI tools generating or modifying designs from this spec ("vibe design"). If a rule here isn't followed, treat it as a bug.
 
 It covers only what is specific to E-Approval. Everything shared across projects — the token architecture, raw primitives, and icon set — lives in [`../../foundations/FOUNDATIONS.md`](../../foundations/FOUNDATIONS.md). Read that first.
 
-**Values live in code:** the Workspace theme, [`../../themes/workspace.css`](../../themes/workspace.css), holds the semantic colors (§2) and text styles (§3) as Tailwind CSS v4 tokens and is the source of truth for the values. To build a screen, start at [`BUILD_GUIDE.md`](BUILD_GUIDE.md).
+**Values live in code:** the Classic theme, [`../../themes/classic.css`](../../themes/classic.css), holds the semantic colors (§2) and text styles (§3) as Tailwind CSS v4 tokens and is the source of truth for the values. To build a screen, start at [`BUILD_GUIDE.md`](BUILD_GUIDE.md).
 
 Figma source: [`✅ Color`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) and [`✅ Typography`](https://www.figma.com/design/YFci6zgeYAQqX2OlHKQB0e) pages of the Portal 2.0 file. Primitives come from the shared **Foundations** file (`n9KB4M3kiVBxwWJPe1HGyB`).
 
@@ -203,7 +203,7 @@ These are bound **directly** by components — no semantic layer (see §1). The 
 
 Neither rhythm is enforced by Figma or named as a distinct scale in the Foundations file — it's an observed convention from auditing every page in this file, not a structural rule the token system encodes. When choosing a value for new spacing, default to the 8px-rhythm steps for anything roomy; reach for the tighter odd/half steps only in genuinely dense UI.
 
-**Component tokens:** two shape values are set through a token in [`../../themes/workspace.css`](../../themes/workspace.css) instead of being fixed inside the component, because another project sets them differently: `--badge-radius` (`border-radii/rounded-infinite` here) and `--table-row-height` (36px here). Their classes are `rounded-badge` and `h-table-row`. See [`../paygenix-merchant/DESIGN.md`](../paygenix-merchant/DESIGN.md).
+**Component tokens:** two shape values are set through a token in [`../../themes/classic.css`](../../themes/classic.css) instead of being fixed inside the component, because another project sets them differently: `--badge-radius` (`border-radii/rounded-infinite` here) and `--table-row-height` (36px here). Their classes are `rounded-badge` and `h-table-row`. See [`../paygenix-merchant/DESIGN.md`](../paygenix-merchant/DESIGN.md).
 
 **Grid styles:** not yet applied to any frame checked in this file, including [Content Area](components/content-area.md) (the natural candidate, since its two variants are sized to exactly `breakpoint/lg`/`sm`) — a real gap: the grid exists and pairs cleanly with the breakpoint scale, but nothing currently wires a frame to it via Figma's own layout-grid mechanism.
 

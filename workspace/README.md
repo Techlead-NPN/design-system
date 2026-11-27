@@ -2,7 +2,7 @@
 
 Employees use one workspace with many internal apps: E-Approval today, then apps such as Org chart studio, Contract management, Procureapp (PR/PO), Room booking and Leave. They should feel like one product. Three things make that happen. (Approval is expected to become an engine inside each app rather than a separate app; this is not decided yet.)
 
-1. **A shared theme.** Each internal app imports one of the two workspace looks: [`../themes/workspace.css`](../themes/workspace.css) (Classic, as E-Approval) or [`../themes/duo.css`](../themes/duo.css) (Duo, for new apps; see [`../themes/DUO.md`](../themes/DUO.md)). No app gets a theme or palette of its own.
+1. **A shared theme.** Each internal app imports one of the two workspace looks: [`../themes/classic.css`](../themes/classic.css) (Classic, as E-Approval) or [`../themes/duo.css`](../themes/duo.css) (Duo, for new apps; see [`../themes/DUO.md`](../themes/DUO.md)). No app gets a theme or palette of its own.
 2. **One shell.** Every app sits in the same frame: sidebar, top bar, workspace switcher, profile and notifications.
 3. **Shared patterns.** Most of these apps are request-and-approval apps, like E-Approval. They reuse the same list, form, detail and approval patterns instead of inventing new ones.
 
@@ -60,7 +60,7 @@ Keep one colour per meaning in a list: if two states would share a colour and ne
 
 ## Building a new internal app
 
-1. Follow [`../foundations/BUILD_GUIDE.md`](../foundations/BUILD_GUIDE.md) and import `themes/duo.css` (new apps; `themes/workspace.css` for the Classic look).
+1. Follow [`../foundations/BUILD_GUIDE.md`](../foundations/BUILD_GUIDE.md) and import `themes/duo.css` (new apps; `themes/classic.css` for the Classic look).
 2. Your app is its own site on its own subdomain (e.g. `leave.techlead.com`), with single sign-on; the app switcher links to the other apps ([`shell.md`](shell.md)).
 3. Start from the **starter app**, [`components/starter/leave/`](../components/starter/leave/README.md): a working Duo app made only from the package. Copy it and replace its pages and data.
 4. Wrap every screen in `DSWorkspaceShell` ([`shell.md`](shell.md)) and supply what it lists: name, icon, sidebar menu, primary action.

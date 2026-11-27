@@ -2,12 +2,12 @@ import type { Preview } from '@storybook/react-vite'
 import './storybook.css'
 import duo from './theme-duo.css?inline'
 import paygenix from './theme-paygenix.css?inline'
-import workspace from './theme-workspace.css?inline'
+import classic from './theme-classic.css?inline'
 
 // One stylesheet per theme. To add a theme: add theme-<name>.css next to this
 // file, import it here and list it below.
 const themes: Record<string, { title: string; css: string }> = {
-  workspace: { title: 'Classic (Workspace)', css: workspace },
+  classic: { title: 'Classic', css: classic },
   duo: { title: 'Duo', css: duo },
   paygenix: { title: 'PayGenix', css: paygenix },
 }
@@ -21,7 +21,7 @@ function applyTheme(name: string) {
   }
   if (style.dataset.theme === name) return
   style.dataset.theme = name
-  style.textContent = (themes[name] ?? themes.workspace).css
+  style.textContent = (themes[name] ?? themes.classic).css
 }
 
 const preview: Preview = {
@@ -36,7 +36,7 @@ const preview: Preview = {
       },
     },
   },
-  initialGlobals: { theme: 'workspace' },
+  initialGlobals: { theme: 'classic' },
   decorators: [
     (Story, context) => {
       applyTheme(context.globals.theme)

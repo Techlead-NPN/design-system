@@ -12,10 +12,11 @@ for (const file of readdirSync(join(root, 'themes'))) {
   if (file.endsWith('.css')) cpSync(join(root, 'themes', file), join(out, file))
 }
 
-// Old paths from before the themes/ folder (package 0.6.0 and earlier). Each
-// imports its theme, so apps importing the old path keep working. Remove them
-// in the next major version.
-const aliases = { 'portal2.0.css': 'workspace.css', 'paygenix-merchant.css': 'paygenix.css' }
+// Old paths, each importing its theme so apps importing the old path keep
+// working: portal2.0.css and paygenix-merchant.css (package 0.6.0 and earlier,
+// before the themes/ folder) and workspace.css (0.18.x and earlier, before the
+// Classic theme was named after its look). Remove them in the next major version.
+const aliases = { 'workspace.css': 'classic.css', 'portal2.0.css': 'classic.css', 'paygenix-merchant.css': 'paygenix.css' }
 for (const [oldName, theme] of Object.entries(aliases)) {
   writeFileSync(
     join(out, oldName),

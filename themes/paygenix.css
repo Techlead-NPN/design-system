@@ -4,8 +4,8 @@
  * values. Documented in ../projects/paygenix-merchant/DESIGN.md.
  *
  * PayGenix shares the Workspace look, so this file began as a copy of the
- * Portal 2.0 tokens, now workspace.css (as of 2026-10-09). It is independent:
- * a later change in workspace.css does not reach this file. PayGenix's own
+ * Portal 2.0 tokens, now classic.css (as of 2026-10-09). It is independent:
+ * a later change in classic.css does not reach this file. PayGenix's own
  * additions and differences are marked "PayGenix".
  *
  * Import after foundations.css — see ../foundations/BUILD_GUIDE.md.

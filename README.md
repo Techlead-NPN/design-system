@@ -1,6 +1,6 @@
 # Design System
 
-Design system documentation for all projects: shared Foundations, one theme per look, and one folder per project. Internal apps use one of two workspace looks, Classic (`workspace.css`, E-Approval) or Duo (`duo.css`, new apps); another brand (PayGenix) or a client gets its own theme on the same components.
+Design system documentation for all projects: shared Foundations, one theme per look, and one folder per project. Internal apps use one of two workspace looks, Classic (`classic.css`, E-Approval) or Duo (`duo.css`, new apps); another brand (PayGenix) or a client gets its own theme on the same components.
 
 **Starting something new?** Product owners and designers: read [`workspace/start-a-new-app.md`](workspace/start-a-new-app.md). AI tools (Claude Code, including Claude Design's "Design in codebase"; Claude Design's canvas): before building, find out which kind of project it is, and ask the person if their message doesn't say. A **new internal app** uses Duo (`themes/duo.css`, `DSWorkspaceShell layout="rail"`) and starts from the starter app in `components/starter/leave/`; don't offer Classic. A **feature in E-Approval or PayGenix** follows `projects/<project>/BUILD_GUIDE.md`. A **client project** asks whether to use the workspace look, the client's own theme (kept in the client's private repo) or neither. Then follow [`CLAUDE.md`](CLAUDE.md).
 
@@ -11,9 +11,9 @@ foundations/              shared by every project
 ├── tokens/               primitive values, as code (foundations.css)
 └── workflow/             audit process and drift-check instructions
 themes/                   semantic colors and text styles, as code; every theme defines the same token names
-├── workspace.css         Classic: the look of E-Approval and other apps that keep it
+├── classic.css           Classic: the look of E-Approval and other apps that keep it
 ├── duo.css               Duo: the softer look for new internal apps; DUO.md has the decisions
-├── paygenix.css          PayGenix; began as a copy of workspace.css and is independent of it
+├── paygenix.css          PayGenix; began as a copy of classic.css and is independent of it
 └── CONTRACT.md           the rule every theme follows, and the check that enforces it
 workspace/                the shell and request/approval patterns every internal app shares (README.md is the index)
 components/               coded React + Tailwind components, shared by every project
@@ -22,7 +22,7 @@ components/               coded React + Tailwind components, shared by every pro
                            (button/, selection/, badge/, avatar/, divider/, toggle/, tooltip/, field/, menu/, calendar/, navigation/, feedback/, overlay/, table/, layout/)
 projects/
 ├── paygenix-merchant/    uses themes/paygenix.css: DESIGN.md and BUILD_GUIDE.md list what differs from E-Approval
-└── e-approval/           one folder per project (E-Approval, formerly Portal 2.0; uses themes/workspace.css)
+└── e-approval/           one folder per project (E-Approval, formerly Portal 2.0; uses themes/classic.css)
     ├── DESIGN.md         what the semantic tokens and text styles are for, accessibility, changelog
     ├── BUILD_GUIDE.md    which docs to read for which task
     ├── components/       one doc per component
@@ -78,11 +78,11 @@ The app needs React 19 or later and Tailwind CSS v4. Set up the app's main style
 ```css
 @import "tailwindcss";
 @import "@techlead-npn/design-system/tokens/foundations.css";
-@import "@techlead-npn/design-system/tokens/duo.css"; /* duo.css: new internal apps; workspace.css: E-Approval (Classic); paygenix.css: PayGenix */
+@import "@techlead-npn/design-system/tokens/duo.css"; /* duo.css: new internal apps; classic.css: E-Approval (Classic); paygenix.css: PayGenix */
 @source "../node_modules/@techlead-npn/design-system/dist";
 ```
 
-Pick one theme file per app; the components are the same in all of them. A Duo app also uses `DSWorkspaceShell layout="rail"` and starts from the [starter app](components/starter/leave/README.md). The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. Before 0.7.0 the theme files were called `tokens/portal2.0.css` and `tokens/paygenix-merchant.css`; those paths still work as aliases and will be removed in 1.0.0. The app loads its fonts itself: Inter, plus IBM Plex Sans Thai for apps on the Duo theme (e.g. from `@fontsource-variable/inter` and `@fontsource/ibm-plex-sans-thai`). Every component and type is exported with a `DS` prefix, so it is easy to tell apart from an app's own component of the same name. Import only the ones you use:
+Pick one theme file per app; the components are the same in all of them. A Duo app also uses `DSWorkspaceShell layout="rail"` and starts from the [starter app](components/starter/leave/README.md). The `@source` line lets Tailwind see the classes the components use; adjust the path to where the stylesheet sits. Older paths still work as aliases until 1.0.0: `tokens/workspace.css` (the Classic theme before 0.19.0), and `tokens/portal2.0.css` and `tokens/paygenix-merchant.css` (before 0.7.0). The app loads its fonts itself: Inter, plus IBM Plex Sans Thai for apps on the Duo theme (e.g. from `@fontsource-variable/inter` and `@fontsource/ibm-plex-sans-thai`). Every component and type is exported with a `DS` prefix, so it is easy to tell apart from an app's own component of the same name. Import only the ones you use:
 
 ```tsx
 import { DSButton, DSTextInput } from '@techlead-npn/design-system'
@@ -102,4 +102,4 @@ The docs and Storybook use the plain names (Button, Text input); in code, add th
 
 ## Adding a project
 
-Create `projects/<name>/` with the same shape as `e-approval/`. An internal app uses one of the two workspace looks, `themes/duo.css` for new apps or `themes/workspace.css` (Classic, as E-Approval), and needs no tokens of its own; a new internal app starts from [`workspace/README.md`](workspace/README.md). A product with a different brand gets its own theme: copy `themes/workspace.css` to `themes/<brand>.css`, keep every token name and change the values, then run `npm run check-themes` in `components/` (see [`themes/CONTRACT.md`](themes/CONTRACT.md)). A client's theme stays in the client's private repo, not in this public one. The project's `DESIGN.md` documents only what is specific to it and links to Foundations for everything else. Follow [`foundations/workflow/AUDIT_WORKFLOW.md`](foundations/workflow/AUDIT_WORKFLOW.md) to audit and document its components.
+Create `projects/<name>/` with the same shape as `e-approval/`. An internal app uses one of the two workspace looks, `themes/duo.css` for new apps or `themes/classic.css` (Classic, as E-Approval), and needs no tokens of its own; a new internal app starts from [`workspace/README.md`](workspace/README.md). A product with a different brand gets its own theme: copy `themes/classic.css` to `themes/<brand>.css`, keep every token name and change the values, then run `npm run check-themes` in `components/` (see [`themes/CONTRACT.md`](themes/CONTRACT.md)). A client's theme stays in the client's private repo, not in this public one. The project's `DESIGN.md` documents only what is specific to it and links to Foundations for everything else. Follow [`foundations/workflow/AUDIT_WORKFLOW.md`](foundations/workflow/AUDIT_WORKFLOW.md) to audit and document its components.

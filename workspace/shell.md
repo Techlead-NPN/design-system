@@ -4,7 +4,7 @@ The frame every internal app sits in, the menu that switches between apps, and t
 
 Status: **coded** (package 0.9.0) as `DSWorkspaceShell`, `DSAppSwitcher`, `DSSidebarNav`, `DSAppLauncher` and `DSAppIcon`, in [`components/src/workspace/`](../components/src/workspace/). Storybook: **Workspace → Shell, app switcher and launcher**, including a clickable workspace. Two layouts: `sidebar` (the default, Classic look, as E-Approval) and `rail` (the Duo look, since 0.12.0). Desktop only; mobile is not designed yet. Design reference: the "Company Workspace Portal" super-app prototype (November 2026).
 
-Values below are Workspace theme tokens and Tailwind classes (see [`../foundations/BUILD_GUIDE.md`](../foundations/BUILD_GUIDE.md) §3).
+Values below are theme tokens and Tailwind classes (see [`../foundations/BUILD_GUIDE.md`](../foundations/BUILD_GUIDE.md) §3).
 
 ## Flow
 
