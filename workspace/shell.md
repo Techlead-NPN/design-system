@@ -149,7 +149,16 @@ Shown after sign-in and from "All apps".
 - **Column:** centred, at most 720px wide, `pt-24`. The Techlead wordmark ([file](../projects/e-approval/assets/logo/techlead-wordmark-on-light.svg)), 56px high. Then "Welcome to Portal" in `text-heading-h5` (`mt-6`) and "Select an application to use." in `text-body-medium-regular text-secondary` (`mt-1`).
 - **App grid:** `mt-10`, two columns (one on narrow screens), `gap-6`.
 - **App card:** a button, 160px high, `rounded-12`, `border border-primary-subtle`, `bg-primary`. Centred: the app's 56px icon, `gap-4`, its name in `text-body-medium-semibold`. Hover: `border-primary` and `shadow-md`. Keyboard focus: the standard 2px indigo ring.
-- **"Most used" ribbon:** on at most one card, in its top-right corner: `bg-accent-indigo`, `text-primary-inverse`, `text-support-caption`, `px-2 py-1`, corners `rounded-tr-12 rounded-bl-8`.
+- **"Most used" ribbon:** not used for now (see the decisions above). When it returns, it goes on at most one card, in its top-right corner: `bg-accent-indigo`, `text-primary-inverse`, `text-support-caption`, `px-2 py-1`, corners `rounded-tr-12 rounded-bl-8`.
+
+## Search, notifications, account menu, launcher — decided 2026-11-27
+
+The apps are separate sites, so anything that spans every app needs a shared service the teams don't have yet. Until one exists, each part covers the current app only:
+
+- **Search (⌘K)** searches the current app's own records. Jumping to another app is the app switcher's job.
+- **Notifications (the bell)** show the current app's notifications only, and the red dot counts only those. A workspace-wide bell needs a shared notification service; revisit if one is built, possibly alongside single sign-on.
+- **Account menu** (the avatar) is the same short list in every app: the person's name and email at the top, then **Profile**, then **Sign out**. Sign out signs the person out of every app through single sign-on. No account switcher: E-Approval's [Account switcher](../projects/e-approval/components/profile-account-switcher.md) stays E-Approval's own. The shell only calls `onAccount`; each app opens this menu itself for now.
+- **App launcher** lists the apps with no "Most used" ribbon: don't pass `mostUsedAppId`. Picking the most-used app needs usage data shared across apps. The ribbon stays in the component for when a shared service exists.
 
 ## Approval inside apps
 
@@ -159,15 +168,14 @@ Most internal apps have an approval workflow. The current assumption (not decide
 
 - **Mobile** is not designed yet (step 6 of the proposal).
 - **Task test:** not run. The question it was for (collapsed or expanded by default) is decided above. The kit stays for later, for example to check the category flyouts: [`research/duo-rail-task-test.md`](research/duo-rail-task-test.md).
-- **Account menu:** what the avatar menu holds. E-Approval's [Account switcher](../projects/e-approval/components/profile-account-switcher.md) is the starting point.
-- **Search and notifications:** does ⌘K search only the current app or the whole workspace, and does the bell show notifications from every app?
-- **"Most used":** the rule that picks the app is not defined (for example, the app this person opened most in the last 30 days).
-- **Ribbon contrast:** white on `bg-accent-indigo` is about 4.3:1, under the 4.5:1 that WCAG AA asks for 12px text. The same open issue as the white-on-indigo button label in [`button.md`](../projects/e-approval/components/button.md).
+- **Account menu in the shell:** the contents are decided (above), but each app still builds the menu itself from `onAccount`. If teams build it differently, move it into `DSWorkspaceShell`.
+- **Ribbon contrast** (only if the "Most used" ribbon comes back): white on `bg-accent-indigo` is about 4.3:1, under the 4.5:1 that WCAG AA asks for 12px text. The same open issue as the white-on-indigo button label in [`button.md`](../projects/e-approval/components/button.md).
 - **Launcher background:** the super-app prototype has a pattern of outlined triangles behind the fade. It needs exporting as an image asset before it can be used.
 - **Avatar size:** the header uses the 24px avatar; the super-app prototype shows about 30px, and the design system has no 32px avatar yet.
 
 ## Changelog
 
+- **2026-11-27:** decided: search and notifications cover the current app only; the account menu is name and email, Profile, Sign out; no "Most used" ribbon for now.
 - **2026-11-27:** decided: apps are separate sites on their own subdomains, linked by `href`, with single sign-on. The rail choice is saved in a cookie shared across `techlead.com`.
 - **2026-11-27:** the rail opens expanded the first time and remembers the person's choice; the starter app does this.
 - **2026-11-26:** rail labels use the new small Tooltip (0.13.0).

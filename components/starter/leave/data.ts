@@ -5,6 +5,7 @@ import type { DSApprovalStep, DSBadgeState } from '../../src'
 export interface Person {
   id: string
   name: string
+  email?: string
   initials: string
   position: string
 }
@@ -27,7 +28,7 @@ export interface LeaveRequest {
   steps: DSApprovalStep[]
 }
 
-export const me: Person = { id: 'sc', name: 'Somchai C.', initials: 'SC', position: 'Head of marketing' }
+export const me: Person = { id: 'sc', name: 'Somchai C.', email: 'somchai.c@techlead.com', initials: 'SC', position: 'Head of marketing' }
 const director: Person = { id: 'ac', name: 'Anan C.', initials: 'AC', position: 'Marketing director' }
 const hr: Person = { id: 'ms', name: 'Malee S.', initials: 'MS', position: 'HR officer' }
 const thana: Person = { id: 'tw', name: 'Thana W.', initials: 'TW', position: 'Content lead' }

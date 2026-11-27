@@ -79,7 +79,7 @@ function Workspace({ start }: { start: 'launcher' | string }) {
     setNavId('home')
   }
 
-  if (appId == null) return <AppLauncher apps={apps} mostUsedAppId="procure" logo={wordmark} onOpenApp={open} />
+  if (appId == null) return <AppLauncher apps={apps} logo={wordmark} onOpenApp={open} />
 
   const app = apps.find((a) => a.id === appId)!
   const { nav, action } = navByApp[app.id]
@@ -126,7 +126,7 @@ export const Shell: Story = {
 /** The launcher page shown after sign-in and from "All apps". */
 export const Launcher: Story = {
   name: 'Launcher',
-  render: () => <AppLauncher apps={apps} mostUsedAppId="procure" logo={wordmark} onOpenApp={() => {}} />,
+  render: () => <AppLauncher apps={apps} logo={wordmark} onOpenApp={() => {}} />,
 }
 
 /** The switcher on its own. Click the grid button. */
